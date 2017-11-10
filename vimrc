@@ -47,7 +47,7 @@ inoremap jj <esc>
 nnoremap J ^
 " K is go to end of the line
 nnoremap K $
- 
+
 " tab (next) and shift-tab (prev) to cycle buffer
 map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
@@ -91,6 +91,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 
+Plug 'scrooloose/nerdtree'
+  map <C-\> :NERDTreeToggle<CR>
+  map <leader>n :NERDTreeToggle<CR>
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
