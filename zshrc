@@ -15,6 +15,7 @@ setopt correctall
 alias git status='nocorrect git status'
 alias gs='nocorrect git status'
 alias g='git'
+alias go='git checkout'
 alias gac='git add -a && git commit -m'
 alias v='nvim'
 
@@ -24,14 +25,15 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-#global aliases
+#LOCAL
+[[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zplug
-if [[ ! -d ~/.zplug ]];then
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
+if [[ ! -d ~/.local/share/zplug ]];then
+    git clone https://github.com/b4b4r07/zplug ~/.local/share/zplug
 fi
-source ~/.zplug/init.zsh
+source ~/.local/share/zplug/init.zsh
 
 zplug "mafredri/zsh-async", from:github, defer:0
 zplug "zsh-users/zsh-autosuggestions", from:github
@@ -43,4 +45,4 @@ zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
 zplug load
 
 #PROMPT
-source prompt
+source zsh/prompt.zsh
