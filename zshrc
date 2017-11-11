@@ -1,22 +1,27 @@
-# COLORS
-autoload colors zsh/terminfo
-colors
+export DOTFILES=$HOME/dotfiles
+export ZSH=$DOTFILES/zsh
 
-## PROMPT
-#precmd() { print "" }
+# COLORS
+
+# #PROMPT
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+
 #PS1="⟩"
 #RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
 
 # SETTINGS
 setopt auto_cd
 setopt correctall
+setopt vi
 
 # ALIAS
 alias git status='nocorrect git status'
 alias gs='nocorrect git status'
 alias g='git'
 alias go='git checkout'
-alias gac='git add -a && git commit -m'
+alias gac='git add -A && git commit -m'
 alias v='nvim'
 
 # Filesystem aliases
@@ -40,9 +45,9 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 
 # Load last
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
-#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 zplug load
 
 #PROMPT
-source zsh/prompt.zsh
+#source $ZSH/prompt.zsh
