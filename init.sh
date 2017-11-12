@@ -25,12 +25,11 @@ mkdir -p $BACKUP_DIR
 
 echo "-= Backup any existing configs =-"
 files=("~/.vim" "~/.vimrc" "~/.zshrc" "~/.tmux" "~/.tmux.conf" "~/.config/nvim/init.vim")
-for files in $files; do
-    if [ ! -L $filename ]; then
-        echo "backing up $file"
-        mv -fg $file $BACKUP_DIR
+for file in $files; do
+    if [ -e $file]; then
+        echo "$file cannot create a symlink because it already exists. Please move to $BACKUP_DIR"
     else
-        echo -e "$filename does not exist at this location or is a symlink"
+        echo -e "$file is ready to link"
     fi
 done
 
