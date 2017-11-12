@@ -7,14 +7,30 @@ export ZSH=$DOTFILES/zsh
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+# EDITOR
+export EDITOR=nvim
+
 
 #PS1="⟩"
 #RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
 
 # SETTINGS
+autoload -U compinit
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
+setopt completeinword
+
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=10000
+setopt sharehistory
+setopt extendedhistory
+
+setopt interactivecomments # pound sign in interactive prompt
 setopt auto_cd
 setopt correctall
 setopt vi
+setopt menu_complete
 
 # ALIAS
 alias git status='nocorrect git status'
