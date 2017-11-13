@@ -37,8 +37,8 @@ echo "-= Creating necessary directories =-"
     mkdir -p ~/.config/nvim
 
 echo "-= Symlinking new configs =-"
-ln -s $DOTFILES/zshrc ~/.zshrc
-ln -s $DOTFILES/tmux.conf ~/.tmux.conf
-ln -s $DOTFILES/vimrc ~/.config/nvim/init.vim
+ln -s $DOTFILES/zsh/zshrc ~/.zshrc
+ln -s $DOTFILES/tmux/tmux.conf ~/.tmux.conf
+ln -s $DOTFILES/nvim/vimrc ~/.config/nvim/init.vim
 
 echo "-= Log out and Log Back In to see changes =-"

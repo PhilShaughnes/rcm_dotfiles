@@ -36,7 +36,7 @@ setopt menu_complete
 alias git status='nocorrect git status'
 alias gs='nocorrect git status'
 alias g='git'
-alias go='git checkout'
+alias gco='git checkout'
 alias gac='git add -A && git commit -m'
 alias v='nvim'
 
