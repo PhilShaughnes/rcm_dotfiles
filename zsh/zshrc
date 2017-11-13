@@ -15,7 +15,7 @@ export EDITOR=nvim
 #RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
 
 # SETTINGS
-autoload -U compinit
+autoload -U compinit add-zsh-hook
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
@@ -31,6 +31,8 @@ setopt auto_cd
 setopt correctall
 setopt vi
 setopt menu_complete
+
+setopt prompt_subst
 
 # ALIAS
 alias git status='nocorrect git status'
@@ -61,9 +63,9 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 
 # Load last
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 zplug load
 
 #PROMPT
-#source $ZSH/prompt.zsh
+source $ZSH/prompt.zsh
