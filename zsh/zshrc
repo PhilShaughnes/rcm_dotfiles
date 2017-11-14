@@ -48,7 +48,7 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-#LOCAL
+#LOCAL - pull in local settings
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
 #PACKAGES
@@ -63,9 +63,9 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 
 # Load last
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
-#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 zplug load
 
 #PROMPT
-source $ZSH/prompt.zsh
+#source $ZSH/prompt.zsh
