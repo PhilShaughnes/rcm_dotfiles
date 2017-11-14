@@ -15,8 +15,13 @@ export EDITOR=nvim
 #RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
 
 # SETTINGS
-autoload -U compinit add-zsh-hook
-compinit
+autoload -Uz compinit add-zsh-hook
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
+
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 setopt completeinword
