@@ -10,6 +10,13 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # EDITOR
 export EDITOR=nvim
 
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Emacs style
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 
 #PS1="⟩"
 #RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
