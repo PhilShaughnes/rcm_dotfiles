@@ -149,7 +149,7 @@ let g:airline_mode_map = {
 
 
 set background=dark
-colorscheme base16-gruvbox-dark-medium
+colorscheme base16-tomrrow-night
 hi LineNr ctermfg=237 ctermbg=NONE guifg=#424146 guibg=NONE
 hi nonText ctermfg=237 ctermbg=NONE guifg=#424146 guibg=NONE
 hi CursorLineNr ctermfg=221 guifg=#dcf074
