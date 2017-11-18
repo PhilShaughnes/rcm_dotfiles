@@ -56,8 +56,13 @@ map <Tab> :bn<CR>
 map <S-Tab> :bp<CR>
 
 " ctrl j and k to move in quickfix windows
-" map <C-j> :cn<CR>
-" map <C-k> :cp<CR>
+map <C-j> :cn<CR>
+map <C-k> :cp<CR>
+
+" SPLITS
+set splitbelow
+set splitright
+nnoremap <bs> <C-W>w
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -123,7 +128,7 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_theme='bubblegum'
 let g:airline_section_x = ''
 let g:airline_section_y = ''
@@ -149,7 +154,7 @@ let g:airline_mode_map = {
 
 
 set background=dark
-colorscheme base16-tomrrow-night
+colorscheme base16-tomorrow-night
 hi LineNr ctermfg=237 ctermbg=NONE guifg=#424146 guibg=NONE
 hi nonText ctermfg=237 ctermbg=NONE guifg=#424146 guibg=NONE
 hi CursorLineNr ctermfg=221 guifg=#dcf074

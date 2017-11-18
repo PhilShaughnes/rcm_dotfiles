@@ -60,6 +60,9 @@ alias ...='cd ../..'
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+#LAZY - enable lazy loading - just do "lazy_load" (no quotes) before a command
+source $ZSH/lazy.zsh
+
 #LOCAL - pull in local settings
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
