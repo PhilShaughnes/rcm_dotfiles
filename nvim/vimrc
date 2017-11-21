@@ -39,7 +39,7 @@ set guifont=Fira\ Code:h12 " use fira code for the gui font"
 set linespace=5
 
 set list listchars=eol:¬,tab:»·,trail:·,nbsp:· " display extra white space
-let g:jsx_ext_required = 1
+let g:jsx_ext_required = 0
 
 " Select your Leader key
 let mapleader = "\<Space>"
@@ -104,6 +104,14 @@ Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'mileszs/ack.vim'
+Plug 'oblitum/rainbow'
+  let g:rainbow_active = 1
+Plug 'yuttie/comfortable-motion.vim'
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(20)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
+let g:comfortable_motion_friction = 300.0
+let g:comfortable_motion_air_drag = 8.0
+
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
     nnoremap <leader>f :FZF<CR>
@@ -114,6 +122,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'baskerville/bubblegum'
+Plug 'tomasr/molokai'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
