@@ -30,8 +30,10 @@ set wildmenu              " visual autocomplete for command menu
 set lazyredraw            " redraw ony when needed to
 :set mouse=a              " mouse will work
 set autoread              " reload the file if it changed
-    au CursorHold * checktime
+   au FocusGained * checktime
 set autowrite             " auto save when switching buffers
+  au FocusLost * :wa
+set hidden                " allow unsaved buffers when switching
 
 set guifont=Fira\ Code:h12 " use fira code for the gui font"
 set linespace=5
@@ -74,16 +76,6 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-"" Theme ""
-
-if has('nvim') || has('termguicolors')
-  set termguicolors
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-else
-  set t_Co=256
-endif
-
-
 " allows cursor change in tmux mode
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -120,45 +112,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'jelera/vim-javascript-syntax'
 
 Plug 'morhetz/gruvbox'
-Plug 'chriskempson/base16-vim' 
+Plug 'chriskempson/base16-vim'
 Plug 'baskerville/bubblegum'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
-let g:airline_theme='bubblegum'
-let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_section_z = '%L | %v'
-
-"let g:airline_left_sep = "\uE0c0"
-"let g:airline_right_sep = "\uE0c2"
-let g:airline_left_sep = ""
-let g:airline_right_sep = ""
-let g:airline_mode_map = {
-    \ '__' : '-',
-    \ 'n'  : 'N',
-    \ 'i'  : 'I',
-    \ 'R'  : 'R',
-    \ 'c'  : 'C',
-    \ 'v'  : 'V',
-    \ 'V'  : 'V',
-    \ '' : 'V',
-    \ 's'  : 'S',
-    \ 'S'  : 'S',
-    \ '' : 'S',
-    \ }
-
-
-set background=dark
-colorscheme base16-tomorrow-night
-hi LineNr ctermfg=237 ctermbg=NONE guifg=#424146 guibg=NONE
-hi nonText ctermfg=237 ctermbg=NONE guifg=#424146 guibg=NONE
-hi CursorLineNr ctermfg=221 guifg=#dcf074
-hi Error ctermfg=white guifg=white
+source ~/dotfiles/nvim/airline_config.vim
+source ~/dotfiles/nvim/theme.vim
 
 set modelines=1
 " vim:foldmethod=marker:foldlevel=0
