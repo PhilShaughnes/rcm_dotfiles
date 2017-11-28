@@ -52,9 +52,19 @@ inoremap jj <C-\><C-n>
 nnoremap J ^
 " K is go to end of the line
 nnoremap K $
-" leader s is save
+
 " leader w is kill buffer
-" leader q is quit (save?)
+nnoremap <leader>w :bp\|bd #<CR>
+" leader q is quit (save?) - ZZ does this?
+" use ctrl motions to navigate in insert mode
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+
+" ctrl )] puts it after the cursor
+inoremap <C-0> )<left>
+inoremap <C-]> ]<left>
 
 " tab (next) and shift-tab (prev) to cycle buffer
 map <Tab> :bn<CR>
@@ -118,8 +128,10 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-  nnoremap <leader>f :FZF<CR>
+  nnoremap <leader>t :FZF<CR>
   nnoremap <leader>b :Buffers<CR>
+  nnoremap <leader>c :Commits<CR>
+  nnoremap <leader>f :Ag<CR>
 
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joukevandermaas/vim-ember-hbs'
