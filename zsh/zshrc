@@ -31,7 +31,9 @@ fi
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
+zstyle ':completion:*' menu select
 setopt completeinword
+setopt menu_complete
 
 HISTFILE=~/.zhistory
 HISTSIZE=SAVEHIST=10000
