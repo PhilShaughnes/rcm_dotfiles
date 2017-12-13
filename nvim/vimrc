@@ -32,13 +32,13 @@ set lazyredraw            " redraw ony when needed to
 set autoread              " reload the file if it changed
    au FocusGained * checktime
 set autowrite             " auto save when switching buffers
-  au FocusLost * :wa
 set hidden                " allow unsaved buffers when switching
+:au FocusLost * silent! wa
 
 set guifont=Fira\ Code:h12 " use fira code for the gui font"
 set linespace=5
 
-set list listchars=eol:¬,tab:»·,trail:·,nbsp:· " display extra white space
+set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:· " display extra white space
 let g:jsx_ext_required = 0
 
 " Select your Leader key
@@ -54,7 +54,7 @@ nnoremap J ^
 nnoremap K $
 
 " leader w is kill buffer
-nnoremap <leader>w :bp\|bd #<CR>
+nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 " leader q is quit (save?) - ZZ does this?
 " use ctrl motions to navigate in insert mode
 inoremap <C-h> <left>
@@ -62,13 +62,9 @@ inoremap <C-l> <right>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 
-" ctrl )] puts it after the cursor
-inoremap <C-0> )<left>
-inoremap <C-]> ]<left>
-
 " tab (next) and shift-tab (prev) to cycle buffer
-map <Tab> :bn<CR>
-map <S-Tab> :bp<CR>
+map <leader><Tab> :bn<CR>
+map <leader><S-Tab> :bp<CR>
 
 " ctrl j and k to move in quickfix windows
 map <C-j> :cn<CR>
@@ -82,6 +78,8 @@ nnoremap <bs> <C-W>w
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+imap <C-\> ✓✗
 
 
 " use ag to search
@@ -104,16 +102,19 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 
-Plug 'scrooloose/nerdtree'
-    map <C-\> :NERDTreeToggle<CR>
-    map <leader>n :NERDTreeToggle<CR>
+Plug 'w0rp/ale'
+    let g:ale_lint_on_text_changed = 'never'
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+
+
+Plug 'justinmk/vim-sneak'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ap/vim-css-color'
-"Plug 'jiangmiao/auto-pairs'
-Plug 'rstacruz/vim-closer'
+Plug 'jiangmiao/auto-pairs'
 Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -121,8 +122,8 @@ Plug 'mileszs/ack.vim'
 Plug 'oblitum/rainbow'
     let g:rainbow_active = 0
 Plug 'yuttie/comfortable-motion.vim'
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(20)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-20)<CR>
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
 
