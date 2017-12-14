@@ -52,7 +52,8 @@ inoremap jj <C-\><C-n>
 nnoremap J ^
 " K is go to end of the line
 nnoremap K $
-
+" paste over highlighted text and retain copied text
+vnoremap <leader>p "_dP
 " leader w is kill buffer
 nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 " leader q is quit (save?) - ZZ does this?
@@ -99,17 +100,22 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delete, :Mkdir, :Move, :Rename, :Unlink
+Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
+Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 
 Plug 'w0rp/ale'
     let g:ale_lint_on_text_changed = 'never'
 Plug 'roxma/nvim-completion-manager'
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>  "
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
-
+Plug 'tommcdo/vim-lion'                              "gl and gL align around a character (so glip=)
+Plug 'michaeljsmith/vim-indent-object'               "use indent level like ii or ai
 Plug 'justinmk/vim-sneak'
-Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
 Plug 'jeetsukumaran/vim-indentwise'
@@ -137,8 +143,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joukevandermaas/vim-ember-hbs'
 
-Plug 'chriskempson/base16-vim' 
-
+Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -146,5 +151,5 @@ call plug#end()
 source ~/dotfiles/nvim/airline_config.vim
 source ~/dotfiles/nvim/theme.vim
 
-set modelines=1
+set modelines
 " vim:foldmethod=marker:foldlevel=0
