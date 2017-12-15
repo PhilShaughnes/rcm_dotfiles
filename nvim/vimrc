@@ -120,7 +120,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ap/vim-css-color'
-
+Plug 'clojure-vim/nvim-parinfer.js'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
