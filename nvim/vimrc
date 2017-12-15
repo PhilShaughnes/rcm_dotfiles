@@ -120,7 +120,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ap/vim-css-color'
-Plug 'jiangmiao/auto-pairs'
+
+"Plug 'jiangmiao/auto-pairs'
 Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -151,5 +152,5 @@ call plug#end()
 source ~/dotfiles/nvim/airline_config.vim
 source ~/dotfiles/nvim/theme.vim
 
-set modelines
+set modelines=1
 " vim:foldmethod=marker:foldlevel=0
