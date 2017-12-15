@@ -82,7 +82,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 imap <C-\> ✓✗
 
-
 " use ag to search
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -120,8 +119,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ap/vim-css-color'
-Plug 'clojure-vim/nvim-parinfer.js'
-"Plug 'jiangmiao/auto-pairs'
+"Plug 'clojure-vim/nvim-parinfer.js'
+Plug 'jiangmiao/auto-pairs'
 Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
