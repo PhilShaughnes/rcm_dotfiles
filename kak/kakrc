@@ -1,0 +1,6 @@
+alias global sp tmux-new-vertical
+def import -params 1 %{
+    try %{
+        source %sh{echo $XDG_CONFIG_HOME/kak/$1.kak}
+    }
+}
