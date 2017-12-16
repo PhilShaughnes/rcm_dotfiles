@@ -1,17 +1,66 @@
-addhl global/ number_lines #show line numbers
+hook global WinCreate .* %{
+    addhl number_lines -hlcursor
+    addhl show_whitespaces
+    }
 
 # space is my leader
 map global normal <space> , -docstring 'leader'
 map global normal <backspace> <space> -docstring 'remove all sels except main'
 map global normal <a-backspace> <a-space> -docstring 'remove main sel'
 
-alias global sp tmux-new-horizontal
-alias global vsp tmux-new-vertical
-def import -params 1 %{
-    try %{
-        source %sh{echo $XDG_CONFIG_HOME/kak/$1.kak}
-    }
+# jj is escape
+hook global InsertChar j %{ try %{
+  exec -draft hH <a-k>jj<ret> d
+  exec <esc>
+}}
+
+set global tabstop 4
+set global indentwidth 4
+
+#indent with spaces on tab
+map global insert <tab> '<a-;><gt>'
+map global insert <backtab> '<a-;><lt>'
+hook global InsertChar \t %{
+    exec -draft -itersel h@
 }
 
+# select all occurrences in this buffer
+map global user a '*%s<c-/><ret>' -docstring 'select all'
+
+alias global vsp tmux-new-vertical
+alias global sp tmux-new-horizontal
+
+# declare-option str block_auto_pairs
+
+ hook global InsertChar \( 'exec )<left>'
+ hook global InsertChar \{ 'exec }<left>'
+ hook global InsertChar \[ 'exec ]<left>'
+ hook global InsertChar \< 'exec ><left>'
+ hook global InsertChar ' "exec '<left>"
+
+def -docstring 'invoke fzf to open a file' \
+  fzf-file %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      FILE=$(find * -type f | fzf-tmux -d 15)
+      if [ -n "$FILE" ]; then
+        printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
+      fi
+    fi
+} }
+
+def -docstring 'invoke fzf to select a buffer' \
+  fzf-buffer %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      BUFFER=$(printf %s\\n "${kak_buflist}" | tr : '\n' | fzf-tmux -d 15)
+      if [ -n "$BUFFER" ]; then
+        echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
+      fi
+    fi
+} }
 
 colorscheme base16-monokai
+set-face Whitespace rgb:3a3a3a,default
