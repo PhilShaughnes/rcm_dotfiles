@@ -27,6 +27,10 @@ hook global InsertChar \t %{
 # select all occurrences in this buffer
 map global user a '*%s<c-/><ret>' -docstring 'select all'
 
+map global user t fzf-file
+map global user f fzf-ag
+map global user b fzf-buffer
+
 alias global vsp tmux-new-vertical
 alias global sp tmux-new-horizontal
 
