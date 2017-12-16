@@ -112,6 +112,7 @@ Plug 'roxma/nvim-completion-manager'
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
+Plug 'matze/vim-move'                                "A-j and A-k move the selection up and down
 Plug 'tommcdo/vim-lion'                              "gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               "use indent level like ii or ai
 Plug 'justinmk/vim-sneak'

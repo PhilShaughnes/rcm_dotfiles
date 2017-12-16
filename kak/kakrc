@@ -1,6 +1,17 @@
-alias global sp tmux-new-vertical
+addhl global/ number_lines #show line numbers
+
+# space is my leader
+map global normal <space> , -docstring 'leader'
+map global normal <backspace> <space> -docstring 'remove all sels except main'
+map global normal <a-backspace> <a-space> -docstring 'remove main sel'
+
+alias global sp tmux-new-horizontal
+alias global vsp tmux-new-vertical
 def import -params 1 %{
     try %{
         source %sh{echo $XDG_CONFIG_HOME/kak/$1.kak}
     }
 }
+
+
+colorscheme base16-monokai
