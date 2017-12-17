@@ -116,6 +116,7 @@ Plug 'matze/vim-move'                                "A-j and A-k move the selec
 Plug 'tommcdo/vim-lion'                              "gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               "use indent level like ii or ai
 Plug 'justinmk/vim-sneak'
+Plug 'unblevable/quick-scope'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'henrik/vim-indexed-search'
 Plug 'jeetsukumaran/vim-indentwise'
