@@ -27,9 +27,6 @@ hook global InsertChar \t %{
 # select all occurrences in this buffer
 map global user a '*%s<c-/><ret>' -docstring 'select all'
 
-map global user t fzf-file
-map global user f fzf-ag
-map global user b fzf-buffer
 
 alias global vsp tmux-new-vertical
 alias global sp tmux-new-horizontal
@@ -70,6 +67,10 @@ def -docstring 'invoke fzf to select a buffer' \
       fi
     fi
 } }
+
+map global user t fzf-file
+map global user f fzf-ag
+map global user b fzf-buffer
 
 colorscheme base16-monokai
 set-face Whitespace rgb:3a3a3a,default
