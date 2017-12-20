@@ -37,6 +37,7 @@ set hidden                " allow unsaved buffers when switching
 
 set guifont=Fira\ Code:h12 " use fira code for the gui font"
 set linespace=5
+set title
 
 set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:· " display extra white space
 let g:jsx_ext_required = 0
@@ -44,7 +45,7 @@ let g:jsx_ext_required = 0
 " Select your Leader key
 let mapleader = "\<Space>"
 
-nnoremap <leader>, :nohlsearch<CR>
+nnoremap <CR> :nohlsearch<CR>
  " jj is escape
 inoremap jj <C-\><C-n>
 
@@ -112,15 +113,15 @@ Plug 'roxma/nvim-completion-manager'
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
-Plug 'matze/vim-move'                                "A-j and A-k move the selection up and down
-Plug 'tommcdo/vim-lion'                              "gl and gL align around a character (so glip=)
-Plug 'michaeljsmith/vim-indent-object'               "use indent level like ii or ai
+Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
+Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
+Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'justinmk/vim-sneak'
-Plug 'unblevable/quick-scope'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'henrik/vim-indexed-search'
+Plug 'unblevable/quick-scope'                        " highlight characters for f and t
+Plug 'terryma/vim-multiple-cursors'                  " <C-n> gets multiple cursors
+Plug 'henrik/vim-indexed-search'                     " show number of search results
 Plug 'jeetsukumaran/vim-indentwise'
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color'                              " color css color codes
 "Plug 'clojure-vim/nvim-parinfer.js'
 Plug 'jiangmiao/auto-pairs'
 Plug 'wellle/targets.vim'
@@ -128,7 +129,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'mileszs/ack.vim'
 Plug 'oblitum/rainbow'
-    let g:rainbow_active = 0
+    let g:rainbow_active = 1
 Plug 'yuttie/comfortable-motion.vim'
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
@@ -145,6 +146,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joukevandermaas/vim-ember-hbs'
 
+Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
