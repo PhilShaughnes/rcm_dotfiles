@@ -11,8 +11,8 @@ endif
 set background=dark
 colorscheme base16-monokai
 "hi LineNr ctermfg=237 ctermbg=NONE guifg=#424146 guibg=NONE
-hi nonText ctermfg=237 ctermbg=NONE guifg=#363636 guibg=NONE
+hi nonText ctermfg=237 ctermbg=NONE guifg=#363636 guibg=NONE gui=none cterm=none
 hi CursorLine ctermbg=242 ctermfg=NONE guifg=NONE guibg=#303030
-hi ColumnLine ctermbg=242 ctermfg=NONE guifg=NONE guibg=#303030
+hi CursorColumn ctermbg=242 ctermfg=NONE guifg=NONE guibg=#303030
 hi CursorLineNr ctermfg=221 guifg=#dcf074
 hi Error ctermfg=white guifg=white
