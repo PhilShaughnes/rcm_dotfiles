@@ -38,8 +38,10 @@ set hidden                " allow unsaved buffers when switching
 set guifont=Fira\ Code:h12 " use fira code for the gui font"
 set linespace=5
 set title
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
-set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:· " display extra white space
+set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:·,space:· " display extra white space
 let g:jsx_ext_required = 0
 
 " Select your Leader key
@@ -57,6 +59,7 @@ nnoremap K $
 vnoremap <leader>p "_dP
 " leader w is kill buffer
 nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
+nnoremap <leader>s :w <CR>
 " leader q is quit (save?) - ZZ does this?
 " use ctrl motions to navigate in insert mode
 inoremap <C-h> <left>
@@ -117,7 +120,10 @@ Plug 'matze/vim-move'                                " A-j and A-k move the sele
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'justinmk/vim-sneak'
-Plug 'unblevable/quick-scope'                        " highlight characters for f and t
+    "let g:sneak#label = 1
+Plug 'rhysd/clever-f.vim'
+    let g:clever_f_smart_case = 1
+    let g:clever_f_chars_match_any_signs = ";"
 Plug 'terryma/vim-multiple-cursors'                  " <C-n> gets multiple cursors
 Plug 'henrik/vim-indexed-search'                     " show number of search results
 Plug 'jeetsukumaran/vim-indentwise'
@@ -128,8 +134,8 @@ Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'mileszs/ack.vim'
-Plug 'oblitum/rainbow'
-    let g:rainbow_active = 1
+"Plug 'oblitum/rainbow'
+" let g:rainbow_active = 1
 Plug 'yuttie/comfortable-motion.vim'
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
