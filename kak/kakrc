@@ -68,9 +68,9 @@ def -docstring 'invoke fzf to select a buffer' \
     fi
 } }
 
-map global user t fzf-file
-map global user f fzf-ag
-map global user b fzf-buffer
+map global user t :fzf-file<ret> -docstring 'invoke fzf to open a file' 
+map global user f :fzf-ag<ret> -docstring 'full project search'
+map global user b :fzf-buffer<ret> -docstring 'search buffers'
 
 colorscheme base16-monokai
 set-face Whitespace rgb:3a3a3a,default
