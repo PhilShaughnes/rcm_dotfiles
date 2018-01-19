@@ -1,4 +1,4 @@
-
+"{{{ SETTINGS 
 set nocompatible          " for regular vim - turn of vi compatibility
 filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 syntax enable             " enable syntax highlighting (previously syntax on)
@@ -44,9 +44,26 @@ set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr
 set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:·,space:· " display extra white space
 let g:jsx_ext_required = 0
 
+" use ag to search
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+"}}}
+
+"{{{ KEYMAPS
 " Select your Leader key
 let mapleader = "\<Space>"
-
+" Enter cancels search highlighting
 nnoremap <CR> :nohlsearch<CR>
  " jj is escape
 inoremap jj <C-\><C-n>
@@ -86,19 +103,9 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 imap <C-\> ✓✗
 
-" use ag to search
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+"}}}
 
-" allows cursor change in tmux mode
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
+" {{{ PLUGINS 
 
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
 Plug 'tpope/vim-sensible'
@@ -151,12 +158,19 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joukevandermaas/vim-ember-hbs'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'for': ['javascript', 'javascript.jsx', 'typescript', 'json', 'graphql'] }
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
 
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
+
+"}}}
 
 source ~/dotfiles/nvim/airline_config.vim
 source ~/dotfiles/nvim/theme.vim
