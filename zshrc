@@ -67,6 +67,9 @@ source $ZSH/lazy.zsh
 #LOCAL - pull in local settings
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
+alias loadfzf='[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh'
+lazy_load loadfzf fzf
+
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zplug
 if [[ ! -d ~/.local/share/zplug ]];then
@@ -88,4 +91,3 @@ zplug load
 #source $ZSH/prompt.zsh
 export PATH=/Users/phil/.local/share/zplug/bin:/Users/phil/.nvm/versions/node/v6.10.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/bin
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
