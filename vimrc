@@ -149,11 +149,8 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
 
-if filereadable('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf'
-else
-  Plug '~/.fzf'
-endif
+Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
   nnoremap <leader>t :FZF<CR>
   nnoremap <leader>b :Buffers<CR>
