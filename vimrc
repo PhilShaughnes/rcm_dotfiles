@@ -152,6 +152,7 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
   nnoremap <leader>t :FZF<CR>
   nnoremap <leader>b :Buffers<CR>
   nnoremap <leader>c :Commits<CR>
