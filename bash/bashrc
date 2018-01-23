@@ -1,0 +1,9 @@
+
+bind "TAB:menu-complete"
+bind "set show-all-if-ambiguous on"complete
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -f ~/dotfiles/bash/sensible.bash ]; then
+   source ~/dotfiles/bash/sensible.bash
+fi
