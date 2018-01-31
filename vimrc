@@ -41,7 +41,7 @@ set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
-set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:·,space:· " display extra white space
+set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:· ",space:· " display extra white space
 let g:jsx_ext_required = 0
 
 " use ag to search
@@ -168,6 +168,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
 
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'chriskempson/base16-vim'
+Plug 'skielbasa/vim-material-monokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()

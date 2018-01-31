@@ -56,7 +56,8 @@ alias g='git'
 alias gco='git checkout'
 alias gac='git add -A && git commit -m'
 alias v='nvim'
-alias ls='ls --color'
+[ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
+
 
 # Filesystem aliases
 alias ..='cd ..'
