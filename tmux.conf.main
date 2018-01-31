@@ -12,6 +12,7 @@ set-option -g set-titles on
 
 set -g status-keys vi
 set -g history-limit 10000
+if-shell "type 'reattach-to-user-namespace' >/dev/null" "set -g default-command 'reattach-to-user-namespace -l $SHELL'"
 
 # upgrade $TERM
 set -g default-terminal "screen-256color"
@@ -76,19 +77,13 @@ set -g default-shell $SHELL
 # Mouse support 
 set -g mouse on
 
-
-#run-shell 'test "$(uname)" = "Darwin"' 'tmux setenv -g TMUX_COPY_CMD  '
-COPYCMD="xclip -i -f -selection primary | xclip -i -selection clipboard"
-if-shell 'test "$uname" = "Darwin"' 'COPYCMD="reattach-to-user-namespace pbcopy"'
-
-#if-shell "type 'reattach-to-user-namespace' >/dev/null" "set -g default-command 'reattach-to-user-namespace -l $SHELL'"
 bind-key -T copy-mode-vi WheelUpPane send -X scroll-up
 bind-key -T copy-mode-vi WheelDownPane send -X scroll-down
 
 # # Vi copypaste
 setw -g mode-keys vi
-bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel $COPYCMD
-bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel $COPYCMD \; display-message "highlighted selection copied to system clipboard"
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy" \; display-message "highlighted selection copied to system clipboard"
 
 # bind ']' to use pbbaste
 bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
@@ -131,12 +126,10 @@ setw -g mode-bg colour6
 setw -g mode-fg colour0
 
 # window status
-#setw -g window-status-format " #F#I:#W#F "
-#setw -g window-status-current-format " #F#I:#W#F "
-#setw -g window-status-format "#[fg=magenta]#[bg=black] #I #[bg=cyan]#[fg=colour8] #W "
-setw -g window-status-format         ' #(echo "#{pane_current_command}") '
-#setw -g window-status-current-format "#[bg=brightmagenta]#[fg=colour8] #I #[fg=colour8]#[bg=colour14] #W "
-setw -g window-status-current-format ' #(echo "#{pane_current_command}") '
+setw -g window-status-format " #F#I:#W#F "
+setw -g window-status-current-format " #F#I:#W#F "
+setw -g window-status-format "#[fg=magenta]#[bg=black] #I #[bg=cyan]#[fg=colour8] #W "
+setw -g window-status-current-format "#[bg=brightmagenta]#[fg=colour8] #I #[fg=colour8]#[bg=colour14] #W "
 setw -g window-status-current-bg colour0
 setw -g window-status-current-fg colour11
 setw -g window-status-current-attr dim
