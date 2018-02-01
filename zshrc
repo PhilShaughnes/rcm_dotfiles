@@ -88,8 +88,8 @@ zplug "zsh-users/zsh-autosuggestions", from:github
 
 # Load last
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
-#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "molovo/filthy", use:filthy.zsh, from:github, as:theme
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+#zplug "molovo/filthy", use:filthy.zsh, from:github, as:theme
 
 zplug load
 
