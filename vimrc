@@ -1,18 +1,18 @@
-"{{{ SETTINGS 
+" {{{ SETTINGS 
 set nocompatible          " for regular vim - turn of vi compatibility
-filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 syntax enable             " enable syntax highlighting (previously syntax on)
+filetype plugin on " filetype detection[ON] plugin[ON] indent[ON]
 set number                " show line numbers
 set laststatus=2          " last window always has a statusline
-filetype indent on        " activates indenting for files
+filetype indent off        " activates indenting for files
 set hlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
-set tabstop=4             " tab spacing
-set softtabstop=4         " unify
-set shiftwidth=4          " indent/outdent by 4 columns
+set tabstop=2             " tab spacing
+set softtabstop=2         " unify
+set shiftwidth=2          " indent/outdent by 4 columns
 set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
 set smarttab              " use tabs at the start of a line, spaces elsewhere
@@ -25,6 +25,7 @@ set cursorcolumn          " highlight the column with the cursor
 set cursorline            " highlight the line with the cursor
 set clipboard=unnamed     " use the system clipboard as default
 set sidescroll=1          " turn on sidescroll
+set scrollopt="ver,hor,jump"
 set showcmd               " show command in bottom bar
 set wildmenu              " visual autocomplete for command menu
 set lazyredraw            " redraw ony when needed to
@@ -67,6 +68,8 @@ let mapleader = "\<Space>"
 nnoremap <CR> :nohlsearch<CR>
  " jj is escape
 inoremap jj <C-\><C-n>
+" Q runs default macro
+nnoremap Q @q
 
 " J is go to beggining of line
 nnoremap J ^
@@ -103,21 +106,41 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 imap <C-\> ✓✗
 
+" side scroll
+nnoremap <C-h> 5zh
+nnoremap <C-l> 5zl
+
 "}}}
 
 " {{{ PLUGINS 
 
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
-Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
+" Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
+    nnoremap <leader>g :Gstatus<CR>
 Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delete, :Mkdir, :Move, :Rename, :Unlink
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 
 Plug 'w0rp/ale'
     let g:ale_lint_on_text_changed = 'never'
+    let g:ale_lint_on_enter = 0
+    let g:ale_lint_on_save = 1
+
+    let g:airline#extensions#ale#enabled = 1
+    let g:ale_linters = {
+    \   'javascript': ['eslint'],
+    \}
+    let g:ale_fixers = {
+    \   'javascript': ['prettier', 'eslint'],
+    \}
+    let g:ale_fix_on_save = 0
+    let g:ale_javascript_prettier_use_local_config = 1
+    nmap <silent> [e <Plug>(ale_previous_wrap)
+    nmap <silent> ]e <Plug>(ale_next_wrap)
+
 Plug 'roxma/nvim-completion-manager'
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>  "
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -161,10 +184,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'joukevandermaas/vim-ember-hbs'
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'for': ['javascript', 'javascript.jsx', 'typescript', 'json', 'graphql'] }
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
+" Plug 'prettier/vim-prettier', {
+"   \ 'for': ['javascript', 'javascript.jsx', 'typescript', 'json', 'graphql'] }
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
 
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'chriskempson/base16-vim'
@@ -178,5 +201,9 @@ call plug#end()
 source ~/dotfiles/nvim/airline_config.vim
 source ~/dotfiles/nvim/theme.vim
 
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
 set modelines=1
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=1

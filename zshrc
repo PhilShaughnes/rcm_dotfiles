@@ -97,5 +97,5 @@ zplug load
 #source $ZSH/prompt.zsh
 export PATH=/Users/phil/.local/share/zplug/bin:/Users/phil/.nvm/versions/node/v6.10.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/bin
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
