@@ -86,6 +86,7 @@ inoremap <C-h> <left>
 inoremap <C-l> <right>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
+nnoremap <ESC> i
 
 " tab (next) and shift-tab (prev) to cycle buffer
 map <leader><Tab> :bn<CR>
@@ -107,8 +108,10 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 imap <C-\> ✓✗
 
 " side scroll
-nnoremap <C-h> 5zh
-nnoremap <C-l> 5zl
+nnoremap <C-H> 5zh
+nnoremap <C-L> 5zl
+nnoremap <C-h> ^
+nnoremap <C-l> $
 
 "}}}
 
