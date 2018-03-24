@@ -99,3 +99,5 @@ export PATH=/Users/phil/.local/share/zplug/bin:/Users/phil/.nvm/versions/node/v6
 
 #export PATH="$HOME/.rbenv/bin:$PATH"
 #eval "$(rbenv init -)"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
