@@ -71,6 +71,14 @@ inoremap jj <C-\><C-n>
 " Q runs default macro
 nnoremap Q @q
 
+nnoremap <A-h> xhP
+nnoremap <A-j> xjp
+nnoremap <A-k> xkp
+nnoremap <A-l> xlp
+nnoremap <A-e> xep
+nnoremap <A-w> xwP
+nnoremap <A-b> xbP
+
 " J is go to beggining of line
 nnoremap J ^
 " K is go to end of the line
