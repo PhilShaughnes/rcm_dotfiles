@@ -71,14 +71,6 @@ inoremap jj <C-\><C-n>
 " Q runs default macro
 nnoremap Q @q
 
-nnoremap <A-h> xhP
-nnoremap <A-j> xjp
-nnoremap <A-k> xkp
-nnoremap <A-l> xlp
-nnoremap <A-e> xep
-nnoremap <A-w> xwP
-nnoremap <A-b> xbP
-
 " J is go to beggining of line
 nnoremap J ^
 " K is go to end of the line
@@ -158,6 +150,12 @@ Plug 'roxma/nvim-completion-manager'
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
+  nnoremap <A-h> xhP
+  nnoremap <A-l> xlp
+  nnoremap <A-e> xep
+  nnoremap <A-w> xwP
+  nnoremap <A-b> xbP
+
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'justinmk/vim-sneak'
