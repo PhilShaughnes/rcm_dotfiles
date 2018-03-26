@@ -115,7 +115,7 @@ nnoremap <C-l> $
 
 "}}}
 
-" {{{ PLUGINS 
+" {{{ PLUGINS
 
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
 " Plug 'tpope/vim-sensible'
@@ -201,11 +201,13 @@ Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
+Plug 'crusoexia/vim-monokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 "}}}
+"
 
 source ~/dotfiles/nvim/airline_config.vim
 source ~/dotfiles/nvim/theme.vim
