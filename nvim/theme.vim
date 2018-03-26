@@ -21,11 +21,10 @@ set background=dark
 "hi CursorLineNr ctermfg=221 guifg=#dcf074
 "hi Error ctermfg=white guifg=white
 
-" colorscheme monokai
-" let g:monokai_term_italic = 1
-" let g:monokai_gui_italic = 1
-
 colorscheme material-monokai
 let g:materialmonokai_italic=1
 let g:materialmonokai_subtle_spell=1
+hi Comment ctermfg=241 guifg=#777777
+hi NonText ctermfg=241 guifg=#595959
+
 
