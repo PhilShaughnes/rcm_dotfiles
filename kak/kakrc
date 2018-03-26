@@ -7,6 +7,7 @@ hook global WinCreate .* %{
 map global normal <space> , -docstring 'leader'
 map global normal <backspace> <space> -docstring 'remove all sels except main'
 map global normal <a-backspace> <a-space> -docstring 'remove main sel'
+map global normal , <space> -docstring 'clear multicursor'
 
 # jj is escape
 hook global InsertChar j %{ try %{
@@ -14,8 +15,8 @@ hook global InsertChar j %{ try %{
   exec <esc>
 }}
 
-set global tabstop 4
-set global indentwidth 4
+set global tabstop 2
+set global indentwidth 2
 
 #indent with spaces on tab
 map global insert <tab> '<a-;><gt>'
