@@ -36,7 +36,6 @@ set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
 :au FocusLost * silent! wa
 
-set guifont=Fira\ Code:h12 " use fira code for the gui font"
 set linespace=5
 set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
