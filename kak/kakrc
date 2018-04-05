@@ -1,8 +1,3 @@
-hook global WinCreate .* %{
-    addhl number_lines -hlcursor
-    addhl show_whitespaces
-}
-
 # space is my leader
 map global normal <space> , -docstring 'leader'
 map global normal <backspace> <space> -docstring 'remove all sels except main'
@@ -28,10 +23,13 @@ hook global InsertChar \t %{
 # select all occurrences in this buffer
 map global user a '*%s<c-/><ret>' -docstring 'select all'
 
-
 alias global vsp tmux-new-vertical
 alias global sp tmux-new-horizontal
 
+def edit-config -command-completion -docstring "Edit config file kakrc" %{
+  e ~/.config/kak/kakrc
+}
+alias global ec edit-config
 
 def -docstring 'invoke fzf to open a file' \
   fzf-file %{ %sh{
@@ -45,12 +43,24 @@ def -docstring 'invoke fzf to open a file' \
     fi
 } }
 
-def -docstring 'invoke fzf to search with ag' \
+def -docstring 'invoke fzf to search with rg' \
   fzf-ag %{ %sh{
     if [ -z "$TMUX" ]; then
       echo echo only works inside tmux
     else
-      FILE=$(ag . | fzf-tmux -d 15)
+      FILE=$(rg -S . | fzf-tmux -d 15)
+      if [ -n "$FILE" ]; then
+        printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
+      fi
+    fi
+} }
+
+def -docstring 'invoke fzf to search for project files' \
+  fzf-git %{ %sh{
+    if [ -z "$TMUX" ]; then
+      echo echo only works inside tmux
+    else
+      FILE=$(rg . -l -S | fzf-tmux -d 15)
       if [ -n "$FILE" ]; then
         printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
       fi
@@ -69,9 +79,15 @@ def -docstring 'invoke fzf to select a buffer' \
     fi
 } }
 
-map global user t :fzf-file<ret> -docstring 'invoke fzf to open a file' 
+map global user t :fzf-file<ret> -docstring 'invoke fzf to open a file'
+map global user g :fzf-git<ret> -docstring 'file search'
 map global user f :fzf-ag<ret> -docstring 'full project search'
 map global user b :fzf-buffer<ret> -docstring 'search buffers'
 
 colorscheme base16-monokai
 set-face Whitespace rgb:3a3a3a,default
+
+# Show line numbers
+addhl global number_lines -hlcursor -separator ' '
+addhl global show_whitespaces
+addhl global show_matching
