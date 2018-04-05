@@ -8,7 +8,8 @@
 # - Colors ($RED, $GREEN) - defined in ../tilde/bash_profile.bash
 #
 
-olors
+local_username="phil"
+#Colors
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
 YELLOW="$(tput setaf 3)"
@@ -33,6 +34,36 @@ prompt_symbol="❯"
 prompt_clean_symbol="☀ "
 prompt_dirty_symbol="☂ "
 prompt_venv_symbol="☁ "
+
+
+
+format_time() {
+  local _time=$1
+
+  # Don't show anything if time is less than 5 seconds
+  (( $_time < 5 )) && return
+
+  local _out
+  local days=$(( $_time / 60 / 60 / 24 ))
+  local hours=$(( $_time / 60 / 60 % 24 ))
+  local minutes=$(( $_time / 60 % 60 ))
+  local seconds=$(( $_time % 60 ))
+  (( $days > 0 )) && _out="${days}d"
+  (( $hours > 0 )) && _out="$_out ${hours}h"
+  (( $minutes > 0 )) && _out="$_out ${minutes}m"
+  _out="$_out ${seconds}s"
+  printf "$_out"
+}
+
+debug() {
+    # do nothing if completing
+    [ -n "$COMP_LINE" ] && return
+
+    # don't cause a preexec for $PROMPT_COMMAND
+    [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return
+
+    start_time=$(date +'%s')
+}
 
 function prompt_command() {
 	# Local or SSH session?
@@ -79,8 +110,12 @@ function prompt_command() {
 	local login_delimiter=
 	[ -n "$user_prompt" ] || [ -n "$host_prompt" ] && login_delimiter=":"
 
+  # show time command ran
+  local end_time=$(date +'%s')
+  local time_f=$YELLOW$(format_time $(( end_time - start_time )))
+
 	# Format prompt
-	first_line="$user_prompt$host_prompt$login_delimiter$WHITE\w$NOCOLOR$git_prompt$venv_prompt"
+	first_line="$user_prompt$host_prompt$login_delimiter$WHITE\w$NOCOLOR$git_prompt$venv_prompt $time_f"
 	# Text (commands) inside \[...\] does not impact line length calculation which fixes stange bug when looking through the history
 	# $? is a status of last command, should be processed every time prompt prints
 	second_line="\`if [ \$? = 0 ]; then echo \[\$CYAN\]; else echo \[\$RED\]; fi\`\$prompt_symbol\[\$NOCOLOR\] "
@@ -95,5 +130,6 @@ function prompt_command() {
 	echo -ne "\033]0;$title"; echo -ne "\007"
 }
 
+trap 'debug' DEBUG
 # Show awesome prompt only if Git is istalled
 command -v git >/dev/null 2>&1 && PROMPT_COMMAND=prompt_command
