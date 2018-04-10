@@ -105,7 +105,7 @@ function prompt_command() {
 
 	# Show hostname inside SSH session
 	local host_prompt=
-	[ -n "$remote" ] && host_prompt="@$YELLOW$HOSTNAME$NOCOLOR"
+	[ -n "$remote" ] && host_prompt="@$MAGENTA$HOSTNAME$NOCOLOR"
 
 	# Show delimiter if user or host visible
 	local login_delimiter=
@@ -116,7 +116,7 @@ function prompt_command() {
   local time_f=$YELLOW$(format_time $(( end_time - start_time )))
 
 	# Format prompt
-	first_line="$user_prompt$host_prompt$login_delimiter$MAGENTA\w$NOCOLOR$git_prompt$venv_prompt$time_f"
+	first_line="$user_prompt$host_prompt$login_delimiter$BLUE\w$NOCOLOR$git_prompt$venv_prompt$time_f"
 	# Text (commands) inside \[...\] does not impact line length calculation which fixes stange bug when looking through the history
 	# $? is a status of last command, should be processed every time prompt prints
 	second_line="\`if [ \$? = 0 ]; then echo \[\$GREEN\]; else echo \[\$RED\]; fi\`\$prompt_symbol\[\$NOCOLOR\] "
