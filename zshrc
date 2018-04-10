@@ -1,3 +1,4 @@
+#! /bin/zsh
 export DOTFILES=$HOME/dotfiles
 export ZSH=$DOTFILES/zsh
 
@@ -56,6 +57,7 @@ alias g='git'
 alias gco='git checkout'
 alias gac='git add -A && git commit -m'
 alias v='nvim'
+alias k='kak'
 [ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
 
 
@@ -72,9 +74,6 @@ source $ZSH/lazy.zsh
 
 #LOCAL - pull in local settings
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
-
-alias loadfzf='[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh'
-lazy_load loadfzf fzf
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zplug
@@ -95,10 +94,8 @@ zplug load
 
 #PROMPT
 #source $ZSH/prompt.zsh
-export PATH=/Users/phil/.local/share/zplug/bin:/Users/phil/.nvm/versions/node/v6.10.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/bin:$PATH
+export PATH=/Users/phil/.local/share/zplug/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/bin:$PATH
 
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/curl/bin:$PATH"
 . $HOME/.asdf/asdf.sh

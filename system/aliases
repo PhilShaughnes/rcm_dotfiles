@@ -1,3 +1,9 @@
+# Filesystem aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
 
 alias git status='nocorrect git status'
 alias gs='nocorrect git status'

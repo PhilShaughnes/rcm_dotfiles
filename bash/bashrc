@@ -1,12 +1,5 @@
-CO="\[\e[32m\]"
-PROMPT_COMMAND='[ $? != 0 ] && CO="\e[31m\]"'
-PS1="\[\e[34m\]\w \[\e[1;30m\]\$(__git_ps1 '%s ')\
-   \n\j\$(echo -ne $CO)❯ \[\e[00m\]"
-#export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\] \[\033[33;1m\]\w\[\033[m\] \$(git branch 2>/dev/null | grep '^*' | colrm 1 2) \$  \n❯ "
+#! /bin/bash
 set -o vi
-
-bind "TAB:menu-complete"
-bind "set show-all-if-ambiguous on"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -14,25 +7,12 @@ if [ -f ~/dotfiles/bash/sensible.bash ]; then
    source ~/dotfiles/bash/sensible.bash
 fi
 
-__prompt_command () {
-    PCHAR="❯ "
-    GIT=$(__git_ps1 '%s ')
 
-    local GREEN="\[\033[0;32m\]"
-    local CYAN="\[\033[0;36m\]"
-    local BCYAN="\[\033[1;36m\]"
-    local BLUE="\[\033[0;34m\]"
-    local GRAY="\[\033[0;37m\]"
-    local DKGRAY="\[\033[1;30m\]"
-    local WHITE="\[\033[1;37m\]"
-    local RED="\[\033[0;31m\]"
-    local BLACK="\[\033[0;30m\]"
-    local YELW="\[\033[0;33m\]"
-    # return color to Terminal setting for text color
-    local DEFAULT="\[\033[00m\]"
+source ~/dotfiles/bash/bash_prompt.bash
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
 
-    [ $? == 0 ] && ERRCOL=$GREEN || ERRCOL=$RED
-    trap 'SECONDS=0' DEBUG
-    PS1="${BLUE}\w ${DKGRAY}${GIT} ${YELW}$($SECONDS)\
-              \n${ERRCOL}${PCHAR}${DEFAULT}"
-}
+bind "set completion-ignore-case on"
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+

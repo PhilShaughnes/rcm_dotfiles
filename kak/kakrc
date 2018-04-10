@@ -31,6 +31,8 @@ def edit-config -command-completion -docstring "Edit config file kakrc" %{
 }
 alias global ec edit-config
 
+map global user / :comment-line<ret> -docstring 'comment-line'
+
 def -docstring 'invoke fzf to open a file' \
   fzf-file %{ %sh{
     if [ -z "$TMUX" ]; then
