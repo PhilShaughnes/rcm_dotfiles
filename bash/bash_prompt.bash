@@ -19,6 +19,7 @@ CYAN="$(tput setaf 6)"
 WHITE="$(tput setaf 7)"
 GRAY="$(tput setaf 8)"
 DGRAY="$(tput setaf 245)"
+DIM="$(tput dim)"
 BOLD="$(tput bold)"
 UNDERLINE="$(tput sgr 0 1)"
 INVERT="$(tput sgr 1 0)"
@@ -87,7 +88,7 @@ function prompt_command() {
 
 		# Format Git info
 		if [ -n "$dirty" ]; then
-			git_prompt=" $DGRAY$prompt_dirty_symbol$branch$NOCOLOR"
+			git_prompt=" $DIM$GRAY$prompt_dirty_symbol$branch$NOCOLOR"
 		else
 			git_prompt=" $DGRAY$prompt_clean_symbol$branch$NOCOLOR"
 		fi
