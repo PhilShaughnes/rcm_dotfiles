@@ -86,6 +86,11 @@ function prompt_command() {
 		# Untracked files
 		[ -z "$dirty" ] && test -n "$(git status --porcelain)" && dirty=1
 
+    # Format branch if wip
+    if [[ "$(git log -1 --pretty=%B)" = *"wip"* ]]; then
+      branch=$NOCOLOR$DIM$RED$branch
+    fi
+
 		# Format Git info
 		if [ -n "$dirty" ]; then
 			git_prompt=" $DIM$GRAY$prompt_dirty_symbol$branch$NOCOLOR"
