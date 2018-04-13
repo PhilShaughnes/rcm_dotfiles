@@ -87,7 +87,7 @@ function prompt_command() {
 		[ -z "$dirty" ] && test -n "$(git status --porcelain)" && dirty=1
 
     # Format branch if wip
-    if [[ "$(git log -1 --pretty=%B)" = *"wip"* ]]; then
+    if [[ "$(git log -1 --pretty=%B)" = "wip" ]]; then
       branch=$NOCOLOR$DIM$RED$branch
     fi
 
