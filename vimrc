@@ -222,8 +222,8 @@ call plug#end()
 "}}}
 "
 
-source ~/dotfiles/nvim/theme.vim
 source ~/dotfiles/nvim/airline_config.vim
+source ~/dotfiles/nvim/theme.vim
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
