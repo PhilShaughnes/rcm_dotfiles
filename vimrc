@@ -21,8 +21,8 @@ set nowrap                " don't wrap text
 set breakindent           " indent wrapped text
 set breakindentopt=sbr    " turn on showbreak
 set showbreak=↪>\         " put these characters in front of the broken line
-set cursorcolumn          " highlight the column with the cursor
-set cursorline            " highlight the line with the cursor
+"set cursorcolumn          " highlight the column with the cursor
+"set cursorline            " highlight the line with the cursor
 set clipboard=unnamed     " use the system clipboard as default
 set sidescroll=1          " turn on sidescroll
 set scrollopt="ver,hor,jump"
@@ -39,7 +39,7 @@ set hidden                " allow unsaved buffers when switching
 set linespace=5
 set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+"set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:· ",space:· " display extra white space
 let g:jsx_ext_required = 0
@@ -111,6 +111,20 @@ nnoremap <C-H> 5zh
 nnoremap <C-L> 5zl
 nnoremap <C-h> ^
 nnoremap <C-l> $
+
+
+
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_tranparent = 0
+    endif
+endfunction
+nnoremap <C-t> : call Toggle_transparent()<CR>
 
 "}}}
 
@@ -201,7 +215,6 @@ Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
-Plug 'crusoexia/vim-monokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -209,8 +222,8 @@ call plug#end()
 "}}}
 "
 
-source ~/dotfiles/nvim/airline_config.vim
 source ~/dotfiles/nvim/theme.vim
+source ~/dotfiles/nvim/airline_config.vim
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2

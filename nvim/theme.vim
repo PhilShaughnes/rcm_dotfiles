@@ -8,7 +8,6 @@ else
   let g:rehash256 = 1
 endif
 
-set background=dark
 
 """ base16 monokai theme """
 "colorscheme base16-monokai
@@ -21,10 +20,22 @@ set background=dark
 "hi CursorLineNr ctermfg=221 guifg=#dcf074
 "hi Error ctermfg=white guifg=white
 
+" colorscheme base16-gruvbox-dark-soft
 colorscheme material-monokai
 let g:materialmonokai_italic=1
 let g:materialmonokai_subtle_spell=1
 hi Comment ctermfg=241 guifg=#777777
 hi NonText ctermfg=241 guifg=#595959
+" set background=dark
 
+hi lineNr ctermbg=NONE guibg=NONE
+hi clear SignColumn
+hi Normal ctermbg=NONE guibg=NONE
+hi ALEErrorSign ctermbg=NONE guibg=NONE
+hi ALEWarningSign ctermbg=NONE guibg=NONE
+hi GitGutterAdd ctermbg=NONE guibg=NONE
+hi GitGutterChangeDelete ctermbg=NONE guibg=NONE
+hi GitGutterChange ctermbg=NONE guibg=NONE
+hi GitGutterDelete ctermbg=NONE guibg=NONE
 
+set cursorline
