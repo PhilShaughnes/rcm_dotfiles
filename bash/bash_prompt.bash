@@ -27,8 +27,8 @@ NOCOLOR="$(tput sgr0)"
 
 # User color
 case $(id -u) in
-	0) user_color="$RED" ;;  # root
-	*) user_color="$GREEN" ;;
+  0) user_color="$RED" ;;  # root
+  *) user_color="$GREEN" ;;
 esac
 
 # Symbols
@@ -68,73 +68,73 @@ debug() {
 }
 
 function prompt_command() {
-	# Local or SSH session?
-	local remote=
-	[ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && remote=1
+  # Local or SSH session?
+  local remote=
+  [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && remote=1
 
-	# Git branch name and work tree status (only when we are inside Git working tree)
-	local git_prompt=
-	if [[ "true" = "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]]; then
-		# Branch name
-		local branch="$(git symbolic-ref HEAD 2>/dev/null)"
-		branch="${branch##refs/heads/}"
+  # Git branch name and work tree status (only when we are inside Git working tree)
+  local git_prompt=
+  if [[ "true" = "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]]; then
+    # Branch name
+    local branch="$(git symbolic-ref HEAD 2>/dev/null)"
+    branch="${branch##refs/heads/}"
 
-		# Working tree status (red when dirty)
-		local dirty=
-		# Modified files
-		git diff --no-ext-diff --quiet --exit-code --ignore-submodules 2>/dev/null || dirty=1
-		# Untracked files
-		[ -z "$dirty" ] && test -n "$(git status --porcelain)" && dirty=1
+    # Working tree status (red when dirty)
+    local dirty=
+    # Modified files
+    git diff --no-ext-diff --quiet --exit-code --ignore-submodules 2>/dev/null || dirty=1
+    # Untracked files
+    [ -z "$dirty" ] && test -n "$(git status --porcelain)" && dirty=1
 
     # Format branch if wip
     if [[ "$(git log -1 --pretty=%B)" = "wip" ]]; then
       branch=$NOCOLOR$DIM$RED$branch
     fi
 
-		# Format Git info
-		if [ -n "$dirty" ]; then
-			git_prompt=" $DIM$GRAY$prompt_dirty_symbol$branch$NOCOLOR"
-		else
-			git_prompt=" $DGRAY$prompt_clean_symbol$branch$NOCOLOR"
-		fi
-	fi
-
-	# Virtualenv
-	local venv_prompt=
-	if [ -n "$VIRTUAL_ENV" ]; then
-	    venv_prompt=" $BLUE$prompt_venv_symbol$(basename $VIRTUAL_ENV)$NOCOLOR"
+    # Format Git info
+    if [ -n "$dirty" ]; then
+      git_prompt=" $dim$gray$prompt_dirty_symbol$branch$nocolor"
+    else
+      git_prompt=" $DGRAY$prompt_clean_symbol$branch$NOCOLOR"
+    fi
   fi
 
-	# Only show username if not default
-	local user_prompt=
-	[ "$USER" != "$local_username" ] && user_prompt="$user_color$USER$NOCOLOR"
+  # Virtualenv
+  local venv_prompt=
+  if [ -n "$VIRTUAL_ENV" ]; then
+      venv_prompt=" $BLUE$prompt_venv_symbol$(basename $VIRTUAL_ENV)$NOCOLOR"
+  fi
 
-	# Show hostname inside SSH session
-	local host_prompt=
-	[ -n "$remote" ] && host_prompt="@$MAGENTA$HOSTNAME$NOCOLOR"
+  # Only show username if not default
+  local user_prompt=
+  [ "$USER" != "$local_username" ] && user_prompt="$user_color$USER$NOCOLOR"
 
-	# Show delimiter if user or host visible
-	local login_delimiter=
-	[ -n "$user_prompt" ] || [ -n "$host_prompt" ] && login_delimiter=":"
+  # Show hostname inside SSH session
+  local host_prompt=
+  [ -n "$remote" ] && host_prompt="@$MAGENTA$HOSTNAME$NOCOLOR"
+
+  # Show delimiter if user or host visible
+  local login_delimiter=
+  [ -n "$user_prompt" ] || [ -n "$host_prompt" ] && login_delimiter=":"
 
   # show time command ran
   local end_time=$(date +'%s')
   local time_f=$YELLOW$(format_time $(( end_time - start_time )))
 
-	# Format prompt
-	first_line="$user_prompt$host_prompt$login_delimiter$BLUE\w$NOCOLOR$git_prompt$venv_prompt$time_f"
-	# Text (commands) inside \[...\] does not impact line length calculation which fixes stange bug when looking through the history
-	# $? is a status of last command, should be processed every time prompt prints
-	second_line="\`if [ \$? = 0 ]; then echo \[\$GREEN\]; else echo \[\$RED\]; fi\`\$prompt_symbol\[\$NOCOLOR\] "
-	PS1="\n$first_line\n$second_line"
+  # Format prompt
+  first_line="$user_prompt$host_prompt$login_delimiter$BLUE\w$NOCOLOR$git_prompt$venv_prompt$time_f"
+  # Text (commands) inside \[...\] does not impact line length calculation which fixes stange bug when looking through the history
+  # $? is a status of last command, should be processed every time prompt prints
+  second_line="\`if [ \$? = 0 ]; then echo \[\$GREEN\]; else echo \[\$RED\]; fi\`\$prompt_symbol\[\$NOCOLOR\] "
+  PS1="\n$first_line\n$second_line"
 
-	# Multiline command
-	PS2="\[$CYAN\]$prompt_symbol\[$NOCOLOR\] "
+  # Multiline command
+  PS2="\[$CYAN\]$prompt_symbol\[$NOCOLOR\] "
 
-	# Terminal title
-	local title="$(basename "$PWD")"
-	[ -n "$remote" ] && title="$title \xE2\x80\x94 $HOSTNAME"
-	echo -ne "\033]0;$title"; echo -ne "\007"
+  # Terminal title
+  local title="$(basename "$PWD")"
+  [ -n "$remote" ] && title="$title \xE2\x80\x94 $HOSTNAME"
+  echo -ne "\033]0;$title"; echo -ne "\007"
 }
 
 trap 'debug' DEBUG
