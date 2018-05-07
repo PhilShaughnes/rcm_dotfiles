@@ -14,8 +14,8 @@ set global tabstop 2
 set global indentwidth 2
 
 #indent with spaces on tab
-#map global insert <tab> '<a-;><gt>'
-#map global insert <backtab> '<a-;><lt>'
+map global insert <tab> '<a-;><gt>'
+map global insert <backtab> '<a-;><lt>'
 hook global InsertChar \t %{
     exec -draft -itersel h@
 }
@@ -91,5 +91,5 @@ set-face Whitespace rgb:3a3a3a,default
 
 # Show line numbers
 addhl global number_lines -hlcursor -separator ' '
-addhl global show_whitespaces
+#addhl global show_whitespaces
 addhl global show_matching

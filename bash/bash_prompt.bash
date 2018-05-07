@@ -50,7 +50,7 @@ format_time() {
   local hours=$(( $_time / 60 / 60 % 24 ))
   local minutes=$(( $_time / 60 % 60 ))
   local seconds=$(( $_time % 60 ))
-  (( $days > 0 )) && _out="${days}d"
+  (( $days > 0 )) && _out=" ${days}d"
   (( $hours > 0 )) && _out="$_out ${hours}h"
   (( $minutes > 0 )) && _out="$_out ${minutes}m"
   _out="$_out ${seconds}s"
@@ -93,9 +93,9 @@ function prompt_command() {
 
     # Format Git info
     if [ -n "$dirty" ]; then
-      git_prompt=" $dim$gray$prompt_dirty_symbol$branch$nocolor"
+      git_prompt=" $DIM$GRAY$prompt_dirty_symbol$branch*$nocolor"
     else
-      git_prompt=" $DGRAY$prompt_clean_symbol$branch$NOCOLOR"
+      git_prompt=" $DIM$GRAY$prompt_clean_symbol$branch$NOCOLOR"
     fi
   fi
 
@@ -111,7 +111,7 @@ function prompt_command() {
 
   # Show hostname inside SSH session
   local host_prompt=
-  [ -n "$remote" ] && host_prompt="@$MAGENTA$HOSTNAME$NOCOLOR"
+  [ -n "$remote" ] && host_prompt="@$DGRAY$HOSTNAME$NOCOLOR"
 
   # Show delimiter if user or host visible
   local login_delimiter=

@@ -21,11 +21,12 @@ endif
 "hi Error ctermfg=white guifg=white
 
 " colorscheme base16-gruvbox-dark-soft
-colorscheme material-monokai
+colorscheme mustang
+" colorscheme material-monokai
 let g:materialmonokai_italic=1
 let g:materialmonokai_subtle_spell=1
 hi Comment ctermfg=241 guifg=#777777
-hi NonText ctermfg=241 guifg=#595959
+hi NonText ctermfg=241 guifg=#595959 ctermbg=NONE guibg=NONE
 " set background=dark
 
 hi lineNr ctermbg=NONE guibg=NONE

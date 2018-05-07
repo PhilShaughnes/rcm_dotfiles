@@ -1,0 +1,45 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Phil Shaughnessy
+	email = philip.shaughnessy@gmail.com
+
+[core]
+    autocrlf = false
+    safecrlf = true
+    excludesfile = /Users/phil/.gitignore_global
+    editor = nvim
+
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        br = branch
+        lg = log --stat --abbrev-commit --show-signature
+        tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        type = cat-file -t
+        dump = cat-file -p
+        a = add -A
+        c = commit -v
+        l = log -1 --pretty=%B
+
+[merge]
+    keepBackup = false
+    tool = p4merge
+
+[mergetool "p4merge"]
+    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+
+[mergetool]
+    keepBackup = false
+
+[diff]
+    tool = p4merge
+
+[difftool "p4merge"]
+    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$LOCAL" "$REMOTE"
+[branch]
+	autosetupmerge = true

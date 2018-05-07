@@ -5,11 +5,17 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 
-alias git status='nocorrect git status'
-alias gs='nocorrect git status'
+alias gs='git status'
 alias g='git'
+alias pull='git pull'
+alias push='git push'
 alias gco='git checkout'
 alias gac='git add -A && git commit -m'
-alias v='nvim'
+alias wip='git add -A && git commit -m "wip"'
+alias unwip='git reset head^'
 
+alias ll='ls -la'
+alias mkdir='mkdir -pv'
+alias v='nvim'
+alias k='kak'
 

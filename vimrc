@@ -41,7 +41,7 @@ set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 "set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
-set list listchars=eol:¬,tab:»\ ,trail:·,nbsp:· ",space:· " display extra white space
+set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 let g:jsx_ext_required = 0
 
 " use ag to search
@@ -116,13 +116,13 @@ nnoremap <C-l> $
 
 let t:is_transparent = 0
 function! Toggle_transparent()
-    if t:is_transparent == 0
-        hi Normal guibg=NONE ctermbg=NONE
-        let t:is_transparent = 1
-    else
-        set background=dark
-        let t:is_tranparent = 0
-    endif
+  if t:is_transparent == 0
+      hi Normal guibg=NONE ctermbg=NONE
+      let t:is_transparent = 1
+  else
+      set background=dark
+      let t:is_tranparent = 0
+  endif
 endfunction
 nnoremap <C-t> : call Toggle_transparent()<CR>
 
@@ -171,6 +171,21 @@ Plug 'matze/vim-move'                                " A-j and A-k move the sele
 
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
+Plug 'rbgrouleff/bclose.vim'
+Plug 'rafaqz/ranger.vim'
+    map <leader>rr :RangerEdit<cr>
+    map <leader>rv :RangerVSplit<cr>
+    map <leader>rs :RangerSplit<cr>
+    map <leader>rt :RangerTab<cr>
+    map <leader>ri :RangerInsert<cr>
+    map <leader>ra :RangerAppend<cr>
+    map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+" Plug 'francoiscabrol/ranger.vim'
+"     let g:ranger_map_keys = 0
+"     nnoremap <leader>p :Ranger<CR>
+"     let g:ranger_replace_netrw = 1
+"
+
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
 Plug 'rhysd/clever-f.vim'
@@ -186,8 +201,8 @@ Plug 'wellle/targets.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'mileszs/ack.vim'
-"Plug 'oblitum/rainbow'
-" let g:rainbow_active = 1
+" Plug 'oblitum/rainbow'
+"  let g:rainbow_active = 1
 Plug 'yuttie/comfortable-motion.vim'
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
@@ -213,6 +228,8 @@ Plug 'joukevandermaas/vim-ember-hbs'
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
 
 Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'fxn/vim-monochrome'
+Plug 'croaker/mustang-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'vim-airline/vim-airline'
