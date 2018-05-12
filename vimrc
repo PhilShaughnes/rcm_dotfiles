@@ -140,6 +140,7 @@ Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delet
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 
+Plug 'slashmili/alchemist.vim'
 Plug 'w0rp/ale'
     let g:ale_lint_on_text_changed = 'never'
     let g:ale_lint_on_enter = 0
@@ -157,10 +158,15 @@ Plug 'w0rp/ale'
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
-Plug 'roxma/nvim-completion-manager'
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>  "
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+let g:deoplete#enable_at_startup = 1
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
   nnoremap <A-h> xhP
@@ -172,19 +178,6 @@ Plug 'matze/vim-move'                                " A-j and A-k move the sele
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'rbgrouleff/bclose.vim'
-Plug 'rafaqz/ranger.vim'
-    map <leader>rr :RangerEdit<cr>
-    map <leader>rv :RangerVSplit<cr>
-    map <leader>rs :RangerSplit<cr>
-    map <leader>rt :RangerTab<cr>
-    map <leader>ri :RangerInsert<cr>
-    map <leader>ra :RangerAppend<cr>
-    map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
-" Plug 'francoiscabrol/ranger.vim'
-"     let g:ranger_map_keys = 0
-"     nnoremap <leader>p :Ranger<CR>
-"     let g:ranger_replace_netrw = 1
-"
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
