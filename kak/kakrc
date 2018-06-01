@@ -31,6 +31,23 @@ def edit-config -command-completion -docstring "Edit config file kakrc" %{
 }
 alias global ec edit-config
 
+# buffers
+map global user b ':enter-buffers-mode<ret>'              -docstring 'buffers…'
+map global user B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'
+
+alias global bd delete-buffer
+alias global bf buffer-first
+alias global bl buffer-last
+alias global bo buffer-only
+alias global bo! buffer-only-force
+
+# phantom selection
+map global normal f     ":phantom-sel-add-selection<ret>"
+map global normal F     ":phantom-sel-select-all; phantom-sel-clear<ret>"
+map global normal <a-f> ":phantom-sel-iterate-next<ret>"
+map global normal <a-F> ":phantom-sel-iterate-prev<ret>"
+
+
 map global user / :comment-line<ret> -docstring 'comment-line'
 
 def -docstring 'invoke fzf to open a file' \
@@ -84,9 +101,9 @@ def -docstring 'invoke fzf to select a buffer' \
 map global user t :fzf-file<ret> -docstring 'invoke fzf to open a file'
 map global user g :fzf-git<ret> -docstring 'file search'
 map global user f :fzf-ag<ret> -docstring 'full project search'
-map global user b :fzf-buffer<ret> -docstring 'search buffers'
+map global user B :fzf-buffer<ret> -docstring 'search buffers'
 
-colorscheme default
+colorscheme desertex
 set-face global Whitespace rgb:3a3a3a,default
 
 # Show line numbers
