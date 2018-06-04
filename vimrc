@@ -202,6 +202,7 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
 Plug 'junegunn/goyo.vim'
+Plug 'chrisbra/Colorizer'
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
