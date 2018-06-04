@@ -70,10 +70,10 @@ inoremap jj <C-\><C-n>
 " Q runs default macro
 nnoremap Q @q
 
-" J is go to beggining of line
-nnoremap J ^
-" K is go to end of the line
-nnoremap K $
+" " J is go to beggining of line
+" nnoremap J ^
+" " K is go to end of the line
+" nnoremap K $
 " paste over highlighted text and retain copied text
 vnoremap <leader>p "_dP
 " leader w is kill buffer
