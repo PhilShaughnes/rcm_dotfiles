@@ -139,5 +139,4 @@ addhl global number_lines -hlcursor -separator ' '
 addhl global show_matching
 
 set-option global ui_options ncurses_assistant=none
-%sh{kak-lsp --kakoune -s $kak_session}
-lsp-start
+%sh{kak-lsp --kakoune}
