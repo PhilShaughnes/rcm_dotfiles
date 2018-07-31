@@ -14,10 +14,37 @@ set global tabstop 2
 set global indentwidth 2
 
 #indent with spaces on tab
-map global insert <tab> '<a-;><gt>'
-map global insert <s-tab> '<a-;><lt>'
+#map global insert <tab> '<a-;><gt>'
+#map global insert <s-tab> '<a-;><lt>'
 hook global InsertChar \t %{
     exec -draft -itersel h@
+}
+
+map global insert <backspace> ⌫
+hook global InsertChar ⌫ %{ try %{
+    execute-keys <backspace>
+    try %{
+        execute-keys -draft hGh <a-k>\A\h+\z<ret> <lt>
+    } catch %{
+        execute-keys <backspace>
+    }
+} }
+
+# use tab for completions as well
+hook global InsertCompletionShow .* %{
+    try %{
+        # this command temporarily removes cursors preceded by whitespace;
+        # if there are no cursors left, it raises an error, does not
+        # continue to execute the mapping commands, and the error is eaten
+        # by the `try` command so no warning appears.
+        execute-keys -draft 'h<a-K>\h<ret>'
+        map window insert <tab> <c-n>
+        map window insert <s-tab> <c-p>
+    }
+}
+hook global InsertCompletionHide .* %{
+    unmap window insert <tab> <c-n>
+    unmap window insert <s-tab> <c-p>
 }
 
 # select all occurrences in this buffer
