@@ -12,7 +12,7 @@ alias push='git push'
 alias gco='git checkout'
 alias gac='git add -A && git commit -m'
 alias wip='git add -A && git commit -m "wip"'
-alias unwip='git reset head^'
+# alias unwip='git reset head^'
 
 alias ll='ls -la'
 alias mkdir='mkdir -pv'
