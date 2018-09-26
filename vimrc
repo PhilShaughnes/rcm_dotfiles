@@ -178,6 +178,7 @@ Plug 'matze/vim-move'                                " A-j and A-k move the sele
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'rbgrouleff/bclose.vim'
+Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
