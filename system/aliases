@@ -14,7 +14,7 @@ alias gac='git add -A && git commit -m'
 alias wip='git add -A && git commit -m "wip"'
 # alias unwip='git reset head^'
 
-alias ll='ls -la'
+alias ll='ls -lap'
 alias mkdir='mkdir -pv'
 alias v='nvim'
 alias k='kak'
