@@ -58,6 +58,7 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+
 "}}}
 
 "{{{ KEYMAPS
@@ -73,8 +74,7 @@ nnoremap Q @q
 " " J is go to beggining of line
 " nnoremap J ^
 " " K is go to end of the line
-" nnoremap K $
-" paste over highlighted text and retain copied text
+" nnoremap K $ paste over highlighted text and retain copied text
 vnoremap <leader>p "_dP
 " leader w is kill buffer
 nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
@@ -85,7 +85,7 @@ inoremap <C-h> <left>
 inoremap <C-l> <right>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
-nnoremap <ESC> i
+" nnoremap <ESC> i
 
 " tab (next) and shift-tab (prev) to cycle buffer
 map <leader><Tab> :bn<CR>
@@ -179,6 +179,7 @@ Plug 'tommcdo/vim-lion'                              " gl and gL align around a 
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'rbgrouleff/bclose.vim'
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
+Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
