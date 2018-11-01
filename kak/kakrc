@@ -6,9 +6,50 @@ map global normal <a-backspace> <a-space> -docstring 'remove main sel'
 set-option global tabstop 2
 set-option global indentwidth 2
 
+
+# jj is escape
+hook global InsertChar j %{ try %{
+  exec -draft hH <a-k>jj<ret> d
+  exec <esc>
+}}
+
+#indent with spaces on tab
+#map global insert <tab> '<a-;><gt>'
+#map global insert <s-tab> '<a-;><lt>'
+hook global InsertChar \t %{
+    exec -draft -itersel h@
+}
+
+map global insert <backspace> ⌫
+hook global InsertChar ⌫ %{ try %{
+    execute-keys <backspace>
+    try %{
+        execute-keys -draft hGh <a-k>\A\h+\z<ret> <lt>
+    } catch %{
+        execute-keys <backspace>
+    }
+} }
+
+# use tab for completions as well
+hook global InsertCompletionShow .* %{
+    try %{
+        # this command temporarily removes cursors preceded by whitespace;
+        # if there are no cursors left, it raises an error, does not
+        # continue to execute the mapping commands, and the error is eaten
+        # by the `try` command so no warning appears.
+        execute-keys -draft 'h<a-K>\h<ret>'
+        map window insert <tab> <c-n>
+        map window insert <s-tab> <c-p>
+    }
+}
+hook global InsertCompletionHide .* %{
+    unmap window insert <tab> <c-n>
+    unmap window insert <s-tab> <c-p>
+}
+
 # UI
 colorscheme desertex
-set-option global ui_options ncurses_wheel_down_button=2
+# set-option global ui_options ncurses_wheel_down_button=2
 set-option global ui_options ncurses_status_on_top=no
 set-option global modelinefmt '{rgb:83a598}{rgb:3c3836,rgb:83a598+b} %val{bufname}{{context_info}} {default,rgb:3c3836} {{mode_info}} {rgb:83a598+b}%val{cursor_line}{default}:{rgb:83a598+b}%val{cursor_char_column} {rgb:83a598}{rgb:3c3836,rgb:83a598+b} %opt{filetype} {rgb:3c3836,rgb:83a598}{rgb:83a598} {rgb:83a598,default+b}%val{client}{default} at {magenta,default+b}[%val{session}] '
 
@@ -25,6 +66,7 @@ def edit-config -command-completion -docstring "Edit config file kakrc" %{
 alias global ec edit-config
 
 map global user / :comment-line<ret> -docstring 'comment-line'
+map global user d :lsp-hover<ret> -docstring 'show language server hover'
 
 define-command ide %{
     rename-client main
@@ -42,12 +84,14 @@ define-command ide %{
 set-face global Whitespace rgb:3a3a3a,default
 
 
-hook global WinCreate ^[^*]+$ %{ 
+hook global WinCreate ^[^*]+$ %{
     add-highlighter window/ number-lines -hlcursor -separator ' ▏'
     add-highlighter global/matching show-matching
-    add-highlighter global/whitespace show-whitespaces -tab "▏" -lf " " -nbsp "⋅" -spc " " 
+    add-highlighter global/whitespace show-whitespaces -tab "▏" -lf " " -nbsp "⋅" -spc " "
+    lsp-auto-hover-disable
+    set-option global ui_options ncurses_wheel_down_button=2
+    git show-diff
 }
 
 set-option global ui_options ncurses_assistant=none
 eval %sh{kak-lsp --kakoune -s $kak_session}
-set global lsp_hover_anchor true
