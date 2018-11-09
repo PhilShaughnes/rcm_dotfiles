@@ -1,2 +1,2 @@
 
-export PATH="/Users/Phil/.local/bin:$PATH"
+export PATH="/Users/Phil/.local/bin:/Users/phil/dotfiles/system/scripts:$PATH"

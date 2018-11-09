@@ -93,5 +93,17 @@ hook global WinCreate ^[^*]+$ %{
     git show-diff
 }
 
+hook global WinSetOption filetype=javascript %{
+  set window lintcmd 'eslint -f ~/eslint-kakoune.js'
+  set window formatcmd 'prettier'
+  lint-enable
+}
+
+hook global WinSetOption filetype=elixir %{
+  set window lintcmd 'mix credo --format=flycheck'
+  set window formatcmd 'mix format'
+  lint-enable
+}
+
 set-option global ui_options ncurses_assistant=none
 eval %sh{kak-lsp --kakoune -s $kak_session}

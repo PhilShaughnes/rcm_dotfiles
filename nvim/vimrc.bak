@@ -12,7 +12,7 @@ set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
 set tabstop=2             " tab spacing
 set softtabstop=2         " unify
-set shiftwidth=2          " indent/outdent by 2 columns
+set shiftwidth=2          " indent/outdent by 4 columns
 set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
 set smarttab              " use tabs at the start of a line, spaces elsewhere
@@ -44,9 +44,9 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 let g:jsx_ext_required = 0
 
-" use ripgrep to search
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
+" use ag to search
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
 
 " allows cursor change in tmux mode
@@ -146,14 +146,13 @@ Plug 'w0rp/ale'
     let g:ale_completion_enabled = 1
     autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 
-    let g:ale_lint_on_text_changed = 'normal'
+    let g:ale_lint_on_text_changed = 'always'
     let g:ale_lint_on_enter = 0
     let g:ale_lint_on_save = 1
 
     let g:airline#extensions#ale#enabled = 1
     let g:ale_linters = {
     \   'javascript': ['eslint'],
-    \   'elixir': ['dialyxir', 'mix', 'credo'],
     \}
     let g:ale_fixers = {
     \   'javascript': ['prettier', 'eslint'],
@@ -164,6 +163,13 @@ Plug 'w0rp/ale'
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 let g:deoplete#enable_at_startup = 1
 
@@ -179,13 +185,13 @@ Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii 
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
-Plug 'ervandew/supertab'                             " use tab for completion
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
 Plug 'rhysd/clever-f.vim'
     let g:clever_f_smart_case = 1
     let g:clever_f_chars_match_any_signs = ";"
+Plug 'terryma/vim-multiple-cursors'                  " <C-n> gets multiple cursors
 Plug 'henrik/vim-indexed-search'                     " show number of search results
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ap/vim-css-color'                              " color css color codes
