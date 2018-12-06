@@ -65,7 +65,11 @@ endif
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
-nnoremap <CR> :nohlsearch<CR>
+nnoremap , :nohlsearch<CR>
+" ]<Space> inserts new line below
+nmap ]<Space> m`o<Esc>``
+" [<Space> inserts new line above
+nmap [<Space> m`O<Esc>``
  " jj is escape
 inoremap jj <C-\><C-n>
 " Q runs default macro
@@ -141,8 +145,9 @@ Plug 'tpope/vim-commentary'                          "comment stuff out with gc 
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 
 " Plug 'slashmili/alchemist.vim'
+let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
 Plug 'w0rp/ale'
-    let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
+    " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
     let g:ale_completion_enabled = 1
     autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 
@@ -153,7 +158,7 @@ Plug 'w0rp/ale'
     let g:airline#extensions#ale#enabled = 1
     let g:ale_linters = {
     \   'javascript': ['eslint'],
-    \   'elixir': ['dialyxir', 'mix', 'credo'],
+    \   'elixir': ['elixir-ls', 'dialyxir', 'mix', 'credo'],
     \}
     let g:ale_fixers = {
     \   'javascript': ['prettier', 'eslint'],
@@ -191,7 +196,8 @@ Plug 'jeetsukumaran/vim-indentwise'
 Plug 'ap/vim-css-color'                              " color css color codes
 "Plug 'clojure-vim/nvim-parinfer.js'
 Plug 'jiangmiao/auto-pairs'
-Plug 'wellle/targets.vim'
+Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
+                                                     " next (n) and last (l)
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'mileszs/ack.vim'
@@ -202,20 +208,34 @@ noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'                          " distraction free vim
 Plug 'chrisbra/Colorizer'
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-  nnoremap <leader>t :FZF<CR>
+  "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+  nnoremap <leader>t :Files<CR>
   nnoremap <leader>b :Buffers<CR>
   nnoremap <leader>c :Commits<CR>
-  nnoremap <leader>f :Ag<CR>
+  nnoremap <leader>f :Rg!<CR>
 
-Plug 'jelera/vim-javascript-syntax'
-Plug 'joukevandermaas/vim-ember-hbs'
+  " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+  \   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" Plug 'jelera/vim-javascript-syntax'
+" Plug 'joukevandermaas/vim-ember-hbs'
 " post install (yarn install | npm install) then load plugin only for editing supported files
 " Plug 'prettier/vim-prettier', {
 "   \ 'for': ['javascript', 'javascript.jsx', 'typescript', 'json', 'graphql'] }
@@ -241,3 +261,9 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
+if has('gui_macvim')
+  set guioptions=
+  set guifont=Fira\ Code\ Retina:h10
+
+  set cursorline
+endif

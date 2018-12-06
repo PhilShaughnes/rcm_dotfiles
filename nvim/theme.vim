@@ -41,3 +41,7 @@ hi GitGutterChange ctermbg=NONE guibg=NONE
 hi GitGutterDelete ctermbg=NONE guibg=NONE
 
 set cursorline
+
+if has('gui_macvim')
+  colorscheme base16-gruvbox-dark-soft
+endif
