@@ -189,6 +189,9 @@ Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii 
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
+Plug 'craigemery/vim-autotag'                        " need to have run
+Plug 'majutsushi/tagbar'
+  nmap <F8> :TagbarToggle<CR>
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
