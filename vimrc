@@ -3,11 +3,12 @@ set nocompatible          " for regular vim - turn of vi compatibility
 syntax enable             " enable syntax highlighting (previously syntax on)
 filetype plugin on " filetype detection[ON] plugin[ON] indent[ON]
 set number                " show line numbers
+set encoding=utf-8
 set laststatus=2          " last window always has a statusline
 filetype indent off        " activates indenting for files
 set hlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
-set ignorecase            " Make searches case-insensitive.
+set smartcase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
 set tabstop=2             " tab spacing
@@ -32,6 +33,8 @@ set lazyredraw            " redraw ony when needed to
 :set mouse=a              " mouse will work
 set autoread              " reload the file if it changed
    au FocusGained * checktime
+   " check for and load file changes
+autocmd WinEnter,BufWinEnter,FocusGained * checktime
 set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
 :au FocusLost * silent! wa
@@ -40,6 +43,8 @@ set linespace=5
 set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 "set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+" disable swapfile to avoid errors on load
+set noswapfile
 
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 let g:jsx_ext_required = 0
@@ -59,6 +64,11 @@ else
 endif
 
 
+if has('nvim')
+  let $VISUAL = 'nvr -cc split --remote-wait'
+endif
+
+
 "}}}
 
 "{{{ KEYMAPS
@@ -67,19 +77,26 @@ let mapleader = "\<Space>"
 " Enter cancels search highlighting
 nnoremap , :nohlsearch<CR>
 " ]<Space> inserts new line below
-nmap ]<Space> m`o<Esc>``
+nmap <leader>o m`o<Esc>``
 " [<Space> inserts new line above
-nmap [<Space> m`O<Esc>``
+nmap <leader>O m`O<Esc>``
  " jj is escape
 inoremap jj <C-\><C-n>
+inoremap <C-i> <C-\><C-n>
 " Q runs default macro
 nnoremap Q @q
 
+
+vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
+nmap <leader>m :call system('tmux send-keys -t .+ "
 " " J is go to beggining of line
 " nnoremap J ^
 " " K is go to end of the line
-" nnoremap K $ paste over highlighted text and retain copied text
+" nnoremap K $ 
+" paste over highlighted text and retain copied text
 vnoremap <leader>p "_dP
+" paste last yanked text (not deleted)
+nnoremap <leader>v "0p
 " leader w is kill buffer
 nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 nnoremap <leader>s :w <CR>
@@ -117,19 +134,6 @@ nnoremap <C-h> ^
 nnoremap <C-l> $
 
 
-
-let t:is_transparent = 0
-function! Toggle_transparent()
-  if t:is_transparent == 0
-      hi Normal guibg=NONE ctermbg=NONE
-      let t:is_transparent = 1
-  else
-      set background=dark
-      let t:is_tranparent = 0
-  endif
-endfunction
-nnoremap <C-t> : call Toggle_transparent()<CR>
-
 "}}}
 
 " {{{ PLUGINS
@@ -144,6 +148,7 @@ Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delet
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 
+Plug 'ervandew/supertab'                             " use tab for completion
 " Plug 'slashmili/alchemist.vim'
 let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
 Plug 'w0rp/ale'
@@ -184,7 +189,6 @@ Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii 
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
-Plug 'ervandew/supertab'                             " use tab for completion
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
@@ -192,7 +196,7 @@ Plug 'rhysd/clever-f.vim'
     let g:clever_f_smart_case = 1
     let g:clever_f_chars_match_any_signs = ";"
 Plug 'henrik/vim-indexed-search'                     " show number of search results
-Plug 'jeetsukumaran/vim-indentwise'
+Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'ap/vim-css-color'                              " color css color codes
 "Plug 'clojure-vim/nvim-parinfer.js'
 Plug 'jiangmiao/auto-pairs'
@@ -209,7 +213,7 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
 Plug 'junegunn/goyo.vim'                          " distraction free vim
-Plug 'chrisbra/Colorizer'
+" Plug 'chrisbra/Colorizer'
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
