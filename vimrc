@@ -103,10 +103,10 @@ nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 nnoremap <leader>s :w <CR>
 " leader q is quit (save?) - ZZ does this?
 " use ctrl motions to navigate in insert mode
-inoremap <C-h> <left>
-inoremap <C-l> <right>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
+" inoremap <C-h> <left>
+" inoremap <C-l> <right>
+" inoremap <C-j> <down>
+" inoremap <C-k> <up>
 " nnoremap <ESC> i
 
 " tab (next) and shift-tab (prev) to cycle buffer
