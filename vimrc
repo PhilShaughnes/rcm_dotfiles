@@ -1,4 +1,4 @@
-" {{{ SETTINGS 
+" {{{ SETTINGS
 set nocompatible          " for regular vim - turn of vi compatibility
 syntax enable             " enable syntax highlighting (previously syntax on)
 filetype plugin on " filetype detection[ON] plugin[ON] indent[ON]
@@ -9,6 +9,7 @@ filetype indent off        " activates indenting for files
 set hlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 set smartcase            " Make searches case-insensitive.
+set spell spelllang=en_us
 set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
 set tabstop=2             " tab spacing
@@ -82,7 +83,7 @@ nmap <leader>o m`o<Esc>``
 nmap <leader>O m`O<Esc>``
  " jj is escape
 inoremap jj <C-\><C-n>
-inoremap <C-i> <C-\><C-n>
+" inoremap <C-i> <C-\><C-n>
 " Q runs default macro
 nnoremap Q @q
 
@@ -92,7 +93,7 @@ nmap <leader>m :call system('tmux send-keys -t .+ "
 " " J is go to beggining of line
 " nnoremap J ^
 " " K is go to end of the line
-" nnoremap K $ 
+" nnoremap K $
 " paste over highlighted text and retain copied text
 vnoremap <leader>p "_dP
 " paste last yanked text (not deleted)
@@ -148,22 +149,25 @@ Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delet
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 
-Plug 'ervandew/supertab'                             " use tab for completion
-" Plug 'slashmili/alchemist.vim'
-let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
+" Plug 'ervandew/supertab'                             " use tab for completion
+
+
+Plug 'slashmili/alchemist.vim'
+" let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
+" let g:ale_completion_enabled = 1
 Plug 'w0rp/ale'
     " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
-    let g:ale_completion_enabled = 1
     autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 
+    let g:ale_completion_max_suggestions = 10
     let g:ale_lint_on_text_changed = 'normal'
     let g:ale_lint_on_enter = 0
     let g:ale_lint_on_save = 1
 
     let g:airline#extensions#ale#enabled = 1
-    let g:ale_linters = {
+    " let g:ale_linters = {
     \   'javascript': ['eslint'],
-    \   'elixir': ['elixir-ls', 'dialyxir', 'mix', 'credo'],
+    " \   'elixir': ['elixir-ls', 'dialyxir', 'credo'],
     \}
     let g:ale_fixers = {
     \   'javascript': ['prettier', 'eslint'],
@@ -175,7 +179,42 @@ Plug 'w0rp/ale'
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
 
-let g:deoplete#enable_at_startup = 1
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+"
+" let g:LanguageClient_serverCommands = {
+"     \ 'elixir': ['/Users/phil/Documents/codes/elixir/elixir-ls/rel/language_server.sh'],
+"     \ }
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+"
+" " enable ncm2 for all buffers
+" autocmd BufEnter * :call ncm2#enable_for_buffer()
+" g:call ncm2#popup_limit 3
+
+" Use <TAB> to select the popup menu:
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" " IMPORTANTE: :help Ncm2PopupOpen for more information
+" set completeopt=noinsert,menuone,noselect
+"
+" Plug 'ncm2/ncm2-match-highlight'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux'
+" Plug 'ncm2/ncm2-path'
+
+Plug 'lifepillar/vim-mucomplete'
+  set shortmess+=c
+  set completeopt+=preview
+  set completeopt+=menuone,noselect
+  let g:mucomplete#enable_auto_at_startup = 1
+  imap <expr> <down> mucomplete#extend_fwd("\<down>")
+
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
   nnoremap <A-h> xhP
@@ -197,7 +236,7 @@ Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
 Plug 'rhysd/clever-f.vim'
     let g:clever_f_smart_case = 1
-    let g:clever_f_chars_match_any_signs = ";"
+    let g:clever_f_chars_match_any_signs = "?"
 Plug 'henrik/vim-indexed-search'                     " show number of search results
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'ap/vim-css-color'                              " color css color codes
@@ -241,6 +280,12 @@ command! -bang -nargs=? -complete=dir Files
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+" Plug 'liuchengxu/vim-which-key'
+"   let g:mapleader = "\<Space>"
+"   let g:maplocalleader = ','
+"   nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+"   nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'joukevandermaas/vim-ember-hbs'
 " post install (yarn install | npm install) then load plugin only for editing supported files
@@ -250,8 +295,11 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
 
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'fxn/vim-monochrome'
+" Plug 'fxn/vim-monochrome'
 Plug 'croaker/mustang-vim'
+Plug 'morhetz/gruvbox'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'vim-airline/vim-airline'
