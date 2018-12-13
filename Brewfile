@@ -52,3 +52,4 @@ brew "mas" # Apple App Store integration
 # pocket,
 # postico,
 # skype,
+# Be focused,

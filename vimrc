@@ -152,7 +152,7 @@ Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 Plug 'tpope/vim-repeat'
 
 " Plug 'ervandew/supertab'                             " use tab for completion
-
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'slashmili/alchemist.vim'
 " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
