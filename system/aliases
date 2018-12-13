@@ -15,7 +15,8 @@ alias wip='git add -A && git commit -m "wip"'
 # alias unwip='git reset head^'
 
 alias ll='ls -lap'
+[ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
+
 alias mkdir='mkdir -pv'
 alias v='nvim'
 alias k='kak'
-

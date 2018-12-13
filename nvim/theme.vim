@@ -39,9 +39,14 @@ hi GitGutterAdd ctermbg=NONE guibg=NONE
 hi GitGutterChangeDelete ctermbg=NONE guibg=NONE
 hi GitGutterChange ctermbg=NONE guibg=NONE
 hi GitGutterDelete ctermbg=NONE guibg=NONE
+hi clear SpellBad
+hi SpellBad cterm=underline
 
 set cursorline
 
-if has('gui_macvim')
-  colorscheme base16-gruvbox-dark-soft
+" let g:SnazzyTransparent = 1
+if has('gui_running') 
+  let g:SnazzyTransparent = 0
+  colorscheme mustang
+  set guifont=Fira\ Code\ Retina:h10
 endif

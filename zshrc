@@ -14,8 +14,7 @@ source ~/dotfiles/system/aliases
 source ~/dotfiles/system/functions
 source ~/dotfiles/system/env
 
-# EDITOR
-export EDITOR=nvim
+
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
@@ -57,20 +56,7 @@ setopt prompt_subst
 # ALIAS
 alias git status='nocorrect git status'
 alias gs='nocorrect git status'
-alias g='git'
-alias gco='git checkout'
-alias gac='git add -A && git commit -m'
-alias v='nvim'
-alias k='kak'
-alias l='git log -1 --pretty=%B'
-[ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
 
-
-# Filesystem aliases
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 
 #LAZY - enable lazy loading - just do "lazy_load" (no quotes) before a command
 source $ZSH/lazy.zsh

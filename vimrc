@@ -9,7 +9,7 @@ filetype indent off        " activates indenting for files
 set hlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 set smartcase            " Make searches case-insensitive.
-set spell spelllang=en_us
+set spelllang=en_us
 set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
 set tabstop=2             " tab spacing
@@ -46,6 +46,7 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 "set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 " disable swapfile to avoid errors on load
 set noswapfile
+set nobackup
 
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 let g:jsx_ext_required = 0
@@ -148,6 +149,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delete, :Mkdir, :Move, :Rename, :Unlink
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
+Plug 'tpope/vim-repeat'
 
 " Plug 'ervandew/supertab'                             " use tab for completion
 
@@ -299,9 +301,11 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'croaker/mustang-vim'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'rakr/vim-one'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
+Plug 'connorholyday/vim-snazzy'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
