@@ -1,5 +1,5 @@
-caskargs appdir: "/Applications"
-tab "homebrew/cask"
+cask_args appdir: "/Applications"
+tap "homebrew/cask"
 
 # fonts
 tap "caskroom/fonts"
@@ -10,35 +10,35 @@ cask "font-source-code-pro"
 tap "thoughtbot/formulae"
 brew "rcm"
 
-brew bash
-brew bash-completion
-brew ctags
-brew dfu-util
-brew cowsay
-brew fzf
-brew zsh
-brew ranger
-brew tmux
-brew wifi-password
-brew ripgrep
-brew reattach-to-user-namespace
-brew neovim
-brew mosh
-brew git
-brew htop
-brew gotop
-brew jq
+brew "bash"
+brew "bash-completion"
+brew "ctags"
+brew "dfu-util"
+brew "cowsay"
+brew "fzf"
+brew "zsh"
+brew "ranger"
+brew "tmux"
+brew "wifi-password"
+brew "ripgrep"
+brew "reattach-to-user-namespace"
+brew "neovim"
+brew "mosh"
+brew "git"
+brew "htop"
+brew "gotop"
+brew "jq"
 
 # asdf dependencies
-brew coreutils
-brew automake
-brew autoconf
-brew openssl
-brew libyaml
-brew readline
-brew libxslt
-brew libtool
-brew unixodbc
+brew "coreutils"
+brew "automake"
+brew "autoconf"
+brew "openssl"
+brew "libyaml"
+brew "readline"
+brew "libxslt"
+brew "libtool"
+brew "unixodbc"
 
 brew "mas" # Apple App Store integration
 # amphetamine, 
