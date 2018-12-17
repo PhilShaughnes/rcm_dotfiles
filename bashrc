@@ -9,8 +9,6 @@ fi
 
 
 source ~/dotfiles/bash/bash_prompt.bash
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
 
 source ~/dotfiles/system/aliases
 source ~/dotfiles/system/functions
@@ -20,3 +18,5 @@ bind "set completion-ignore-case on"
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash

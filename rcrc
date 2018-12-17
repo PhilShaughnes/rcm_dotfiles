@@ -1,1 +1,4 @@
 DOTFILES_DIRS="$HOME/dotfiles"
+EXCLUDES="Brewfile bash kak other system README.md dotme nvim zsh"
+COPY_ALWAYS="rcrc"
+
