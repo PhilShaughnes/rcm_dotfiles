@@ -167,9 +167,9 @@ Plug 'w0rp/ale'
     let g:ale_lint_on_save = 1
 
     let g:airline#extensions#ale#enabled = 1
-    " let g:ale_linters = {
+    let g:ale_linters = {
     \   'javascript': ['eslint'],
-    " \   'elixir': ['elixir-ls', 'dialyxir', 'credo'],
+    \   'elixir': ['dialyxir', 'credo'],
     \}
     let g:ale_fixers = {
     \   'javascript': ['prettier', 'eslint'],
