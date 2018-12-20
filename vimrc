@@ -306,6 +306,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'connorholyday/vim-snazzy'
+Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()

@@ -8,7 +8,6 @@ else
   let g:rehash256 = 1
 endif
 
-
 """ base16 monokai theme """
 "colorscheme base16-monokai
 
