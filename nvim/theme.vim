@@ -21,6 +21,7 @@ endif
 
 " colorscheme base16-gruvbox-dark-soft
 colorscheme mustang
+" colorscheme wombat
 " colorscheme material-monokai
 
 let g:materialmonokai_italic=1
