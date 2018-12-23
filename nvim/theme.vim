@@ -23,6 +23,7 @@ endif
 colorscheme mustang
 " colorscheme wombat
 " colorscheme material-monokai
+" set notermguicolors
 
 let g:materialmonokai_italic=1
 let g:materialmonokai_subtle_spell=1
@@ -42,7 +43,7 @@ hi GitGutterDelete ctermbg=NONE guibg=NONE
 hi clear SpellBad
 hi SpellBad cterm=underline
 
-set cursorline
+set nocursorline
 
 " let g:SnazzyTransparent = 1
 if has('gui_running') 

@@ -233,6 +233,14 @@ Plug 'rbgrouleff/bclose.vim'                         " close buffer without clos
 Plug 'craigemery/vim-autotag'                        " need to have run
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" , { 'on' : 'NERDTreeToggle' }
+  map <C-f> :NERDTreeToggle<CR>
+  let NERDTreeQuitOnOpen = 1
+  let NERDTreeAutoDeleteBuffer = 1
+  let NERDTreeMinimalUI = 1
+  let NERDTreeDirArrows = 1
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
@@ -268,7 +276,7 @@ Plug 'junegunn/fzf.vim'
   nnoremap <leader>c :Commits<CR>
   nnoremap <leader>f :Rg!<CR>
 
-  " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
@@ -304,9 +312,9 @@ Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'arcticicestudio/nord-vim'
-Plug 'chriskempson/base16-vim'
 Plug 'skielbasa/vim-material-monokai'
 Plug 'connorholyday/vim-snazzy'
+Plug 'sonjapeterson/1989.vim'
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'noahfrederick/vim-noctu'
 Plug 'vim-airline/vim-airline'
