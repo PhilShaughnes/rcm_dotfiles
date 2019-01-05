@@ -307,6 +307,8 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 Plug 'powerman/vim-plugin-AnsiEsc'
 " Plug 'fxn/vim-monochrome'
 Plug 'croaker/mustang-vim'
+Plug 'vim-scripts/Liquid-Carbon'
+Plug 'nightsense/carbonized'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -324,9 +326,9 @@ call plug#end()
 "}}}
 "
 
-" source ~/dotfiles/nvim/airline_config.vim
-" source ~/dotfiles/nvim/theme.vim
-colorscheme noctu
+source ~/dotfiles/nvim/airline_config.vim
+source ~/dotfiles/nvim/theme.vim
+" colorscheme noctu
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
