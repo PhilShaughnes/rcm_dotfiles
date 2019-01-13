@@ -236,11 +236,12 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " , { 'on' : 'NERDTreeToggle' }
-  map <C-f> :NERDTreeToggle<CR>
+  noremap <C-f> :NERDTreeToggle<CR>
   let NERDTreeQuitOnOpen = 1
   let NERDTreeAutoDeleteBuffer = 1
   let NERDTreeMinimalUI = 1
   let NERDTreeDirArrows = 1
+Plug 'vimwiki/vimwiki'
 
 Plug 'justinmk/vim-sneak'
     "let g:sneak#label = 1
