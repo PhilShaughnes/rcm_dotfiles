@@ -96,10 +96,12 @@ vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<C
 nmap <leader>m :call system('tmux send-keys -t .+ "
 " " J is go to beggining of line
 " nnoremap J ^
-" " K is go to end of the line
-" nnoremap K $
-" paste over highlighted text and retain copied text
-vnoremap <leader>p "_dP
+  nnoremap <leader>j ^
+  " " K is go to end of the line
+  " nnoremap K $
+  nnoremap <leader>k $
+  " paste over highlighted text and retain copied text
+  vnoremap <leader>p "_dP
 " paste last yanked text (not deleted)
 nnoremap <leader>v "0p
 " leader w is kill buffer
@@ -237,9 +239,8 @@ Plug 'rbgrouleff/bclose.vim'                         " close buffer without clos
 " Plug 'craigemery/vim-autotag'                        " need to have run
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" , { 'on' : 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
   noremap <C-f> :NERDTreeToggle<CR>
   let NERDTreeQuitOnOpen = 1
   let NERDTreeAutoDeleteBuffer = 1
