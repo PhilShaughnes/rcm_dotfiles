@@ -87,6 +87,9 @@ inoremap jj <C-\><C-n>
 " inoremap <C-i> <C-\><C-n>
 " Q runs default macro
 nnoremap Q @q
+" visual up and down
+nmap j gj
+nmap k gk
 
 
 vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
