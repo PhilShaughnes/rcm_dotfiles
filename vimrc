@@ -217,9 +217,10 @@ Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
   set completeopt+=preview
   set completeopt+=menuone,noselect
+  let g:mucomplete#cycle_all = 1
+  let g:mucomplete#completion_delay = 1
   let g:mucomplete#enable_auto_at_startup = 1
-  imap <expr> <down> mucomplete#extend_fwd("\<down>")
-
+  imap <expr> <right> mucomplete#extend_fwd("\<right>")
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
   nnoremap <A-h> xhP
@@ -233,7 +234,7 @@ Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii 
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
-Plug 'craigemery/vim-autotag'                        " need to have run
+" Plug 'craigemery/vim-autotag'                        " need to have run
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
 Plug 'scrooloose/nerdtree'
@@ -312,7 +313,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 " Plug 'fxn/vim-monochrome'
 Plug 'croaker/mustang-vim'
 Plug 'vim-scripts/Liquid-Carbon'
-Plug 'nightsense/carbonized'
+Plug 'noahfrederick/vim-hemisu'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -323,6 +324,7 @@ Plug 'connorholyday/vim-snazzy'
 Plug 'sonjapeterson/1989.vim'
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'noahfrederick/vim-noctu'
+Plug 'dylanaraps/crayon'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
