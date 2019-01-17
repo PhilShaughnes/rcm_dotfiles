@@ -29,16 +29,17 @@ brew "htop"
 brew "gotop"
 brew "jq"
 
-# asdf dependencies
-brew "coreutils"
-brew "automake"
-brew "autoconf"
-brew "openssl"
-brew "libyaml"
-brew "readline"
-brew "libxslt"
-brew "libtool"
-brew "unixodbc"
+brew "asdf"
+# asdf dependencies - todo: do I need these?
+# brew "coreutils"
+# brew "automake"
+# brew "autoconf"
+# brew "openssl"
+# brew "libyaml"
+# brew "readline"
+# brew "libxslt"
+# brew "libtool"
+# brew "unixodbc"
 
 brew "mas" # Apple App Store integration
 # amphetamine, 

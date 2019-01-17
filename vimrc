@@ -5,9 +5,11 @@ filetype plugin on " filetype detection[ON] plugin[ON] indent[ON]
 set number                " show line numbers
 set encoding=utf-8
 set laststatus=2          " last window always has a statusline
-filetype indent off        " activates indenting for files
+filetype indent on        " activates indenting for files
 set hlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
+set gdefault              " apply substitutions globally on lines
+set ignorecase
 set smartcase            " Make searches case-insensitive.
 set spelllang=en_us
 set ruler                 " Always show info along bottom.
@@ -38,6 +40,8 @@ set autoread              " reload the file if it changed
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
+" set colorcolumn=100
+" save ov focus lost
 :au FocusLost * silent! wa
 
 set linespace=5
@@ -76,6 +80,8 @@ endif
 "{{{ KEYMAPS
 " make marks more better (go to column instead of line)
 nnoremap ' `
+" Y goes to end of line
+nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
@@ -92,6 +98,12 @@ nnoremap Q @q
 " visual up and down
 nmap j gj
 nmap k gk
+
+" Tab and S-Tab indent in normal and visual mode
+nnoremap <Tab>   >>
+nnoremap <S-Tab> <<
+vnoremap <Tab>   >><Esc>gv
+vnoremap <S-Tab> <<<Esc>gv
 
 
 vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
