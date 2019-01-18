@@ -85,7 +85,8 @@ nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
-nnoremap , :nohlsearch<CR>
+" nnoremap , :nohlsearch<CR>
+nnoremap , :set hls!<cr>
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
 " [<Space> inserts new line above
