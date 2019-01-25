@@ -15,7 +15,7 @@ alias gac='git add -A && git commit -v'
 alias wip='git add -A && git commit -m "wip"'
 # alias unwip='git reset head^' # currently this is in a fn that only resets if last commit is wip
 alias gdb='git branch -D $(git branch | fzf -m)' # git delete branch - multi-select in fzf
-alias gb='git branch -' # git back - go back to previous branch
+alias gb='git checkout -' # git back - go back to previous branch
 alias ga='git add -p' # interactive mode
 alias gc='git commit -v'
 
