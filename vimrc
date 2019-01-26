@@ -78,12 +78,15 @@ endif
 "}}}
 
 "{{{ KEYMAPS
+" make marks more better (go to column instead of line)
+nnoremap ' `
 " Y goes to end of line
 nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
 nnoremap , :set hls!<CR>
+" nnoremap , :nohlsearch<CR>
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
 " [<Space> inserts new line above
@@ -251,6 +254,7 @@ Plug 'tommcdo/vim-lion'                              " gl and gL align around a 
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
+Plug 'kshenoy/vim-signature'
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
 " Plug 'craigemery/vim-autotag'                        " need to have run
 Plug 'majutsushi/tagbar'
