@@ -83,7 +83,7 @@ nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
-nnoremap , :nohlsearch<CR>
+nnoremap , :set hls!<CR>
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
 " [<Space> inserts new line above
@@ -106,14 +106,18 @@ vnoremap <S-Tab> <<<Esc>gv
 
 vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
 nmap <leader>m :call system('tmux send-keys -t .+ "
-" " J is go to beggining of line
-" nnoremap J ^
-  nnoremap <leader>j ^
-  " " K is go to end of the line
-  " nnoremap K $
-  nnoremap <leader>k $
-  " paste over highlighted text and retain copied text
-  vnoremap <leader>p "_dP
+
+" leader k to hook into documentation lookup (we will remap K below)
+noremap <leader>k K
+" H/L to go to beggining/end of line
+" J/K to go to above/below white space (paragraph)
+noremap K     {
+noremap J     }
+noremap H     ^
+noremap L     $
+
+" paste over highlighted text and retain copied text
+vnoremap <leader>p "_dP
 " paste last yanked text (not deleted)
 nnoremap <leader>v "0p
 " leader w is kill buffer
@@ -283,6 +287,7 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
 Plug 'junegunn/goyo.vim'                          " distraction free vim
+Plug 'junegunn/limelight.vim'
 " Plug 'chrisbra/Colorizer'
 
 Plug '/usr/local/opt/fzf'
