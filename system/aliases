@@ -22,7 +22,6 @@ alias gc='git commit -v'
 alias ll='ls -lap'
 [ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
 
-alias 
 alias mkdir='mkdir -pv'
 alias v='nvim'
 alias k='kak'
