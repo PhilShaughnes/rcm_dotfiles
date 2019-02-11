@@ -5,6 +5,7 @@ tap "homebrew/cask"
 tap "caskroom/fonts"
 cask "font-fira-code"
 cask "font-source-code-pro"
+cask "font-iosevka"
 
 # for dotfiles
 tap "thoughtbot/formulae"
