@@ -58,10 +58,10 @@ alias gs='nocorrect git status'
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zplug
-if [[ ! -d ~/.local/share/zgen ]];then
-    git clone https://github.com/tarjoilija/zgen.git ~/.local/share/zgen
+if [[ ! -d ~/.zgen ]];then
+    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
 fi
-source ~/.local/share/zgen/zgen.zsh
+source ~/.zgen/zgen.zsh
 
 # if the init script doesn't exist
 if ! zgen saved; then
