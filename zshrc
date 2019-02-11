@@ -14,9 +14,8 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-# PS1="\n%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}\n"
-# PS2="⟩"
-# source ~/dotfiles/zsh/prompt.zsh
+#PS1="⟩"
+#RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
 
 # SETTINGS
 autoload -Uz compinit add-zsh-hook
@@ -59,10 +58,10 @@ alias gs='nocorrect git status'
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zplug
-if [[ ! -d ~/.zgen ]];then
-    git clone https://github.com/tarjoilija/zgen.git ~/.zgen
+if [[ ! -d ~/.local/share/zgen ]];then
+    git clone https://github.com/tarjoilija/zgen.git ~/.local/share/zgen
 fi
-source ~/.zgen/zgen.zsh
+source ~/.local/share/zgen/zgen.zsh
 
 # if the init script doesn't exist
 if ! zgen saved; then
@@ -80,7 +79,6 @@ if ! zgen saved; then
   # generate the init script from plugins above
   zgen save
 fi
-# PURE_GIT_PULL=0
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
