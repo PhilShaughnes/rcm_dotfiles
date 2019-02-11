@@ -1,6 +1,8 @@
-
+#!/bin/bash
 export PATH="/Users/Phil/.local/bin:/Users/phil/dotfiles/bin:$PATH"
-if [ -d "$HOME/bin" ] ; then PATH="$HOME/bin:$PATH" fi
+if [ -d "$HOME/bin" ] ; then
+  PATH="$HOME/bin:$PATH"
+fi
 
 export EDITOR=nvim
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --glob "!.git/*"'

@@ -1,4 +1,5 @@
 #! /bin/zsh
+# zmodload zsh/zprof
 export DOTFILES=$HOME/dotfiles
 export ZSH=$DOTFILES/zsh
 
@@ -64,20 +65,30 @@ source $ZSH/lazy.zsh
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zplug
-if [[ ! -d ~/.local/share/zplug ]];then
-    git clone https://github.com/b4b4r07/zplug ~/.local/share/zplug
+if [[ ! -d ~/.local/share/zgen ]];then
+    git clone https://github.com/tarjoilija/zgen.git ~/.local/share/zgen
 fi
-source ~/.local/share/zplug/init.zsh
+source ~/.local/share/zgen/zgen.zsh
 
-zplug "mafredri/zsh-async", from:github, defer:0
-zplug "zsh-users/zsh-autosuggestions", from:github
+# if the init script doesn't exist
+if ! zgen saved; then
 
-# Load last
-zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:3
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-#zplug "molovo/filthy", use:filthy.zsh, from:github, as:theme
+  # specify plugins here
+  zgen load mafredri/zsh-async
+  zgen load sindresorhus/pure
 
-zplug load
+  zgen load zsh-users/zsh-syntax-highlighting
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-history-substring-search
+
+  zgen load kiurchv/asdf.plugin.zsh
+
+  # generate the init script from plugins above
+  zgen save
+fi
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 #PROMPT
 #source $ZSH/prompt.zsh
@@ -87,3 +98,4 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/curl/bin:$PATH"
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+# zprof
