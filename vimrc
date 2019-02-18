@@ -69,7 +69,6 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
 endif
@@ -196,11 +195,10 @@ Plug 'w0rp/ale'
     \   'elixir': ['dialyxir', 'credo'],
     \}
     let g:ale_fixers = {
-    \   'javascript': ['prettier', 'eslint'],
+    \   'javascript': ['eslint'],
     \   'elixir': ['mix_format'],
     \}
     let g:ale_fix_on_save = 0
-    let g:ale_javascript_prettier_use_local_config = 1
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
@@ -236,10 +234,10 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
-  set completeopt+=preview
+  set completeopt-=preview
   set completeopt+=menuone,noselect
-  let g:mucomplete#cycle_all = 1
-  let g:mucomplete#completion_delay = 1
+  " let g:mucomplete#cycle_all = 1
+  " let g:mucomplete#completion_delay = 1
   let g:mucomplete#enable_auto_at_startup = 1
   imap <expr> <right> mucomplete#extend_fwd("\<right>")
 
@@ -261,7 +259,8 @@ Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
-  noremap <C-f> :NERDTreeToggle<CR>
+  noremap <leader>n :NERDTreeToggle<CR>
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   let NERDTreeQuitOnOpen = 1
   let NERDTreeAutoDeleteBuffer = 1
   let NERDTreeMinimalUI = 1
