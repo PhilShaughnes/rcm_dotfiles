@@ -238,7 +238,7 @@ Plug 'lifepillar/vim-mucomplete'
   set completeopt+=menuone,noselect
   " let g:mucomplete#cycle_all = 1
   " let g:mucomplete#completion_delay = 1
-  let g:mucomplete#enable_auto_at_startup = 1
+  " let g:mucomplete#enable_auto_at_startup = 1
   imap <expr> <right> mucomplete#extend_fwd("\<right>")
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
