@@ -331,21 +331,11 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
 
 Plug 'powerman/vim-plugin-AnsiEsc'
-" Plug 'fxn/vim-monochrome'
 Plug 'croaker/mustang-vim'
-Plug 'vim-scripts/Liquid-Carbon'
-Plug 'noahfrederick/vim-hemisu'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'sheerun/vim-wombat-scheme'
 Plug 'arcticicestudio/nord-vim'
-Plug 'skielbasa/vim-material-monokai'
-Plug 'connorholyday/vim-snazzy'
-Plug 'sonjapeterson/1989.vim'
 Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'noahfrederick/vim-noctu'
-Plug 'dylanaraps/crayon'
+Plug 'rakr/vim-two-firewatch'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -354,16 +344,13 @@ call plug#end()
 "
 
 source ~/dotfiles/nvim/airline_config.vim
-source ~/dotfiles/nvim/theme.vim
+  " source ~/dotfiles/nvim/theme.vim
 " colorscheme dim
+set termguicolors
+set background=dark
+colorscheme two-firewatch
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
-if has('gui_macvim')
-  set guioptions=
-  set guifont=Fira\ Code\ Retina:h10
-
-  set cursorline
-endif

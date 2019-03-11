@@ -20,7 +20,7 @@ endif
 "hi Error ctermfg=white guifg=white
 
 " colorscheme base16-gruvbox-dark-soft
-colorscheme mustang
+colorscheme two-firewatch
 " colorscheme wombat
 " colorscheme material-monokai
 " set notermguicolors
@@ -48,6 +48,12 @@ set nocursorline
 " let g:SnazzyTransparent = 1
 if has('gui_running') 
   let g:SnazzyTransparent = 0
-  colorscheme mustang
+  colorscheme two-firewatch
   set guifont=Fira\ Code\ Retina:h10
+endif
+
+if has('gui_vimr')
+  set background=dark
+  colorscheme two-firewatch
+  set cursorline
 endif
