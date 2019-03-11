@@ -84,7 +84,7 @@ nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
-nnoremap , :set hls!<CR>
+nnoremap <CR> :set hls!<CR>
 " nnoremap , :nohlsearch<CR>
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
@@ -268,7 +268,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
 Plug 'vimwiki/vimwiki'
 
 Plug 'justinmk/vim-sneak'
-    "let g:sneak#label = 1
+    let g:sneak#label = 1
 Plug 'rhysd/clever-f.vim'
     let g:clever_f_smart_case = 1
     let g:clever_f_chars_match_any_signs = "?"
