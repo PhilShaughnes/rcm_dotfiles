@@ -20,7 +20,7 @@ endif
 "hi Error ctermfg=white guifg=white
 
 " colorscheme base16-gruvbox-dark-soft
-colorscheme two-firewatch
+colorscheme mustang
 " colorscheme wombat
 " colorscheme material-monokai
 " set notermguicolors

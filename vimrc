@@ -332,11 +332,11 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'croaker/mustang-vim'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'romainl/Apprentice'
 Plug 'rakr/vim-two-firewatch'
+Plug 'beikome/cosme.vim'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -345,11 +345,10 @@ call plug#end()
 "
 
 source ~/dotfiles/nvim/airline_config.vim
-  " source ~/dotfiles/nvim/theme.vim
-" colorscheme dim
-set termguicolors
-set background=dark
-colorscheme two-firewatch
+" source ~/dotfiles/nvim/theme.vim
+colorscheme dim
+set notermguicolors
+" colorscheme cosme
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
