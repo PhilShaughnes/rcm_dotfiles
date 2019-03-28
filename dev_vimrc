@@ -15,7 +15,6 @@ set ruler
 set clipboard=unnamed     " use the system clipboard as default
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 
-
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -41,7 +40,7 @@ nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
-nnoremap <CR> :nohlsearch<CR>
+nnoremap \ :nohlsearch<CR>
 
 " visual up and down
 nmap j gj
@@ -57,6 +56,39 @@ vnoremap <S-Tab> <<<Esc>gv
 "*************"
 "*** PLUGS ***"
 "*************"
+call plug#begin('~/.vim/plugged')
+
+Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'rakr/vim-two-firewatch'
+
+Plug 'sheerun/vim-polyglot'
 
 
+Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+  "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+  nnoremap <leader>t :Files<CR>
+  nnoremap <leader>b :Buffers<CR>
+  nnoremap <leader>c :Commits<CR>
+  nnoremap <leader>f :Rg!<CR>
 
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+ v\   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+  \   <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+call plug#end()
+
+set termguicolors
+set background=dark
+colorscheme two-firewatch
