@@ -237,7 +237,7 @@ Plug 'lifepillar/vim-mucomplete'
   set completeopt+=menuone,noselect
   " let g:mucomplete#cycle_all = 1
   " let g:mucomplete#completion_delay = 1
-  " let g:mucomplete#enable_auto_at_startup = 1
+  let g:mucomplete#enable_auto_at_startup = 1
   imap <expr> <right> mucomplete#extend_fwd("\<right>")
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
@@ -278,6 +278,7 @@ Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'jiangmiao/auto-pairs'
 Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
                                                      " next (n) and last (l)
+Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'mileszs/ack.vim'

@@ -2,9 +2,9 @@ Workflow Engine
 ===============
 
 - has methods for universal actions
-        - complete, reopen, start
+    - complete, reopen, start
 - has hooks for action definition
-        - onComplete, onReopen, onStart
+    - onComplete, onReopen, onStart
 - the base universal actions do what they always do to progress workflow, and call do__ to do whatever stage level custom  stuff needs to happen.
 - we may want extra beforeAction and afterAction hooks (?)
 - hook for extra actions (ggArbitor?)

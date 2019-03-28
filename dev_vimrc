@@ -63,6 +63,7 @@ Plug 'rakr/vim-two-firewatch'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-sandwich'
+Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
