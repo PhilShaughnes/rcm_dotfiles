@@ -62,7 +62,7 @@ Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'rakr/vim-two-firewatch'
 
 Plug 'sheerun/vim-polyglot'
-
+Plug 'machakann/vim-sandwich'
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
@@ -76,7 +76,7 @@ Plug 'junegunn/fzf.vim'
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
- v\   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
   \   <bang>0)
@@ -88,6 +88,11 @@ command! -bang -nargs=? -complete=dir Files
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 call plug#end()
+
+
+"*************"
+"*** THEME ***"
+"*************"
 
 set termguicolors
 set background=dark

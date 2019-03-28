@@ -199,7 +199,6 @@ Plug 'w0rp/ale'
     \   'elixir': ['mix_format'],
     \}
     let g:ale_fix_on_save = 0
-    nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
 
@@ -348,6 +347,7 @@ source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
 colorscheme dim
 set notermguicolors
+set background=dark
 " colorscheme cosme
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
