@@ -110,7 +110,7 @@ vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<C
 nmap <leader>m :call system('tmux send-keys -t .+ "
 
 " leader k to hook into documentation lookup (we will remap K below)
-noremap <leader>k K
+noremap <leader>d K
 " H/L to go to beggining/end of line
 " J/K to go to above/below white space (paragraph)
 noremap K     {
@@ -180,10 +180,10 @@ Plug 'machakann/vim-sandwich'
 Plug 'terryma/vim-multiple-cursors'
 
 " Plug 'slashmili/alchemist.vim'
-" let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
-" let g:ale_completion_enabled = 1
+let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
+let g:ale_completion_enabled = 1
 Plug 'w0rp/ale'
-    " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
+    let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
     autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 
     let g:ale_completion_max_suggestions = 10
@@ -193,8 +193,8 @@ Plug 'w0rp/ale'
 
     let g:airline#extensions#ale#enabled = 1
     let g:ale_linters = {
-    \   'javascript': ['eslint'],
     \   'elixir': ['dialyxir', 'credo'],
+    \   'javascript': ['eslint'],
     \}
     let g:ale_fixers = {
     \   'javascript': ['eslint'],
@@ -216,18 +216,18 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
-"
-" " enable ncm2 for all buffers
-" autocmd BufEnter * :call ncm2#enable_for_buffer()
-" g:call ncm2#popup_limit 3
 
-" Use <TAB> to select the popup menu:
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"  " enable ncm2 for all buffers
+"  autocmd BufEnter * :call ncm2#enable_for_buffer()
+"  " let g:call ncm2#popup_limit 3
 
-" " IMPORTANTE: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
-"
+"  " Use <TAB> to select the popup menu:
+"  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"  " IMPORTANTE: :help Ncm2PopupOpen for more information
+"  set completeopt=noinsert,menuone,noselect
+
 " Plug 'ncm2/ncm2-match-highlight'
 " Plug 'ncm2/ncm2-bufword'
 " Plug 'ncm2/ncm2-tmux'
@@ -237,10 +237,7 @@ Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
   set completeopt-=preview
   set completeopt+=menuone,noselect
-  " let g:mucomplete#cycle_all = 1
-  " let g:mucomplete#completion_delay = 1
   let g:mucomplete#enable_auto_at_startup = 1
-  imap <expr> <right> mucomplete#extend_fwd("\<right>")
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
 
@@ -264,17 +261,14 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
   let NERDTreeDirArrows = 1
 Plug 'vimwiki/vimwiki'
 
-Plug 'justinmk/vim-sneak'
-    let g:sneak#label = 1
 Plug 'haya14busa/vim-signjk-motion'
   map <Leader>j <Plug>(signjk-j)
   map <Leader>k <Plug>(signjk-k)
   omap L <Plug>(textobj-signjk-lines)
   vmap L <Plug>(textobj-signjk-lines)
-Plug 'rhysd/clever-f.vim'
-    let g:clever_f_smart_case = 1
-    let g:clever_f_chars_match_any_signs = "?"
-Plug 'henrik/vim-indexed-search'                     " show number of search results
+Plug 'unblevable/quick-scope'
+  let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+Plug 'romainl/vim-cool'
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'ap/vim-css-color'                              " color css color codes
 "Plug 'clojure-vim/nvim-parinfer.js'
@@ -296,6 +290,7 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
 Plug 'junegunn/goyo.vim'                          " distraction free vim
 Plug 'junegunn/limelight.vim'
 " Plug 'chrisbra/Colorizer'
+Plug 'troydm/zoomwintab.vim'
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
@@ -352,6 +347,7 @@ source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
 " colorscheme dim
 " set notermguicolors
+set termguicolors
 colorscheme two-firewatch
 set background=dark
 " colorscheme cosme

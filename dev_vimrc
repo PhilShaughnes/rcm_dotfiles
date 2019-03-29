@@ -1,6 +1,11 @@
-set number relativenumber
+set number
+set tabstop=2             " tab spacing
+set softtabstop=2         " unify
+set shiftwidth=2          " indent/outdent by 2 columns
+set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab
 set smarttab
+filetype indent on
 set lazyredraw
 set hlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
@@ -20,6 +25,10 @@ set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra 
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
 
 "************"
 "** KEYMAP **"
@@ -53,6 +62,7 @@ vnoremap <Tab>   >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
 
+
 "*************"
 "*** PLUGS ***"
 "*************"
@@ -64,6 +74,15 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-sandwich'
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
+
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'wellle/targets.vim'
+
+Plug 'romainl/vim-cool'
+  let g:CoolTotalMatches = 1
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
