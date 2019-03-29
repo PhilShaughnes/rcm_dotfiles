@@ -84,7 +84,7 @@ nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
-nnoremap <CR> :set hls!<CR>
+nnoremap \ :set hls!<CR>
 " nnoremap , :nohlsearch<CR>
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
@@ -165,7 +165,7 @@ nnoremap <C-l> $
 
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
 " Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
     nnoremap <leader>g :Gstatus<CR>
@@ -174,10 +174,12 @@ Plug 'tpope/vim-commentary'                          "comment stuff out with gc 
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 Plug 'tpope/vim-repeat'
 
+Plug 'machakann/vim-sandwich'
+
 " Plug 'ervandew/supertab'                             " use tab for completion
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'slashmili/alchemist.vim'
+" Plug 'slashmili/alchemist.vim'
 " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
 " let g:ale_completion_enabled = 1
 Plug 'w0rp/ale'
@@ -241,12 +243,8 @@ Plug 'lifepillar/vim-mucomplete'
   imap <expr> <right> mucomplete#extend_fwd("\<right>")
 
 Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
-  nnoremap <A-h> xhP
-  nnoremap <A-l> xlp
-  nnoremap <A-e> xep
-  nnoremap <A-w> xwP
-  nnoremap <A-b> xbP
 
+Plug 'gcmt/wildfire.vim'                             " use enter to highlight next surrounding textobj
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
@@ -268,6 +266,11 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'justinmk/vim-sneak'
     let g:sneak#label = 1
+Plug 'haya14busa/vim-signjk-motion'
+  map <Leader>j <Plug>(signjk-j)
+  map <Leader>k <Plug>(signjk-k)
+  omap L <Plug>(textobj-signjk-lines)
+  vmap L <Plug>(textobj-signjk-lines)
 Plug 'rhysd/clever-f.vim'
     let g:clever_f_smart_case = 1
     let g:clever_f_chars_match_any_signs = "?"
@@ -281,6 +284,7 @@ Plug 'wellle/targets.vim'                            " add pairs, separators, ar
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'mileszs/ack.vim'
 " Plug 'oblitum/rainbow'
 "  let g:rainbow_active = 1
@@ -346,8 +350,9 @@ call plug#end()
 
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
-colorscheme dim
-set notermguicolors
+" colorscheme dim
+" set notermguicolors
+colorscheme two-firewatch
 set background=dark
 " colorscheme cosme
 
