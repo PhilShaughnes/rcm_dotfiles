@@ -269,6 +269,7 @@ Plug 'haya14busa/vim-signjk-motion'
 Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'romainl/vim-cool'
+  let g:CoolTotalMatches = 1
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'ap/vim-css-color'                              " color css color codes
 "Plug 'clojure-vim/nvim-parinfer.js'
