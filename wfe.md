@@ -33,7 +33,7 @@ Capa.class -> CapaDefinition
 
 loop {
   > registry.on(definition.instanceType).then(context -> definition)
-  registry.put(defintion.instanceType, instance)
+  registry.put(defintion.instanceType, definition)
 }
 registry.get(context.getType)
 

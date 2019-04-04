@@ -204,10 +204,10 @@ Plug 'w0rp/ale'
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 "
 " let g:LanguageClient_serverCommands = {
 "     \ 'elixir': ['/Users/phil/Documents/codes/elixir/elixir-ls/rel/language_server.sh'],
@@ -291,7 +291,6 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
 Plug 'junegunn/goyo.vim'                          " distraction free vim
 Plug 'junegunn/limelight.vim'
 " Plug 'chrisbra/Colorizer'
-Plug 'troydm/zoomwintab.vim'
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
@@ -336,6 +335,8 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'rakr/vim-two-firewatch'
 Plug 'beikome/cosme.vim'
+Plug 'yorickpeterse/happy_hacking.vim'
+Plug 'jacoborus/tender.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -347,11 +348,11 @@ call plug#end()
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
 " colorscheme dim
-" set notermguicolors
-set termguicolors
-colorscheme two-firewatch
+set notermguicolors
+" set termguicolors
+" colorscheme two-firewatch
 set background=dark
-" colorscheme cosme
+colorscheme happy_hacking
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
