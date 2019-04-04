@@ -175,6 +175,8 @@ Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 Plug 'tpope/vim-repeat'
 
 Plug 'machakann/vim-sandwich'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
 
 " Plug 'ervandew/supertab'                             " use tab for completion
 Plug 'terryma/vim-multiple-cursors'
