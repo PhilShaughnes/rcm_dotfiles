@@ -245,6 +245,9 @@ Plug 'matze/vim-move'                                " A-j and A-k move the sele
 
 Plug 'gcmt/wildfire.vim'                             " use enter to highlight next surrounding textobj
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
+Plug 'coderifous/textobj-word-column.vim'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-function'
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
