@@ -109,6 +109,9 @@ vnoremap <S-Tab> <<<Esc>gv
 vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
 nmap <leader>m :call system('tmux send-keys -t .+ "
 
+" highlight last inserted text
+nnoremap gV `[v`]
+
 " leader k to hook into documentation lookup (we will remap K below)
 noremap <leader>d K
 " H/L to go to beggining/end of line
@@ -180,7 +183,6 @@ Plug 'kana/vim-textobj-line'
 
 " Plug 'ervandew/supertab'                             " use tab for completion
 Plug 'terryma/vim-multiple-cursors'
-
 " Plug 'slashmili/alchemist.vim'
 let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
 let g:ale_completion_enabled = 1
@@ -352,12 +354,12 @@ call plug#end()
 
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
-" colorscheme dim
+colorscheme dim
 set notermguicolors
 " set termguicolors
 " colorscheme two-firewatch
 set background=dark
-colorscheme happy_hacking
+" colorscheme happy_hacking
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
