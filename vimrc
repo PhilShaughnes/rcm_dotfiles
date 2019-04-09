@@ -265,6 +265,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
   let NERDTreeMinimalUI = 1
   let NERDTreeDirArrows = 1
 Plug 'vimwiki/vimwiki'
+Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
 
 Plug 'haya14busa/vim-signjk-motion'
   map <Leader>j <Plug>(signjk-j)
@@ -276,16 +277,18 @@ Plug 'unblevable/quick-scope'
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
+Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
 "Plug 'clojure-vim/nvim-parinfer.js'
 Plug 'jiangmiao/auto-pairs'
+Plug 'alvan/vim-closetag'
 Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
                                                      " next (n) and last (l)
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'mileszs/ack.vim'
+Plug 'christoomey/vim-titlecase'
+Plug 'tpope/vim-abolish'
 " Plug 'oblitum/rainbow'
 "  let g:rainbow_active = 1
 Plug 'yuttie/comfortable-motion.vim'
@@ -353,11 +356,11 @@ call plug#end()
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
 " colorscheme dim
-set notermguicolors
-" set termguicolors
+" set notermguicolors
+set termguicolors
 " colorscheme two-firewatch
-set background=dark
-colorscheme happy_hacking
+" set background=dark
+colorscheme cosme
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
