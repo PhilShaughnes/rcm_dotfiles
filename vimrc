@@ -298,8 +298,8 @@ noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
-Plug 'junegunn/goyo.vim'                          " distraction free vim
-Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }                          " distraction free vim
+Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 " Plug 'chrisbra/Colorizer'
 
 Plug '/usr/local/opt/fzf'
@@ -346,7 +346,7 @@ Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'rakr/vim-two-firewatch'
 Plug 'beikome/cosme.vim'
 Plug 'yorickpeterse/happy_hacking.vim'
-Plug 'jacoborus/tender.vim'
+Plug 'junegunn/seoul256.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -362,7 +362,7 @@ source ~/dotfiles/nvim/airline_config.vim
 set termguicolors
 " colorscheme two-firewatch
 " set background=dark
-colorscheme cosme
+colorscheme nord
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
