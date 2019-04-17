@@ -99,6 +99,7 @@ nnoremap Q @q
 nmap j gj
 nmap k gk
 
+
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
 
@@ -120,10 +121,14 @@ nnoremap gV `[v`]
 noremap <leader>d K
 " H/L to go to beggining/end of line
 " J/K to go to above/below white space (paragraph)
-noremap K     {
-noremap J     }
+nnoremap K     {
+nnoremap J     }
 noremap H     ^
 noremap L     $
+
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " paste over highlighted text and retain copied text
 vnoremap <leader>p "_dP
@@ -247,13 +252,10 @@ Plug 'lifepillar/vim-mucomplete'
   set completeopt+=menuone,noselect
   let g:mucomplete#enable_auto_at_startup = 1
 
-Plug 'matze/vim-move'                                " A-j and A-k move the selection up and down
-
 Plug 'gcmt/wildfire.vim'                             " use enter to highlight next surrounding textobj
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-function'
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
@@ -287,7 +289,7 @@ Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
-Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
+" Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
                                                      " next (n) and last (l)
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
