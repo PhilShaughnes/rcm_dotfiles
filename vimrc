@@ -99,6 +99,10 @@ nnoremap Q @q
 nmap j gj
 nmap k gk
 
+" buffer switch
+nnoremap <leader>l :ls<CR>:b<space>
+
+
 " Tab and S-Tab indent in normal and visual mode
 nnoremap <Tab>   >>
 nnoremap <S-Tab> <<
@@ -255,7 +259,6 @@ Plug 'machakann/vim-swap'                            " use g< and g> and gs to s
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
 Plug 'kshenoy/vim-signature'
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
-" Plug 'craigemery/vim-autotag'                        " need to have run
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
@@ -281,7 +284,6 @@ Plug 'romainl/vim-cool'
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
-"Plug 'clojure-vim/nvim-parinfer.js'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
@@ -289,10 +291,8 @@ Plug 'wellle/targets.vim'                            " add pairs, separators, ar
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
-Plug 'christoomey/vim-titlecase'
-Plug 'tpope/vim-abolish'
-" Plug 'oblitum/rainbow'
-"  let g:rainbow_active = 1
+" Plug 'christoomey/vim-titlecase'
+" Plug 'tpope/vim-abolish'
 Plug 'yuttie/comfortable-motion.vim'
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
@@ -325,19 +325,8 @@ command! -bang -nargs=? -complete=dir Files
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
-" Plug 'liuchengxu/vim-which-key'
-"   let g:mapleader = "\<Space>"
-"   let g:maplocalleader = ','
-"   nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-"   nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-
-" Plug 'jelera/vim-javascript-syntax'
-" Plug 'joukevandermaas/vim-ember-hbs'
-" post install (yarn install | npm install) then load plugin only for editing supported files
-" Plug 'prettier/vim-prettier', {
-"   \ 'for': ['javascript', 'javascript.jsx', 'typescript', 'json', 'graphql'] }
-" let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.json,*.graphql, PrettierAsync
+" Plug 'ludovicchabant/vim-gutentags'
+  " g:gutentags_ctags_tagfile = '.git/tags'
 
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'croaker/mustang-vim'
@@ -363,8 +352,3 @@ set termguicolors
 " colorscheme two-firewatch
 " set background=dark
 colorscheme nord
-
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-
