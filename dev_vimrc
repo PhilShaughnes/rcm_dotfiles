@@ -19,6 +19,7 @@ set inccommand=nosplit
 set ruler
 set clipboard=unnamed     " use the system clipboard as default
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
+set shortmess=a
 
 :augroup numbertoggle
 :  autocmd!
@@ -51,6 +52,9 @@ let mapleader = "\<Space>"
 " Enter cancels search highlighting
 nnoremap \ :nohlsearch<CR>
 
+" buffer switch
+nnoremap <leader>l :ls<CR>:b<space>
+
 " visual up and down
 nmap j gj
 nmap k gk
@@ -64,6 +68,9 @@ vnoremap <S-Tab> <<<Esc>gv
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 "*************"
 "*** PLUGS ***"

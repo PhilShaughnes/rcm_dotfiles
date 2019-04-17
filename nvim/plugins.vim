@@ -5,6 +5,8 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-sandwich'
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
+Plug 'tpope/vim-endwise'
+
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-function'
