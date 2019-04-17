@@ -268,6 +268,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
   let NERDTreeDirArrows = 1
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
+Plug 'romainl/vim-devdocs'
 
 Plug 'haya14busa/vim-signjk-motion'
   map <Leader>j <Plug>(signjk-j)
