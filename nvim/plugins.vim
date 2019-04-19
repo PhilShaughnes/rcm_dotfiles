@@ -18,8 +18,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 
 Plug 'markonm/traces.vim'
-Plug 'romainl/vim-cool'
-  let g:CoolTotalMatches = 1
+" Plug 'romainl/vim-cool'
+"   let g:CoolTotalMatches = 1
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'

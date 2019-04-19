@@ -84,7 +84,7 @@ nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
-nnoremap \ :set hls!<CR>
+nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 " nnoremap , :nohlsearch<CR>
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
@@ -283,12 +283,14 @@ Plug 'haya14busa/vim-signjk-motion'
   vmap L <Plug>(textobj-signjk-lines)
 Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-Plug 'romainl/vim-cool'
-  let g:CoolTotalMatches = 1
+" Plug 'romainl/vim-cool'
+"   let g:CoolTotalMatches = 1
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'ternjs/tern_for_vim'
 Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
-Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 " Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
                                                      " next (n) and last (l)
