@@ -15,7 +15,7 @@ set autoread
 set noswapfile
 set nobackup
 set laststatus=0
-set inccommand=nosplit
+" set inccommand=nosplit  " can't use this with traces.vim
 set ruler
 set clipboard=unnamed     " use the system clipboard as default
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space

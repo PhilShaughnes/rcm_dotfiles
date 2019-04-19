@@ -252,6 +252,7 @@ Plug 'lifepillar/vim-mucomplete'
   set completeopt+=menuone,noselect
   let g:mucomplete#enable_auto_at_startup = 1
 
+Plug 'markonm/traces.vim'
 Plug 'gcmt/wildfire.vim'                             " use enter to highlight next surrounding textobj
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'coderifous/textobj-word-column.vim'
