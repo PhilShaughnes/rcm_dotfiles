@@ -49,8 +49,8 @@ nnoremap ' `
 nnoremap Y y$
 " Select your Leader key
 let mapleader = "\<Space>"
-" Enter cancels search highlighting
-nnoremap \ :nohlsearch<CR>
+" leader space cancels search highlighting
+nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
