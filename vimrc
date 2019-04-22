@@ -99,10 +99,8 @@ nnoremap Q @q
 nmap j gj
 nmap k gk
 
-
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
-
 
 " Tab and S-Tab indent in normal and visual mode
 nnoremap <Tab>   >>
@@ -111,8 +109,8 @@ vnoremap <Tab>   >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
 
-vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
-nmap <leader>m :call system('tmux send-keys -t .+ "
+" vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
+" nmap <leader>m :call system('tmux send-keys -t .+ "
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -136,7 +134,6 @@ vnoremap <leader>p "_dP
 nnoremap <leader>v "0p
 " leader w is kill buffer
 nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
-nnoremap <leader>s :w <CR>
 " leader q is quit (save?) - ZZ does this?
 " use ctrl motions to navigate in insert mode
 " inoremap <C-h> <left>
@@ -275,6 +272,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
 Plug 'romainl/vim-devdocs'
+Plug 'szw/vim-maximizer'
 
 Plug 'haya14busa/vim-signjk-motion'
   map <Leader>j <Plug>(signjk-j)
