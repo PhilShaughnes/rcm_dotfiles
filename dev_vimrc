@@ -20,6 +20,7 @@ set ruler
 set clipboard=unnamed     " use the system clipboard as default
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 set shortmess=a
+set omnifunc=syntaxcomplete#Complete
 
 :augroup numbertoggle
 :  autocmd!
@@ -35,11 +36,6 @@ endif
 "** KEYMAP **"
 "************"
 
-" leader k to hook into documentation lookup (we will remap K below)
-noremap <leader>k K
-" J/K to go to above/below white space (paragraph)
-noremap K     {
-noremap J     }
 noremap H     ^
 noremap L     $
 " make marks more better (go to column instead of line)
