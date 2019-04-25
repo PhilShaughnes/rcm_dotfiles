@@ -352,9 +352,9 @@ call plug#end()
 
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
-" colorscheme dim
-" set notermguicolors
-set termguicolors
+colorscheme dim
+set notermguicolors
+" set termguicolors
 " colorscheme two-firewatch
 " set background=dark
-colorscheme nord
+" colorscheme cosme
