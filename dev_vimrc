@@ -51,6 +51,10 @@ nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
 
+" move to next <++> and go to insert mode
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+
+
 " visual up and down
 nmap j gj
 nmap k gk

@@ -94,6 +94,8 @@ nmap <leader>O m`O<Esc>``
  " jj is escape
 inoremap jj <C-\><C-n>
 " inoremap <C-i> <C-\><C-n>
+
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 " Q runs default macro
 nnoremap Q @q
 " visual up and down
