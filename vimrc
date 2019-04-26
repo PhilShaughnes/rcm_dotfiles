@@ -119,8 +119,8 @@ nnoremap gV `[v`]
 noremap <leader>d K
 " H/L to go to beggining/end of line
 " J/K to go to above/below white space (paragraph)
-nnoremap K     {
-nnoremap J     }
+" nnoremap K     {
+" nnoremap J     }
 noremap H     ^
 noremap L     $
 
@@ -190,11 +190,11 @@ Plug 'kana/vim-textobj-line'
 " Plug 'ervandew/supertab'                             " use tab for completion
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'slashmili/alchemist.vim'
-let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
-let g:ale_completion_enabled = 1
+" let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
+" let g:ale_completion_enabled = 1
 Plug 'w0rp/ale'
-    let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
-    autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
+    " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
+    " autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 
     let g:ale_completion_max_suggestions = 10
     let g:ale_lint_on_text_changed = 'normal'
@@ -295,6 +295,8 @@ Plug 'alvan/vim-closetag'
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
+Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+Plug 'thinca/vim-ref'
 " Plug 'christoomey/vim-titlecase'
 " Plug 'tpope/vim-abolish'
 Plug 'yuttie/comfortable-motion.vim'
