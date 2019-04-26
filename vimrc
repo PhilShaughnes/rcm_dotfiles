@@ -95,7 +95,7 @@ nmap <leader>O m`O<Esc>``
 inoremap jj <C-\><C-n>
 " inoremap <C-i> <C-\><C-n>
 
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 " Q runs default macro
 nnoremap Q @q
 " visual up and down
@@ -358,9 +358,8 @@ call plug#end()
 
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
-colorscheme dim
 set notermguicolors
 " set termguicolors
 " colorscheme two-firewatch
-" set background=dark
-" colorscheme cosme
+set background=dark
+colorscheme dim
