@@ -35,7 +35,7 @@ endif
 "************"
 "** KEYMAP **"
 "************"
-
+" easier beginning and end of line
 noremap H     ^
 noremap L     $
 " make marks more better (go to column instead of line)
@@ -52,7 +52,7 @@ nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 nnoremap <leader>l :ls<CR>:b<space>
 
 " move to next <++> and go to insert mode
-inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 
 
 " visual up and down
@@ -97,4 +97,4 @@ call plug#end()
 
 set termguicolors
 set background=dark
-colorscheme two-firewatch
+colorscheme dim

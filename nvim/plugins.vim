@@ -2,22 +2,22 @@
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'rakr/vim-two-firewatch'
 
-Plug 'sheerun/vim-polyglot'
-Plug 'machakann/vim-sandwich'
-Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
-Plug 'tpope/vim-endwise'
-
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-entire'
 Plug 'michaeljsmith/vim-indent-object'
 
+Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-endwise'
+Plug 'markonm/traces.vim'
+
+Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
+Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 
-Plug 'markonm/traces.vim'
 " Plug 'romainl/vim-cool'
 "   let g:CoolTotalMatches = 1
 
