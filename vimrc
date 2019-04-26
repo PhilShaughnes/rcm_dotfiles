@@ -40,6 +40,7 @@ set autoread              " reload the file if it changed
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
+set omnifunc=syntaxcomplete#Complete
 " set colorcolumn=100
 " save ov focus lost
 :au FocusLost * silent! wa
@@ -93,6 +94,8 @@ nmap <leader>O m`O<Esc>``
  " jj is escape
 inoremap jj <C-\><C-n>
 " inoremap <C-i> <C-\><C-n>
+
+inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 " Q runs default macro
 nnoremap Q @q
 " visual up and down
@@ -250,7 +253,9 @@ Plug 'lifepillar/vim-mucomplete'
   let g:mucomplete#enable_auto_at_startup = 1
 
 Plug 'markonm/traces.vim'
-Plug 'gcmt/wildfire.vim'                             " use enter to highlight next surrounding textobj
+" Plug 'terryma/vim-expand-region'                             " use enter to highlight next surrounding textobj
+  " vmap v <Plug>(expand_region_expand)
+  " vmap V <Plug>(expand_region_shrink)
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'kana/vim-textobj-entire'
@@ -292,6 +297,7 @@ Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'alvan/vim-closetag'
 " Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
                                                      " next (n) and last (l)
+
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -352,9 +358,9 @@ call plug#end()
 
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
-" colorscheme dim
-" set notermguicolors
-set termguicolors
+colorscheme dim
+set notermguicolors
+" set termguicolors
 " colorscheme two-firewatch
 " set background=dark
-colorscheme nord
+" colorscheme cosme
