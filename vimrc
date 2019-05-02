@@ -59,6 +59,7 @@ let g:jsx_ext_required = 0
 " use ripgrep to search
 if executable('rg')
   let g:ackprg = 'rg --vimgrep'
+  let g:grepprg = 'rg --vimgrep'
 endif
 
 " allows cursor change in tmux mode
@@ -145,6 +146,8 @@ nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 " inoremap <C-k> <up>
 " nnoremap <ESC> i
 
+tnoremap jj <C-\><C-n>
+
 " tab (next) and shift-tab (prev) to cycle buffer
 map <leader><Tab> :bn<CR>
 map <leader><S-Tab> :bp<CR>
@@ -157,6 +160,7 @@ map <C-k> :cp<CR>
 set splitbelow
 set splitright
 nnoremap <bs> <C-W>w
+noremap <C-q> <C-w>w
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -246,11 +250,14 @@ Plug 'w0rp/ale'
 " Plug 'ncm2/ncm2-tmux'
 " Plug 'ncm2/ncm2-path'
 
-Plug 'lifepillar/vim-mucomplete'
-  set shortmess+=c
-  set completeopt-=preview
-  set completeopt+=menuone,noselect
-  let g:mucomplete#enable_auto_at_startup = 1
+" Plug 'lifepillar/vim-mucomplete'
+"   set shortmess+=c
+"   set completeopt-=preview
+"   set completeopt+=menuone,noselect
+"   let g:mucomplete#enable_auto_at_startup = 1
+"
+
+Plug 'ajh17/VimCompletesMe'
 
 Plug 'markonm/traces.vim'
 " Plug 'terryma/vim-expand-region'                             " use enter to highlight next surrounding textobj
@@ -278,6 +285,11 @@ Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
 Plug 'romainl/vim-devdocs'
 Plug 'szw/vim-maximizer'
+  noremap <silent><C-w>z :MaximizerToggle<CR>
+  nnoremap <silent><C-w>z :MaximizerToggle<CR>
+  vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
+  inoremap <silent><C-w>z <C-o>:MaximizerToggle<CR>
+Plug 'dhruvasagar/vim-zoom'
 
 Plug 'haya14busa/vim-signjk-motion'
   map <Leader>j <Plug>(signjk-j)
@@ -286,6 +298,7 @@ Plug 'haya14busa/vim-signjk-motion'
   vmap L <Plug>(textobj-signjk-lines)
 Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+Plug 'henrik/vim-indexed-search'
 " Plug 'romainl/vim-cool'
 "   let g:CoolTotalMatches = 1
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
@@ -301,7 +314,7 @@ Plug 'alvan/vim-closetag'
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
-Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+" Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 " Plug 'thinca/vim-ref'
 " Plug 'christoomey/vim-titlecase'
 " Plug 'tpope/vim-abolish'
@@ -355,7 +368,6 @@ call plug#end()
 
 "}}}
 "
-
 source ~/dotfiles/nvim/airline_config.vim
 " source ~/dotfiles/nvim/theme.vim
 set notermguicolors
@@ -363,3 +375,5 @@ set notermguicolors
 " colorscheme two-firewatch
 set background=dark
 colorscheme dim
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE

@@ -72,6 +72,9 @@ nnoremap gV `[v`]
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+"cycle splits
+nnoremap <C-x> <C-w>w
+
 "*************"
 "*** PLUGS ***"
 "*************"
@@ -95,6 +98,10 @@ call plug#end()
 "*** THEME ***"
 "*************"
 
-set termguicolors
+set notermguicolors
 set background=dark
 colorscheme dim
+
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE
+
