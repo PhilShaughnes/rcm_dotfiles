@@ -302,7 +302,7 @@ Plug 'kana/vim-niceblock'                            " make A and I work for all
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
-Plug 'thinca/vim-ref'
+" Plug 'thinca/vim-ref'
 " Plug 'christoomey/vim-titlecase'
 " Plug 'tpope/vim-abolish'
 Plug 'yuttie/comfortable-motion.vim'
