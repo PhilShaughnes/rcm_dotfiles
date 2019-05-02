@@ -283,7 +283,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
   let NERDTreeDirArrows = 1
 Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
-Plug 'romainl/vim-devdocs'
+Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
 Plug 'szw/vim-maximizer'
   noremap <silent><C-w>z :MaximizerToggle<CR>
   nnoremap <silent><C-w>z :MaximizerToggle<CR>
@@ -298,6 +298,10 @@ Plug 'haya14busa/vim-signjk-motion'
   vmap L <Plug>(textobj-signjk-lines)
 Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" Plug 'justinmk/vim-sneak'
+"   let g:sneak#label = 0
+"   map gs <Plug>Sneak_s
+"   map gS <Plug>Sneak_S
 Plug 'henrik/vim-indexed-search'
 " Plug 'romainl/vim-cool'
 "   let g:CoolTotalMatches = 1
