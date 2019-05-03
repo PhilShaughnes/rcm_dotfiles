@@ -315,6 +315,7 @@ Plug 'alvan/vim-closetag'
 " Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
                                                      " next (n) and last (l)
 
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -361,10 +362,10 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'croaker/mustang-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'noahfrederick/vim-noctu'
 Plug 'rakr/vim-two-firewatch'
 Plug 'beikome/cosme.vim'
-Plug 'yorickpeterse/happy_hacking.vim'
-Plug 'junegunn/seoul256.vim'
+Plug 'wolverian/minimal'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -373,11 +374,12 @@ call plug#end()
 "}}}
 "
 source ~/dotfiles/nvim/airline_config.vim
+AirlineTheme distinguished
 " source ~/dotfiles/nvim/theme.vim
 set notermguicolors
 " set termguicolors
-" colorscheme two-firewatch
+" colorscheme mustang
 set background=dark
-colorscheme dim
+colorscheme noctu
 set fillchars+=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
