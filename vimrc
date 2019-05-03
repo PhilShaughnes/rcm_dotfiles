@@ -374,7 +374,7 @@ call plug#end()
 "}}}
 "
 source ~/dotfiles/nvim/airline_config.vim
-AirlineTheme distinguished
+let g:airline_theme='distinguished'
 " source ~/dotfiles/nvim/theme.vim
 set notermguicolors
 " set termguicolors
