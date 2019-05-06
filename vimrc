@@ -203,14 +203,14 @@ Plug 'w0rp/ale'
     " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
     " autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 
-    let g:ale_completion_max_suggestions = 10
+    " let g:ale_completion_max_suggestions = 10
     let g:ale_lint_on_text_changed = 'normal'
     let g:ale_lint_on_enter = 0
     let g:ale_lint_on_save = 1
 
     let g:airline#extensions#ale#enabled = 1
     let g:ale_linters = {
-    \   'elixir': ['dialyxir', 'credo'],
+    \   'elixir': ['dialyxir', 'credo', 'mix'],
     \   'javascript': ['eslint'],
     \}
     let g:ale_fixers = {
