@@ -55,6 +55,7 @@ set nobackup
 
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 let g:jsx_ext_required = 0
+let g:netrw_liststyle = 3
 
 " use ripgrep to search
 if executable('rg')
@@ -152,6 +153,12 @@ tnoremap jj <C-\><C-n>
 map <leader><Tab> :bn<CR>
 map <leader><S-Tab> :bp<CR>
 
+" buffer switch
+nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <leader>p :b#<CR>
+nnoremap <leader>n :bn<CR>
+
+
 " ctrl j and k to move in quickfix windows
 map <C-j> :cn<CR>
 map <C-k> :cp<CR>
@@ -163,8 +170,8 @@ nnoremap <bs> <C-W>w
 noremap <C-q> <C-w>w
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>ve :e $MYVIMRC<CR>
+nmap <silent> <leader>vs :so $MYVIMRC<CR>
 
 imap <C-\> ✓✗
 
@@ -273,9 +280,10 @@ Plug 'kshenoy/vim-signature'
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
+Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
-  noremap <leader>n :NERDTreeToggle<CR>
+  noremap <leader>s :NERDTreeToggle<CR>
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   let NERDTreeQuitOnOpen = 1
   let NERDTreeAutoDeleteBuffer = 1

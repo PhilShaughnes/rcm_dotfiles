@@ -1,5 +1,6 @@
 
 Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'noahfrederick/vim-noctu'
 Plug 'rakr/vim-two-firewatch'
 
 Plug 'kana/vim-textobj-user'
