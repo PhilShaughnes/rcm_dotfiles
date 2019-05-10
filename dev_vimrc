@@ -50,6 +50,11 @@ nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <leader>p :b#<CR>
+nnoremap <leader>n :bn<CR>
+
+" netrw
+let g:netrw_liststyle = 3
 
 " move to next <++> and go to insert mode
 inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
@@ -100,7 +105,7 @@ call plug#end()
 
 set notermguicolors
 set background=dark
-colorscheme dim
+colorscheme noctu
 
 set fillchars+=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
