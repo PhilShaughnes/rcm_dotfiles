@@ -41,6 +41,10 @@ noremap L     $
 " make marks more better (go to column instead of line)
 nnoremap ' `
 
+" <C-e/E> work like e/E but in insert mode
+inoremap <C-e> <C-o>e
+inoremap <C-E> <C-o>E
+
 " Y goes to end of line
 nnoremap Y y$
 " Select your Leader key
