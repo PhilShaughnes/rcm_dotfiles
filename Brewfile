@@ -1,5 +1,20 @@
+tap 'Homebrew/bundle'
+
 cask_args appdir: "/Applications"
 tap "homebrew/cask"
+
+# cask apps
+# cask "postman"
+# cask "visual-studio-code"
+# cask "nvalt"
+# cask "iterm2"
+# cask "vox"
+# cask "vanilla"
+# cask "karabiner"
+# cask "ngrok"
+#
+# cask "intellij-idea-ce"
+# cask "eclipse-ide"
 
 # fonts
 tap "caskroom/fonts"
@@ -16,7 +31,12 @@ brew "bash-completion"
 brew "ctags"
 brew "dfu-util"
 brew "cowsay"
+brew "cmatrix"
+brew "sl"
+brew "bat"
+brew "tree"
 brew "fzf"
+brew "zsh-completions"
 brew "zsh"
 brew "ranger"
 brew "tmux"
@@ -29,8 +49,16 @@ brew "git"
 brew "htop"
 brew "gotop"
 brew "jq"
+brew "wget"
+brew "youtube-dl"
+brew "tokei"
+brew "noti"
+brew "entr"
+brew "devd"
+# brew "just"
 
-brew "asdf"
+
+
 # asdf dependencies - todo: do I need these?
 # brew "coreutils"
 # brew "automake"
@@ -41,6 +69,7 @@ brew "asdf"
 # brew "libxslt"
 # brew "libtool"
 # brew "unixodbc"
+brew "asdf"
 
 brew "mas" # Apple App Store integration
 # amphetamine, 
@@ -50,8 +79,13 @@ brew "mas" # Apple App Store integration
 # lastpass,
 # vlc,
 # iterm2,
-# karibiner,
+# karabiner,
 # pocket,
 # postico,
 # skype,
 # Be focused,
+#
+# p4merge
+# nvalt
+# vox
+# vanilla
