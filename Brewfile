@@ -4,14 +4,18 @@ cask_args appdir: "/Applications"
 tap "homebrew/cask"
 
 # cask apps
+# cask "iterm2"
+# cask "vanilla"
+cask "ngrok"
+cask "dropbox"
 # cask "postman"
 # cask "visual-studio-code"
 # cask "nvalt"
-# cask "iterm2"
 # cask "vox"
-# cask "vanilla"
 # cask "karabiner"
-# cask "ngrok"
+# cask "google-chrome"
+# cask "slack"
+# cask "vlc"
 #
 # cask "intellij-idea-ce"
 # cask "eclipse-ide"
@@ -28,6 +32,7 @@ brew "rcm"
 
 brew "bash"
 brew "bash-completion"
+brew "dash"
 brew "ctags"
 brew "dfu-util"
 brew "cowsay"
@@ -56,6 +61,7 @@ brew "noti"
 brew "entr"
 brew "devd"
 # brew "just"
+# brew "pgcli"
 
 
 
@@ -72,20 +78,18 @@ brew "devd"
 brew "asdf"
 
 brew "mas" # Apple App Store integration
-# amphetamine, 
-# slack, 
+mas "amphetamine", id: 937984704
+mas "Be Focused", id: 973134470
+mas "LastPass", id: 926036361
+# slack,
 # chrome,
 # vs code/atom,
-# lastpass,
 # vlc,
-# iterm2,
 # karabiner,
 # pocket,
 # postico,
 # skype,
-# Be focused,
 #
 # p4merge
 # nvalt
 # vox
-# vanilla
