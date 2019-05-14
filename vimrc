@@ -117,8 +117,7 @@ vnoremap <S-Tab> <<<Esc>gv
 " vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
 " nmap <leader>m :call system('tmux send-keys -t .+ "
 
-" <C-e/E> work like e/E but in insert mode
-inoremap <C-e> <ESC>ea
+" <C-e/E> work like E but in insert mode
 inoremap <C-E> <ESC>Ea
 
 " highlight last inserted text
