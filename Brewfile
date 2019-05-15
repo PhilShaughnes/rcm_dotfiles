@@ -4,8 +4,8 @@ cask_args appdir: "/Applications"
 tap "homebrew/cask"
 
 # cask apps
-# cask "iterm2"
-# cask "vanilla"
+cask "iterm2"
+cask "vanilla"
 cask "ngrok"
 cask "dropbox"
 # cask "postman"
@@ -32,34 +32,34 @@ brew "rcm"
 
 brew "bash"
 brew "bash-completion"
-brew "dash"
-brew "ctags"
-brew "dfu-util"
+brew "dash" # faster bash for scripting
+# brew "ctags"
+brew "dfu-util" # for keyboard
 brew "cowsay"
-brew "cmatrix"
-brew "sl"
-brew "bat"
-brew "tree"
-brew "fzf"
+brew "cmatrix" # the matrix
+brew "sl" # a train
+brew "bat" # cat, but with syntax highlights
+brew "tree" # ls, but as a tree
+brew "fzf" # fuzzy search
 brew "zsh-completions"
 brew "zsh"
-brew "ranger"
+brew "ranger" # file browser
 brew "tmux"
 brew "wifi-password"
-brew "ripgrep"
-brew "reattach-to-user-namespace"
+brew "ripgrep" # super fast txt file search
+brew "reattach-to-user-namespace" # for tmux
 brew "neovim"
-brew "mosh"
+brew "mosh" # better ssh
 brew "git"
 brew "htop"
 brew "gotop"
-brew "jq"
+brew "jq"  # json format (json | jq .)
 brew "wget"
 brew "youtube-dl"
-brew "tokei"
-brew "noti"
-brew "entr"
-brew "devd"
+brew "tokei" # statitics on codebase
+brew "noti"  # push cli results to notification
+brew "entr"  # autorun stuff on changes
+brew "devd"  # local webserver with live reload (devd -ol .)
 # brew "just"
 # brew "pgcli"
 
