@@ -45,6 +45,14 @@ set omnifunc=syntaxcomplete#Complete
 " save ov focus lost
 :au FocusLost * silent! wa
 
+autocmd BufEnter term://* startinsert
+:augroup TermOpen
+  autocmd!
+  autocmd TermOpen * setlocal nonumber norelativenumber
+:augroup END
+
+
+
 set linespace=5
 set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
@@ -118,7 +126,7 @@ vnoremap <S-Tab> <<<Esc>gv
 " nmap <leader>m :call system('tmux send-keys -t .+ "
 
 " <C-e/E> work like E but in insert mode
-inoremap <C-E> <ESC>Ea
+inoremap <C-e> <ESC>ea
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -151,6 +159,9 @@ nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 " nnoremap <ESC> i
 
 tnoremap jj <C-\><C-n>
+" terminal - go to nermal mode
+tnoremap <Esc><Esc> <C-\><C-n>
+
 
 " tab (next) and shift-tab (prev) to cycle buffer
 map <leader><Tab> :bn<CR>
@@ -342,6 +353,7 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }                          " distraction free vim
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 " Plug 'chrisbra/Colorizer'
+" If you have nodejs and yarn
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
