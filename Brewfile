@@ -66,15 +66,17 @@ brew "devd"  # local webserver with live reload (devd -ol .)
 
 
 # asdf dependencies - todo: do I need these?
-# brew "coreutils"
-# brew "automake"
-# brew "autoconf"
-# brew "openssl"
-# brew "libyaml"
-# brew "readline"
-# brew "libxslt"
-# brew "libtool"
-# brew "unixodbc"
+brew "coreutils"
+brew "automake"
+brew "autoconf"
+brew "openssl"
+brew "libyaml"
+brew "readline"
+brew "libxslt"
+brew "libtool"
+brew "unixodbc"
+brew "unzip"
+brew "curl"
 brew "asdf"
 
 brew "mas" # Apple App Store integration

@@ -42,7 +42,7 @@ noremap L     $
 nnoremap ' `
 
 " <C-e/E> work like E but in insert mode
-inoremap <C-E> <esc>Ea
+inoremap <C-e> <esc>ea
 
 " Y goes to end of line
 nnoremap Y y$
@@ -81,7 +81,10 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 "cycle splits
-nnoremap <C-x> <C-w>w
+nnoremap <C-q> <C-w>w
+
+" terminal - go to nermal mode
+tnoremap <Esc><Esc> <C-\><C-n>
 
 "*************"
 "*** PLUGS ***"
