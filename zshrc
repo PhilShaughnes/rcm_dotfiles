@@ -71,7 +71,7 @@ if ! zgen saved; then
   zgen load sindresorhus/pure
 
   zgen load zsh-users/zsh-syntax-highlighting
-s zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-history-substring-search
 
   zgen load kiurchv/asdf.plugin.zsh
