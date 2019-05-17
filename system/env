@@ -1,5 +1,4 @@
 #!/bin/bash
-export PATH="/Users/Phil/.local/bin:/Users/phil/dotfiles/bin:$PATH"
 if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
 fi
@@ -11,3 +10,5 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
+
+export PATH="$HOME/.local/bin:$DOTFILES/bin:$PATH"

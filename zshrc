@@ -18,7 +18,7 @@ bindkey '^x^e' edit-command-line
 
 # SETTINGS
 autoload -Uz compinit add-zsh-hook
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
   compinit
 else
   compinit -C
@@ -58,7 +58,7 @@ MAGIC_ENTER_GIT_COMMAND='git status -s; echo'
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
 #PACKAGES
-# You can customize where you put it but it's generally recommended that you put in $HOME/.zplug
+# You can customize where you put it but it's generally recommended that you put in $HOME/.zgen
 if [[ ! -d ~/.zgen ]];then
     git clone https://github.com/tarjoilija/zgen.git ~/.zgen
 fi
