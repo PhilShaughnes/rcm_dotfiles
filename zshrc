@@ -6,7 +6,6 @@ source ~/dotfiles/system/aliases
 source ~/dotfiles/system/functions
 source ~/dotfiles/system/env
 
-
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
 # Emacs style
@@ -53,6 +52,8 @@ alias gs='nocorrect git status'
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
+MAGIC_ENTER_GIT_COMMAND='git status -s; echo'
+
 #LOCAL - pull in local settings
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
@@ -65,6 +66,9 @@ source ~/.zgen/zgen.zsh
 
 # if the init script doesn't exist
 if ! zgen saved; then
+
+  zgen oh-my-zsh
+  zgen oh-my-zsh plugins/magic-enter
 
   # specify plugins here
   zgen load mafredri/zsh-async
