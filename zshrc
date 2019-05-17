@@ -2,9 +2,9 @@
 # zmodload zsh/zprof
 export ZSH=$DOTFILES/zsh
 
-source ~/dotfiles/system/aliases
-source ~/dotfiles/system/functions
-source ~/dotfiles/system/env
+source $HOME/.env
+source $DOTFILES/system/aliases
+source $DOTFILES/system/functions
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line

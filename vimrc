@@ -396,9 +396,9 @@ call plug#end()
 
 "}}}
 "
-source ~/dotfiles/nvim/airline_config.vim
+source $DOTFILES/nvim/airline_config.vim
 let g:airline_theme='angr'
-" source ~/dotfiles/nvim/theme.vim
+" source $DOTFILES/nvim/theme.vim
 set notermguicolors
 " set termguicolors
 " colorscheme mustang

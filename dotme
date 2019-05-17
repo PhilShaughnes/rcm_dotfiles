@@ -46,7 +46,7 @@ echo "setting custom mac settings"
 echo "linking dotfiles"
 rcup -v
 echo "brewing..."
-(cd ~/dotfiles && brew bundle)
+(cd ~/.dotfiles && brew bundle)
 
 echo "Ready to go!"
 # echo "You may want to to setup auto-install of asdf plugins"

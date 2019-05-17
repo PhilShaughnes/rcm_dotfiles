@@ -1,18 +1,19 @@
 #! /bin/bash
 set -o vi
 
+. $HOME/.env
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-if [ -f ~/dotfiles/bash/sensible.bash ]; then
-   source ~/dotfiles/bash/sensible.bash
+if [ -f $DOTFILES/bash/sensible.bash ]; then
+   source $DOTFILES/bash/sensible.bash
 fi
 
 
-source ~/dotfiles/bash/bash_prompt.bash
+source $DOTFILES/bash/bash_prompt.bash
 
-source ~/dotfiles/system/aliases
-source ~/dotfiles/system/functions
-source ~/dotfiles/system/env
+source $DOTFILES/system/aliases
+source $DOTFILES/system/functions
 
 bind "set completion-ignore-case on"
 bind 'set show-all-if-ambiguous on'

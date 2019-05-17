@@ -1,4 +1,4 @@
-DOTFILES_DIRS="$HOME/dotfiles"
+DOTFILES_DIRS="$HOME/.dotfiles $HOME/dotfiles"
 EXCLUDES="Brewfile bash kak other system README.md dotme nvim zsh"
 COPY_ALWAYS="rcrc"
 UNDOTTED="bin"
