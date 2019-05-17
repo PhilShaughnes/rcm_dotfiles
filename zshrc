@@ -17,12 +17,6 @@ bindkey '^x^e' edit-command-line
 #RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
 
 # SETTINGS
-autoload -Uz compinit add-zsh-hook
-if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
@@ -56,6 +50,13 @@ MAGIC_ENTER_GIT_COMMAND='git status -s; echo'
 
 #LOCAL - pull in local settings
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
+
+autoload -Uz compinit add-zsh-hook
+if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zgen
