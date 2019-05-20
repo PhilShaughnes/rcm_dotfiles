@@ -271,14 +271,14 @@ Plug 'w0rp/ale'
 " Plug 'ncm2/ncm2-tmux'
 " Plug 'ncm2/ncm2-path'
 
-" Plug 'lifepillar/vim-mucomplete'
-"   set shortmess+=c
-"   set completeopt-=preview
-"   set completeopt+=menuone,noselect
-"   let g:mucomplete#enable_auto_at_startup = 1
+Plug 'lifepillar/vim-mucomplete'
+  set shortmess+=c
+  set completeopt-=preview
+  set completeopt+=menuone,noselect
+  let g:mucomplete#enable_auto_at_startup = 1
 "
 
-Plug 'ajh17/VimCompletesMe'
+" Plug 'ajh17/VimCompletesMe'
 
 Plug 'markonm/traces.vim'
 " Plug 'terryma/vim-expand-region'                             " use enter to highlight next surrounding textobj
