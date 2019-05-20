@@ -12,7 +12,7 @@ Much of my setup is still manual - this is a work in progress.
 4) run `./dotme`
 
 ### setup git
-Git is available [here](httls://git-scm.com).
+Git is available [here](https://git-scm.com).
 Alternatively, it can be installed via brew.
 
 NOTE that this script sets up brew for you, so you can get into a chicken-egg
