@@ -203,7 +203,7 @@ nnoremap <C-l> $
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
 " Plug 'tpope/vim-sensible'
 " Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
+Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
     nnoremap <leader>g :Gstatus<CR>
 Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delete, :Mkdir, :Move, :Rename, :Unlink
