@@ -49,6 +49,7 @@ alias gs='nocorrect git status'
 MAGIC_ENTER_GIT_COMMAND='git status -s; echo'
 
 #LOCAL - pull in local settings
+# example: hash -d code="$HOME/code"
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
 autoload -Uz compinit add-zsh-hook

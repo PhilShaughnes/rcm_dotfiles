@@ -30,8 +30,16 @@ tm() {
 
 # fbr - checkout git branch
 fbr() {
-  local branches branch
-  branches=$(git branch -vv) &&
+  local branches branch cmd="vv"
+
+  while getopts "a" OPTION
+  do
+    case $OPTION in
+      a) cmd="vva" ;;
+    esac
+  done
+
+  branches=$(git branch -$cmd) &&
   branch=$(echo "$branches" | fzf +m --height 25% --reverse) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
