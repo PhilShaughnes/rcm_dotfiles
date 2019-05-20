@@ -7,6 +7,15 @@
 #   echo "XCode is installed"
 # fi
 
+
+
+# assume we are in the dotfiles directory
+echo "NOTE: we are assuming this is being run from the dotfiles directory.\n
+if it is not, this will fail, since we have no way of knowing where it is yet."
+
+source env
+
+
 declare xcode_select_installed=`xcode-select --install 2>&1 | grep "command line tools are already installed"`
 if [ -z "$xcode_select_installed" ]; then
   echo "Installing xcode-select"
@@ -41,12 +50,18 @@ fi
 
 # mac settings
 echo "setting custom mac settings"
-(cd ~/dotfiles && . ./other/mac_settings.sh)
+# assume we are in the correct directory...
+# (cd $DOTFILES && . ./other/mac_settings.sh)
+source ./other/mac_settings.sh
+
+echo "brewing..."
+# assume we are in the correct directory...
+# (cd $DOTFILES && brew bundle)
+brew bundle
 
 echo "linking dotfiles"
+export RCRC='$DOTFILES/rcrc'
 rcup -v
-echo "brewing..."
-(cd ~/.dotfiles && brew bundle)
 
 echo "Ready to go!"
 # echo "You may want to to setup auto-install of asdf plugins"

@@ -3,9 +3,18 @@ if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
 fi
 
+if [ -d "$HOME/dotfiles" ] ; then
+  export DOTFILES=$HOME/dotfiles
+elif [ -d "$HOME/.dotfiles" ] ; then
+  export DOTFILES=$HOME/.dotfiles
+else
+  echo "UH-OH! No dotfiles directory found!"
+fi
+
+
+
 export EDITOR=nvim
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --glob "!.git/*"'
-export DOTFILES=$HOME/.dotfiles
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export CLICOLOR=1
