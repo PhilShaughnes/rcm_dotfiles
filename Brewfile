@@ -85,15 +85,13 @@ brew "mas" # Apple App Store integration
 mas "amphetamine", id: 937984704
 mas "Be Focused", id: 973134470
 mas "LastPass", id: 926036361
+mas "VOX", id: 461369673
 # slack,
 # chrome,
 # vs code/atom,
 # vlc,
-# karabiner,
-# pocket,
 # postico,
 # skype,
 #
 # p4merge
 # nvalt
-# vox

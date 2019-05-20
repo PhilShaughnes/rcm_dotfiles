@@ -22,3 +22,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 homebrew=/usr/local/bin:/usr/local/sbin
 export PATH="$HOME/.local/bin:$DOTFILES/bin:$homebrew:$PATH"
+
+if [ -d "$HOME/.env.local" ] ; then
+  source $HOME/.env.local
+fi
