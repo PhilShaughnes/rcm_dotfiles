@@ -61,6 +61,7 @@ brew "tokei" # statitics on codebase
 brew "noti"  # push cli results to notification
 brew "entr"  # autorun stuff on changes
 brew "devd"  # local webserver with live reload (devd -ol .)
+brew "wrk"   # http benchmarking and load tool
 # brew "just"
 # brew "pgcli"
 
