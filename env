@@ -11,4 +11,4 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-export PATH="$HOME/.local/bin:$DOTFILES/bin:$PATH"
+export PATH="$HOME/.local/bin:$DOTFILES/bin:/usr/local/sbin:$PATH"
