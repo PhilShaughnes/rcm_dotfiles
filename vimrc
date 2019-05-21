@@ -275,8 +275,8 @@ Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
   set completeopt-=preview
   set completeopt+=menuone,noselect
-  let g:mucomplete#enable_auto_at_startup = 1
-"
+  " let g:mucomplete#enable_auto_at_startup = 1
+
 
 " Plug 'ajh17/VimCompletesMe'
 
@@ -303,14 +303,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
   let NERDTreeAutoDeleteBuffer = 1
   let NERDTreeMinimalUI = 1
   let NERDTreeDirArrows = 1
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
 Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
-Plug 'szw/vim-maximizer'
-  noremap <silent><C-w>z :MaximizerToggle<CR>
-  nnoremap <silent><C-w>z :MaximizerToggle<CR>
-  vnoremap <silent><C-w>z :MaximizerToggle<CR>gv
-  inoremap <silent><C-w>z <C-o>:MaximizerToggle<CR>
 Plug 'dhruvasagar/vim-zoom'
 
 Plug 'haya14busa/vim-signjk-motion'
@@ -325,8 +320,8 @@ Plug 'unblevable/quick-scope'
 "   map gs <Plug>Sneak_s
 "   map gS <Plug>Sneak_S
 Plug 'henrik/vim-indexed-search'
-" Plug 'romainl/vim-cool'
-"   let g:CoolTotalMatches = 1
+Plug 'romainl/vim-cool'
+  let g:CoolTotalMatches = 1
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'jiangmiao/auto-pairs'
 
@@ -392,6 +387,10 @@ Plug 'wolverian/minimal'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ }
 call plug#end()
 
 "}}}

@@ -15,6 +15,8 @@ Much of my setup is still manual - this is a work in progress.
 Git is available [here](https://git-scm.com).
 Alternatively, it can be installed via brew.
 
+_italics_ __bold__ 
+
 NOTE that this script sets up brew for you, so you can get into a chicken-egg
 situation if you want to clone this repo.
 
