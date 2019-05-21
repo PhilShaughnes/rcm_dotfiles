@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env dash
 
 if [[ -z "$1" ]]; then
     echo "ELIXIR DOCS USAGE: $(basename $0) [name]"
