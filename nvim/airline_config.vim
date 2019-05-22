@@ -28,16 +28,16 @@ let g:airline_mode_map = {
     \ '' : 'S',
     \ }
 
-let g:lightline.mode_map = {
-		    \ 'n' : 'N',
-		    \ 'i' : 'I',
-		    \ 'R' : 'R',
-		    \ 'v' : 'V',
-		    \ 'V' : 'V-LINE',
-		    \ "\<C-v>": 'V-BLOCK',
-		    \ 'c' : 'C',
-		    \ 's' : 'S',
-		    \ 'S' : 'S-LINE',
-		    \ "\<C-s>": 'S-BLOCK',
-		    \ 't': 'T',
-		    \ }
+" let g:lightline.mode_map = {
+" 		    \ 'n' : 'N',
+" 		    \ 'i' : 'I',
+" 		    \ 'R' : 'R',
+" 		    \ 'v' : 'V',
+" 		    \ 'V' : 'V-LINE',
+" 		    \ "\<C-v>": 'V-BLOCK',
+" 		    \ 'c' : 'C',
+" 		    \ 's' : 'S',
+" 		    \ 'S' : 'S-LINE',
+" 		    \ "\<C-s>": 'S-BLOCK',
+" 		    \ 't': 'T',
+" 		    \ }

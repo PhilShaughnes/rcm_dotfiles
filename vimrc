@@ -393,6 +393,7 @@ Plug 'vim-airline/vim-airline-themes'
 "       \ }
 call plug#end()
 
+
 "}}}
 "
 source $DOTFILES/nvim/airline_config.vim
