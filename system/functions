@@ -41,7 +41,8 @@ fbr() {
 
   branches=$(git branch -$cmd) &&
   branch=$(echo "$branches" | fzf +m --height 25% --reverse) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+  # git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+  git checkout $(echo "$branch" | awk '{print $1}' | awk -F "/" '{print $NF}' | sed "s/.* //")
 }
 
 # fd - cd to selected directory

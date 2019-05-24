@@ -69,9 +69,6 @@ source ~/.zgen/zgen.zsh
 # if the init script doesn't exist
 if ! zgen saved; then
 
-  zgen oh-my-zsh
-  zgen oh-my-zsh plugins/magic-enter
-
   # specify plugins here
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
@@ -79,8 +76,6 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-history-substring-search
-
-  zgen load kiurchv/asdf.plugin.zsh
 
   # generate the init script from plugins above
   zgen save

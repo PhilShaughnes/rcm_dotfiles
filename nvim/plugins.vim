@@ -19,8 +19,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 
-" Plug 'romainl/vim-cool'
-"   let g:CoolTotalMatches = 1
+Plug 'romainl/vim-cool'
+  let g:CoolTotalMatches = 1
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'

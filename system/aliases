@@ -21,6 +21,7 @@ alias gc='git commit -v'
 
 alias ll='ls -lap'
 [ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
+alias fd='rg -l'
 
 alias jqp='pbpaste | jq .'
 
