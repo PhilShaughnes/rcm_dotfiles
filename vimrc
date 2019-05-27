@@ -374,7 +374,7 @@ command! -bang -nargs=? -complete=dir Files
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 Plug 'ludovicchabant/vim-gutentags'
-  " g:gutentags_ctags_tagfile = '.git/tags'
+  g:gutentags_ctags_tagfile = '.git/tags'
 
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'croaker/mustang-vim'
