@@ -91,7 +91,7 @@ tnoremap <Esc><Esc> <C-\><C-n>
 "*************"
 
 call plug#begin('~/.vim/plugged')
-  source $DOTFILES/nvim/plugins.vim
+  source $DOTFILES/vetc/plugins.vim
   " text object
   " essentials
   " completion
