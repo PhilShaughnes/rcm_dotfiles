@@ -59,6 +59,9 @@ echo "brewing..."
 # (cd $DOTFILES && brew bundle)
 brew bundle
 
+# echo "fzf install..."
+# $(brew --prefix)/opt/fzf/install
+
 echo "linking dotfiles"
 export RCRC='$DOTFILES/rcrc'
 rcup -v
