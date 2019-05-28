@@ -1,6 +1,4 @@
 
-Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'noahfrederick/vim-noctu'
 Plug 'rakr/vim-two-firewatch'
 
 Plug 'kana/vim-textobj-user'
@@ -21,6 +19,17 @@ Plug 'kana/vim-niceblock'                            " make A and I work for all
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
+
+Plug 'lifepillar/vim-mucomplete'
+  set shortmess+=c
+  set completeopt-=preview
+  set completeopt+=menuone,noselect
+  " let g:mucomplete#enable_auto_at_startup = 1
+  let MUcompleteNotify = 1
+  
+  let g:mucomplete#chains = {
+    \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
+    \ }
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
