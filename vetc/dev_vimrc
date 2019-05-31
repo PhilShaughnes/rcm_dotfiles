@@ -90,8 +90,13 @@ tnoremap <Esc><Esc> <C-\><C-n>
 "*** PLUGS ***"
 "*************"
 
-call plug#begin('~/.vim/plugged')
-  source $DOTFILES/vetc/plugins.vim
+" git clone https://github.com/k-takata/minpac.git \
+"     ~/.config/nvim/pack/minpac/opt/minpac
+
+" call plug#begin('~/.vim/plugged')
+"   source $DOTFILES/vetc/plugins.vim
+
+runtime **/myplugins.vim
   " text object
   " essentials
   " completion
@@ -103,7 +108,7 @@ call plug#begin('~/.vim/plugged')
   " ruby
   " theme
 
-call plug#end()
+" call plug#end()
 
 "*************"
 "*** THEME ***"
