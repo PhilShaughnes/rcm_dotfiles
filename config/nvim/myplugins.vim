@@ -2,6 +2,9 @@ if &compatible
   set nocompatible
 endif
 
+" run this to install packager the first time:
+" git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager
+
 " Load packager only when you need it
 function! PackagerInit() abort
   packadd vim-packager
