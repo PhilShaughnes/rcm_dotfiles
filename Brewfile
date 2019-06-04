@@ -1,4 +1,5 @@
 tap 'Homebrew/bundle'
+tap 'cjbassi/gotop'
 
 cask_args appdir: "/Applications"
 tap "homebrew/cask"
