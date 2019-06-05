@@ -93,8 +93,27 @@ function preexec() {
 
 function precmd() {
   if [ $timer ]; then
-    timer_show=$(($SECONDS - $timer))
-    export RPROMPT="%F{yellow}${timer_show}s %{$reset_color%}"
+    timer_show=$(format_time $(($SECONDS - $timer)))
+    export RPROMPT="%F{yellow}${timer_show}%{$reset_color%}"
     unset timer
   fi
 }
+
+function format_time() {
+  local _time=$1
+
+  # Don't show anything if time is less than 5 seconds
+  (( $_time < 5 )) && return
+
+  local _out
+  local days=$(( $_time / 60 / 60 / 24 ))
+  local hours=$(( $_time / 60 / 60 % 24 ))
+  local minutes=$(( $_time / 60 % 60 ))
+  local seconds=$(( $_time % 60 ))
+  (( $days > 0 )) && _out=" ${days}d"
+  (( $hours > 0 )) && _out="$_out ${hours}h"
+  (( $minutes > 0 )) && _out="$_out ${minutes}m"
+  _out="$_out ${seconds}s"
+  printf "$_out"
+}
+

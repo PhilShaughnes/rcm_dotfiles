@@ -57,6 +57,7 @@ nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>p :b#<CR>
+nnoremap <bs> :b#<CR>
 nnoremap <leader>n :bn<CR>
 
 " netrw

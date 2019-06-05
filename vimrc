@@ -174,6 +174,7 @@ map <leader><S-Tab> :bp<CR>
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>p :b#<CR>
+nnoremap <BS> :b#<CR>
 nnoremap <leader>n :bn<CR>
 
 
@@ -184,7 +185,7 @@ map <C-k> :cp<CR>
 " SPLITS
 set splitbelow
 set splitright
-nnoremap <bs> <C-W>w
+" nnoremap <bs> <C-W>w
 noremap <C-q> <C-w>w
 
 " Quickly edit/reload the vimrc file
