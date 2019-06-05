@@ -36,8 +36,8 @@ endif
 "** KEYMAP **"
 "************"
 " easier beginning and end of line
-noremap H     ^
-noremap L     $
+nnoremap H     ^
+nnoremap L     $
 " make marks more better (go to column instead of line)
 nnoremap ' `
 
@@ -50,6 +50,9 @@ nnoremap Y y$
 let mapleader = "\<Space>"
 " leader space cancels search highlighting
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
+
+nnoremap <leader>$ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
+nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
 
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>

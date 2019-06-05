@@ -97,6 +97,10 @@ let mapleader = "\<Space>"
 " Enter cancels search highlighting
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 " nnoremap , :nohlsearch<CR>
+
+nnoremap <leader>$ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
+nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
+
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
 " [<Space> inserts new line above
