@@ -119,6 +119,9 @@ nmap k gk
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
 
+nnoremap ,b         :buffer *
+nnoremap ,B         :sbuffer *
+
 " Tab and S-Tab indent in normal and visual mode
 nnoremap <Tab>   >>
 nnoremap <S-Tab> <<
