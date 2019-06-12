@@ -45,7 +45,7 @@ fbr() {
   git checkout $(echo "$branch" | awk '{print $1}' | awk -F "/" '{print $NF}' | sed "s/.* //")
 }
 
-# fd - cd to selected directory
+# fdir - cd to selected directory
 fdir() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
