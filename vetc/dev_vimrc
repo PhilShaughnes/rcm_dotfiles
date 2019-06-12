@@ -87,8 +87,8 @@ vnoremap K :m '<-2<CR>gv=gv
 "cycle splits
 nnoremap <C-q> <C-w>w
 
-" terminal - go to nermal mode
-tnoremap <Esc><Esc> <C-\><C-n>
+" terminal - go to normal mode
+tnoremap <C-\> <C-\><C-n>
 
 "*************"
 "*** PLUGS ***"

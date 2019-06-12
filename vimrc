@@ -166,8 +166,8 @@ nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 " nnoremap <ESC> i
 
 tnoremap jj <C-\><C-n>
-" terminal - go to nermal mode
-tnoremap <Esc><Esc> <C-\><C-n>
+" terminal - go to normal mode
+tnoremap <C-\> <C-\><C-n>
 
 
 " tab (next) and shift-tab (prev) to cycle buffer
@@ -189,11 +189,11 @@ map <C-k> :cp<CR>
 set splitbelow
 set splitright
 " nnoremap <bs> <C-W>w
-noremap <C-q> <C-w>w
+nnoremap <C-q> <C-w>w
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ve :e $MYVIMRC<CR>
-nmap <silent> <leader>vs :so $MYVIMRC<CR>
+nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
+nnoremap <silent> <leader>vs :so $MYVIMRC<CR>
 
 imap <C-\> ✓✗
 
@@ -365,6 +365,10 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_air_drag = 8.0
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }                          " distraction free vim
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+  let g:limelight_conceal_ctermfg = 'gray'
+  let g:limelight_conceal_guifg = 'DarkGray'
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
 " Plug 'chrisbra/Colorizer'
 " If you have nodejs and yarn
 
