@@ -165,6 +165,13 @@ hi! link gitCommitDiscardedType  gitCommitUnmergedType
 hi! link gitCommitDiscardedFile  gitCommitUnmergedFile
 
 "}}}
+" GitGutter {{{
+hi GitGutterAdd ctermfg=2
+hi GitGutterChange ctermfg=3
+hi GitGutterDelete ctermfg=1
+hi GitGutterChangeDelete ctermfg=5
+
+"}}}
 " Vim {{{
 hi! link vimSetSep    Delimiter
 hi! link vimContinue  Delimiter
