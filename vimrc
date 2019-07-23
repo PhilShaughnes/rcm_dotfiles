@@ -40,7 +40,7 @@ set autoread              " reload the file if it changed
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 " set colorcolumn=100
 " save ov focus lost
 :au FocusLost * silent! wa
@@ -291,8 +291,14 @@ Plug 'lifepillar/vim-mucomplete'
     \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
     \ }
   
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'garbas/vim-snipmate'
 
-
+" Optional:
+" Plug'honza/vim-snippets'
+  " :imap <C-E> <Plug>snipMateNextOrTrigger
+  " :smap <C-E> <Plug>snipMateNextOrTrigger
 
 " Plug 'ajh17/VimCompletesMe'
 
@@ -312,7 +318,9 @@ Plug 'kshenoy/vim-signature'
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-dirvish'
+Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
   noremap <leader>s :NERDTreeToggle<CR>
@@ -342,6 +350,7 @@ Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'jiangmiao/auto-pairs'
+" Plug 'vim-scripts/paredit.vim'
 
 Plug 'ternjs/tern_for_vim'
 Plug 'othree/csscomplete.vim'
@@ -377,7 +386,7 @@ Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
   "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
   nnoremap <leader>t :Files<CR>
-  nnoremap <leader>b :Buffers<CR>
+"  nnoremap <leader>b :Buffers<CR>
   nnoremap <leader>c :Commits<CR>
   nnoremap <leader>f :Rg!<CR>
 
