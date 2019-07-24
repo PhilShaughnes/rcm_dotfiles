@@ -13,29 +13,35 @@ function! PackagerInit() abort
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
 
-  call packager#add('kana/vim-textobj-user')
-  call packager#add('kana/vim-textobj-line')
-  call packager#add('kana/vim-textobj-function')
-  call packager#add('kana/vim-textobj-entire')
-  call packager#add('michaeljsmith/vim-indent-object')
+  call packager#add('kana/vim-textobj-user', { 'type': 'opt' })
+  call packager#add('kana/vim-textobj-line', { 'type': 'opt' })
+  call packager#add('kana/vim-textobj-function', { 'type': 'opt' })
+  call packager#add('kana/vim-textobj-entire', { 'type': 'opt' })
+  call packager#add('michaeljsmith/vim-indent-object', { 'type': 'opt' })
 
-  call packager#add('machakann/vim-sandwich')
-  call packager#add('tpope/vim-endwise')
-  call packager#add('markonm/traces.vim')
+  call packager#add('machakann/vim-sandwich', { 'type': 'opt' })
+  call packager#add('tpope/vim-endwise', { 'type': 'opt' })
+  call packager#add('markonm/traces.vim', { 'type': 'opt' })
 
-  call packager#add('sheerun/vim-polyglot')
-  call packager#add('airblade/vim-gitgutter')
-  call packager#add('tpope/vim-fugitive')
-  call packager#add('tpope/vim-commentary')       "comment stuff out with gc (gcc to do a line)
-  call packager#add('kana/vim-niceblock')         " make A and I work for all visual modes
+  call packager#add('MarcWeber/vim-addon-mw-utils', { 'type': 'opt' })
+  call packager#add('tomtom/tlib_vim', { 'type': 'opt' })
+  call packager#add('garbas/vim-snipmate', { 'type': 'opt' })
 
-  call packager#add('romainl/vim-cool')
+  call packager#add('justinmk/vim-dirvish', { 'type': 'opt' })
 
-  call packager#add('lifepillar/vim-mucomplete')
+  call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
+  call packager#add('airblade/vim-gitgutter', { 'type': 'opt' })
+  call packager#add('tpope/vim-fugitive', { 'type': 'opt' })
+  call packager#add('tpope/vim-commentary', { 'type': 'opt' })       "comment stuff out with gc (gcc to do a line)
+  call packager#add('kana/vim-niceblock', { 'type': 'opt' })         " make A and I work for all visual modes
 
-  call packager#local('/usr/local/opt/fzf')
-  call packager#local('~/.fzf')
-  call packager#add('junegunn/fzf.vim')
+  call packager#add('romainl/vim-cool', { 'type': 'opt' })
+
+  call packager#add('lifepillar/vim-mucomplete', { 'type': 'opt' })
+
+  call packager#local('/usr/local/opt/fzf', { 'type': 'opt' })
+  call packager#local('~/.fzf', { 'type': 'opt' })
+  call packager#add('junegunn/fzf.vim', { 'type': 'opt' })
 
 endfunction
 
