@@ -19,7 +19,7 @@ alias gb='git checkout -' # git back - go back to previous branch
 alias ga='git add -p' # interactive mode
 alias gc='git commit -v'
 
-alias ll='ls -lap'
+alias ll='ls -laph'
 [ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
 alias fd='rg -l'
 
