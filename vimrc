@@ -67,8 +67,10 @@ let g:netrw_liststyle = 3
 
 " use ripgrep to search
 if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-  let g:grepprg = 'rg --vimgrep'
+  " let g:ackprg = 'rg --vimgrep'
+  " let g:grepprg = 'rg --vimgrep'
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
 endif
 
 " allows cursor change in tmux mode
@@ -290,7 +292,7 @@ Plug 'lifepillar/vim-mucomplete'
   let g:mucomplete#chains = {
     \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
     \ }
-  
+
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'tomtom/tlib_vim'
 " Plug 'garbas/vim-snipmate'
@@ -303,6 +305,11 @@ Plug 'lifepillar/vim-mucomplete'
 " Plug 'ajh17/VimCompletesMe'
 
 Plug 'wellle/tmux-complete.vim'
+
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'garbas/vim-snipmate'
+" Plug 'honza/vim-snippets'
 
 Plug 'markonm/traces.vim'
 " Plug 'terryma/vim-expand-region'                             " use enter to highlight next surrounding textobj

@@ -29,7 +29,8 @@ set omnifunc=syntaxcomplete#Complete
 :augroup END
 
 if executable('rg')
-  let g:grepprg = 'rg --vimgrep'
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
 endif
 
 "************"
@@ -51,6 +52,7 @@ let mapleader = "\<Space>"
 " leader space cancels search highlighting
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 
+" replace all occurences of word under cursor. $= in paragraph
 nnoremap <leader>$ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
 nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
 
@@ -59,9 +61,6 @@ nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>p :b#<CR>
 nnoremap <bs> :b#<CR>
 nnoremap <leader>n :bn<CR>
-
-" netrw
-let g:netrw_liststyle = 3
 
 " move to next <++> and go to insert mode
 inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
@@ -113,6 +112,7 @@ runtime **/myplugins.vim
   " theme
 
 " call plug#end()
+ 
 
 "*************"
 "*** THEME ***"
