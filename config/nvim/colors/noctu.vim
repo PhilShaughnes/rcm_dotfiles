@@ -37,7 +37,7 @@ hi IncSearch           ctermfg=0     ctermbg=13    cterm=NONE
 hi Search              ctermfg=0     ctermbg=10
 hi StatusLine          ctermfg=7     ctermbg=0     cterm=bold
 hi StatusLineNC        ctermfg=8     ctermbg=0     cterm=bold
-hi VertSplit           ctermfg=0     ctermbg=0     cterm=NONE
+hi VertSplit           ctermfg=0     ctermbg=NONE  cterm=NONE
 hi TabLine             ctermfg=8     ctermbg=0     cterm=NONE
 hi TabLineSel          ctermfg=7     ctermbg=0
 hi Folded              ctermfg=6     ctermbg=0     cterm=bold
@@ -166,10 +166,10 @@ hi! link gitCommitDiscardedFile  gitCommitUnmergedFile
 
 "}}}
 " GitGutter {{{
-hi GitGutterAdd ctermfg=2
-hi GitGutterChange ctermfg=3
-hi GitGutterDelete ctermfg=1
-hi GitGutterChangeDelete ctermfg=5
+hi gitgutteradd           ctermfg=2   ctermbg=none
+hi GitGutterChange        ctermfg=3   ctermbg=NONE
+hi GitGutterDelete        ctermfg=1   ctermbg=NONE
+hi GitGutterChangeDelete  ctermfg=5   ctermbg=NONE
 
 "}}}
 " Vim {{{
