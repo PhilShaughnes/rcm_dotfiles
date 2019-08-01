@@ -21,12 +21,22 @@ set clipboard=unnamed     " use the system clipboard as default
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 set shortmess=a
 set omnifunc=syntaxcomplete#Complete
+set splitbelow
+set splitright
 
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+augroup quickfix
+  autocmd!
+  " automatic location/quickfix window
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost    l* lwindow
+  autocmd VimEnter            * cwindow
+augroup END
 
 if executable('rg')
   set grepprg=rg\ --vimgrep
@@ -82,6 +92,14 @@ nnoremap gV `[v`]
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" ctrl j and k to move in quickfix windows
+nnoremap <C-j> :cn<CR>
+nnoremap <C-k> :cp<CR>
+nnoremap \\ :copen<CR>
+nnoremap \|\| :cclose<CR>
+
+
 
 "cycle splits
 nnoremap <C-q> <C-w>w

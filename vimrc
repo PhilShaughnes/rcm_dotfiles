@@ -63,12 +63,9 @@ set nobackup
 
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 let g:jsx_ext_required = 0
-let g:netrw_liststyle = 3
 
 " use ripgrep to search
 if executable('rg')
-  " let g:ackprg = 'rg --vimgrep'
-  " let g:grepprg = 'rg --vimgrep'
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
 endif
@@ -184,10 +181,12 @@ nnoremap <leader>n :bn<CR>
 
 
 " ctrl j and k to move in quickfix windows
-map <C-j> :cn<CR>
-map <C-k> :cp<CR>
+nnoremap <C-j> :cn<CR>
+nnoremap <C-k> :cp<CR>
+nnoremap \\ :copen<CR>
+nnoremap \|\| :cclose<CR>
 
-" SPLITS
+ " SPLITS
 set splitbelow
 set splitright
 " nnoremap <bs> <C-W>w
@@ -197,7 +196,7 @@ nnoremap <C-q> <C-w>w
 nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
 nnoremap <silent> <leader>vs :so $MYVIMRC<CR>
 
-imap <C-\> ✓✗
+inoremap <C-\> ✓✗
 
 " side scroll
 nnoremap <C-H> 5zh
@@ -286,7 +285,7 @@ Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
   set completeopt-=preview
   set completeopt+=menuone,noselect
-  let g:mucomplete#enable_auto_at_startup = 1
+  let g:mucomplete#enable_auto_at_startup = 0
   let MUcompleteNotify = 1
   
   let g:mucomplete#chains = {
@@ -342,8 +341,8 @@ Plug 'romainl/vim-devdocs'                           " use :DD to look up keywor
 Plug 'dhruvasagar/vim-zoom'
 
 Plug 'haya14busa/vim-signjk-motion'
-  map <Leader>j <Plug>(signjk-j)
-  map <Leader>k <Plug>(signjk-k)
+  nnoremap <Leader>j <Plug>(signjk-j)
+  nnoremap <Leader>k <Plug>(signjk-k)
   omap L <Plug>(textobj-signjk-lines)
   vmap L <Plug>(textobj-signjk-lines)
 Plug 'unblevable/quick-scope'
