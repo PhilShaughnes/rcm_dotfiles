@@ -183,8 +183,8 @@ nnoremap <leader>n :bn<CR>
 " ctrl j and k to move in quickfix windows
 nnoremap <C-j> :cn<CR>
 nnoremap <C-k> :cp<CR>
-nnoremap \\ :copen<CR>
-nnoremap \|\| :cclose<CR>
+nnoremap <silent> \\ :copen<CR>
+nnoremap <silent> \|\| :cclose<CR>
 
  " SPLITS
 set splitbelow
