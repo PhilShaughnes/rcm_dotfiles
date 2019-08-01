@@ -123,5 +123,4 @@ set background=dark
 colorscheme noctu
 
 set fillchars+=vert:│
-hi VertSplit ctermbg=NONE guibg=NONE
 
