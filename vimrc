@@ -52,7 +52,6 @@ autocmd BufEnter term://* startinsert
 :augroup END
 
 
-
 set linespace=5
 set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
@@ -122,10 +121,15 @@ nnoremap ,b         :buffer *
 nnoremap ,B         :sbuffer *
 
 " Tab and S-Tab indent in normal and visual mode
-nnoremap <Tab>   >>
-nnoremap <S-Tab> <<
-vnoremap <Tab>   >><Esc>gv
-vnoremap <S-Tab> <<<Esc>gv
+" nnoremap <Tab>   >>
+" nnoremap <S-Tab> <<
+" vnoremap <Tab>   >><Esc>gv
+" vnoremap <S-Tab> <<<Esc>gv
+
+nnoremap > >>
+nnoremap < <<
+vnoremap > >><Esc>gv
+vnoremap < <<<Esc>gv
 
 
 " vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
@@ -133,6 +137,8 @@ vnoremap <S-Tab> <<<Esc>gv
 
 " <C-e/E> work like E but in insert mode
 inoremap <C-e> <ESC>ea
+inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -170,8 +176,8 @@ tnoremap <C-\> <C-\><C-n>
 
 
 " tab (next) and shift-tab (prev) to cycle buffer
-map <leader><Tab> :bn<CR>
-map <leader><S-Tab> :bp<CR>
+nmap <leader><Tab> :bn<CR>
+nmap <leader><S-Tab> :bp<CR>
 
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>

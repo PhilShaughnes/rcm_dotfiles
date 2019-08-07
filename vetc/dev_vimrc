@@ -46,6 +46,16 @@ endif
 "************"
 "** KEYMAP **"
 "************"
+" better completion menu
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap        ,,      <C-n><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,:      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,=      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,.      <C-x><C-o><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,-      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+
+
 " easier beginning and end of line
 nnoremap H     ^
 nnoremap L     $
@@ -54,6 +64,9 @@ nnoremap ' `
 
 " <C-e/E> work like E but in insert mode
 inoremap <C-e> <esc>ea
+inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
+
 
 " Y goes to end of line
 nnoremap Y y$
@@ -68,7 +81,7 @@ nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
 
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
-nnoremap <leader>p :b#<CR>
+nnoremap <leader>p :bp<CR>
 nnoremap <bs> :b#<CR>
 nnoremap <leader>n :bn<CR>
 

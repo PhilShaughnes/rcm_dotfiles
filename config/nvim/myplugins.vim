@@ -1,5 +1,5 @@
 if &compatible
-  set nocompatible
+  " set nocompatible
 endif
 
 " run this to install packager the first time:
@@ -26,6 +26,7 @@ function! PackagerInit() abort
   call packager#add('MarcWeber/vim-addon-mw-utils')
   call packager#add('tomtom/tlib_vim')
   call packager#add('garbas/vim-snipmate')
+  call packager#add('honza/vim-snippets')
 
   call packager#add('justinmk/vim-dirvish')
 
@@ -37,7 +38,7 @@ function! PackagerInit() abort
 
   call packager#add('romainl/vim-cool')
 
-  call packager#add('lifepillar/vim-mucomplete')
+  " call packager#add('lifepillar/vim-mucomplete')
 
   call packager#local('/usr/local/opt/fzf')
   call packager#local('~/.fzf')
@@ -64,15 +65,20 @@ let g:CoolTotalMatches = 1
 
 " MUcomplete settings:
 
-set shortmess+=c
-set completeopt-=preview
-set completeopt+=menuone,noselect
-" let g:mucomplete#enable_auto_at_startup = 1
-let MUcompleteNotify = 1
+" set shortmess+=c
+" set completeopt-=preview
+" set completeopt+=menuone,noselect
+" " let g:mucomplete#enable_auto_at_startup = 1
+" let MUcompleteNotify = 1
 
-let g:mucomplete#chains = {
-  \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
-  \ }
+" let g:mucomplete#chains = {
+"   \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
+"   \ }
+
+SnipMate settings
+imap <C-j> <Plug>snipMateNextOrTrigger
+smap <C-j> <Plug>snipMateNextOrTrigger
+snoremap <TAB> <C-j>
 
 
 " FZF settings:
