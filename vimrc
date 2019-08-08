@@ -162,14 +162,8 @@ vnoremap <leader>p "_dP
 nnoremap <leader>v "0p
 " leader w is kill buffer
 nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
-" leader q is quit (save?) - ZZ does this?
-" use ctrl motions to navigate in insert mode
-" inoremap <C-h> <left>
-" inoremap <C-l> <right>
-" inoremap <C-j> <down>
-" inoremap <C-k> <up>
-" nnoremap <ESC> i
 
+" terminal - jj goes to normal mode
 tnoremap jj <C-\><C-n>
 " terminal - go to normal mode
 tnoremap <C-\> <C-\><C-n>
@@ -187,8 +181,8 @@ nnoremap <leader>n :bn<CR>
 
 
 " ctrl j and k to move in quickfix windows
-nnoremap <C-j> :cn<CR>
-nnoremap <C-k> :cp<CR>
+nnoremap <silent> <C-j> :cn<CR>
+nnoremap <silent> <C-k> :cp<CR>
 nnoremap <silent> \\ :copen<CR>
 nnoremap <silent> \|\| :cclose<CR>
 
@@ -210,6 +204,14 @@ nnoremap <C-L> 5zl
 nnoremap <C-h> ^
 nnoremap <C-l> $
 
+augroup quickfix
+  autocmd!
+  " automatic location/quickfix window
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost    l* lwindow
+  autocmd VimEnter            * cwindow
+augroup END
+
 
 "}}}
 
@@ -223,12 +225,28 @@ Plug 'tpope/vim-commentary'                          "comment stuff out with gc 
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 Plug 'tpope/vim-repeat'
 
+Plug 'romainl/vim-qlist'
+Plug 'https://gitlab.com/hauleth/qfx.vim'
+
 Plug 'machakann/vim-sandwich'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 
-" Plug 'ervandew/supertab'                             " use tab for completion
 Plug 'terryma/vim-multiple-cursors'
+
+" replace ALE with vim built-in makeprg - WIP
+Plug 'igemnace/vim-makery'
+Plug 'hauleth/asyncdo.vim'
+  command! -bang -nargs=* -complete=file Make call asyncdo#run(<bang>0, &makeprg, <f-args>)
+  command! -bang -nargs=* -complete=file LMake call asyncdo#lrun(<bang>0, &makeprg, <f-args>)
+  augroup Linting
+    autocmd!
+    autocmd FileType javascript setlocal makeprg=./node_modules/.bin/eslint\ --format\ compact
+    autocmd Filetype javascript setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
+  augroup END
+
+
+
 " Plug 'slashmili/alchemist.vim'
 " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
 " let g:ale_completion_enabled = 1
@@ -254,35 +272,6 @@ Plug 'w0rp/ale'
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
 
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-"
-" let g:LanguageClient_serverCommands = {
-"     \ 'elixir': ['/Users/phil/Documents/codes/elixir/elixir-ls/rel/language_server.sh'],
-"     \ }
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
-
-"  " enable ncm2 for all buffers
-"  autocmd BufEnter * :call ncm2#enable_for_buffer()
-"  " let g:call ncm2#popup_limit 3
-
-"  " Use <TAB> to select the popup menu:
-"  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-"  " IMPORTANTE: :help Ncm2PopupOpen for more information
-"  set completeopt=noinsert,menuone,noselect
-
-" Plug 'ncm2/ncm2-match-highlight'
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-path'
-set noshowmode
 
 Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
@@ -418,4 +407,4 @@ set notermguicolors
 set background=dark
 colorscheme noctu
 set fillchars+=vert:│
-hi VertSplit ctermbg=NONE guibg=NONE
+" hi VertSplit ctermbg=NONE guibg=NONE

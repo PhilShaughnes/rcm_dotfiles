@@ -109,10 +109,10 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " ctrl j and k to move in quickfix windows
-nnoremap <C-j> :cn<CR>
-nnoremap <C-k> :cp<CR>
-nnoremap \\ :copen<CR>
-nnoremap \|\| :cclose<CR>
+nnoremap <silent> <C-j> :cn<CR>
+nnoremap <silent> <C-k> :cp<CR>
+nnoremap <silent> \\ :copen<CR>
+nnoremap <silent> \|\| :cclose<CR>
 
 
 

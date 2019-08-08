@@ -37,6 +37,7 @@ function! PackagerInit() abort
   call packager#add('kana/vim-niceblock')         " make A and I work for all visual modes
 
   call packager#add('romainl/vim-cool')
+  call packager#add('romainl/vim-qlist')
 
   " call packager#add('lifepillar/vim-mucomplete')
 
