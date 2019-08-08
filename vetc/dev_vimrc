@@ -1,4 +1,5 @@
 set number
+set hidden
 set tabstop=2             " tab spacing
 set softtabstop=2         " unify
 set shiftwidth=2          " indent/outdent by 2 columns
@@ -54,6 +55,7 @@ inoremap        ,:      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>
 inoremap        ,=      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 inoremap        ,.      <C-x><C-o><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 inoremap        ,-      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+
 
 
 " easier beginning and end of line

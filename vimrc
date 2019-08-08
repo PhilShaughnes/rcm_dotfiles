@@ -216,12 +216,9 @@ nnoremap <C-l> $
 " {{{ PLUGINS
 
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
-" Plug 'tpope/vim-sensible'
-" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
     nnoremap <leader>g :Gstatus<CR>
-Plug 'tpope/vim-eunuch'                              "adds unix cmds like :Delete, :Mkdir, :Move, :Rename, :Unlink
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 Plug 'tpope/vim-repeat'
@@ -307,19 +304,8 @@ Plug 'lifepillar/vim-mucomplete'
   " :imap <C-E> <Plug>snipMateNextOrTrigger
   " :smap <C-E> <Plug>snipMateNextOrTrigger
 
-" Plug 'ajh17/VimCompletesMe'
-
 Plug 'wellle/tmux-complete.vim'
-
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'tomtom/tlib_vim'
-" Plug 'garbas/vim-snipmate'
-" Plug 'honza/vim-snippets'
-
 Plug 'markonm/traces.vim'
-" Plug 'terryma/vim-expand-region'                             " use enter to highlight next surrounding textobj
-  " vmap v <Plug>(expand_region_expand)
-  " vmap V <Plug>(expand_region_shrink)
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'kana/vim-textobj-entire'
@@ -333,15 +319,6 @@ Plug 'majutsushi/tagbar'
 " Plug 'tpope/vim-vinegar'
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
-Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on' : 'NERDTreeToggle' }
-  noremap <leader>s :NERDTreeToggle<CR>
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-  let NERDTreeQuitOnOpen = 1
-  let NERDTreeAutoDeleteBuffer = 1
-  let NERDTreeMinimalUI = 1
-  let NERDTreeDirArrows = 1
-" Plug 'vimwiki/vimwiki'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
 Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
 Plug 'dhruvasagar/vim-zoom'
@@ -353,25 +330,18 @@ Plug 'haya14busa/vim-signjk-motion'
   vmap L <Plug>(textobj-signjk-lines)
 Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" Plug 'justinmk/vim-sneak'
-"   let g:sneak#label = 0
-"   map gs <Plug>Sneak_s
-"   map gS <Plug>Sneak_S
 Plug 'henrik/vim-indexed-search'
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
 Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'jiangmiao/auto-pairs'
-" Plug 'vim-scripts/paredit.vim'
 
 Plug 'ternjs/tern_for_vim'
 Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'alvan/vim-closetag'
-" Plug 'wellle/targets.vim'                            " add pairs, separators, argument, block, quote
-                                                     " next (n) and last (l)
 
-Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/splitjoin.vim'                     " gS and gJ split and join functions/statements into single/multi line
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'

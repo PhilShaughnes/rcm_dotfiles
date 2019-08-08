@@ -81,6 +81,14 @@ smap <C-j> <Plug>snipMateNextOrTrigger
 snoremap <TAB> <C-j>
 
 
+" SnipMate
+let g:snipMate.snippet_version = 1
+SnipMateLoadScope test
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
+
+
+
 " FZF settings:
 
 "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
