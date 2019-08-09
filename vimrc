@@ -226,6 +226,7 @@ Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 Plug 'tpope/vim-repeat'
 
 Plug 'romainl/vim-qlist'
+Plug 'romainl/vim-qf'
 Plug 'https://gitlab.com/hauleth/qfx.vim'
 
 Plug 'machakann/vim-sandwich'
