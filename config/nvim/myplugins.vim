@@ -76,7 +76,7 @@ let g:CoolTotalMatches = 1
 "   \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
 "   \ }
 
-SnipMate settings
+"SnipMate settings
 imap <C-j> <Plug>snipMateNextOrTrigger
 smap <C-j> <Plug>snipMateNextOrTrigger
 snoremap <TAB> <C-j>
