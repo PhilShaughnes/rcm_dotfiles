@@ -1,5 +1,4 @@
 " {{{ SETTINGS
-set nocompatible          " for regular vim - turn of vi compatibility
 syntax enable             " enable syntax highlighting (previously syntax on)
 filetype plugin on " filetype detection[ON] plugin[ON] indent[ON]
 set number                " show line numbers
@@ -35,13 +34,10 @@ set wildmenu              " visual autocomplete for command menu
 set lazyredraw            " redraw ony when needed to
 :set mouse=a              " mouse will work
 set autoread              " reload the file if it changed
-   au FocusGained * checktime
    " check for and load file changes
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
-" set omnifunc=syntaxcomplete#Complete
-" set colorcolumn=100
 " save ov focus lost
 :au FocusLost * silent! wa
 
@@ -55,27 +51,17 @@ autocmd BufEnter term://* startinsert
 set linespace=5
 set title
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-"set guicursor=n-v-c:Hor20-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
 " disable swapfile to avoid errors on load
 set noswapfile
 set nobackup
 
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
-let g:jsx_ext_required = 0
 
 " use ripgrep to search
 if executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
-endif
-
-" allows cursor change in tmux mode
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 if has('nvim')
@@ -143,12 +129,6 @@ inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
 " highlight last inserted text
 nnoremap gV `[v`]
 
-" leader k to hook into documentation lookup (we will remap K below)
-noremap <leader>d K
-" H/L to go to beggining/end of line
-" J/K to go to above/below white space (paragraph)
-" nnoremap K     {
-" nnoremap J     }
 noremap H     ^
 noremap L     $
 
@@ -175,7 +155,7 @@ nmap <leader><S-Tab> :bp<CR>
 
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
-nnoremap <leader>p :b#<CR>
+nnoremap <leader>p :bp<CR>
 nnoremap <BS> :b#<CR>
 nnoremap <leader>n :bn<CR>
 
@@ -223,7 +203,6 @@ Plug 'tpope/vim-fugitive'
     nnoremap <leader>g :Gstatus<CR>
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
-Plug 'tpope/vim-repeat'
 
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
@@ -278,21 +257,21 @@ Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
   set completeopt-=preview
   set completeopt+=menuone,noselect
-  let g:mucomplete#enable_auto_at_startup = 0
+  let g:mucomplete#enable_auto_at_startup = 1
   let MUcompleteNotify = 1
-  
+
   let g:mucomplete#chains = {
-    \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
+    \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'user', 'incl'],
     \ }
 
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'tomtom/tlib_vim'
-" Plug 'garbas/vim-snipmate'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 
 " Optional:
-" Plug'honza/vim-snippets'
-  " :imap <C-E> <Plug>snipMateNextOrTrigger
-  " :smap <C-E> <Plug>snipMateNextOrTrigger
+Plug'honza/vim-snippets'
+  :imap <C-j> <Plug>snipMateNextOrTrigger
+  :smap <C-j> <Plug>snipMateNextOrTrigger
 
 Plug 'wellle/tmux-complete.vim'
 Plug 'markonm/traces.vim'
@@ -306,7 +285,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
-" Plug 'tpope/vim-vinegar'
 Plug 'justinmk/vim-dirvish'
 Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
@@ -335,15 +313,16 @@ Plug 'AndrewRadev/splitjoin.vim'                     " gS and gJ split and join 
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
-" Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
-" Plug 'thinca/vim-ref'
-" Plug 'christoomey/vim-titlecase'
-" Plug 'tpope/vim-abolish'
+  let g:vim_markdown_frontmatter = 1  " for YAML format
+  let g:vim_markdown_toml_frontmatter = 1  " for TOML format
+  let g:vim_markdown_json_frontmatter = 1  " for JSON format
+Plug 'tpope/vim-abolish'
 Plug 'yuttie/comfortable-motion.vim'
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
+Plug 'jkramer/vim-checkbox'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }                          " distraction free vim
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
   let g:limelight_conceal_ctermfg = 'gray'

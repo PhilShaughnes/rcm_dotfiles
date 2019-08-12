@@ -50,11 +50,12 @@ endif
 " better completion menu
 " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 inoremap        ,,      <C-n><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,:      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,=      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 inoremap        ,.      <C-x><C-o><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,;      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,>      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,;      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,:      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 
 set completeopt+=menuone,noselect
 
@@ -69,6 +70,8 @@ nnoremap ' `
 inoremap <C-e> <esc>ea
 inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
+inoremap <C-h> <left>
+inoremap <C-l> <right>
 
 
 " Y goes to end of line
@@ -96,11 +99,9 @@ inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 nmap j gj
 nmap k gk
 
-" Tab and S-Tab indent in normal and visual mode
-nnoremap <Tab>   >>
-nnoremap <S-Tab> <<
-vnoremap <Tab>   >><Esc>gv
-vnoremap <S-Tab> <<<Esc>gv
+" > and < indent in normal and visual mode
+nnoremap > >>
+nnoremap < <<
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -170,17 +171,19 @@ endfunction
 set statusline=
 set statusline+=%#PmenuSel#
 set statusline+=%{StatuslineGit()}
-set statusline+=%#statement#
-set statusline+=%#LineNr#
+set statusline+=%#user6#
 set statusline+=\ %f
 set statusline+=%m\ 
 set statusline+=%=
-set statusline+=%#keyword#
+set statusline+=%#user8#
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
-set statusline+=%#constant#
+set statusline+=%#user5#
+set statusline+=\ <>
+set statusline+=%#user8#
 set statusline+=\ %p%%
+set statusline+=%#user6#
 set statusline+=\ %l:%c
 set statusline+=\ 
 set laststatus=2

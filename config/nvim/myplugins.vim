@@ -26,11 +26,13 @@ function! PackagerInit() abort
   call packager#add('MarcWeber/vim-addon-mw-utils')
   call packager#add('tomtom/tlib_vim')
   call packager#add('garbas/vim-snipmate')
-  call packager#add('honza/vim-snippets')
+  call packager#add('honza/vim-snippets', { 'type': 'opt' })
 
   call packager#add('justinmk/vim-dirvish')
+  call packager#add('kristijanhusak/vim-dirvish-git')
 
   call packager#add('sheerun/vim-polyglot')
+  call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
   call packager#add('airblade/vim-gitgutter')
   call packager#add('tpope/vim-fugitive')
   call packager#add('tpope/vim-commentary')       "comment stuff out with gc (gcc to do a line)
@@ -38,6 +40,7 @@ function! PackagerInit() abort
 
   call packager#add('romainl/vim-cool')
   call packager#add('romainl/vim-qlist')
+  call packager#add('romainl/vim-qf')
 
   " call packager#add('lifepillar/vim-mucomplete')
 
@@ -58,11 +61,14 @@ augroup packager_filetype
   " autocmd FileType javascript packadd vim-js-file-import
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
+  autocmd FileType markdown packadd vim-markdown
 augroup END
 
 " vim-cool settings:
 let g:CoolTotalMatches = 1
 
+" fugitive:
+nnoremap <leader>g :Gstatus<CR>
 
 " MUcomplete settings:
 
@@ -77,16 +83,24 @@ let g:CoolTotalMatches = 1
 "   \ }
 
 "SnipMate settings
-imap <C-j> <Plug>snipMateNextOrTrigger
-smap <C-j> <Plug>snipMateNextOrTrigger
-snoremap <TAB> <C-j>
+" imap <C-j> <Plug>snipMateNextOrTrigger
+" smap <C-j> <Plug>snipMateNextOrTrigger
+" snoremap <TAB> <C-j>
 
 
 " SnipMate
+let g:snipMate = {}
 let g:snipMate.snippet_version = 1
-SnipMateLoadScope test
-imap <C-J> <Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
+" SnipMateLoadScope test
+" imap <TAB> <Plug>snipMateNextOrTrigger
+" smap <TAB> <Plug>snipMateNextOrTrigger
+
+imap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
+smap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
+imap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
+smap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
+
+
 
 
 
