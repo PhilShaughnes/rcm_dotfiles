@@ -41,9 +41,9 @@ set hidden                " allow unsaved buffers when switching
 " save ov focus lost
 :au FocusLost * silent! wa
 
-autocmd BufEnter term://* startinsert
 :augroup TermOpen
   autocmd!
+  autocmd BufEnter term://* startinsert
   autocmd TermOpen * setlocal nonumber norelativenumber
 :augroup END
 
@@ -262,11 +262,11 @@ Plug 'ervandew/supertab'
 "   set shortmess+=c
 "   set completeopt-=preview
 "   set completeopt+=menuone,noselect
-"   let g:mucomplete#enable_auto_at_startup = 0
+"   let g:mucomplete#enable_auto_at_startup = 1
 "   let MUcompleteNotify = 1
 
 "   let g:mucomplete#chains = {
-"     \ 'default' : ['path', 'snip', 'omni', 'incl', 'keyp', 'dict', 'uspl', 'user'],
+"     \ 'default' : ['path', 'omni', 'incl', 'keyp', 'dict', 'uspl', 'user'],
 "     \ }
 
 
@@ -280,6 +280,12 @@ Plug'honza/vim-snippets'
   " smap <C-g> <Plug>snipMateNextOrTrigger
   " imap <C-f> <Plug>snipMateBack
   " smap <C-f> <Plug>snipMateBack
+
+  " imap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
+  " smap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
+  " imap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
+  " smap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
+
 
 Plug 'wellle/tmux-complete.vim'
 Plug 'markonm/traces.vim'

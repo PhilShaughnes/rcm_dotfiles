@@ -25,11 +25,23 @@ set omnifunc=syntaxcomplete#Complete
 set splitbelow
 set splitright
 
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+endif
+
+
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
+
+augroup TermOpen
+  autocmd!
+  autocmd BufEnter term://* startinsert
+  autocmd TermOpen * setlocal nonumber norelativenumber
+augroup end
 
 augroup quickfix
   autocmd!
@@ -37,6 +49,9 @@ augroup quickfix
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost    l* lwindow
   autocmd VimEnter            * cwindow
+
+  autocmd WinEnter,BufEnter,FocusGained * checktime
+  autocmd FocusLost * silent! wa
 augroup END
 
 augroup filetypes
@@ -45,10 +60,6 @@ augroup filetypes
 augroup END
 
 
-if executable('rg')
-  set grepprg=rg\ --vimgrep
-  set grepformat=%f:%l:%c:%m
-endif
 
 "************"
 "** KEYMAP **"
