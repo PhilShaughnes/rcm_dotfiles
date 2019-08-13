@@ -13,6 +13,14 @@ function! PackagerInit() abort
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
 
+  call packager#add('terryma/vim-multiple-cursors', { 'type': 'opt' })
+  call packager#add('junegunn/vim-peekaboo', { 'type': 'opt' })          " peak at registers with \" and @ and <C-R>
+  call packager#add('tpope/vim-sleuth', { 'type': 'opt' })               " auto detects and sets shiftwidth, expandtab, etc.
+  call packager#add('wellle/tmux-complete.vim', { 'type': 'opt' })
+  call packager#add('rbgrouleff/bclose.vim', { 'type': 'opt' })          " close buffer without closing window
+  call packager#add('romainl/vim-devdocs', { 'type': 'opt' })            " use :DD to look up keywords on devdocs.io
+  call packager#add( 'yuttie/comfortable-motion.vim', { 'type': 'opt' })
+
   call packager#add('kana/vim-textobj-user')
   call packager#add('kana/vim-textobj-line')
   call packager#add('kana/vim-textobj-function')
@@ -22,6 +30,7 @@ function! PackagerInit() abort
   call packager#add('machakann/vim-sandwich')
   call packager#add('tpope/vim-endwise')
   call packager#add('markonm/traces.vim')
+  call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })      " gS and gJ split and join functions/statements into single/multi line
 
   call packager#add('MarcWeber/vim-addon-mw-utils')
   call packager#add('tomtom/tlib_vim')
@@ -30,13 +39,18 @@ function! PackagerInit() abort
 
   call packager#add('justinmk/vim-dirvish')
   call packager#add('kristijanhusak/vim-dirvish-git')
+  call packager#add('justinmk/vim-gtfo')                                 " got and gof open current file in terminal/file manager
+
+  call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
+  call packager#add('junegunn/limelight.vim', { 'type': 'opt' })
+  call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
 
   call packager#add('sheerun/vim-polyglot')
-  call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
   call packager#add('airblade/vim-gitgutter')
   call packager#add('tpope/vim-fugitive')
-  call packager#add('tpope/vim-commentary')       "comment stuff out with gc (gcc to do a line)
-  call packager#add('kana/vim-niceblock')         " make A and I work for all visual modes
+  call packager#add('tpope/vim-commentary')                              "comment stuff out with gc (gcc to do a line)
+  call packager#add('kana/vim-niceblock')                                " make A and I work for all visual modes
+  call packager#add('dhruvasagar/vim-zoom')                              " <C-w>m zooms window. already autoloading
 
   call packager#add('romainl/vim-cool')
   call packager#add('romainl/vim-qlist')
@@ -62,6 +76,8 @@ augroup packager_filetype
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
   autocmd FileType markdown packadd vim-markdown
+  autocmd FileType markdown packadd goyo.vim
+  autocmd FileType markdown packadd limelight.vim
 augroup END
 
 " vim-cool settings:
@@ -86,6 +102,15 @@ nnoremap <leader>g :Gstatus<CR>
 " imap <C-j> <Plug>snipMateNextOrTrigger
 " smap <C-j> <Plug>snipMateNextOrTrigger
 " snoremap <TAB> <C-j>
+
+" Markdown
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_guifg = 'DarkGray'
+augroup goyo
+  autocmd!
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
+augroup END
 
 
 " SnipMate
