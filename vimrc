@@ -47,6 +47,11 @@ autocmd BufEnter term://* startinsert
   autocmd TermOpen * setlocal nonumber norelativenumber
 :augroup END
 
+augroup filetypes
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+augroup END
+
 
 set linespace=5
 set title
@@ -93,7 +98,7 @@ nmap <leader>O m`O<Esc>``
 inoremap jj <C-\><C-n>
 " inoremap <C-i> <C-\><C-n>
 
-inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
+" inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 " Q runs default macro
 nnoremap Q @q
 " visual up and down
@@ -252,26 +257,29 @@ Plug 'w0rp/ale'
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
 
+Plug 'ervandew/supertab'
+" Plug 'lifepillar/vim-mucomplete'
+"   set shortmess+=c
+"   set completeopt-=preview
+"   set completeopt+=menuone,noselect
+"   let g:mucomplete#enable_auto_at_startup = 0
+"   let MUcompleteNotify = 1
 
-Plug 'lifepillar/vim-mucomplete'
-  set shortmess+=c
-  set completeopt-=preview
-  set completeopt+=menuone,noselect
-  let g:mucomplete#enable_auto_at_startup = 1
-  let MUcompleteNotify = 1
+"   let g:mucomplete#chains = {
+"     \ 'default' : ['path', 'snip', 'omni', 'incl', 'keyp', 'dict', 'uspl', 'user'],
+"     \ }
 
-  let g:mucomplete#chains = {
-    \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'user', 'incl'],
-    \ }
 
-Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'MarcWeber/vim-akddon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 
 " Optional:
 Plug'honza/vim-snippets'
-  :imap <C-j> <Plug>snipMateNextOrTrigger
-  :smap <C-j> <Plug>snipMateNextOrTrigger
+  " imap <C-g> <Plug>snipMateNextOrTrigger
+  " smap <C-g> <Plug>snipMateNextOrTrigger
+  " imap <C-f> <Plug>snipMateBack
+  " smap <C-f> <Plug>snipMateBack
 
 Plug 'wellle/tmux-complete.vim'
 Plug 'markonm/traces.vim'
@@ -281,7 +289,6 @@ Plug 'kana/vim-textobj-entire'
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
-Plug 'kshenoy/vim-signature'
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
 Plug 'majutsushi/tagbar'
   nmap <F8> :TagbarToggle<CR>
@@ -291,20 +298,12 @@ Plug 'justinmk/vim-gtfo'                             " got and gof open current 
 Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
 Plug 'dhruvasagar/vim-zoom'
 
-Plug 'haya14busa/vim-signjk-motion'
-  nnoremap <Leader>j <Plug>(signjk-j)
-  nnoremap <Leader>k <Plug>(signjk-k)
-  omap L <Plug>(textobj-signjk-lines)
-  vmap L <Plug>(textobj-signjk-lines)
 Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-Plug 'henrik/vim-indexed-search'
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
-Plug 'jeetsukumaran/vim-indentwise'                  " [+ [- to move to indents [% by block
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'ternjs/tern_for_vim'
 Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'alvan/vim-closetag'
@@ -322,7 +321,6 @@ noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
-Plug 'jkramer/vim-checkbox'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }                          " distraction free vim
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
   let g:limelight_conceal_ctermfg = 'gray'
@@ -377,14 +375,11 @@ call plug#end()
 
 
 "}}}
-"
-" source $DOTFILES/vetc/airline_config.vim
+
 let g:airline_theme='angr'
-" source $DOTFILES/vetc/theme.vim
 set notermguicolors
-" set termguicolors
-" colorscheme mustang
 set background=dark
 colorscheme noctu
 set fillchars+=vert:│
 " hi VertSplit ctermbg=NONE guibg=NONE
+"
