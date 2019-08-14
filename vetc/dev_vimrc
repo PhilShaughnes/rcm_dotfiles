@@ -81,7 +81,7 @@ inoremap        ,f      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>
 inoremap        ,l      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 
 
-set completeopt+=menuone,noselect
+set completeopt+=menu,noselect
 
 
 " easier beginning and end of line
@@ -139,7 +139,6 @@ nnoremap <silent> <C-j> :cn<CR>
 nnoremap <silent> <C-k> :cp<CR>
 nnoremap <silent> \\ :copen<CR>
 nnoremap <silent> \|\| :cclose<CR>
-
 
 
 "cycle splits
