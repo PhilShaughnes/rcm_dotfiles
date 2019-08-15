@@ -128,8 +128,8 @@ vnoremap < <<<Esc>gv
 
 " <C-e/E> work like E but in insert mode
 inoremap <C-e> <ESC>ea
-inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
-inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
+" inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+" inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -257,34 +257,36 @@ Plug 'w0rp/ale'
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
 
-Plug 'ervandew/supertab'
-" Plug 'lifepillar/vim-mucomplete'
-"   set shortmess+=c
-"   set completeopt-=preview
-"   set completeopt+=menuone,noselect
-"   let g:mucomplete#enable_auto_at_startup = 1
-"   let MUcompleteNotify = 1
+" Plug 'ervandew/supertab'
+Plug 'lifepillar/vim-mucomplete'
+  set shortmess+=c
+  set completeopt-=preview
+  set completeopt+=menuone,noselect
+  let g:mucomplete#enable_auto_at_startup = 1
+  " let g:mucomplete#completion_delay = 50
+  " let g:mucomplete#reopen_immediately = 0
+  let MUcompleteNotify = 1
 
-"   let g:mucomplete#chains = {
-"     \ 'default' : ['path', 'omni', 'incl', 'keyp', 'dict', 'uspl', 'user'],
-"     \ }
+  imap <expr> <C-t> mucomplete#extend_fwd("\<C-t>")
+  let g:mucomplete#chains = {
+    \ 'default' : ['path', 'omni', 'incl', 'keyp', 'dict', 'uspl', 'user'],
+    \ }
 
-
-Plug 'MarcWeber/vim-akddon-mw-utils'
+Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 
 " Optional:
 Plug'honza/vim-snippets'
-  " imap <C-g> <Plug>snipMateNextOrTrigger
-  " smap <C-g> <Plug>snipMateNextOrTrigger
-  " imap <C-f> <Plug>snipMateBack
-  " smap <C-f> <Plug>snipMateBack
+  imap <C-g> <Plug>snipMateNextOrTrigger
+  smap <C-g> <Plug>snipMateNextOrTrigger
+  imap <C-f> <Plug>snipMateBack
+  smap <C-f> <Plug>snipMateBack
 
-  " imap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
-  " smap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
-  " imap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
-  " smap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
+  " imap <expr><C-j> pumvisible() ? "\<plug>(MUcompleteCycFwd)" : "\<Plug>snipMateNextOrTrigger"
+  " smap <expr><C-j> pumvisible() ? "\<plug>(MUcompleteCycFwd)" : "\<Plug>snipMateNextOrTrigger"
+  " imap <expr><C-h> pumvisible() ? "\<plug>(MUcompleteCycBwd)" : "\<Plug>snipMateBack"
+  " smap <expr><C-h> pumvisible() ? "\<plug>(MUcompleteCycBwd)" : "\<Plug>snipMateBack"
 
 
 Plug 'wellle/tmux-complete.vim'
