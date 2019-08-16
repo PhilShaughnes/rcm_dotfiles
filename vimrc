@@ -87,7 +87,7 @@ let mapleader = "\<Space>"
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 " nnoremap , :nohlsearch<CR>
 
-nnoremap <leader>$ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
+nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
 nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
 
 " ]<Space> inserts new line below
@@ -106,7 +106,8 @@ nmap j gj
 nmap k gk
 
 " buffer switch
-nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <leader>bl :ls<CR>:b<space>
+nnoremap <leader>bb :Buffers<CR>
 
 nnoremap ,b         :buffer *
 nnoremap ,B         :sbuffer *
@@ -165,11 +166,9 @@ nnoremap <BS> :b#<CR>
 nnoremap <leader>n :bn<CR>
 
 
-" ctrl j and k to move in quickfix windows
-nnoremap <silent> <C-j> :cn<CR>
-nnoremap <silent> <C-k> :cp<CR>
-nnoremap <silent> \\ :copen<CR>
-nnoremap <silent> \|\| :cclose<CR>
+" " ctrl j and k to move in quickfix windows
+" nnoremap <silent> <C-j> :cn<CR>
+" nnoremap <silent> <C-k> :cp<CR>
 
  " SPLITS
 set splitbelow
@@ -211,6 +210,12 @@ Plug 'tpope/vim-endwise'                             "auto add end to stuffs
 
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
+  nmap <C-j> <Plug>(qf_qf_next)
+  nmap <C-k> <Plug>(qf_qf_previous)
+  nmap <leader>k <Plug>(qf_loc_previous)
+  nmap <leader>j <Plug>(qf_loc_next)
+  nmap <leader>l <Plug>(qf_loc_toggle)
+  nmap <leader>q <Plug>(qf_qf_toggle)
 Plug 'https://gitlab.com/hauleth/qfx.vim'
 
 Plug 'machakann/vim-sandwich'

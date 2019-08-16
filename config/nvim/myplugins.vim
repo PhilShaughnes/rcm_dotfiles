@@ -126,8 +126,13 @@ imap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
 smap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
 
 
-
-
+" qf
+nmap <C-k> <Plug>(qf_qf_previous)
+nmap <C-j> <Plug>(qf_qf_next)
+nmap <leader>k <Plug>(qf_loc_previous)
+nmap <leader>j <Plug>(qf_loc_next)
+nmap <leader>l <Plug>(qf_loc_toggle)
+nmap <leader>q <Plug>(qf_qf_toggle)
 
 " FZF settings:
 

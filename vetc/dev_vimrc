@@ -67,15 +67,19 @@ inoremap        ,>      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>
 inoremap        ,;      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 inoremap        ,:      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 
-inoremap        ,,      <C-n><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,i      <C-x><C-i><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,o      <C-x><C-o><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,u      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,f      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
-inoremap        ,l      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+" inoremap        ,,      <C-n><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+" inoremap        ,i      <C-x><C-i><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+" inoremap        ,o      <C-x><C-o><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+" inoremap        ,u      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+" inoremap        ,f      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+" inoremap        ,l      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 
 inoremap ,<Tab> <C-x><C-p>
-
+inoremap <C-v> <C-x><C-u>
+inoremap <C-t> <C-x><C-l>
+inoremap <C-b> <C-x><C-o>
+inoremap <C-f> <C-x><C-f>
+inoremap <C-g> <C-x><C-p>
 
 set completeopt+=menu,longest ",noselect
 
@@ -102,17 +106,18 @@ let mapleader = "\<Space>"
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 
 " replace all occurences of word under cursor. $= in paragraph
-nnoremap <leader>$ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
+nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
 nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
 
 " buffer switch
-nnoremap <leader>l :ls<CR>:b<space>
+" nnoremap <leader>l :ls<CR>:b<space>
+
 nnoremap <leader>p :bp<CR>
 nnoremap <bs> :b#<CR>
 nnoremap <leader>n :bn<CR>
 
 " move to next <++> and go to insert mode
-inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
+" inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 
 
 " visual up and down
@@ -131,10 +136,8 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " ctrl j and k to move in quickfix windows
-nnoremap <silent> <C-j> :cn<CR>
-nnoremap <silent> <C-k> :cp<CR>
-nnoremap <silent> \\ :copen<CR>
-nnoremap <silent> \|\| :cclose<CR>
+" nnoremap <silent> <C-j> :cn<CR>
+" nnoremap <silent> <C-k> :cp<CR>
 
 
 "cycle splits
