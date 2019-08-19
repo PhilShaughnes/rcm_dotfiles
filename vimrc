@@ -90,6 +90,10 @@ nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
 nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
 
+" find all occurances of a thing in all open/saved buffers
+nnoremap <leader>s :cex []<CR> :silent bufdo grepadd '' % <S-Left><Left><Left>
+nnoremap <leader>d :cex []<CR> :silent bufdo grepadd '<C-r><C-w>' %<CR>
+
 " ]<Space> inserts new line below
 nmap <leader>o m`o<Esc>``
 " [<Space> inserts new line above
@@ -214,8 +218,9 @@ Plug 'romainl/vim-qf'
   nmap <C-k> <Plug>(qf_qf_previous)
   nmap <leader>k <Plug>(qf_loc_previous)
   nmap <leader>j <Plug>(qf_loc_next)
-  nmap <leader>l <Plug>(qf_loc_toggle)
-  nmap <leader>q <Plug>(qf_qf_toggle)
+  nmap \|\| <Plug>(qf_loc_toggle)
+  nmap \\ <Plug>(qf_qf_toggle)
+
 Plug 'https://gitlab.com/hauleth/qfx.vim'
 
 Plug 'machakann/vim-sandwich'

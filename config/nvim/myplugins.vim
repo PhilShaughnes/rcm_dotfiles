@@ -19,11 +19,9 @@ function! PackagerInit() abort
   call packager#add('wellle/tmux-complete.vim', { 'type': 'opt' })
   call packager#add('rbgrouleff/bclose.vim', { 'type': 'opt' })          " close buffer without closing window
   call packager#add('romainl/vim-devdocs', { 'type': 'opt' })            " use :DD to look up keywords on devdocs.io
-  call packager#add( 'yuttie/comfortable-motion.vim', { 'type': 'opt' })
-
+  call packager#add('tommcdo/vim-lion', { 'type': 'opt' })               " gl and gL align around a character (so glip=)
   call packager#add('kana/vim-textobj-user')
   call packager#add('kana/vim-textobj-line')
-  call packager#add('kana/vim-textobj-function')
   call packager#add('kana/vim-textobj-entire')
   call packager#add('michaeljsmith/vim-indent-object')
 
@@ -56,8 +54,6 @@ function! PackagerInit() abort
   call packager#add('romainl/vim-qlist')
   call packager#add('romainl/vim-qf')
 
-  " call packager#add('lifepillar/vim-mucomplete')
-
   call packager#local('/usr/local/opt/fzf')
   call packager#local('~/.fzf')
   call packager#add('junegunn/fzf.vim')
@@ -86,31 +82,12 @@ let g:CoolTotalMatches = 1
 " fugitive:
 nnoremap <leader>g :Gstatus<CR>
 
-" MUcomplete settings:
-
-" set shortmess+=c
-" set completeopt-=preview
-" set completeopt+=menuone,noselect
-" " let g:mucomplete#enable_auto_at_startup = 1
-" let MUcompleteNotify = 1
-
-" let g:mucomplete#chains = {
-"   \ 'default' : ['path', 'omni', 'keyp', 'dict', 'uspl', 'snip', 'user', 'incl'],
-"   \ }
-
-"SnipMate settings
-" imap <C-j> <Plug>snipMateNextOrTrigger
-" smap <C-j> <Plug>snipMateNextOrTrigger
-" snoremap <TAB> <C-j>
-
 " Markdown
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_guifg = 'DarkGray'
-augroup goyo
-  autocmd!
-  autocmd! User GoyoEnter Limelight
-  autocmd! User GoyoLeave Limelight!
-augroup END
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 
 " SnipMate
@@ -131,13 +108,13 @@ nmap <C-k> <Plug>(qf_qf_previous)
 nmap <C-j> <Plug>(qf_qf_next)
 nmap <leader>k <Plug>(qf_loc_previous)
 nmap <leader>j <Plug>(qf_loc_next)
-nmap <leader>l <Plug>(qf_loc_toggle)
-nmap <leader>q <Plug>(qf_qf_toggle)
+nmap \|\| <Plug>(qf_loc_toggle)
+nmap \\ <Plug>(qf_qf_toggle)
 
 " FZF settings:
 
 "let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-"f
+"
   nnoremap <leader>t :Files<CR>
   nnoremap <leader>b :Buffers<CR>
   nnoremap <leader>c :Commits<CR>
