@@ -1,16 +1,16 @@
-" {{{ SETTINGS
-syntax enable             " enable syntax highlighting (previously syntax on)
-filetype plugin on " filetype detection[ON] plugin[ON] indent[ON]
+"**************"
+"** SETTINGS **"
+"**************"
+filetype plugin on        " filetype detection[ON] plugin[ON] indent[ON]
+filetype indent on        " activates indenting for files
 set number                " show line numbers
 set encoding=utf-8
 set laststatus=2          " last window always has a statusline
-filetype indent on        " activates indenting for files
 set hlsearch              " Don't continue to highlight searched phrases.
 set incsearch             " But do highlight as you type your search.
 set gdefault              " apply substitutions globally on lines
 set ignorecase
-set smartcase            " Make searches case-insensitive.
-set spelllang=en_us
+set smartcase             " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
 set tabstop=2             " tab spacing
@@ -20,47 +20,20 @@ set shiftround            " always indent/outdent to the nearest tabstop
 set expandtab             " use spaces instead of tabs
 set smarttab              " use tabs at the start of a line, spaces elsewhere
 set nowrap                " don't wrap text
-"set wrap linebreak        " wrap text
+set linebreak
 set breakindent           " indent wrapped text
-set breakindentopt=sbr    " turn on showbreak
-set showbreak=↪>\         " put these characters in front of the broken line
-"set cursorcolumn          " highlight the column with the cursor
-"set cursorline            " highlight the line with the cursor
 set clipboard=unnamed     " use the system clipboard as default
-set sidescroll=1          " turn on sidescroll
-set scrollopt="ver,hor,jump"
 set showcmd               " show command in bottom bar
 set wildmenu              " visual autocomplete for command menu
 set lazyredraw            " redraw ony when needed to
-:set mouse=a              " mouse will work
+set mouse=a               " mouse will work
 set autoread              " reload the file if it changed
-   " check for and load file changes
-autocmd WinEnter,BufWinEnter,FocusGained * checktime
 set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
-" save ov focus lost
-:au FocusLost * silent! wa
-
-:augroup TermOpen
-  autocmd!
-  autocmd BufEnter term://* startinsert
-  autocmd TermOpen * setlocal nonumber norelativenumber
-:augroup END
-
-augroup filetypes
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
-augroup END
-
-
-set linespace=5
-set title
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-
-" disable swapfile to avoid errors on load
-set noswapfile
+set splitbelow
+set splitright
 set nobackup
-
+set noswapfile
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
 
 " use ripgrep to search
@@ -73,10 +46,38 @@ if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 
+augroup TermOpen
+  autocmd!
+  autocmd BufEnter term://* startinsert
+  autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
 
-"}}}
+augroup saving
+  autocmd!
+  autocmd WinEnter,BufWinEnter,FocusGained * checktime
+  autocmd FocusLost * silent! wa
+augroup end
 
-"{{{ KEYMAPS
+augroup filetypes
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+augroup END
+
+augroup quickfix
+  autocmd!
+  " automatic location/quickfix window
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost    l* lwindow
+  autocmd VimEnter            * cwindow
+augroup END
+
+
+"************"
+"** KEYMAP **"
+"************"
+" easier beginning and end of line
+nnoremap H     ^
+nnoremap L     $
 " make marks more better (go to column instead of line)
 nnoremap ' `
 " Y goes to end of line
@@ -100,7 +101,6 @@ nmap <leader>o m`o<Esc>``
 nmap <leader>O m`O<Esc>``
  " jj is escape
 inoremap jj <C-\><C-n>
-" inoremap <C-i> <C-\><C-n>
 
 " inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 " Q runs default macro
@@ -112,15 +112,6 @@ nmap k gk
 " buffer switch
 nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>bb :Buffers<CR>
-
-nnoremap ,b         :buffer *
-nnoremap ,B         :sbuffer *
-
-" Tab and S-Tab indent in normal and visual mode
-" nnoremap <Tab>   >>
-" nnoremap <S-Tab> <<
-" vnoremap <Tab>   >><Esc>gv
-" vnoremap <S-Tab> <<<Esc>gv
 
 nnoremap > >>
 nnoremap < <<
@@ -139,8 +130,6 @@ inoremap <C-e> <ESC>ea
 " highlight last inserted text
 nnoremap gV `[v`]
 
-noremap H     ^
-noremap L     $
 
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
@@ -153,16 +142,6 @@ nnoremap <leader>v "0p
 " leader w is kill buffer
 nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
 
-" terminal - jj goes to normal mode
-tnoremap jj <C-\><C-n>
-" terminal - go to normal mode
-tnoremap <C-\> <C-\><C-n>
-
-
-" tab (next) and shift-tab (prev) to cycle buffer
-nmap <leader><Tab> :bn<CR>
-nmap <leader><S-Tab> :bp<CR>
-
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>p :bp<CR>
@@ -174,38 +153,37 @@ nnoremap <leader>n :bn<CR>
 " nnoremap <silent> <C-j> :cn<CR>
 " nnoremap <silent> <C-k> :cp<CR>
 
- " SPLITS
-set splitbelow
-set splitright
-" nnoremap <bs> <C-W>w
 nnoremap <C-q> <C-w>w
-
-" Quickly edit/reload the vimrc file
-nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
-nnoremap <silent> <leader>vs :so $MYVIMRC<CR>
 
 inoremap <C-\> ✓✗
 
 " side scroll
 nnoremap <C-H> 5zh
 nnoremap <C-L> 5zl
-nnoremap <C-h> ^
-nnoremap <C-l> $
 
-augroup quickfix
-  autocmd!
-  " automatic location/quickfix window
-  autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost    l* lwindow
-  autocmd VimEnter            * cwindow
-augroup END
+" terminal - jj goes to normal mode
+tnoremap jj <C-\><C-n>
+" terminal - go to normal mode
+tnoremap <C-\> <C-\><C-n>
 
+" better completion menu
+" inoremap <C-v> <C-x><C-u>
+" inoremap <C-t> <C-x><C-l>
+" inoremap <C-b> <C-x><C-o>
+" inoremap <C-f> <C-x><C-f>
+" inoremap <C-g> <C-x><C-p>
 
-"}}}
+inoremap ,o <C-x><C-o>
+inoremap ,u <C-x><C-u>
+inoremap ,f <C-x><C-f>
+inoremap ,l <C-x><C-l>
+inoremap ,, <C-x><C-p>
 
-" {{{ PLUGINS
-
+"*************"
+"*** PLUGS ***"
+"*************"
 call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
+
 Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
     nnoremap <leader>g :Gstatus<CR>
@@ -232,42 +210,7 @@ Plug 'terryma/vim-multiple-cursors'
 " replace ALE with vim built-in makeprg - WIP
 Plug 'igemnace/vim-makery'
 Plug 'hauleth/asyncdo.vim'
-  command! -bang -nargs=* -complete=file Make call asyncdo#run(<bang>0, &makeprg, <f-args>)
-  command! -bang -nargs=* -complete=file LMake call asyncdo#lrun(<bang>0, &makeprg, <f-args>)
-  augroup Linting
-    autocmd!
-    autocmd FileType javascript setlocal makeprg=./node_modules/.bin/eslint\ --format\ compact
-    autocmd Filetype javascript setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
-  augroup END
 
-
-
-" Plug 'slashmili/alchemist.vim'
-" let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/codes/elixir/elixir-ls/rel'
-" let g:ale_completion_enabled = 1
-Plug 'w0rp/ale'
-    " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
-    " autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
-
-    " let g:ale_completion_max_suggestions = 10
-    let g:ale_lint_on_text_changed = 'normal'
-    let g:ale_lint_on_enter = 0
-    let g:ale_lint_on_save = 1
-
-    let g:airline#extensions#ale#enabled = 1
-    let g:ale_linters = {
-    \   'elixir': ['dialyxir', 'credo', 'mix'],
-    \   'javascript': ['eslint'],
-    \}
-    let g:ale_fixers = {
-    \   'javascript': ['eslint'],
-    \   'elixir': ['mix_format'],
-    \}
-    let g:ale_fix_on_save = 0
-    nmap <silent> ]e <Plug>(ale_next_wrap)
-
-
-" Plug 'ervandew/supertab'
 Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
   set completeopt-=preview
@@ -277,9 +220,9 @@ Plug 'lifepillar/vim-mucomplete'
   " let g:mucomplete#reopen_immediately = 0
   let MUcompleteNotify = 1
 
-  imap <expr> <C-t> mucomplete#extend_fwd("\<C-t>")
+  imap <expr> <C-v> mucomplete#extend_fwd("\<C-v>")
   let g:mucomplete#chains = {
-    \ 'default' : ['path', 'omni', 'incl', 'keyp', 'dict', 'uspl', 'user'],
+    \ 'default' : ['path', 'omni', 'keyp', 'incl', 'dict', 'uspl', 'user'],
     \ }
 
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -302,7 +245,6 @@ Plug'honza/vim-snippets'
 Plug 'wellle/tmux-complete.vim'
 Plug 'markonm/traces.vim'
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
-Plug 'coderifous/textobj-word-column.vim'
 Plug 'kana/vim-textobj-entire'
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
@@ -335,8 +277,8 @@ Plug 'sheerun/vim-polyglot'
   let g:vim_markdown_json_frontmatter = 1  " for JSON format
 Plug 'tpope/vim-abolish'
 Plug 'yuttie/comfortable-motion.vim'
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
+  noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(10)<CR>
+  noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }                          " distraction free vim
@@ -345,8 +287,6 @@ Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
   let g:limelight_conceal_guifg = 'DarkGray'
   autocmd! User GoyoEnter Limelight
   autocmd! User GoyoLeave Limelight!
-" Plug 'chrisbra/Colorizer'
-" If you have nodejs and yarn
 
 Plug '/usr/local/opt/fzf'
 Plug '~/.fzf'
@@ -374,25 +314,19 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 " Plug 'ludovicchabant/vim-gutentags'
   " g:gutentags_ctags_tagfile = '.git/tags'
 
-Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'croaker/mustang-vim'
 Plug 'arcticicestudio/nord-vim'
-" Plug 'jeffkreeftmeijer/vim-dim'
-" Plug 'noahfrederick/vim-noctu'
 Plug 'rakr/vim-two-firewatch'
 Plug 'beikome/cosme.vim'
 Plug 'wolverian/minimal'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ }
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 
-"}}}
+"*************"
+"*** THEME ***"
+"*************"
 
 let g:airline_theme='angr'
 set notermguicolors
@@ -400,4 +334,5 @@ set background=dark
 colorscheme noctu
 set fillchars+=vert:│
 " hi VertSplit ctermbg=NONE guibg=NONE
-"
+set statusline=%#user6#(%n)\ %f%m%#user8#\ %{FugitiveHead()}%=%#user8#%y\ %p%%%#user6#\ <>\ %#user8#%c:%l/%L\ 
+
