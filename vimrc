@@ -76,8 +76,8 @@ augroup END
 "** KEYMAP **"
 "************"
 " easier beginning and end of line
-nnoremap H     ^
-nnoremap L     $
+noremap H     ^
+noremap L     $
 " make marks more better (go to column instead of line)
 nnoremap ' `
 " Y goes to end of line
@@ -328,11 +328,12 @@ call plug#end()
 "*** THEME ***"
 "*************"
 
-let g:airline_theme='angr'
+" let g:airline_theme='angr'
 set notermguicolors
 set background=dark
 colorscheme noctu
-set fillchars+=vert:│
+" set fillchars+=vert:│
 " hi VertSplit ctermbg=NONE guibg=NONE
-set statusline=%#user6#(%n)\ %f%m%#user8#\ %{FugitiveHead()}%=%#user8#%y\ %p%%%#user6#\ <>\ %#user8#%c:%l/%L\ 
+set statusline=%#user6#(%n)\ %f%m%#user8#\ %{FugitiveHead()}
+set statusline+=%=%#user8#%y\ %p%%%#user6#\ <>\ %#user8#%c:%l/%L\ 
 
