@@ -7,7 +7,7 @@
 [core]
     autocrlf = false
     safecrlf = true
-    excludesfile = /Users/phil/.gitignore_global
+    excludesfile = $HOME/.gitignore_global
     editor = nvim
 
 [alias]
