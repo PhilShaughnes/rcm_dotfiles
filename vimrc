@@ -79,7 +79,7 @@ augroup END
 noremap H     ^
 noremap L     $
 " make marks more better (go to column instead of line)
-nnoremap ' `
+noremap ' `
 " Y goes to end of line
 nnoremap Y y$
 " Select your Leader key
@@ -334,6 +334,7 @@ set background=dark
 colorscheme noctu
 " set fillchars+=vert:│
 " hi VertSplit ctermbg=NONE guibg=NONE
-set statusline=%#user6#(%n)\ %f%m%#user8#\ %{FugitiveHead()}
-set statusline+=%=%#user8#%y\ %p%%%#user6#\ <>\ %#user8#%c:%l/%L\ 
+set statusline=%6*(%n)%{v:register}\ %f%m\ %8*%{FugitiveHead()}%=
+set statusline+=%y\ %p%%\ %6*<>\ %8*%c:%l/%L\ 
+
 

@@ -87,7 +87,7 @@ inoremap <C-g> <C-x><C-p>
 noremap H     ^
 noremap L     $
 " make marks more better (go to column instead of line)
-nnoremap ' `
+noremap ' `
 
 " <C-e/E> work like E but in insert mode
 inoremap <C-e> <esc>ea
