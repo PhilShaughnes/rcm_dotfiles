@@ -16,7 +16,6 @@ set autowrite
 set autoread
 set noswapfile
 set nobackup
-set linebreak
 set laststatus=0
 " set inccommand=nosplit  " can't use this with traces.vim
 set ruler
@@ -27,7 +26,6 @@ set omnifunc=syntaxcomplete#Complete
 set splitbelow
 set splitright
 set completeopt+=menu,longest ",noselect
-set cursorcolumn
 
 if executable('rg')
   set grepprg=rg\ --vimgrep
@@ -53,9 +51,7 @@ augroup END
 
 augroup filetypes
   autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType javascript comp eslint
-  autocmd BufWritePost *.js silent make! <afile> | silent redraw!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 augroup END
 
 
@@ -84,7 +80,7 @@ inoremap <C-v> <C-x><C-u>
 inoremap <C-t> <C-x><C-l>
 inoremap <C-b> <C-x><C-o>
 inoremap <C-f> <C-x><C-f>
-inoremap <C-g> <C-x><C-p>
+" inoremap <C-g> <C-x><C-p>
 
 
 " easier beginning and end of line
@@ -122,7 +118,7 @@ nnoremap <bs> :b#<CR>
 nnoremap <leader>n :bn<CR>
 
 " move to next <++> and go to insert mode
-" inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
+inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 
 
 " visual up and down
@@ -132,9 +128,6 @@ nmap k gk
 " > and < indent in normal and visual mode
 nnoremap > >>
 nnoremap < <<
-vnoremap > >gv
-vnoremap < <gv
-
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -146,6 +139,8 @@ vnoremap K :m '<-2<CR>gv=gv
 " ctrl j and k to move in quickfix windows
 " nnoremap <silent> <C-j> :cn<CR>
 " nnoremap <silent> <C-k> :cp<CR>
+" nnoremap <silent> \\ :cclose<CR>
+" nnoremap <silent> \|\| :copen<CR>
 
 
 "cycle splits
@@ -157,11 +152,103 @@ tnoremap <C-\> <C-\><C-n>
 "*************"
 "*** PLUGS ***"
 "*************"
-
+" run this to install packager the first time:
 " git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager
 
-" runtime **/myplugins.vim
-source $DOTFILES/config/nvim/myplugins.vim
+" Load packager only when you need it
+function! PackagerInit() abort
+  packadd vim-packager
+  call packager#init()
+  call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+
+  call packager#add('junegunn/vim-peekaboo', { 'type': 'opt' })          " peak at registers with \" and @ and <C-R>
+  call packager#add('tpope/vim-sleuth', { 'type': 'opt' })               " auto detects and sets shiftwidth, expandtab, etc.
+  call packager#add('wellle/tmux-complete.vim', { 'type': 'opt' })
+  call packager#add('romainl/vim-devdocs', { 'type': 'opt' })            " use :DD to look up keywords on devdocs.io
+  call packager#add('tommcdo/vim-lion', { 'type': 'opt' })               " gl and gL align around a character (so glip=)
+  call packager#add('kana/vim-textobj-user')
+  call packager#add('kana/vim-textobj-line')
+  call packager#add('kana/vim-textobj-entire')
+  call packager#add('michaeljsmith/vim-indent-object')
+
+  call packager#add('machakann/vim-sandwich')
+  call packager#add('tpope/vim-endwise')
+  call packager#add('markonm/traces.vim')
+  call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })      " gS and gJ split and join functions/statements into single/multi line
+
+  call packager#add('justinmk/vim-dirvish')
+  call packager#add('kristijanhusak/vim-dirvish-git')
+  call packager#add('justinmk/vim-gtfo')                                 " got and gof open current file in terminal/file manager
+
+  call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
+
+  call packager#add('sheerun/vim-polyglot')
+  call packager#add('airblade/vim-gitgutter')
+  call packager#add('tpope/vim-fugitive')
+  call packager#add('tpope/vim-commentary')                              "comment stuff out with gc (gcc to do a line)
+  call packager#add('kana/vim-niceblock')                                " make A and I work for all visual modes
+
+  call packager#add('romainl/vim-cool')
+  call packager#add('romainl/vim-qlist')
+  call packager#add('romainl/vim-qf')
+
+  call packager#local('/usr/local/opt/fzf')
+  call packager#local('~/.fzf')
+  call packager#add('junegunn/fzf.vim')
+
+endfunction
+
+command! PackagerInstall call PackagerInit() | call packager#install()
+command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
+command! PackagerClean call PackagerInit() | call packager#clean()
+command! PackagerStatus call PackagerInit() | call packager#status()
+
+"Load plugins only for specific filetype
+augroup packager_filetype
+  autocmd!
+  " autocmd FileType javascript packadd vim-js-file-import
+  " autocmd FileType go packadd vim-go
+  " autocmd FileType php packadd phpactor
+  autocmd FileType markdown packadd vim-markdown
+augroup END
+
+" vim-cool settings:
+let g:CoolTotalMatches = 1
+
+" fugitive:
+nnoremap <leader>g :Gstatus<CR>
+
+" qf
+nmap <C-k> <Plug>(qf_qf_previous)
+nmap <C-j> <Plug>(qf_qf_next)
+nmap <leader>k <Plug>(qf_loc_previous)
+nmap <leader>j <Plug>(qf_loc_next)
+nmap \|\| <Plug>(qf_loc_toggle)
+nmap \\ <Plug>(qf_qf_toggle)
+
+" FZF settings:
+
+"let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+"
+  nnoremap <leader>t :Files<CR>
+  nnoremap <leader>b :Buffers<CR>
+  nnoremap <leader>c :Commits<CR>
+  nnoremap <leader>f :Rg!<CR>
+
+  " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+    \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+    \   <bang>0)
+
+  " Likewise, Files command with preview window
+  command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+  command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 
 "*************"
 "*** THEME ***"

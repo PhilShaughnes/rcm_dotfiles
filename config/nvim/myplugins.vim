@@ -42,6 +42,9 @@ function! PackagerInit() abort
   call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
   call packager#add('junegunn/limelight.vim', { 'type': 'opt' })
   call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
+  call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
+  call packager#add('elixir-editors/vim-elixir', { 'type': 'opt' })
+  call packager#add('pangloss/vim-javascript', { 'type': 'opt' })
 
   call packager#add('sheerun/vim-polyglot')
   call packager#add('airblade/vim-gitgutter')
@@ -65,12 +68,16 @@ command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'forc
 command! PackagerClean call PackagerInit() | call packager#clean()
 command! PackagerStatus call PackagerInit() | call packager#status()
 
+command! VimWiki packadd vimwiki | :VimwikiIndex
+
 "Load plugins only for specific filetype
 augroup packager_filetype
   autocmd!
   " autocmd FileType javascript packadd vim-js-file-import
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
+  autocmd FileType elixir packadd vim-elixir
+  autocmd FileType javascript packadd vim-javascript
   autocmd FileType markdown packadd vim-markdown
   autocmd FileType markdown packadd goyo.vim
   autocmd FileType markdown packadd limelight.vim
@@ -89,6 +96,16 @@ let g:limelight_conceal_guifg = 'DarkGray'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" vimwiki
+nmap <Leader>x <Plug>VimwikiToggleListItem
+vmap <Leader>x <Plug>VimwikiToggleListItem
+" let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown'}]
+nmap <Leader><Backspace> <Plug>VimwikiGoBackLink
+nmap <Leader>= <Plug>VimwikiAddHeaderLevel
+nmap <Leader>- <Plug>VimwikiRemoveHeaderLevel
+" let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_listsyms = ' .oOx'
+" let g:vimwiki_folding = 'list'
 
 " SnipMate
 let g:snipMate = {}
@@ -134,3 +151,5 @@ nmap \\ <Plug>(qf_qf_toggle)
 
   command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+"Polyglot
+let g:polyglot_disabled = ['javascript']

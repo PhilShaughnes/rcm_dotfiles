@@ -1,10 +1,11 @@
 #! /bin/zsh
 # zmodload zsh/zprof
-export ZSH=$DOTFILES/zsh
 
 source $HOME/.env
 source $DOTFILES/system/aliases
 source $DOTFILES/system/functions
+
+export ZSH=$DOTFILES/zsh
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line

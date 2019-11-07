@@ -30,6 +30,7 @@ set mouse=a               " mouse will work
 set autoread              " reload the file if it changed
 set autowrite             " auto save when switching buffers
 set hidden                " allow unsaved buffers when switching
+set cursorcolumn
 set splitbelow
 set splitright
 set nobackup
@@ -209,7 +210,29 @@ Plug 'terryma/vim-multiple-cursors'
 
 " replace ALE with vim built-in makeprg - WIP
 Plug 'igemnace/vim-makery'
-Plug 'hauleth/asyncdo.vim'
+" Plug 'hauleth/asyncdo.vim'
+Plug 'w0rp/ale'
+    " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
+    let g:ale_completion_enabled = 1
+    autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
+
+    let g:ale_lint_on_text_changed = 'always'
+    let g:ale_lint_on_enter = 0
+    let g:ale_lint_on_save = 1
+
+    let g:airline#extensions#ale#enabled = 0
+    let g:ale_linters = {
+    \   'javascript': ['eslint'],
+    \}
+    let g:ale_fixers = {
+    \   'javascript': ['prettier', 'eslint'],
+    \   'elixir': ['mix_format'],
+    \}
+    let g:ale_fix_on_save = 0
+    let g:ale_javascript_prettier_use_local_config = 1
+    nmap <silent> [e <Plug>(ale_previous_wrap)
+    nmap <silent> ]e <Plug>(ale_next_wrap)
+
 
 Plug 'lifepillar/vim-mucomplete'
   set shortmess+=c
@@ -247,6 +270,7 @@ Plug 'markonm/traces.vim'
 Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
 Plug 'kana/vim-textobj-entire'
 Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
+Plug 'jeetsukumaran/vim-indentwise'
 Plug 'machakann/vim-swap'                            " use g< and g> and gs to swap delimited things
 Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
 Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
@@ -257,6 +281,16 @@ Plug 'kristijanhusak/vim-dirvish-git'
 Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
 Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
 Plug 'dhruvasagar/vim-zoom'
+Plug 'vimwiki/vimwiki'
+  nmap <Leader>x <Plug>VimwikiToggleListItem
+  vmap <Leader>x <Plug>VimwikiToggleListItem
+  " let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown'}]
+  nmap <Leader><Backspace> <Plug>VimwikiGoBackLink
+  nmap <Leader>= <Plug>VimwikiAddHeaderLevel
+  nmap <Leader>- <Plug>VimwikiRemoveHeaderLevel
+  " let g:vimwiki_listsyms = '✗○◐●✓'
+  let g:vimwiki_listsyms = ' .oOx'
+  " let g:vimwiki_folding = 'list'
 
 Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -268,10 +302,15 @@ Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'alvan/vim-closetag'
 
+Plug 'pangloss/vim-javascript'
+Plug 'elixir-editors/vim-elixir'
+
+
 Plug 'AndrewRadev/splitjoin.vim'                     " gS and gJ split and join functions/statements into single/multi line
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
+  let g:polyglot_disabled = ['javascript', 'elixir']
   let g:vim_markdown_frontmatter = 1  " for YAML format
   let g:vim_markdown_toml_frontmatter = 1  " for TOML format
   let g:vim_markdown_json_frontmatter = 1  " for JSON format

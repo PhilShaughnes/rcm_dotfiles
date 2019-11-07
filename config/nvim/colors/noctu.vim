@@ -140,6 +140,7 @@ hi! link markdownLinkTextDelimiter  markdownLinkDelimiter
 hi! link markdownUrl                markdownLinkText
 hi! link markdownAutomaticLink      markdownLinkText
 hi! link markdownCodeBlock          String
+hi markdownListMarker               ctermfg=6
 hi markdownCode                     cterm=bold
 hi markdownBold                     cterm=bold
 hi markdownItalic                   cterm=underline
