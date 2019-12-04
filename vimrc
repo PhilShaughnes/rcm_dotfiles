@@ -320,8 +320,8 @@ Plug 'yuttie/comfortable-motion.vim'
   noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-10)<CR>
   let g:comfortable_motion_friction = 300.0
   let g:comfortable_motion_air_drag = 8.0
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }                          " distraction free vim
-Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim'                          " distraction free vim
+Plug 'junegunn/limelight.vim'
   let g:limelight_conceal_ctermfg = 'gray'
   let g:limelight_conceal_guifg = 'DarkGray'
   autocmd! User GoyoEnter Limelight
