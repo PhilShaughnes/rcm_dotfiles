@@ -91,6 +91,7 @@ nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 
 nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
 nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
+vnoremap <leader>/ y:%s/<C-r>"/
 
 " find all occurances of a thing in all open/saved buffers
 nnoremap <leader>s :cex []<CR> :silent bufdo grepadd '' % <S-Left><Left><Left>
