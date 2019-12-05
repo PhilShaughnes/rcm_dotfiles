@@ -91,6 +91,7 @@ nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 
 nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
 nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
+vnoremap <leader>/ y:%s/<C-r>"/
 
 " find all occurances of a thing in all open/saved buffers
 nnoremap <leader>s :cex []<CR> :silent bufdo grepadd '' % <S-Left><Left><Left>
@@ -209,7 +210,7 @@ Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-multiple-cursors'
 
 " replace ALE with vim built-in makeprg - WIP
-Plug 'igemnace/vim-makery'
+" Plug 'igemnace/vim-makery'
 " Plug 'hauleth/asyncdo.vim'
 Plug 'w0rp/ale'
     " let g:ale_elixir_elixir_ls_release = '/Users/phil/Documents/code/elixir/elixir-ls/rel'
@@ -296,7 +297,8 @@ Plug 'unblevable/quick-scope'
   let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'PhilShaughnes/vim-closer'
 
 Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes

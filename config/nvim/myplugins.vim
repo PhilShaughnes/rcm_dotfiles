@@ -27,6 +27,8 @@ function! PackagerInit() abort
 
   call packager#add('machakann/vim-sandwich')
   call packager#add('tpope/vim-endwise')
+  " call packager#add('rstacruz/vim-closer')
+  call packager#add('PhilShaughnes/vim-closer')
   call packager#add('markonm/traces.vim')
   call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })      " gS and gJ split and join functions/statements into single/multi line
 
@@ -41,7 +43,7 @@ function! PackagerInit() abort
 
   call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
   call packager#add('junegunn/limelight.vim', { 'type': 'opt' })
-  call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
+  " call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
   call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
   call packager#add('elixir-editors/vim-elixir', { 'type': 'opt' })
   call packager#add('pangloss/vim-javascript', { 'type': 'opt' })
@@ -68,7 +70,7 @@ command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'forc
 command! PackagerClean call PackagerInit() | call packager#clean()
 command! PackagerStatus call PackagerInit() | call packager#status()
 
-command! VimWiki packadd vimwiki | :VimwikiIndex
+command! VimWiki packadd vimwiki :VimwikiIndex
 
 "Load plugins only for specific filetype
 augroup packager_filetype
@@ -78,9 +80,8 @@ augroup packager_filetype
   " autocmd FileType php packadd phpactor
   autocmd FileType elixir packadd vim-elixir
   autocmd FileType javascript packadd vim-javascript
-  autocmd FileType markdown packadd vim-markdown
-  autocmd FileType markdown packadd goyo.vim
-  autocmd FileType markdown packadd limelight.vim
+  autocmd FileType markdown, vimwiki packadd goyo.vim, limelight.vim, vimwiki
+  autocmd FileType markdown, vimwiki packadd limelight.vim, limelight.vim, vimwiki
 augroup END
 
 " vim-cool settings:
@@ -106,6 +107,17 @@ nmap <Leader>- <Plug>VimwikiRemoveHeaderLevel
 " let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_listsyms = ' .oOx'
 " let g:vimwiki_folding = 'list'
+let wiki_1 = {}
+let wiki_1.path = '~/vimwiki/'
+let wiki_1.syntax = 'default'
+let wiki_1.ext = '.wiki'
+
+let wiki_2 = {}
+let wiki_2.path = '~/vimwiki_md/'
+let wiki_2.syntax = 'markdown'
+let wiki_2.ext = '.md'
+
+let g:vimwiki_list = [wiki_2, wiki_1]
 
 " SnipMate
 let g:snipMate = {}
@@ -114,10 +126,10 @@ let g:snipMate.snippet_version = 1
 " imap <TAB> <Plug>snipMateNextOrTrigger
 " smap <TAB> <Plug>snipMateNextOrTrigger
 
-imap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
-smap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
-imap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
-smap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
+" imap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
+" smap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
+" imap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
+" smap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
 
 
 " qf
