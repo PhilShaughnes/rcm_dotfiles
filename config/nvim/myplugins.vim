@@ -47,6 +47,8 @@ function! PackagerInit() abort
   call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
   call packager#add('elixir-editors/vim-elixir', { 'type': 'opt' })
   call packager#add('pangloss/vim-javascript', { 'type': 'opt' })
+  call packager#add('moll/vim-node', { 'type': 'opt' })
+  call packager#add('vim-ruby/vim-ruby', { 'type': 'opt' })
 
   call packager#add('sheerun/vim-polyglot')
   call packager#add('airblade/vim-gitgutter')
@@ -79,9 +81,13 @@ augroup packager_filetype
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
   autocmd FileType elixir packadd vim-elixir
+  autocmd FileType ruby packadd vim-ruby
+  autocmd FileType ruby packadd vim-ruby
   autocmd FileType javascript packadd vim-javascript
-  autocmd FileType markdown, vimwiki packadd goyo.vim, limelight.vim, vimwiki
-  autocmd FileType markdown, vimwiki packadd limelight.vim, limelight.vim, vimwiki
+  autocmd FileType javascript packadd vim-node
+  autocmd FileType markdown, vimwiki packadd goyo.vim
+  autocmd FileType markdown, vimwiki packadd limelight.vim
+  autocmd FileType markdown, vimwiki packadd vimwiki.vim
 augroup END
 
 " vim-cool settings:
