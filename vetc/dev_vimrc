@@ -27,7 +27,6 @@ set omnifunc=syntaxcomplete#Complete
 set splitbelow
 set splitright
 set completeopt+=menu,longest ",noselect
-set cursorcolumn
 
 if executable('rg')
   set grepprg=rg\ --vimgrep
