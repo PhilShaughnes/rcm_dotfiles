@@ -66,7 +66,7 @@ augroup END
 " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-inoremap        ,,      <C-n><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
+inoremap        ,,      <C-x><C-p><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 inoremap        ,.      <C-x><C-o><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 inoremap        ,>      <C-x><C-u><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 inoremap        ,;      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
@@ -79,11 +79,12 @@ inoremap        ,:      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>
 " inoremap        ,f      <C-x><C-f><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 " inoremap        ,l      <C-x><C-l><C-r>=pumvisible() ? "\<lt>Down>\<lt>C-p>\<lt>Down>\<lt>C-p>" : ""<CR>
 
-inoremap <C-v> <C-x><C-u>
-inoremap <C-t> <C-x><C-l>
+inoremap <C-u> <C-x><C-u>
+inoremap <C-v> <C-x><C-l>
 inoremap <C-b> <C-x><C-o>
 inoremap <C-f> <C-x><C-f>
 inoremap <C-g> <C-x><C-p>
+
 
 
 " easier beginning and end of line
@@ -115,6 +116,10 @@ vnoremap <leader>/ y:%s/<C-r>"/
 nnoremap <leader>s :cex []<CR> :silent bufdo grepadd '' % <S-Left><Left><Left>
 nnoremap <leader>d :cex []<CR> :silent bufdo grepadd '<C-r><C-w>' %<CR>
 
+" find and replace word under cursor
+nnoremap <Leader>z /\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgn
+nnoremap <Leader>Z ?\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgN
+
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>p :bp<CR>
@@ -124,6 +129,9 @@ nnoremap <leader>n :bn<CR>
 " move to next <++> and go to insert mode
 " inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 
+" Q runs default macro
+nnoremap Q @q
+vnoremap Q :norm @q<cr> @q
 
 " visual up and down
 nmap j gj
@@ -153,6 +161,13 @@ nnoremap <C-q> <C-w>w
 
 " terminal - go to normal mode
 tnoremap <C-\> <C-\><C-n>
+
+inoremap (; (<CR>);<C-c>O
+inoremap (, (<CR>),<C-c>O
+inoremap {; {<CR>};<C-c>O
+inoremap {, {<CR>},<C-c>O
+inoremap [; [<CR>];<C-c>O
+inoremap [, [<CR>],<C-c>O
 
 "*************"
 "*** PLUGS ***"

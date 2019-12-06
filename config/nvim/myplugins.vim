@@ -27,15 +27,14 @@ function! PackagerInit() abort
 
   call packager#add('machakann/vim-sandwich')
   call packager#add('tpope/vim-endwise')
-  " call packager#add('rstacruz/vim-closer')
   call packager#add('PhilShaughnes/vim-closer')
   call packager#add('markonm/traces.vim')
   call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })      " gS and gJ split and join functions/statements into single/multi line
 
-  call packager#add('MarcWeber/vim-addon-mw-utils')
-  call packager#add('tomtom/tlib_vim')
-  call packager#add('garbas/vim-snipmate')
-  call packager#add('honza/vim-snippets', { 'type': 'opt' })
+  " call packager#add('MarcWeber/vim-addon-mw-utils')
+  " call packager#add('tomtom/tlib_vim')
+  " call packager#add('garbas/vim-snipmate')
+  " call packager#add('honza/vim-snippets', { 'type': 'opt' })
 
   call packager#add('justinmk/vim-dirvish')
   call packager#add('kristijanhusak/vim-dirvish-git')
@@ -43,7 +42,6 @@ function! PackagerInit() abort
 
   call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
   call packager#add('junegunn/limelight.vim', { 'type': 'opt' })
-  " call packager#add('plasticboy/vim-markdown', { 'type': 'opt' })
   call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
   call packager#add('elixir-editors/vim-elixir', { 'type': 'opt' })
   call packager#add('pangloss/vim-javascript', { 'type': 'opt' })

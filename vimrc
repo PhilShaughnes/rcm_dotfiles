@@ -107,6 +107,7 @@ inoremap jj <C-\><C-n>
 " inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 " Q runs default macro
 nnoremap Q @q
+vnoremap Q :norm @q<cr> @q
 " visual up and down
 nmap j gj
 nmap k gk
@@ -180,6 +181,14 @@ inoremap ,u <C-x><C-u>
 inoremap ,f <C-x><C-f>
 inoremap ,l <C-x><C-l>
 inoremap ,, <C-x><C-p>
+
+" expand things
+inoremap (; (<CR>);<C-c>O
+inoremap (, (<CR>),<C-c>O
+inoremap {; {<CR>};<C-c>O
+inoremap {, {<CR>},<C-c>O
+inoremap [; [<CR>];<C-c>O
+inoremap [, [<CR>],<C-c>O
 
 "*************"
 "*** PLUGS ***"
