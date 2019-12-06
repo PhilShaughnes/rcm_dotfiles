@@ -190,6 +190,9 @@ inoremap {, {<CR>},<C-c>O
 inoremap [; [<CR>];<C-c>O
 inoremap [, [<CR>],<C-c>O
 
+" add to end of line
+inoremap <C-t> <C-o>mm<C-o>A
+
 "*************"
 "*** PLUGS ***"
 "*************"
@@ -317,7 +320,13 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-editors/vim-elixir'
-
+Plug 'rust-lang/rust.vim'
+  let g:rustfmt_autosave = 1
+Plug 'racer-rust/vim-racer'
+  au FileType rust nmap gd <Plug>(rust-def)
+  au FileType rust nmap gs <Plug>(rust-def-split);
+  au FileType rust nmap gx <Plug>(rust-def-vertical)
+  au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 Plug 'AndrewRadev/splitjoin.vim'                     " gS and gJ split and join functions/statements into single/multi line
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
@@ -366,13 +375,6 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : 
 " Plug 'ludovicchabant/vim-gutentags'
   " g:gutentags_ctags_tagfile = '.git/tags'
 
-Plug 'arcticicestudio/nord-vim'
-Plug 'rakr/vim-two-firewatch'
-Plug 'beikome/cosme.vim'
-Plug 'wolverian/minimal'
-
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 
@@ -384,7 +386,7 @@ call plug#end()
 set notermguicolors
 set background=dark
 colorscheme noctu
-" set fillchars+=vert:│
+set fillchars+=vert:│
 " hi VertSplit ctermbg=NONE guibg=NONE
 set statusline=%6*(%n)%{v:register}\ %f%m\ %8*%{FugitiveHead()}%=
 set statusline+=%y\ %p%%\ %6*<>\ %8*%c:%l/%L\ 
