@@ -332,7 +332,7 @@ Plug 'AndrewRadev/splitjoin.vim'                     " gS and gJ split and join 
 Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
-  let g:polyglot_disabled = ['javascript', 'elixir', 'ruby']
+  let g:polyglot_disabled = ['javascript', 'elixir', 'ruby', 'rust']
   let g:vim_markdown_frontmatter = 1  " for YAML format
   let g:vim_markdown_toml_frontmatter = 1  " for TOML format
   let g:vim_markdown_json_frontmatter = 1  " for JSON format
