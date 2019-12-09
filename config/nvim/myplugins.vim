@@ -47,6 +47,9 @@ function! PackagerInit() abort
   call packager#add('pangloss/vim-javascript', { 'type': 'opt' })
   call packager#add('moll/vim-node', { 'type': 'opt' })
   call packager#add('vim-ruby/vim-ruby', { 'type': 'opt' })
+  call packager#add('rust-lang/rust.vim', { 'type': 'opt' })
+  call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
+
 
   call packager#add('sheerun/vim-polyglot')
   call packager#add('airblade/vim-gitgutter')
@@ -83,6 +86,12 @@ augroup packager_filetype
   autocmd FileType ruby packadd vim-ruby
   autocmd FileType javascript packadd vim-javascript
   autocmd FileType javascript packadd vim-node
+  autocmd FileType rust packadd rust.vim
+  autocmd FileType rust packadd vim-racer
+    au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gs <Plug>(rust-def-split)
+    au FileType rust nmap gx <Plug>(rust-def-vertical)
+    au FileType rust nmap <leader>gd <Plug>(rust-doc)
   autocmd FileType markdown, vimwiki packadd goyo.vim
   autocmd FileType markdown, vimwiki packadd limelight.vim
   autocmd FileType markdown, vimwiki packadd vimwiki.vim
