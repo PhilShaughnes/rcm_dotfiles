@@ -169,18 +169,23 @@ tnoremap jj <C-\><C-n>
 " terminal - go to normal mode
 tnoremap <C-\> <C-\><C-n>
 
-" better completion menu
-" inoremap <C-v> <C-x><C-u>
-" inoremap <C-t> <C-x><C-l>
-" inoremap <C-b> <C-x><C-o>
-" inoremap <C-f> <C-x><C-f>
-" inoremap <C-g> <C-x><C-p>
+inoremap ,; <Esc>m`A;<Esc>``a
+inoremap ,) <Esc>m`A)<Esc>``a
+inoremap ,} <Esc>m`A}<Esc>``a
+nnoremap <leader>; m`A;<Esc>``
 
+" better completion menu
 inoremap ,o <C-x><C-o>
 inoremap ,u <C-x><C-u>
 inoremap ,f <C-x><C-f>
 inoremap ,l <C-x><C-l>
 inoremap ,, <C-x><C-p>
+
+inoremap <C-u> <C-x><C-u>
+inoremap <C-v> <C-x><C-l>
+inoremap <C-b> <C-x><C-o>
+inoremap <C-f> <C-x><C-f>
+inoremap <C-g> <C-x><C-p>
 
 " expand things
 inoremap (; (<CR>);<C-c>O
@@ -246,20 +251,45 @@ Plug 'w0rp/ale'
     nmap <silent> [e <Plug>(ale_previous_wrap)
     nmap <silent> ]e <Plug>(ale_next_wrap)
 
-
-Plug 'lifepillar/vim-mucomplete'
-  set shortmess+=c
-  set completeopt-=preview
-  set completeopt+=menuone,noselect
-  let g:mucomplete#enable_auto_at_startup = 1
-  " let g:mucomplete#completion_delay = 50
-  " let g:mucomplete#reopen_immediately = 0
-  let MUcompleteNotify = 1
-
-  imap <expr> <C-v> mucomplete#extend_fwd("\<C-v>")
-  let g:mucomplete#chains = {
-    \ 'default' : ['path', 'omni', 'keyp', 'incl', 'dict', 'uspl', 'user'],
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'yami-beta/asyncomplete-omni.vim'
+  autocmd User asynccomplete_setup call asyncomplete#register_source(
+    \ asyncomplete#sources#omni#get_source_options({
+      \ 'name': 'omni',
+      \ 'whitelist': ['*'],
+      \ 'blacklist': ['c', 'cpp', 'html'],
+      \ 'completor': function('asyncomplete#sources#omni#completor')
+      \  }))
+  let g:tmuxcomplete#asyncomplete_source_options = {
+    \ 'name':      'tmuxcomplete',
+    \ 'whitelist': ['*'],
+    \ 'config': {
+    \     'splitmode':      'words',
+    \     'filter_prefix':   1,
+    \     'show_incomplete': 1,
+    \     'sort_candidates': 0,
+    \     'scrollback':      0,
+    \     'truncate':        0
+    \     }
     \ }
+Plug 'keremc/asyncomplete-racer.vim'
+  autocmd User asyncomplete_setup call asyncomplete#register_source(
+    \ asyncomplete#sources#racer#get_source_options())
+
+" Plug 'lifepillar/vim-mucomplete'
+"   set shortmess+=c
+"   set completeopt-=preview
+"   set completeopt+=menuone,noselect
+"   let g:mucomplete#enable_auto_at_startup = 1
+"   " let g:mucomplete#completion_delay = 50
+"   " let g:mucomplete#reopen_immediately = 0
+"   let MUcompleteNotify = 1
+
+"   imap <expr> <C-v> mucomplete#extend_fwd("\<C-v>")
+"   let g:mucomplete#chains = {
+"     \ 'default' : ['path', 'omni', 'keyp', 'incl', 'dict', 'uspl', 'user'],
+"     \ }
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -267,10 +297,10 @@ Plug 'garbas/vim-snipmate'
 
 " Optional:
 Plug'honza/vim-snippets'
-  imap <C-g> <Plug>snipMateNextOrTrigger
-  smap <C-g> <Plug>snipMateNextOrTrigger
-  imap <C-f> <Plug>snipMateBack
-  smap <C-f> <Plug>snipMateBack
+  " imap <C-g> <Plug>snipMateNextOrTrigger
+  " smap <C-g> <Plug>snipMateNextOrTrigger
+  " imap <C-f> <Plug>snipMateBack
+  " smap <C-f> <Plug>snipMateBack
 
   " imap <expr><C-j> pumvisible() ? "\<plug>(MUcompleteCycFwd)" : "\<Plug>snipMateNextOrTrigger"
   " smap <expr><C-j> pumvisible() ? "\<plug>(MUcompleteCycFwd)" : "\<Plug>snipMateNextOrTrigger"
@@ -324,7 +354,7 @@ Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
 Plug 'racer-rust/vim-racer'
   au FileType rust nmap gd <Plug>(rust-def)
-  au FileType rust nmap gs <Plug>(rust-def-split);
+  au FileType rust nmap gs <Plug>(rust-def-split)
   au FileType rust nmap gx <Plug>(rust-def-vertical)
   au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
