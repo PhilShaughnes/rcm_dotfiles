@@ -130,7 +130,7 @@ let wiki_2.path = '~/vimwiki_md/'
 let wiki_2.syntax = 'markdown'
 let wiki_2.ext = '.md'
 
-let g:vimwiki_list = [wiki_2, wiki_1]
+let g:vimwiki_list = [wiki_1, wiki_2]
 
 " SnipMate
 let g:snipMate = {}
