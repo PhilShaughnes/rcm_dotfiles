@@ -27,6 +27,7 @@ set omnifunc=syntaxcomplete#Complete
 set splitbelow
 set splitright
 set completeopt+=menu,longest ",noselect
+set thesaurus+=$DOTFILES/vetc/thesaurii.txt
 
 if executable('rg')
   set grepprg=rg\ --vimgrep

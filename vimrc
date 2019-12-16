@@ -36,6 +36,7 @@ set splitright
 set nobackup
 set noswapfile
 set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
+set thesaurus+=$DOTFILES/vetc/thesaurii.txt
 
 " use ripgrep to search
 if executable('rg')
