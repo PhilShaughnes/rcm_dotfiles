@@ -202,7 +202,7 @@ inoremap <C-t> <C-o>mm<C-o>A
 "*************"
 "*** PLUGS ***"
 "*************"
-call plug#begin('~/.local/share/nvim/plugged')       " install with :PlugInstall
+call plug#begin('~/.local/share/vim/plugged')       " install with :PlugInstall
 
 Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
