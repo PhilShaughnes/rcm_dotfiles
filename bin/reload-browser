@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # reload-browser - A cross-platform wrapper for reloading the current
 # browser tab
 # Eric Radman, 2014
