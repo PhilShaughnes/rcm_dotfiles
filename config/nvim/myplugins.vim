@@ -13,6 +13,7 @@ function! PackagerInit() abort
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
 
+  call packager#add('ervandew/supertab')
   call packager#add('terryma/vim-multiple-cursors', { 'type': 'opt' })
   call packager#add('junegunn/vim-peekaboo', { 'type': 'opt' })          " peak at registers with \" and @ and <C-R>
   call packager#add('tpope/vim-sleuth', { 'type': 'opt' })               " auto detects and sets shiftwidth, expandtab, etc.

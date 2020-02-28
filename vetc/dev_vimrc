@@ -26,7 +26,7 @@ set shortmess=a
 set omnifunc=syntaxcomplete#Complete
 set splitbelow
 set splitright
-set completeopt+=menu,longest ",noselect
+set completeopt=menu,preview " longest ",noselect
 set thesaurus+=$DOTFILES/vetc/thesaurii.txt
 
 if executable('rg')
@@ -57,7 +57,6 @@ augroup filetypes
   autocmd FileType javascript comp eslint
   autocmd BufWritePost *.js silent make! <afile> | silent redraw!
 augroup END
-
 
 
 "************"
