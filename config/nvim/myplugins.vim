@@ -49,6 +49,7 @@ function! PackagerInit() abort
   call packager#add('vim-ruby/vim-ruby', { 'type': 'opt' })
   call packager#add('rust-lang/rust.vim', { 'type': 'opt' })
   call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
+  call packager#add('fatih/vim-go', { 'type': 'opt' })
 
 
   call packager#add('sheerun/vim-polyglot')
@@ -83,9 +84,9 @@ augroup packager_filetype
   " autocmd FileType php packadd phpactor
   autocmd FileType elixir packadd vim-elixir
   autocmd FileType ruby packadd vim-ruby
-  autocmd FileType ruby packadd vim-ruby
   autocmd FileType javascript packadd vim-javascript
   autocmd FileType javascript packadd vim-node
+  autocmd FileType go packadd vim-go
   autocmd FileType rust packadd rust.vim
   autocmd FileType rust packadd vim-racer
     au FileType rust nmap gd <Plug>(rust-def)

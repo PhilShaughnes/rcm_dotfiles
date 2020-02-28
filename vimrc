@@ -354,6 +354,8 @@ Plug 'romainl/vim-cool'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'PhilShaughnes/vim-closer'
 
+Plug 'tpope/vim-projectionist'
+
 Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'alvan/vim-closetag'
@@ -362,6 +364,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'moll/vim-node'
 Plug 'pangloss/vim-javascript'
 Plug 'elixir-editors/vim-elixir'
+Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
 Plug 'racer-rust/vim-racer'
