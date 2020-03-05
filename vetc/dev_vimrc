@@ -150,12 +150,20 @@ nnoremap <C-q> <C-w>w
 " terminal - go to normal mode
 tnoremap <C-\> <C-\><C-n>
 
+" create multi-line enclosed thing with terminating character
 inoremap (; (<CR>);<C-c>O
 inoremap (, (<CR>),<C-c>O
 inoremap {; {<CR>};<C-c>O
 inoremap {, {<CR>},<C-c>O
 inoremap [; [<CR>];<C-c>O
 inoremap [, [<CR>],<C-c>O
+
+" add to end of line
+inoremap ,; <Esc>m`A;<Esc>``a
+inoremap ,) <Esc>m`A)<Esc>``a
+inoremap ,} <Esc>m`A}<Esc>``a
+nnoremap <leader>; m`A;<Esc>``
+
 
 "*************"
 "*** PLUGS ***"
