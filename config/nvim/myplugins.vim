@@ -13,7 +13,7 @@ function! PackagerInit() abort
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
 
-  call packager#add('ervandew/supertab')
+  call packager#add('ervandew/supertab', { 'type': 'opt' })
   call packager#add('terryma/vim-multiple-cursors', { 'type': 'opt' })
   call packager#add('junegunn/vim-peekaboo', { 'type': 'opt' })          " peak at registers with \" and @ and <C-R>
   call packager#add('tpope/vim-sleuth', { 'type': 'opt' })               " auto detects and sets shiftwidth, expandtab, etc.
@@ -75,11 +75,15 @@ command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'forc
 command! PackagerClean call PackagerInit() | call packager#clean()
 command! PackagerStatus call PackagerInit() | call packager#status()
 
+command! SuperTab packadd supertab
 command! VimWiki packadd vimwiki :VimwikiIndex
 
 "Load plugins only for specific filetype
 augroup packager_filetype
   autocmd!
+  " doing this b/c auto-starting it can cause conflicts if we use a different
+  " rc file for nvim
+  autocmd FileType * packadd supertab
   " autocmd FileType javascript packadd vim-js-file-import
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
