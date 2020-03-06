@@ -92,6 +92,8 @@ augroup packager_filetype
   autocmd FileType javascript packadd vim-javascript
   autocmd FileType javascript packadd vim-node
   autocmd FileType go packadd vim-go
+    autocmd FileType go nmap <leader>m  <Plug>(go-build)
+    autocmd FileType go nmap <leader>r  <Plug>(go-run)
   autocmd FileType rust packadd rust.vim
   autocmd FileType rust packadd vim-racer
     au FileType rust nmap gd <Plug>(rust-def)
