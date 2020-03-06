@@ -101,6 +101,7 @@ augroup packager_filetype
   autocmd FileType markdown, vimwiki packadd goyo.vim
   autocmd FileType markdown, vimwiki packadd limelight.vim
   autocmd FileType markdown, vimwiki packadd vimwiki.vim
+  autocmd FileType markdown, vimwiki let wiki.nested_syntaxes = {'python': 'python', 'elixir': 'elixir', 'js': 'javascript'}
 augroup END
 
 " vim-cool settings:
