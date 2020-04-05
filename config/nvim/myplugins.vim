@@ -51,6 +51,7 @@ function! PackagerInit() abort
   call packager#add('rust-lang/rust.vim', { 'type': 'opt' })
   call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
   call packager#add('fatih/vim-go', { 'type': 'opt' })
+  call packager#add('mattn/emmet-vim') ", { 'type': 'opt' })
 
 
   call packager#add('sheerun/vim-polyglot')
@@ -77,13 +78,14 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 
 command! SuperTab packadd supertab
 command! VimWiki packadd vimwiki :VimwikiIndex
+command! Emm packadd emmet=vim
 
 "Load plugins only for specific filetype
 augroup packager_filetype
   autocmd!
   " doing this b/c auto-starting it can cause conflicts if we use a different
   " rc file for nvim
-  autocmd FileType * packadd supertab
+  " autocmd FileType * packadd supertab
   " autocmd FileType javascript packadd vim-js-file-import
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
@@ -91,6 +93,8 @@ augroup packager_filetype
   autocmd FileType ruby packadd vim-ruby
   autocmd FileType javascript packadd vim-javascript
   autocmd FileType javascript packadd vim-node
+  " autocmd FileType html, jsx packadd emmet-vim
+
   autocmd FileType go packadd vim-go
     autocmd FileType go nmap <leader>m  <Plug>(go-build)
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -141,9 +145,12 @@ let wiki_2.ext = '.md'
 
 let g:vimwiki_list = [wiki_1, wiki_2]
 
+" Emmet
+let g:user_emmet_leader_key=','
+
 " SnipMate
-let g:snipMate = {}
-let g:snipMate.snippet_version = 1
+" let g:snipMate = {}
+" let g:snipMate.snippet_version = 1
 " SnipMateLoadScope test
 " imap <TAB> <Plug>snipMateNextOrTrigger
 " smap <TAB> <Plug>snipMateNextOrTrigger
