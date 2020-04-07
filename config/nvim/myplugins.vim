@@ -13,9 +13,11 @@ function! PackagerInit() abort
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
 
+  " doesn't seem to work as opt
+  call packager#add('junegunn/vim-peekaboo')          " peak at registers with \" and @ and <C-R>
+
   call packager#add('ervandew/supertab', { 'type': 'opt' })
   call packager#add('terryma/vim-multiple-cursors', { 'type': 'opt' })
-  call packager#add('junegunn/vim-peekaboo', { 'type': 'opt' })          " peak at registers with \" and @ and <C-R>
   call packager#add('tpope/vim-sleuth', { 'type': 'opt' })               " auto detects and sets shiftwidth, expandtab, etc.
   call packager#add('wellle/tmux-complete.vim', { 'type': 'opt' })
   call packager#add('rbgrouleff/bclose.vim', { 'type': 'opt' })          " close buffer without closing window
