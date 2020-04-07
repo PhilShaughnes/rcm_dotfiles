@@ -106,10 +106,12 @@ augroup packager_filetype
     au FileType rust nmap gs <Plug>(rust-def-split)
     au FileType rust nmap gx <Plug>(rust-def-vertical)
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
-  autocmd FileType markdown, vimwiki packadd goyo.vim
-  autocmd FileType markdown, vimwiki packadd limelight.vim
-  autocmd FileType markdown, vimwiki packadd vimwiki.vim
-  autocmd FileType markdown, vimwiki let wiki.nested_syntaxes = {'python': 'python', 'elixir': 'elixir', 'js': 'javascript'}
+  autocmd FileType markdown packadd goyo.vim
+  autocmd FileType markdown packadd limelight.vim
+  autocmd FileType markdown packadd vimwiki.vim
+  autocmd FileType vimwiki packadd goyo.vim
+  autocmd FileType vimwiki packadd limelight.vim
+  autocmd FileType vimwiki packadd vimwiki.vim
 augroup END
 
 " vim-cool settings:
@@ -139,11 +141,14 @@ let wiki_1 = {}
 let wiki_1.path = '~/vimwiki/'
 let wiki_1.syntax = 'default'
 let wiki_1.ext = '.wiki'
+let wiki_1.nested_syntaxes = {'python': 'python', 'elixir': 'elixir', 'js': 'javascript'}
 
 let wiki_2 = {}
 let wiki_2.path = '~/vimwiki_md/'
 let wiki_2.syntax = 'markdown'
 let wiki_2.ext = '.md'
+let wiki_2.nested_syntaxes = {'python': 'python', 'elixir': 'elixir', 'js': 'javascript'}
+
 
 let g:vimwiki_list = [wiki_1, wiki_2]
 
