@@ -176,11 +176,11 @@ inoremap ,} <Esc>m`A}<Esc>``a
 nnoremap <leader>; m`A;<Esc>``
 
 " better completion menu
-inoremap ,o <C-x><C-o>
-inoremap ,u <C-x><C-u>
-inoremap ,f <C-x><C-f>
-inoremap ,l <C-x><C-l>
-inoremap ,, <C-x><C-p>
+" inoremap ,o <C-x><C-o>
+" inoremap ,u <C-x><C-u>
+" inoremap ,f <C-x><C-f>
+" inoremap ,l <C-x><C-l>
+" inoremap ,, <C-x><C-p>
 
 inoremap <C-u> <C-x><C-u>
 inoremap <C-v> <C-x><C-l>
@@ -305,20 +305,7 @@ Plug 'keremc/asyncomplete-racer.vim'
 
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-
-" Optional:
-Plug'honza/vim-snippets'
-  " imap <C-g> <Plug>snipMateNextOrTrigger
-  " smap <C-g> <Plug>snipMateNextOrTrigger
-  " imap <C-f> <Plug>snipMateBack
-  " smap <C-f> <Plug>snipMateBack
-
-  " imap <expr><C-j> pumvisible() ? "\<plug>(MUcompleteCycFwd)" : "\<Plug>snipMateNextOrTrigger"
-  " smap <expr><C-j> pumvisible() ? "\<plug>(MUcompleteCycFwd)" : "\<Plug>snipMateNextOrTrigger"
-  " imap <expr><C-h> pumvisible() ? "\<plug>(MUcompleteCycBwd)" : "\<Plug>snipMateBack"
-  " smap <expr><C-h> pumvisible() ? "\<plug>(MUcompleteCycBwd)" : "\<Plug>snipMateBack"
-
+" Plug 'ervandew/supertab'
 
 Plug 'wellle/tmux-complete.vim'
 Plug 'markonm/traces.vim'
@@ -359,6 +346,8 @@ Plug 'tpope/vim-projectionist'
 Plug 'othree/csscomplete.vim'
 Plug 'ap/vim-css-color'                              " color css color codes
 Plug 'alvan/vim-closetag'
+Plug 'mattn/emmet-vim'
+  let g:user_emmet_leader_key=','
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'moll/vim-node'
@@ -366,6 +355,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'AndrewRadev/ember_tools.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go'
+Plug 'rhysd/vim-crystal'
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
 Plug 'racer-rust/vim-racer'

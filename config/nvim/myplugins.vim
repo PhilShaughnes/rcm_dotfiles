@@ -54,7 +54,8 @@ function! PackagerInit() abort
   call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
   call packager#add('fatih/vim-go', { 'type': 'opt' })
   call packager#add('rhysd/vim-crystal', { 'type': 'opt' })
-  call packager#add('mattn/emmet-vim') ", { 'type': 'opt' })
+  " call packager#add('mattn/emmet-vim') ", { 'type': 'opt' })
+  call packager#add('mattn/emmet-vim', { 'type': 'opt' })
 
 
   call packager#add('sheerun/vim-polyglot')
@@ -81,7 +82,7 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 
 command! SuperTab packadd supertab
 command! VimWiki packadd vimwiki :VimwikiIndex
-command! Emm packadd emmet=vim
+command! Emm packadd emmet-vim
 
 "Load plugins only for specific filetype
 augroup packager_filetype

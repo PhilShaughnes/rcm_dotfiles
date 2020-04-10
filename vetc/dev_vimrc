@@ -73,8 +73,6 @@ inoremap <C-f> <C-x><C-f>
 inoremap <C-g> <C-x><C-p>
 " inoremap ,, <C-x><C-n>
 
-
-
 " easier beginning and end of line
 noremap H     ^
 noremap L     $
@@ -113,9 +111,6 @@ nnoremap <leader>l :ls<CR>:b<space>
 nnoremap <leader>p :bp<CR>
 nnoremap <bs> :b#<CR>
 nnoremap <leader>n :bn<CR>
-
-" move to next <++> and go to insert mode
-" inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
 
 " Q runs default macro
 nnoremap Q @q
@@ -163,6 +158,22 @@ inoremap ,; <Esc>m`A;<Esc>``a
 inoremap ,) <Esc>m`A)<Esc>``a
 inoremap ,} <Esc>m`A}<Esc>``a
 nnoremap <leader>; m`A;<Esc>``
+
+
+"****************"
+"*** SNIPPETS ***"
+"****************"
+
+" move to next <++> and go to insert mode
+inoremap  <leader><Tab> <Esc>/<++><Enter>"_c4l
+vnoremap  <leader><Tab> <Esc>/<++><Enter>"_c4l
+map  <leader><Tab> <Esc>/<++><Enter>"_c4l
+
+"markdown
+autocmd FileType markdown inoremap ,[ [](<++>)<C-o>F]
+
+
+
 
 
 "*************"
