@@ -12,6 +12,7 @@ function! PackagerInit() abort
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
+  call packager#add('sainnhe/sonokai', { 'type': 'opt' })
 
   " doesn't seem to work as opt
   call packager#add('junegunn/vim-peekaboo')          " peak at registers with \" and @ and <C-R>
@@ -56,9 +57,8 @@ function! PackagerInit() abort
   call packager#add('rhysd/vim-crystal', { 'type': 'opt' })
   " call packager#add('mattn/emmet-vim') ", { 'type': 'opt' })
   call packager#add('mattn/emmet-vim', { 'type': 'opt' })
+  call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
 
-
-  call packager#add('sheerun/vim-polyglot')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('tpope/vim-fugitive')
   call packager#add('tpope/vim-commentary')                              "comment stuff out with gc (gcc to do a line)
@@ -81,6 +81,7 @@ command! PackagerClean call PackagerInit() | call packager#clean()
 command! PackagerStatus call PackagerInit() | call packager#status()
 
 command! SuperTab packadd supertab
+command! Polyglot packadd vim-polyglot
 command! VimWiki packadd vimwiki :VimwikiIndex
 command! Emm packadd emmet-vim
 
@@ -89,7 +90,7 @@ augroup packager_filetype
   autocmd!
   " doing this b/c auto-starting it can cause conflicts if we use a different
   " rc file for nvim
-  " autocmd FileType * packadd supertab
+  autocmd FileType * packadd supertab
   " autocmd FileType javascript packadd vim-js-file-import
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
@@ -98,7 +99,7 @@ augroup packager_filetype
   autocmd FileType ruby packadd vim-ruby
   autocmd FileType javascript packadd vim-javascript
   autocmd FileType javascript packadd vim-node
-  " autocmd FileType html, jsx packadd emmet-vim
+  autocmd FileType html,javascript,jsx packadd emmet-vim
 
   autocmd FileType go packadd vim-go
     autocmd FileType go nmap <leader>m  <Plug>(go-build)
