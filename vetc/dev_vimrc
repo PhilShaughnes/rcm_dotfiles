@@ -67,10 +67,12 @@ augroup END
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 inoremap <C-u> <C-x><C-u>
-inoremap <C-v> <C-x><C-l>
-inoremap <C-b> <C-x><C-o>
+inoremap <C-m> <C-x><C-l>
+inoremap <C-,> <C-x><C-o>
+inoremap <C-.> <C-x><C-t>
 inoremap <C-f> <C-x><C-f>
 inoremap <C-g> <C-x><C-p>
+
 " inoremap ,, <C-x><C-n>
 
 " easier beginning and end of line
