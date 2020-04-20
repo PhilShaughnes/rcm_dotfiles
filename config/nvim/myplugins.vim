@@ -54,7 +54,6 @@ function! PackagerInit() abort
   call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
   call packager#add('fatih/vim-go', { 'type': 'opt' })
   call packager#add('rhysd/vim-crystal', { 'type': 'opt' })
-  " call packager#add('mattn/emmet-vim') ", { 'type': 'opt' })
   call packager#add('mattn/emmet-vim', { 'type': 'opt' })
 
 
@@ -157,6 +156,11 @@ let g:vimwiki_list = [wiki_1, wiki_2]
 
 " Emmet
 let g:user_emmet_leader_key=','
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " SnipMate
 " let g:snipMate = {}
