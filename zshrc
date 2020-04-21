@@ -14,15 +14,21 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-#PS1="⟩"
-#RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
+# PS1="❯❯ "
+# RPS1="%{$fg[magenta]%}%20<...<%~%<<%{$reset_color%}"
+# source $ZSH/prompt.zsh
 
 # SETTINGS
 
+# smart-case completion?
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# give us a killall command menu
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
+# menu stype completion
 zstyle ':completion:*' menu select
+# complete kinda fuzzy. expand-or-complete-prefix doesn't look at the right of the cursor
 setopt completeinword
+#selected completion is inserted
 setopt menu_complete
 
 HISTFILE=~/.zhistory
@@ -32,6 +38,7 @@ setopt extendedhistory
 
 setopt interactivecomments # pound sign in interactive prompt
 setopt auto_cd
+setopt auto_pushd
 setopt correctall
 setopt vi
 
@@ -47,18 +54,17 @@ alias gs='nocorrect git status'
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
-MAGIC_ENTER_GIT_COMMAND='git status -s; echo'
-
 #LOCAL - pull in local settings
 # example: hash -d code="$HOME/code"
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
-autoload -Uz compinit add-zsh-hook
-if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
+# # zgen should handle this for us...
+# autoload -Uz compinit add-zsh-hook
+# if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+#   compinit
+# else
+#   compinit -C
+# fi
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zgen
@@ -86,5 +92,5 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
+
 # zprof
