@@ -19,12 +19,13 @@ bindkey '^x^e' edit-command-line
 # source $ZSH/prompt.zsh
 
 # SETTINGS
+# see http://zsh.sourceforge.net/Guide/zshguide06.html for documentation
 
 # smart-case completion?
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # give us a killall command menu
 zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
-# menu stype completion
+# menu style completion
 zstyle ':completion:*' menu select
 # complete kinda fuzzy. expand-or-complete-prefix doesn't look at the right of the cursor
 setopt completeinword
@@ -58,7 +59,8 @@ alias gs='nocorrect git status'
 # example: hash -d code="$HOME/code"
 [[ -f ~/.config/zsh/zshrc.local ]] && source ~/.config/zsh/zshrc.local
 
-# # zgen should handle this for us...
+# # zgen should handle this for us... I think
+# # outside of that, this says only do the compinit stuff if we haven't done it today
 # autoload -Uz compinit add-zsh-hook
 # if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
 #   compinit
