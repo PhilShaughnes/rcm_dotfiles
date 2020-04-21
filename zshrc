@@ -68,6 +68,8 @@ alias gs='nocorrect git status'
 #   compinit -C
 # fi
 
+# eval "$(starship init zsh)"
+
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zgen
 if [[ ! -d ~/.zgen ]];then
@@ -81,6 +83,7 @@ if ! zgen saved; then
   # specify plugins here
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
+  # zgen load subnixr/minimal
 
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-autosuggestions

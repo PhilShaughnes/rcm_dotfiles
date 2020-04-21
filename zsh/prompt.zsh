@@ -1,3 +1,5 @@
+# #! /bin/zsh
+# mostly from https://joshdick.net/2017/06/08/my_git_prompt_for_zsh_revisited.html
 setopt prompt_subst
 autoload -U colors && colors # Enable colors in prompt
 
