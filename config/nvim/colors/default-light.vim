@@ -33,3 +33,16 @@ highlight Underlined     cterm=underline ctermfg=5
 highlight Ignore         ctermfg=15
 highlight Error          ctermfg=15 ctermbg=9
 highlight Todo           ctermfg=0 ctermbg=11
+
+" ===================================
+" N B  = COLOR as defined by terminal
+" ===================================
+" 1 9  = Black
+" 2 10 = Red
+" 3 11 = Green
+" 4 12 = Yellow
+" 5 13 = Blue
+" 6 14 = Magenta
+" 7 15 = Cyan
+" 8 16 = White
+"

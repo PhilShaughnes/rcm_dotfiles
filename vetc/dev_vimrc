@@ -67,7 +67,7 @@ augroup END
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 inoremap <C-u> <C-x><C-u>
-inoremap <C-m> <C-x><C-l>
+" inoremap <C-m> <C-x><C-l>
 inoremap <C-,> <C-x><C-o>
 inoremap <C-.> <C-x><C-t>
 inoremap <C-f> <C-x><C-f>
