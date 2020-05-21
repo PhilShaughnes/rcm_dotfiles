@@ -88,7 +88,6 @@ nnoremap Y y$
 let mapleader = "\<Space>"
 " Enter cancels search highlighting
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
-" nnoremap , :nohlsearch<CR>
 
 nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
 nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
@@ -209,6 +208,8 @@ Plug 'tpope/vim-fugitive'
     nnoremap <leader>g :Gstatus<CR>
 Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
 Plug 'tpope/vim-endwise'                             "auto add end to stuffs
+Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
+Plug 'airblade/vim-gitgutter'
 
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
@@ -225,7 +226,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 " replace ALE with vim built-in makeprg - WIP
 " Plug 'igemnace/vim-makery'
@@ -365,8 +366,6 @@ Plug 'racer-rust/vim-racer'
   au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 Plug 'AndrewRadev/splitjoin.vim'                     " gS and gJ split and join functions/statements into single/multi line
-Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
-Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
   let g:polyglot_disabled = ['javascript', 'elixir', 'ruby', 'rust']
   let g:vim_markdown_frontmatter = 1  " for YAML format
