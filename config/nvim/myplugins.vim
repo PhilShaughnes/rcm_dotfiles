@@ -12,7 +12,10 @@ function! PackagerInit() abort
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
-  call packager#add('sainnhe/sonokai', { 'type': 'opt' })
+  call packager#add('scolsen/hara', { 'type': 'opt' })
+  call packager#add('owickstrom/vim-colors-paramount', { 'type': 'opt' })
+  call packager#add('plan9-for-vimspace/acme-colors', { 'type': 'opt' })
+
 
   " doesn't seem to work as opt
   call packager#add('junegunn/vim-peekaboo')          " peak at registers with \" and @ and <C-R>
@@ -93,7 +96,7 @@ augroup packager_filetype
   " autocmd FileType javascript packadd vim-js-file-import
   " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
-  autocmd FileType elixir packadd vim-elixir
+  autocmd FileType elixir,exs,ex packadd vim-elixir
   autocmd FileType crystal packadd vim-crystal
   autocmd FileType ruby packadd vim-ruby
   autocmd FileType javascript packadd vim-javascript

@@ -1,208 +1,27 @@
 "**************"
 "** SETTINGS **"
 "**************"
-filetype plugin on        " filetype detection[ON] plugin[ON] indent[ON]
-filetype indent on        " activates indenting for files
-set number                " show line numbers
-set encoding=utf-8
-set laststatus=2          " last window always has a statusline
-set hlsearch              " Don't continue to highlight searched phrases.
-set incsearch             " But do highlight as you type your search.
-set gdefault              " apply substitutions globally on lines
-set ignorecase
-set smartcase             " Make searches case-insensitive.
-set ruler                 " Always show info along bottom.
-set autoindent            " auto-indent
-set tabstop=2             " tab spacing
-set softtabstop=2         " unify
-set shiftwidth=2          " indent/outdent by 2 columns
-set shiftround            " always indent/outdent to the nearest tabstop
-set expandtab             " use spaces instead of tabs
-set smarttab              " use tabs at the start of a line, spaces elsewhere
-set nowrap                " don't wrap text
-set linebreak
-set breakindent           " indent wrapped text
-set clipboard=unnamed     " use the system clipboard as default
-set showcmd               " show command in bottom bar
-set wildmenu              " visual autocomplete for command menu
-set lazyredraw            " redraw ony when needed to
-set mouse=a               " mouse will work
-set autoread              " reload the file if it changed
-set autowrite             " auto save when switching buffers
-set hidden                " allow unsaved buffers when switching
-set cursorcolumn
-set splitbelow
-set splitright
-set nobackup
-set noswapfile
-set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
-set thesaurus+=$DOTFILES/vetc/thesaurii.txt
+source $DOTFILES/config/nvim/base_settings.vim
 
-" use ripgrep to search
-if executable('rg')
-  set grepprg=rg\ --vimgrep
-  set grepformat=%f:%l:%c:%m
-endif
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 
-augroup TermOpen
-  autocmd!
-  autocmd BufEnter term://* startinsert
-  autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
-
-augroup saving
-  autocmd!
-  autocmd WinEnter,BufWinEnter,FocusGained * checktime
-  autocmd FocusLost * silent! wa
-augroup end
-
-augroup filetypes
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
-augroup END
-
-augroup quickfix
-  autocmd!
-  " automatic location/quickfix window
-  autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost    l* lwindow
-  autocmd VimEnter            * cwindow
-augroup END
-
+source $DOTFILES/config/nvim/augroups.vim
 
 "************"
 "** KEYMAP **"
 "************"
-" easier beginning and end of line
-noremap H     ^
-noremap L     $
-" make marks more better (go to column instead of line)
-noremap ' `
-" Y goes to end of line
-nnoremap Y y$
-" Select your Leader key
-let mapleader = "\<Space>"
-" Enter cancels search highlighting
-nnoremap <silent> <Leader><Space> :nohlsearch<CR>
-" nnoremap , :nohlsearch<CR>
-
-nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
-nnoremap <leader>% :%s/\<<C-r>=expand("<cword>")<CR>\>/
-vnoremap <leader>/ y:%s/<C-r>"/
-
-" find all occurances of a thing in all open/saved buffers
-nnoremap <leader>s :cex []<CR> :silent bufdo grepadd '' % <S-Left><Left><Left>
-nnoremap <leader>d :cex []<CR> :silent bufdo grepadd '<C-r><C-w>' %<CR>
-
-" ]<Space> inserts new line below
-nmap <leader>o m`o<Esc>``
-" [<Space> inserts new line above
-nmap <leader>O m`O<Esc>``
- " jj is escape
-inoremap jj <C-\><C-n>
-
-" inoremap <C-g><Space> <Esc>/<++><Enter>"_c4l
-" Q runs default macro
-nnoremap Q @q
-vnoremap Q :norm @q<cr> @q
-" visual up and down
-nmap j gj
-nmap k gk
-
-" buffer switch
-nnoremap <leader>bl :ls<CR>:b<space>
-nnoremap <leader>bb :Buffers<CR>
-
-nnoremap > >>
-nnoremap < <<
-vnoremap > >><Esc>gv
-vnoremap < <<<Esc>gv
-
-
-" vnoremap <leader>s "ry:call system('tmux send-keys -t .+ "echo <c-r>r" Enter')<CR>
-" nmap <leader>m :call system('tmux send-keys -t .+ "
-
-" <C-e/E> work like E but in insert mode
-inoremap <C-e> <ESC>ea
-" inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
-" inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
-
-" highlight last inserted text
-nnoremap gV `[v`]
-
-
-" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-" paste over highlighted text and retain copied text
-vnoremap <leader>p "_dP
-" paste last yanked text (not deleted)
-nnoremap <leader>v "0p
-" leader w is kill buffer
-nnoremap <leader>w :bp\|sp\|bn\|bd <CR>
-
-" buffer switch
-nnoremap <leader>l :ls<CR>:b<space>
-nnoremap <leader>p :bp<CR>
-nnoremap <BS> :b#<CR>
-nnoremap <leader>n :bn<CR>
-
-
-" " ctrl j and k to move in quickfix windows
-" nnoremap <silent> <C-j> :cn<CR>
-" nnoremap <silent> <C-k> :cp<CR>
-
-nnoremap <C-q> <C-w>w
-
-inoremap <C-\> ✓✗
-
-" side scroll
-nnoremap <C-H> 5zh
-nnoremap <C-L> 5zl
-
-" terminal - jj goes to normal mode
-tnoremap jj <C-\><C-n>
-" terminal - go to normal mode
-tnoremap <C-\> <C-\><C-n>
-
-inoremap ,; <Esc>m`A;<Esc>``a
-inoremap ,) <Esc>m`A)<Esc>``a
-inoremap ,} <Esc>m`A}<Esc>``a
-nnoremap <leader>; m`A;<Esc>``
-
-" better completion menu
-" inoremap ,o <C-x><C-o>
-" inoremap ,u <C-x><C-u>
-" inoremap ,f <C-x><C-f>
-" inoremap ,l <C-x><C-l>
-" inoremap ,, <C-x><C-p>
-
-inoremap <C-u> <C-x><C-u>
-inoremap <C-v> <C-x><C-l>
-inoremap <C-b> <C-x><C-o>
-inoremap <C-f> <C-x><C-f>
-inoremap <C-g> <C-x><C-p>
-
-" expand things
-inoremap (; (<CR>);<C-c>O
-inoremap (, (<CR>),<C-c>O
-inoremap {; {<CR>};<C-c>O
-inoremap {, {<CR>},<C-c>O
-inoremap [; [<CR>];<C-c>O
-inoremap [, [<CR>],<C-c>O
-
-" add to end of line
-inoremap <C-t> <C-o>mm<C-o>A
+source $DOTFILES/config/nvim/keymaps.vim
 
 "*************"
 "*** PLUGS ***"
 "*************"
 call plug#begin('~/.local/share/vim/plugged')       " install with :PlugInstall
+
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'altercation/vim-colors-solarized'
 
 Plug 'tpope/vim-sleuth'                              "auto detects and sets shiftwidth, expandtab, etc.
 Plug 'tpope/vim-fugitive'
@@ -419,9 +238,9 @@ call plug#end()
 "*************"
 
 " let g:airline_theme='angr'
-set notermguicolors
+set termguicolors
 set background=dark
-colorscheme noctu
+colorscheme dracula
 set fillchars+=vert:│
 " hi VertSplit ctermbg=NONE guibg=NONE
 set statusline=%6*(%n)%{v:register}\ %f%m\ %8*%{FugitiveHead()}%=
