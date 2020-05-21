@@ -60,12 +60,12 @@ alias gs='nocorrect git status'
 
 # # zgen should handle this for us... I think
 # # outside of that, this says only do the compinit stuff if we haven't done it today
-# autoload -Uz compinit add-zsh-hook
-# if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-#   compinit
-# else
-#   compinit -C
-# fi
+autoload -Uz compinit add-zsh-hook
+if [ $(date '+%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 #PACKAGES
 # You can customize where you put it but it's generally recommended that you put in $HOME/.zgen

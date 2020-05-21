@@ -1,67 +1,8 @@
-set number
-set hidden
-set tabstop=2             " tab spacing
-set softtabstop=2         " unify
-set shiftwidth=2          " indent/outdent by 2 columns
-set shiftround            " always indent/outdent to the nearest tabstop
-set expandtab
-set gdefault              " apply substitutions globally on lines
-set smarttab
-filetype indent on
-set lazyredraw
-set hlsearch              " Don't continue to highlight searched phrases.
-set incsearch             " But do highlight as you type your search.
-set mouse=a
-set autowrite
-set autoread
-set noswapfile
-set nobackup
-set linebreak
-set laststatus=0
-" set inccommand=nosplit  " can't use this with traces.vim
-set ruler
-set clipboard=unnamed     " use the system clipboard as default
-set list listchars=tab:»\ ,trail:·,nbsp:· ",eol:¬ ,space:· " display extra white space
-set shortmess=a
-set omnifunc=syntaxcomplete#Complete
-set splitbelow
-set splitright
-set completeopt=menu,preview " longest ",noselect
-set thesaurus+=$DOTFILES/vetc/thesaurii.txt
-
-if executable('rg')
-  set grepprg=rg\ --vimgrep
-  set grepformat=%f:%l:%c:%m
-endif
-
-augroup TermOpen
-  autocmd!
-  autocmd BufEnter term://* startinsert
-  autocmd TermOpen * setlocal nonumber norelativenumber
-augroup end
-
-augroup quickfix
-  autocmd!
-  " automatic location/quickfix window
-  autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost    l* lwindow
-  autocmd VimEnter            * cwindow
-
-  autocmd WinEnter,BufEnter,FocusGained * checktime
-  autocmd FocusLost * silent! wa
-augroup END
-
-augroup filetypes
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType javascript comp eslint
-  autocmd BufWritePost *.js silent make! <afile> | silent redraw!
-augroup END
-
-
 "************"
 "** KEYMAP **"
 "************"
+" Select your Leader key
+let mapleader = "\<Space>"
 " better completion menu
 " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -83,15 +24,19 @@ noremap ' `
 
 " <C-e/E> work like E but in insert mode
 inoremap <C-e> <esc>ea
+" add to end of line
+inoremap <C-t> <C-o>mm<C-o>A
+
 " inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 " inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
 inoremap <C-h> <left>
 inoremap <C-l> <right>
+" side scroll
+nnoremap <C-H> 5zh
+nnoremap <C-L> 5zl
 
 " Y goes to end of line
 nnoremap Y y$
-" Select your Leader key
-let mapleader = "\<Space>"
 " leader space cancels search highlighting
 nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 
@@ -167,10 +112,11 @@ nnoremap <leader>; m`A;<Esc>``
 "****************"
 
 " move to next <++> and go to insert mode
-inoremap  <leader><Tab> <Esc>/<++><Enter>"_c4l
-vnoremap  <leader><Tab> <Esc>/<++><Enter>"_c4l
-map  <leader><Tab> <Esc>/<++><Enter>"_c4l
+inoremap  ,<Tab> <Esc>/<++><Enter>"_c4l
+vnoremap  ,<Tab> <Esc>/<++><Enter>"_c4l
+map  ,<Tab> <Esc>/<++><Enter>"_c4l
 
+inoremap ,, <++>
 "markdown
 autocmd FileType markdown inoremap ,[ [](<++>)<C-o>F]
 
@@ -178,28 +124,4 @@ autocmd FileType markdown inoremap ,[ [](<++>)<C-o>F]
 
 
 
-"*************"
-"*** PLUGS ***"
-"*************"
-
-" git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager
-
-" runtime **/myplugins.vim
-source $DOTFILES/config/nvim/myplugins.vim
-
-"*************"
-"*** THEME ***"
-"*************"
-
-set notermguicolors
-set background=dark
-colorscheme noctu
-set fillchars+=vert:│
-set laststatus=2
-
-" set statusline=%#user6#(%n)\ %f%m%#user8#\ %{FugitiveHead()}
-" set statusline+=%=%#user8#%y\ %p%%%#user6#\ <>\ %#user8#%c:%l/%L\ 
-
-set statusline=%6*(%n)%{v:register}\ %f%m\ %8*%{FugitiveHead()}%=
-set statusline+=%y\ %p%%\ %6*<>\ %8*%c:%l/%L\ 
 
