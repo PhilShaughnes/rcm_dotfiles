@@ -197,9 +197,6 @@ colorscheme noctu
 set fillchars+=vert:│
 set laststatus=2
 
-" set statusline=%#user6#(%n)\ %f%m%#user8#\ %{FugitiveHead()}
-" set statusline+=%=%#user8#%y\ %p%%%#user6#\ <>\ %#user8#%c:%l/%L\ 
-
 set statusline=%6*(%n)%{v:register}\ %f%m\ %8*%{FugitiveHead()}%=
 set statusline+=%y\ %p%%\ %6*<>\ %8*%c:%l/%L\ 
 

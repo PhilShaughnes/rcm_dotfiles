@@ -12,9 +12,7 @@ function! PackagerInit() abort
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
-  call packager#add('scolsen/hara', { 'type': 'opt' })
   call packager#add('owickstrom/vim-colors-paramount', { 'type': 'opt' })
-  call packager#add('plan9-for-vimspace/acme-colors', { 'type': 'opt' })
 
 
   " doesn't seem to work as opt

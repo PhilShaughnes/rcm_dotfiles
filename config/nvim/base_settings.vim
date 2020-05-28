@@ -1,3 +1,7 @@
+"**************"
+"** SETTINGS **"
+"**************"
+
 filetype indent on
 set autoread
 set autowrite
