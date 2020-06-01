@@ -116,10 +116,8 @@ inoremap  ,<Tab> <Esc>/<++><Enter>"_c4l
 vnoremap  ,<Tab> <Esc>/<++><Enter>"_c4l
 map  ,<Tab> <Esc>/<++><Enter>"_c4l
 
-inoremap ,, <++>
 "markdown
 autocmd FileType markdown inoremap ,[ [](<++>)<C-o>F]
-
 
 
 
