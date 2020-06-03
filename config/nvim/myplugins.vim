@@ -14,50 +14,17 @@ function! PackagerInit() abort
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
   call packager#add('owickstrom/vim-colors-paramount', { 'type': 'opt' })
 
-
-  " doesn't seem to work as opt
-  call packager#add('junegunn/vim-peekaboo')          " peak at registers with \" and @ and <C-R>
-
-  call packager#add('ervandew/supertab', { 'type': 'opt' })
-  call packager#add('terryma/vim-multiple-cursors', { 'type': 'opt' })
-  call packager#add('tpope/vim-sleuth', { 'type': 'opt' })               " auto detects and sets shiftwidth, expandtab, etc.
-  call packager#add('wellle/tmux-complete.vim', { 'type': 'opt' })
-  call packager#add('rbgrouleff/bclose.vim', { 'type': 'opt' })          " close buffer without closing window
-  call packager#add('romainl/vim-devdocs', { 'type': 'opt' })            " use :DD to look up keywords on devdocs.io
-  call packager#add('tommcdo/vim-lion', { 'type': 'opt' })               " gl and gL align around a character (so glip=)
-  call packager#add('kana/vim-textobj-user')
-  call packager#add('kana/vim-textobj-line')
-  call packager#add('kana/vim-textobj-entire')
-  call packager#add('michaeljsmith/vim-indent-object')
+  call packager#add('junegunn/fzf.vim')
+  call packager#local('/usr/local/opt/fzf')
 
   call packager#add('machakann/vim-sandwich')
   call packager#add('tpope/vim-endwise')
   call packager#add('PhilShaughnes/vim-closer')
   call packager#add('markonm/traces.vim')
-  call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })      " gS and gJ split and join functions/statements into single/multi line
-
-  " call packager#add('MarcWeber/vim-addon-mw-utils')
-  " call packager#add('tomtom/tlib_vim')
-  " call packager#add('garbas/vim-snipmate')
-  " call packager#add('honza/vim-snippets', { 'type': 'opt' })
 
   call packager#add('justinmk/vim-dirvish')
   call packager#add('kristijanhusak/vim-dirvish-git')
   call packager#add('justinmk/vim-gtfo')                                 " got and gof open current file in terminal/file manager
-
-  call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
-  call packager#add('junegunn/limelight.vim', { 'type': 'opt' })
-  call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
-  call packager#add('elixir-editors/vim-elixir', { 'type': 'opt' })
-  call packager#add('pangloss/vim-javascript', { 'type': 'opt' })
-  call packager#add('moll/vim-node', { 'type': 'opt' })
-  call packager#add('vim-ruby/vim-ruby', { 'type': 'opt' })
-  call packager#add('rust-lang/rust.vim', { 'type': 'opt' })
-  call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
-  call packager#add('fatih/vim-go', { 'type': 'opt' })
-  call packager#add('rhysd/vim-crystal', { 'type': 'opt' })
-  call packager#add('mattn/emmet-vim', { 'type': 'opt' })
-  call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
 
   call packager#add('airblade/vim-gitgutter')
   call packager#add('tpope/vim-fugitive')
@@ -68,10 +35,45 @@ function! PackagerInit() abort
   call packager#add('romainl/vim-cool')
   call packager#add('romainl/vim-qlist')
   call packager#add('romainl/vim-qf')
+  " doesn't seem to work as opt
+  call packager#add('junegunn/vim-peekaboo')          " peak at registers with \" and @ and <C-R>
 
-  call packager#local('/usr/local/opt/fzf')
-  call packager#local('~/.fzf')
-  call packager#add('junegunn/fzf.vim')
+
+  call packager#add('tpope/vim-sleuth')               " auto detects and sets shiftwidth, expandtab, etc.
+  call packager#add('rbgrouleff/bclose.vim')          " close buffer without closing window
+  call packager#add('romainl/vim-devdocs')            " use :DD to look up keywords on devdocs.io
+  call packager#add('tommcdo/vim-lion')               " gl and gL align around a character (so glip=)
+  call packager#add('kana/vim-textobj-user')
+  call packager#add('kana/vim-textobj-line')
+  call packager#add('kana/vim-textobj-entire')
+  call packager#add('michaeljsmith/vim-indent-object')
+
+  call packager#add('vimwiki/vimwiki')
+  call packager#add('yuttie/comfortable-motion.vim')
+
+  "completion
+  call packager#add('ervandew/supertab')
+
+  "linting
+
+  " file specific
+  call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
+  call packager#add('junegunn/limelight.vim', { 'type': 'opt' })
+  call packager#add('elixir-editors/vim-elixir', { 'type': 'opt' })
+  call packager#add('pangloss/vim-javascript', { 'type': 'opt' })
+  call packager#add('moll/vim-node', { 'type': 'opt' })
+  call packager#add('vim-ruby/vim-ruby', { 'type': 'opt' })
+  call packager#add('rust-lang/rust.vim', { 'type': 'opt' })
+  call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
+  call packager#add('fatih/vim-go', { 'type': 'opt' })
+  call packager#add('rhysd/vim-crystal', { 'type': 'opt' })
+  call packager#add('mattn/emmet-vim', { 'type': 'opt' })
+  call packager#add('othree/csscomplete.vim', { 'type': 'opt' })
+  call packager#add('ap/vim-css-color', { 'type': 'opt' })
+  call packager#add('alvan/vim-closetag', { 'type': 'opt' })
+
+  call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
+
 
 endfunction
 
@@ -89,33 +91,28 @@ command! Emm packadd emmet-vim
 augroup packager_filetype
   autocmd!
   " doing this b/c auto-starting it can cause conflicts if we use a different
-  " rc file for nvim
-  autocmd FileType * packadd supertab
-  " autocmd FileType javascript packadd vim-js-file-import
-  " autocmd FileType go packadd vim-go
   " autocmd FileType php packadd phpactor
   autocmd FileType elixir,exs,ex packadd vim-elixir
   autocmd FileType crystal packadd vim-crystal
   autocmd FileType ruby packadd vim-ruby
-  autocmd FileType javascript packadd vim-javascript
-  autocmd FileType javascript packadd vim-node
+  autocmd FileType javascript packadd vim-javascript,vim-node
   autocmd FileType html,javascript,jsx packadd emmet-vim
 
   autocmd FileType go packadd vim-go
-    autocmd FileType go nmap <leader>m  <Plug>(go-build)
-    autocmd FileType go nmap <leader>r  <Plug>(go-run)
+    au FileType go nmap <leader>m  <Plug>(go-build)
+    au FileType go nmap <leader>r  <Plug>(go-run)
   autocmd FileType rust packadd rust.vim
   autocmd FileType rust packadd vim-racer
     au FileType rust nmap gd <Plug>(rust-def)
     au FileType rust nmap gs <Plug>(rust-def-split)
     au FileType rust nmap gx <Plug>(rust-def-vertical)
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
-  autocmd FileType markdown packadd goyo.vim
-  autocmd FileType markdown packadd limelight.vim
-  autocmd FileType markdown packadd vimwiki.vim
-  autocmd FileType vimwiki packadd goyo.vim
-  autocmd FileType vimwiki packadd limelight.vim
-  autocmd FileType vimwiki packadd vimwiki.vim
+  " autocmd FileType markdown,vimwiki packadd goyo.vim
+  " autocmd FileType markdown,vimwiki packadd limelight.vim
+  autocmd FileType markdown,vimwiki packadd vimwiki.vim,goyo.vim,limelight.vim
+  " autocmd FileType vimwiki packadd goyo.vim
+  " autocmd FileType vimwiki packadd limelight.vim
+  " autocmd FileType vimwiki packadd vimwiki.vim
 augroup END
 
 " vim-cool settings:
