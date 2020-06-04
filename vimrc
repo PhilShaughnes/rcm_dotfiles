@@ -17,7 +17,7 @@ source $DOTFILES/config/nvim/theme.vim
 " source $DOTFILES/config/nvim/airline_config.vim
 
 
-let g:airline_theme='angr'
+" let g:airline_theme='angr'
 " set termguicolors
 " colorscheme dracula
 

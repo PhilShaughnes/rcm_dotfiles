@@ -1,7 +1,3 @@
-if &compatible
-  " set nocompatible
-endif
-
 " run this to install packager the first time:
 " git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager
 
@@ -13,6 +9,7 @@ function! PackagerInit() abort
 
   call packager#add('rakr/vim-two-firewatch', { 'type': 'opt' })
   call packager#add('owickstrom/vim-colors-paramount', { 'type': 'opt' })
+  call packager#add('dracula/vim')
 
   call packager#add('junegunn/fzf.vim')
   call packager#local('/usr/local/opt/fzf')
@@ -73,8 +70,6 @@ function! PackagerInit() abort
   call packager#add('alvan/vim-closetag', { 'type': 'opt' })
 
   call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
-
-
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -160,19 +155,6 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
-
-" SnipMate
-" let g:snipMate = {}
-" let g:snipMate.snippet_version = 1
-" SnipMateLoadScope test
-" imap <TAB> <Plug>snipMateNextOrTrigger
-" smap <TAB> <Plug>snipMateNextOrTrigger
-
-" imap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
-" smap <expr><TAB> pumvisible() ? "\<C-N>" : "\<Plug>snipMateNextOrTrigger"
-" imap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
-" smap <expr><S-TAB> pumvisible() ? "\<C-P>" : "\<Plug>snipMateBack"
-
 
 " qf
 nmap <C-k> <Plug>(qf_qf_previous)
