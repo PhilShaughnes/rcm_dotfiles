@@ -14,7 +14,7 @@ source $DOTFILES/config/nvim/keymaps.vim
 source $DOTFILES/config/nvim/myplugins.vim
 
 source $DOTFILES/config/nvim/theme.vim
-" source $DOTFILES/config/nvim/airline_config.vim
+" source $DOTFILES/vetc/airline_config.vim
 
 
 " let g:airline_theme='angr'
