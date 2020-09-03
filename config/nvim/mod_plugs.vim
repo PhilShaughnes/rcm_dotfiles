@@ -50,15 +50,19 @@ call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInsta
 
   Plug 'vim-ruby/vim-ruby'
   Plug 'elixir-editors/vim-elixir'
+  " Plug 'xolox/vim-lua-ftplugin'
+  " Plug 'xolox/vim-misc'
   Plug 'fatih/vim-go'
   Plug 'mrk21/yaml-vim'
   Plug 'rhysd/vim-crystal'
-  Plug 'rust-lang/rust.vim'
-  Plug 'racer-rust/vim-racer'
+  " Plug 'rust-lang/rust.vim'
+  " Plug 'racer-rust/vim-racer'
   Plug 'junegunn/goyo.vim'                             " distraction free vim
   Plug 'junegunn/limelight.vim'
 
   Plug 'crusoexia/vim-monokai'
+  Plug 'bluz71/vim-moonfly-colors'
+  Plug 'bluz71/vim-moonfly-statusline'
 
 call plug#end()
 

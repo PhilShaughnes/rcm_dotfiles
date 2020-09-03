@@ -27,7 +27,8 @@ set ruler
 set shiftround            " always indent/outdent to the nearest tabstop
 set shiftwidth=2          " indent/outdent by 2 columns
 set shortmess=a
-set smartcase             " Make searches case-insensitive
+set ignorecase            " Make searches case-insensitive
+set smartcase             " unless you use capital letters
 set smarttab              " use tabs at the start of a line, spaces elseware
 set softtabstop=2         " unify
 set splitbelow
@@ -36,7 +37,7 @@ set tabstop=2             " tab spacing
 set thesaurus+=$DOTFILES/vetc/thesaurii.txt
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --smart-case\ --vimgrep
   set grepformat=%f:%l:%c:%m
 endif
 
