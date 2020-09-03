@@ -111,7 +111,7 @@ let wiki1.ext = '.wiki'
 let wiki2.ext = '.md'
 let wiki1.nested_syntaxes = wiki_nested
 let wiki2.nested_syntaxes = wiki_nested
-let g:vimwiki_list = [wiki1, wiki2]
+let g:vimwiki_list = [wiki1]
 
 " Emmet
 let g:user_emmet_leader_key=','
