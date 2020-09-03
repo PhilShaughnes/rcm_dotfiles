@@ -40,6 +40,8 @@ call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInsta
   Plug 'yuttie/comfortable-motion.vim'
 
 " language specific
+
+  Plug 'mtdl9/vim-log-highlighting'
                                                        " Plug 'sheerun/vim-polyglot'
   Plug 'othree/csscomplete.vim'
   Plug 'ap/vim-css-color'                              " color css color codes
