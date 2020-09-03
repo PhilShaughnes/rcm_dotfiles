@@ -4,7 +4,8 @@
 
 set notermguicolors
 set background=dark
-colorscheme noctu
+colorscheme monokai
+" colorscheme noctu
 set fillchars+=vert:│
 set laststatus=2
 

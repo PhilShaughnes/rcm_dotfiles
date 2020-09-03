@@ -1,3 +1,18 @@
+"**************"
+"** SETTINGS **"
+"**************"
+source $DOTFILES/config/nvim/base_settings.vim
+
+if has('nvim')
+  let $VISUAL = 'nvr -cc split --remote-wait'
+endif
+
+source $DOTFILES/config/nvim/augroups.vim
+source $DOTFILES/config/nvim/keymaps.vim
+" source $DOTFILES/config/nvim/plugs.vim
+" source $DOTFILES/config/nvim/mod_plugs.vim
+" source $DOTFILES/config/nvim/myplugins.vim
+
 "*************"
 "*** PLUGS ***"
 "*************"
@@ -40,8 +55,6 @@ call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInsta
   Plug 'yuttie/comfortable-motion.vim'
 
 " language specific
-
-  Plug 'mtdl9/vim-log-highlighting'
                                                        " Plug 'sheerun/vim-polyglot'
   Plug 'othree/csscomplete.vim'
   Plug 'ap/vim-css-color'                              " color css color codes
@@ -53,14 +66,11 @@ call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInsta
   Plug 'vim-ruby/vim-ruby'
   Plug 'elixir-editors/vim-elixir'
   Plug 'fatih/vim-go'
-  Plug 'mrk21/yaml-vim'
   Plug 'rhysd/vim-crystal'
   Plug 'rust-lang/rust.vim'
   Plug 'racer-rust/vim-racer'
   Plug 'junegunn/goyo.vim'                             " distraction free vim
   Plug 'junegunn/limelight.vim'
-
-  Plug 'crusoexia/vim-monokai'
 
 call plug#end()
 
@@ -95,19 +105,12 @@ nmap <Leader>- <Plug>VimwikiRemoveHeaderLevel
 " let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_listsyms = ' .oOx'
 " let g:vimwiki_folding = 'list'
-
-let wiki_nested = {'python': 'python', 'elixir': 'elixir', 'js': 'javascript'}
-let wiki1 = {}
-let wiki2 = {}
-let wiki1.path = '~/vimwiki/'
-let wiki2.path = '~/vimwki_md/'
-let wiki1.syntax = 'default'
-let wiki2.syntax = 'markdown'
-let wiki1.ext = '.wiki'
-let wiki2.ext = '.md'
-let wiki1.nested_syntaxes = wiki_nested
-let wiki2.nested_syntaxes = wiki_nested
-let g:vimwiki_list = [wiki1, wiki2]
+let wiki = {}
+let wiki.path = '~/vimwiki/'
+let wiki.syntax = 'default'
+let wiki.ext = '.wiki'
+let wiki.nested_syntaxes = {'python': 'python', 'elixir': 'elixir', 'js': 'javascript'}
+let g:vimwiki_list = [wiki]
 
 " Emmet
 let g:user_emmet_leader_key=','
@@ -144,5 +147,18 @@ nnoremap <leader>f :Rg!<CR>
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
   command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+
+
+
+
+
+source $DOTFILES/config/nvim/theme.vim
+" source $DOTFILES/vetc/airline_config.vim
+
+
+" let g:airline_theme='angr'
+" set termguicolors
+" colorscheme dracula
 
 
