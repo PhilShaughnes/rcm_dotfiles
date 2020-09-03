@@ -56,7 +56,7 @@ function! PackagerInit() abort
   " file specific
   call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
   call packager#add('junegunn/limelight.vim', { 'type': 'opt' })
-  call packager#add('elixir-editors/vim-elixir', { 'type': 'opt' })
+  call packager#add('elixir-editors/vim-elixir')
   call packager#add('pangloss/vim-javascript')
   call packager#add('leafgarland/typescript-vim')
   call packager#add('moll/vim-node')
@@ -64,7 +64,7 @@ function! PackagerInit() abort
   call packager#add('rust-lang/rust.vim', { 'type': 'opt' })
   call packager#add('racer-rust/vim-racer', { 'type': 'opt' })
   call packager#add('fatih/vim-go', { 'type': 'opt' })
-  call packager#add('rhysd/vim-crystal', { 'type': 'opt' })
+  call packager#add('rhysd/vim-crystal')
   call packager#add('mattn/emmet-vim', { 'type': 'opt' })
   call packager#add('othree/csscomplete.vim')
   call packager#add('ap/vim-css-color')
@@ -88,8 +88,8 @@ augroup packager_filetype
   autocmd!
   " doing this b/c auto-starting it can cause conflicts if we use a different
   " autocmd FileType php packadd phpactor
-  autocmd FileType elixir,exs,ex packadd vim-elixir
-  autocmd FileType crystal packadd vim-crystal
+  " autocmd FileType elixir,exs,ex packadd vim-elixir
+  " autocmd FileType crystal packadd vim-crystal
   autocmd FileType ruby packadd vim-ruby
   autocmd FileType javascript packadd vim-javascript,vim-node
   autocmd FileType html,javascript,jsx packadd emmet-vim

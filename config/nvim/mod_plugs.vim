@@ -2,60 +2,62 @@
 "*** PLUGS ***"
 "*************"
 
-call plug#begin('~/.local/share/vim/plugged')       " install with :PlugInstall
+call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInstall
 
-Plug '/usr/local/opt/fzf'
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
-Plug 'tpope/vim-fugitive'
+  Plug '/usr/local/opt/fzf'
+  Plug '~/.fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
+  Plug 'tpope/vim-fugitive'
 
-" auto close parens and stuff on enter
-Plug 'PhilShaughnes/vim-closer'
+                                                       " auto close parens and stuff on enter
+  Plug 'PhilShaughnes/vim-closer'
 
-Plug 'romainl/vim-cool'
-Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
-Plug 'markonm/traces.vim'
-Plug 'machakann/vim-sandwich'
-Plug 'tpope/vim-endwise'                             "auto add end to stuffs
-Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
-Plug 'airblade/vim-gitgutter'
+  Plug 'romainl/vim-cool'
+  Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
+  Plug 'markonm/traces.vim'
+  Plug 'machakann/vim-sandwich'
+  Plug 'tpope/vim-endwise'                             "auto add end to stuffs
+  Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
+  Plug 'airblade/vim-gitgutter'
 
-Plug 'romainl/vim-qlist'
-Plug 'romainl/vim-qf'
+  Plug 'romainl/vim-qlist'
+  Plug 'romainl/vim-qf'
 
-Plug 'dhruvasagar/vim-zoom'
-Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
-Plug 'jeetsukumaran/vim-indentwise'
-Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
-Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
-Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
-Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
-Plug 'justinmk/vim-dirvish'
-Plug 'kristijanhusak/vim-dirvish-git'
+  Plug 'dhruvasagar/vim-zoom'
+  Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
+  Plug 'jeetsukumaran/vim-indentwise'
+  Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
+  Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
+  Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
+  Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
+  Plug 'justinmk/vim-dirvish'
+  Plug 'kristijanhusak/vim-dirvish-git'
 
-Plug 'vimwiki/vimwiki'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-abolish'                      " lots of cool pattern stuff
-Plug 'yuttie/comfortable-motion.vim'
+  Plug 'vimwiki/vimwiki'
+  Plug 'tpope/vim-projectionist'
+  Plug 'tpope/vim-abolish'                             " lots of cool pattern stuff
+  Plug 'yuttie/comfortable-motion.vim'
 
-"" language specific
-" Plug 'sheerun/vim-polyglot'
-Plug 'othree/csscomplete.vim'
-Plug 'ap/vim-css-color'                              " color css color codes
-Plug 'alvan/vim-closetag'
-Plug 'mattn/emmet-vim'
-Plug 'moll/vim-node'
-Plug 'pangloss/vim-javascript'
+" language specific
 
-Plug 'vim-ruby/vim-ruby'
-Plug 'elixir-editors/vim-elixir'
-Plug 'fatih/vim-go'
-Plug 'rhysd/vim-crystal'
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-Plug 'junegunn/goyo.vim'                          " distraction free vim
-Plug 'junegunn/limelight.vim'
+  Plug 'mtdl9/vim-log-highlighting'
+                                                       " Plug 'sheerun/vim-polyglot'
+  Plug 'othree/csscomplete.vim'
+  Plug 'ap/vim-css-color'                              " color css color codes
+  Plug 'alvan/vim-closetag'
+  Plug 'mattn/emmet-vim'
+  Plug 'moll/vim-node'
+  Plug 'pangloss/vim-javascript'
+
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'elixir-editors/vim-elixir'
+  Plug 'fatih/vim-go'
+  Plug 'rhysd/vim-crystal'
+  Plug 'rust-lang/rust.vim'
+  Plug 'racer-rust/vim-racer'
+  Plug 'junegunn/goyo.vim'                             " distraction free vim
+  Plug 'junegunn/limelight.vim'
 
 call plug#end()
 
@@ -95,7 +97,7 @@ let wiki.path = '~/vimwiki/'
 let wiki.syntax = 'default'
 let wiki.ext = '.wiki'
 let wiki.nested_syntaxes = {'python': 'python', 'elixir': 'elixir', 'js': 'javascript'}
-let g: vimwiki_list = [wiki]
+let g:vimwiki_list = [wiki]
 
 " Emmet
 let g:user_emmet_leader_key=','
