@@ -2,7 +2,7 @@
 "*** PLUGS ***"
 "*************"
 
-call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInstall
+call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInstall
 
   Plug '/usr/local/opt/fzf'
   Plug '~/.fzf'
@@ -12,6 +12,7 @@ call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInsta
 
                                                        " auto close parens and stuff on enter
   Plug 'PhilShaughnes/vim-closer'
+  " Plug 'tmsvg/pear-tree'
 
   Plug 'romainl/vim-cool'
   Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
@@ -30,14 +31,14 @@ call plug#begin('~/.local/share/vim/plugged')          " install with :PlugInsta
   Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
   Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
   Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
-  Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
+  " Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
   Plug 'justinmk/vim-dirvish'
   Plug 'kristijanhusak/vim-dirvish-git'
 
   Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-projectionist'
   Plug 'tpope/vim-abolish'                             " lots of cool pattern stuff
-  Plug 'yuttie/comfortable-motion.vim'
+  " Plug 'yuttie/comfortable-motion.vim'
 
 " language specific
 
@@ -134,6 +135,7 @@ nnoremap <leader>t :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Commits<CR>
 nnoremap <leader>f :Rg!<CR>
+nnoremap <leader>m :RG<CR>
 
   " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
   command! -bang -nargs=* Rg
@@ -149,4 +151,18 @@ nnoremap <leader>f :Rg!<CR>
 
   command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+  function! RipgrepFzf(query, fullscreen)
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
+
+  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+" Replace the default dictionary completion with fzf-based fuzzy completion
+" inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
 
