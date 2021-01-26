@@ -84,6 +84,8 @@ vnoremap K :m '<-2<CR>gv=gv
 " ctrl j and k to move in quickfix windows
 " nnoremap <silent> <C-j> :cn<CR>
 " nnoremap <silent> <C-k> :cp<CR>
+" nnoremap <silent> <leader>j :ln<CR>
+" nnoremap <silent> <leader>k :lp<CR>
 
 
 "cycle splits

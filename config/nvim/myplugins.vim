@@ -69,8 +69,6 @@ function! PackagerInit() abort
   call packager#add('othree/csscomplete.vim')
   call packager#add('ap/vim-css-color')
   call packager#add('alvan/vim-closetag')
-
-  call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()

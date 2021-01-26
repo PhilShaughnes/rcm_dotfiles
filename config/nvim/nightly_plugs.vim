@@ -11,12 +11,13 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
   Plug 'tpope/vim-fugitive'
 
                                                        " auto close parens and stuff on enter
-  Plug 'PhilShaughnes/vim-closer'
-  " Plug 'tmsvg/pear-tree'
+  " Plug 'PhilShaughnes/vim-closer'
+  Plug 'tmsvg/pear-tree'
 
   Plug 'romainl/vim-cool'
   Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
   Plug 'markonm/traces.vim'
+  Plug 'chaoren/vim-wordmotion'
   Plug 'machakann/vim-sandwich'
   Plug 'tpope/vim-endwise'                             "auto add end to stuffs
   Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
@@ -25,20 +26,25 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
   Plug 'romainl/vim-qlist'
   Plug 'romainl/vim-qf'
 
+  Plug 'nvim-treesitter/nvim-treesitter'
+  " Plug 'nvim-treesitter/completion-treesitter'
+  " Plug 'nvim-lua/completion-nvim'
+  Plug 'mbbill/undotree'
+
   Plug 'dhruvasagar/vim-zoom'
   Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
   Plug 'jeetsukumaran/vim-indentwise'
   Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
   Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
   Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
-  " Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
+  Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
   Plug 'justinmk/vim-dirvish'
   Plug 'kristijanhusak/vim-dirvish-git'
 
   Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-projectionist'
   Plug 'tpope/vim-abolish'                             " lots of cool pattern stuff
-  " Plug 'yuttie/comfortable-motion.vim'
+  Plug 'yuttie/comfortable-motion.vim'
 
 " language specific
 
@@ -55,7 +61,6 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
   Plug 'elixir-editors/vim-elixir'
   " Plug 'xolox/vim-lua-ftplugin'
   " Plug 'xolox/vim-misc'
-  Plug 'cespare/vim-toml'
   Plug 'fatih/vim-go'
   Plug 'mrk21/yaml-vim'
   Plug 'rhysd/vim-crystal'
@@ -74,7 +79,7 @@ call plug#end()
 let g:CoolTotalMatches = 1
 
 " fugitive:
-nnoremap <leader>gg :Gstatus<CR>
+nnoremap <leader>g :Gstatus<CR>
 
 " Markdown
 let g:limelight_conceal_ctermfg = 'gray'
@@ -133,20 +138,28 @@ nmap \\ <Plug>(qf_qf_toggle)
 
 " FZF settings:
 nnoremap <leader>t :Files<CR>
-vnoremap <leader>t "fy:Files<CR><C-\><C-n>"fpA
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Commits<CR>
 nnoremap <leader>f :Rg!<CR>
-vnoremap <leader>f "fy:Rg<CR>'<C-\><C-n>"fpA
-nnoremap <leader>m :RG<CR>
 
   " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-  command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-    \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-    \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
-    \   <bang>0)
+  " command! -bang -nargs=* Rg
+  "   \ call fzf#vim#grep(
+  "   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  "   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  "   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+  "   \   <bang>0)
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
 
   " Likewise, Files command with preview window
   command! -bang -nargs=? -complete=dir Files
@@ -154,28 +167,60 @@ nnoremap <leader>m :RG<CR>
 
   command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
-  function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-  endfunction
+" treesitter - :TSInstallInfo, :TSInstall
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "rust" },  -- list of language that will be disabled
+  },
+  refactor = {
+    highlight_definitions = { enable = true },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition = "gnd",
+        list_definitions = "gnD",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
+      },
+    },
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+EOF
 
-  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+" completion-nvim
+" Configure the completion chains
+let g:completion_chain_complete_list = {
+"			\'default' : {
+"			\	'default' : [
+"			\		{'complete_items' : ['ts']},
+"			\		{'mode' : 'file'}
+"			\	],
+"			\	'comment' : [],
+"			\	'string' : []
+"			\	},
+"			\'vim' : [
+"			\	{'complete_items': ['ts']},
+"			\	{'mode' : 'cmd'}
+"			\	],
+"			\'c' : [
+"			\	{'complete_items': ['ts']}
+"			\	],
+"			\'lua' : [
+"			\	{'complete_items': ['ts']}
+"			\	],
+"			\}
 
-" Replace the default dictionary completion with fzf-based fuzzy completion
-" inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
-
-
-" vim-waikiki
-" let g:waikiki_root = ['~/vimwki_md/']
-
-" nnoremap <leader><return> <Plug>(waikikiFollowLink)
-" nnoremap <leader>- <Plug>(waikikiGoUp)
-" nnoremap <leader><leader>n <Plug>(waikikiNextLink)
-" nnoremap <leader><leader>p <Plug>(waikikiPrevLink)
-" nnoremap <leader>x <Plug>(waikikiToggleListItem)
-" nnoremap <leader><leader>T <Plug>(waikikiTags)
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
