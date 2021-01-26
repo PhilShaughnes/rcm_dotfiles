@@ -10,9 +10,9 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
   Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
   Plug 'tpope/vim-fugitive'
 
-                                                       " auto close parens and stuff on enter
-  Plug 'PhilShaughnes/vim-closer'
-  " Plug 'tmsvg/pear-tree'
+  " this breaks vimwiki <CR> in insert mode a bit, but is mostly fine ;)
+  Plug 'tmsvg/pear-tree'                               " auto close parens and stuff on enter
+  Plug 'tweekmonster/startuptime.vim'
 
   Plug 'romainl/vim-cool'
   Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
@@ -20,7 +20,7 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
   Plug 'machakann/vim-sandwich'
   Plug 'tpope/vim-endwise'                             "auto add end to stuffs
   Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
-  Plug 'airblade/vim-gitgutter'
+  " Plug 'airblade/vim-gitgutter'
 
   Plug 'romainl/vim-qlist'
   Plug 'romainl/vim-qf'
@@ -32,8 +32,21 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
   Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
   Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
   " Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
+  Plug 'skywind3000/asyncrun.vim'
+
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'kyazdani42/nvim-tree.lua'
   Plug 'justinmk/vim-dirvish'
-  Plug 'kristijanhusak/vim-dirvish-git'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'steelsojka/completion-buffers'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'sainnhe/sonokai'
+  Plug 'norcalli/nvim-colorizer.lua'
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'glepnir/indent-guides.nvim'
+
+  Plug 'norcalli/snippets.nvim'
 
   Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-projectionist'
@@ -43,7 +56,6 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
 " language specific
 
   Plug 'mtdl9/vim-log-highlighting'
-                                                       " Plug 'sheerun/vim-polyglot'
   Plug 'othree/csscomplete.vim'
   Plug 'ap/vim-css-color'                              " color css color codes
   Plug 'alvan/vim-closetag'
@@ -55,10 +67,8 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
   Plug 'elixir-editors/vim-elixir'
   " Plug 'xolox/vim-lua-ftplugin'
   " Plug 'xolox/vim-misc'
-  Plug 'cespare/vim-toml'
   Plug 'fatih/vim-go'
   Plug 'mrk21/yaml-vim'
-  Plug 'rhysd/vim-crystal'
   " Plug 'rust-lang/rust.vim'
   " Plug 'racer-rust/vim-racer'
   Plug 'junegunn/goyo.vim'                             " distraction free vim
@@ -66,9 +76,89 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
 
   Plug 'crusoexia/vim-monokai'
   Plug 'bluz71/vim-moonfly-colors'
-  Plug 'bluz71/vim-moonfly-statusline'
+  " Plug 'bluz71/vim-moonfly-statusline'
+  Plug 'hoob3rt/lualine.nvim'
 
 call plug#end()
+
+lua require('colorizer').setup()
+lua require('gitsigns').setup()
+lua << EOF
+local lualine = require('lualine')
+    lualine.theme = 'dracula'
+    lualine.separator = '|'
+    lualine.sections = {
+      lualine_a = { 'mode' },
+      lualine_b = { 'branch' },
+      lualine_c = { 'filename' },
+      lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location'  },
+    }
+    lualine.inactive_sections = {
+      lualine_a = { },
+      lualine_b = { 'filename' },
+      lualine_c = { },
+      lualine_x = { },
+      lualine_y = { 'location' },
+      lualine_z = { },
+    }
+    lualine.extensions = { 'fzf' }
+    lualine.status()
+EOF
+" let g:moonflyWithGitBranchCharacter = 1
+
+" nvim-completion settings:
+let g:completion_enable_auto_popup = 0
+let g:completion_enable_auto_hover = 0
+let g:completion_enable_auto_signature = 0
+let g:completion_auto_change_source = 1
+let g:completion_confirm_key = "\<C-y>"
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
+imap <c-j> <Plug>(completion_next_source)
+"use <c-j> to switch to previous completion
+imap <c-k> <Plug>(completion_prev_source)
+" use <c-k> to switch to next completion
+
+" let g:completion_enable_snippet = 'snippets.nvim'
+" \{'complete_items': ['lsp', 'snippet']},
+let g:completion_chain_complete_list = [
+    \{'mode': 'line'},
+    \{'mode': 'keyp'},
+    \{'mode': 'keyn'}
+\]
+
+" \{'complete_items': ['buffers']},
+"<c-n>" : i_CTRL-N
+"<c-p>" : i_CTRL-P
+"cmd" : i_CTRL-X_CTRL-V
+"defs": i_CTRL-X_CTRL-D
+"dict": i_CTRL-X_CTRL-K
+"file": i_CTRL-X_CTRL-F
+"incl": i_CTRL-X_CTRL-I
+"keyn": i_CTRL-X_CTRL-N
+"keyp": i_CTRL-X_CTRL-P
+"omni": i_CTRL-X_CTRL-O
+"line": i_CTRL-X_CTRL-L
+"spel": i_CTRL-X_s
+"tags": i_CTRL-X_CTRL-]
+"thes": i_CTRL-X_CTRL-T
+"user": i_CTRL-X_CTRL-U
+
+autocmd BufEnter * lua require'completion'.on_attach()
+
+
+" lua-tree settings
+nnoremap <C-n> :NvimTreeToggle<CR>
 
 " vim-cool settings:
 let g:CoolTotalMatches = 1
@@ -77,7 +167,7 @@ let g:CoolTotalMatches = 1
 nnoremap <leader>g :Gstatus<CR>
 
 " Markdown
-let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 'Gray'
 let g:limelight_conceal_guifg = 'DarkGray'
 
 autocmd! User GoyoEnter Limelight
@@ -132,7 +222,7 @@ nmap \|\| <Plug>(qf_loc_toggle)
 nmap \\ <Plug>(qf_qf_toggle)
 
 " FZF settings:
-nnoremap <leader>t :Files<CR>
+nnoremap <silent> <leader>t :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Commits<CR>
 nnoremap <leader>f :Rg!<CR>
