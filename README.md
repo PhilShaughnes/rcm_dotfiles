@@ -85,3 +85,4 @@ Then to change the default shell do `sudo chsh -s "$(command -v zsh)" "${USER}"`
 
 Thats all for now.
 This is incomplete tho.
+

@@ -72,7 +72,7 @@ call plug#end()
 let g:CoolTotalMatches = 1
 
 " fugitive:
-nnoremap <leader>g :Gstatus<CR>
+nnoremap <leader>gg :Gstatus<CR>
 
 " Markdown
 let g:limelight_conceal_ctermfg = 'gray'
@@ -131,9 +131,11 @@ nmap \\ <Plug>(qf_qf_toggle)
 
 " FZF settings:
 nnoremap <leader>t :Files<CR>
+vnoremap <leader>t "fy:Files<CR><C-\><C-n>"fpA
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Commits<CR>
 nnoremap <leader>f :Rg!<CR>
+vnoremap <leader>f "fy:Rg<CR>'<C-\><C-n>"fpA
 
   " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
   command! -bang -nargs=* Rg
@@ -148,5 +150,15 @@ nnoremap <leader>f :Rg!<CR>
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
   command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" vim-waikiki
+" let g:waikiki_root = ['~/vimwki_md/']
+
+" nnoremap <leader><return> <Plug>(waikikiFollowLink)
+" nnoremap <leader>- <Plug>(waikikiGoUp)
+" nnoremap <leader><leader>n <Plug>(waikikiNextLink)
+" nnoremap <leader><leader>p <Plug>(waikikiPrevLink)
+" nnoremap <leader>x <Plug>(waikikiToggleListItem)
+" nnoremap <leader><leader>T <Plug>(waikikiTags)
 
 
