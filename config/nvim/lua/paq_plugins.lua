@@ -38,58 +38,31 @@ local function load_paq()
   -- paq {'michaeljsmith/vim-indent-object'}               -- use indent level like ii or ai
 
   paq {'ervandew/supertab'}
+  -- paq {'beauwilliams/focus.nvim'}
 
   paq { 'kyazdani42/nvim-tree.lua'}
   paq {'glepnir/indent-guides.nvim'}
-  paq {'nvim-treesitter/nvim-treesitter'}
-  paq {'p00f/nvim-ts-rainbow'}
-  paq {'nvim-lua/plenary.nvim'}
-  paq {'lewis6991/gitsigns.nvim'}
-
-  paq {'justinmk/vim-dirvish', opt=true}
-  paq {'tpope/vim-projectionist', opt=true}
-  -- paq {'vimwiki/vimwiki'}
-
-  paq {'mtdl9/vim-log-highlighting', opt=true}
-  paq {'othree/csscomplete.vim'}
-  paq {'ap/vim-css-color'}                              -- color css color codes
-  paq {'alvan/vim-closetag'}
-  paq {'mattn/emmet-vim'}
-  paq {'moll/vim-node'}
-  paq {'pangloss/vim-javascript'}
-
-  paq {'vim-ruby/vim-ruby'}
-  paq {'elixir-editors/vim-elixir'}
-  paq {'xolox/vim-lua-ftplugin'}
-  paq {'xolox/vim-misc'}
-  paq {'cespare/vim-toml'}
-  paq {'fatih/vim-go'}
-  paq {'mrk21/yaml-vim'}
-  paq {'junegunn/goyo.vim'}                             -- distraction free vim
-  paq {'junegunn/limelight.vim'}
+  -- paq {'nvim-treesitter/nvim-treesitter'}
+  -- paq {'p00f/nvim-ts-rainbow'}
+  -- paq {'nvim-lua/plenary.nvim'}
+  -- paq {'lewis6991/gitsigns.nvim'}
 
   paq {'kyazdani42/nvim-web-devicons'}
   paq {'sainnhe/sonokai'}
   paq {'sainnhe/edge'}
   paq {'Th3Whit3Wolf/space-nvim'}
-  paq {'crusoexia/vim-monokai'}
+  -- paq {'crusoexia/vim-monokai'}
   paq {'hoob3rt/lualine.nvim'}
-end
-
--- maybe do something like this??
-local function def_cmd(name, func)
-  cmd('command! call lua '..func)
 end
 
 local function gen_config()
   map('n', '<c-n>', ':NvimTreeToggle<CR>')
   map('n', '<leader>gg', ':Gstatus<CR>')
-  require('indent_guides').setup()
 end
 
 local function fzf_config()
   map('n', '<leader>t', ':Files<CR>')
-  map('n', '<leader>bb', ':Buffers<CR>')
+  map('n', '<leader>b', ':Buffers<CR>')
   map('n', '<leader>f', ':Rg<CR>')
   map('i', '<c-x><c-k>', 'fzf#vim#complete#word({\'window\': { \'width\': 0.2, \'height\': 0.9, \'xoffset\': 1 }})', {expr = true})
 end
@@ -103,7 +76,7 @@ local function qf_config()
   map('n', '\\\\', '<Plug>(qf_qf_toggle)', {noremap = false})
 end
 
-local function gitsigns_config()
+local function getsigns_config()
     require('gitsigns').setup({
     signs = {
       -- add          = {hl = 'GitGutterAdd'   , text = '+'},
@@ -132,13 +105,11 @@ local function treesitter_config()
 end
 
 function _G.lualine_config()
+  print("lualine config loaded")
   local l = require('lualine')
-  l.options = {
-    icons_enabled = true,
-    theme = 'codedark',
-    component_separators = {'', ''},
-    -- section_separators = {'', ''},
-  }
+  -- l.options.theme = 'papercolor_dark'
+  l.options.theme = 'codedark'
+  -- l.options.theme = 'wombat'
   l.status()
 end
 
@@ -147,8 +118,7 @@ gen_config()
 fzf_config()
 qf_config()
 lualine_config()
-gitsigns_config()
-treesitter_config()
+-- treesitter_config()
 print("loaded stuff")
 
 local function do_thing()
