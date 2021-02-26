@@ -9,9 +9,7 @@ endif
 
 source $DOTFILES/config/nvim/augroups.vim
 source $DOTFILES/config/nvim/keymaps.vim
-" source $DOTFILES/config/nvim/plugs.vim
-source $DOTFILES/config/nvim/mod_plugs.vim
-" source $DOTFILES/config/nvim/myplugins.vim
+source $DOTFILES/config/nvim/plugs.vim
 
 source $DOTFILES/config/nvim/theme.vim
 " source $DOTFILES/vetc/airline_config.vim

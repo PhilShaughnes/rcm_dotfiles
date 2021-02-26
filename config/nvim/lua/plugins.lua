@@ -1,3 +1,4 @@
+
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
@@ -90,7 +91,11 @@ end
 local function fzf_config()
   map('n', '<leader>t', ':Files<CR>')
   map('n', '<leader>bb', ':Buffers<CR>')
-  map('n', '<leader>f', ':Rg<CR>')
+  map('n', '<leader>ff', ':Rg<CR>')
+  map('n', '<leader>fw', ':Rg <C-r>=expand("<cword>")<CR><CR>')
+  map('v', '<leader>fw', 'y:Rg <C-r>"<CR>')
+  map('v', '<leader>gf', 'y:Files <C-r>"<CR>')
+  map('n', '<leader>gf', ':Files <C-r>=expand("<cfile>")<CR><CR>')
   map('i', '<c-x><c-k>', 'fzf#vim#complete#word({\'window\': { \'width\': 0.2, \'height\': 0.9, \'xoffset\': 1 }})', {expr = true})
 end
 
