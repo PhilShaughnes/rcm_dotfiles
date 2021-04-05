@@ -6,6 +6,7 @@ augroup end
 
 augroup interface
   autocmd!
+  autocmd BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
   " autocmd InsertEnter,CmdLineEnter * set norelativenumber | redraw
   " autocmd InsertLeave,CmdlineLeave * set relativenumber
 augroup END

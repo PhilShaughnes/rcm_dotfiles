@@ -24,6 +24,7 @@ set background=dark
 " source $DOTFILES/vetc/airline_config.vim
 
 " colorscheme sonokai
-colorscheme edge
+" colorscheme edge
+colorscheme gruvbox-material
 " colorscheme monokai
 

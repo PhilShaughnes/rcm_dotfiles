@@ -1,6 +1,7 @@
 "************"
 "** KEYMAP **"
 "************"
+" NOTE ON MAPPINGS:
 " <C-b> and <C-f> are page up and page down, but I usually use <C-u> and <C-d>
 " So those two should be available for mappings
 

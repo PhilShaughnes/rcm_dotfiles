@@ -21,6 +21,7 @@ source $DOTFILES/config/nvim/plugs.vim
 " let g:airline_theme='angr'
 " set termguicolors
 " colorscheme sonokai
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
+colorscheme edge
 
 

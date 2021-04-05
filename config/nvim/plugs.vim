@@ -41,9 +41,10 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'rhysd/clever-f.vim'
     let g:clever_f_mark_direct = 1
   Plug 'chaoren/vim-wordmotion'
-  Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
-    nnoremap <c-n> :NvimTreeToggle<CR>
-  Plug 'mbbill/undotree'
+  " Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
+  Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeRefresh' }
+    nnoremap <c-n> :NvimTreeRefresh<CR> :NvimTreeToggle<CR>
+  " Plug 'mbbill/undotree'
   Plug 'ThePrimeagen/vim-be-good'
 
 " language specific
