@@ -20,7 +20,7 @@ augroup END
 
 augroup filetypes
   autocmd!
-  autocmd FileType * setlocal omnifunc==syntaxcomplete#Complete
+  autocmd FileType * setlocal omnifunc=syntaxcomplete#Complete
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType javascript comp eslint
   autocmd BufWritePost *.js silent make! <afile> | silent redraw!

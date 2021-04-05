@@ -53,7 +53,8 @@ local function load_paq()
 
   paq {'mtdl9/vim-log-highlighting', opt=true}
   paq {'othree/csscomplete.vim'}
-  paq {'ap/vim-css-color'}                              -- color css color codes
+  -- paq {'ap/vim-css-color'}                              -- color css color codes
+  paq {'norcalli/nvim-colorizer.lua'}
   paq {'alvan/vim-closetag'}
   paq {'mattn/emmet-vim'}
   paq {'moll/vim-node'}
@@ -85,7 +86,8 @@ end
 local function gen_config()
   map('n', '<c-n>', ':NvimTreeToggle<CR>')
   map('n', '<leader>gg', ':Gstatus<CR>')
-  require('indent_guides').setup()
+  -- require('indent_guides').setup()
+  require('colorizer').setup()
 end
 
 local function fzf_config()
@@ -133,6 +135,7 @@ local function treesitter_config()
       disable = { "c", "rust" },  -- list of language that will be disabled
     },
     rainbow = { enable = true }
+    -- rainbow = { enable = false }
   }
 end
 
