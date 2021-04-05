@@ -1,8 +1,15 @@
-augroup TermOpen
+augroup terminal
   autocmd!
-  autocmd BufEnter term://* startinsert
-  autocmd TermOpen * setlocal nonumber norelativenumber
+  autocmd BufEnter,TermOpen term://* startinsert
+  autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
 augroup end
+
+augroup interface
+  autocmd!
+  autocmd BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
+  " autocmd InsertEnter,CmdLineEnter * set norelativenumber | redraw
+  " autocmd InsertLeave,CmdlineLeave * set relativenumber
+augroup END
 
 augroup saving
   autocmd!

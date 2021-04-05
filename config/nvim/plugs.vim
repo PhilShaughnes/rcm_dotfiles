@@ -2,48 +2,54 @@
 "*** PLUGS ***"
 "*************"
 
-call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInstall
+call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInstall
 
   Plug '/usr/local/opt/fzf'
-  Plug '~/.fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
   Plug 'tpope/vim-fugitive'
-
-                                                       " auto close parens and stuff on enter
-  Plug 'PhilShaughnes/vim-closer'
-  " Plug 'tmsvg/pear-tree'
-
+  Plug 'cohama/lexima.vim'
   Plug 'romainl/vim-cool'
-  Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>
+  Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>>
   Plug 'markonm/traces.vim'
   Plug 'machakann/vim-sandwich'
-  Plug 'tpope/vim-endwise'                             "auto add end to stuffs
   Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
-  Plug 'airblade/vim-gitgutter'
 
+  " Plug 'airblade/vim-gitgutter'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'romainl/vim-qlist'
   Plug 'romainl/vim-qf'
 
-  Plug 'dhruvasagar/vim-zoom'
+
   Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
-  Plug 'jeetsukumaran/vim-indentwise'
   Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
-  Plug 'michaeljsmith/vim-indent-object'               " use indent level like ii or ai
   Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
-  " Plug 'romainl/vim-devdocs'                           " use :DD to look up keywords on devdocs.io
   Plug 'justinmk/vim-dirvish'
   Plug 'kristijanhusak/vim-dirvish-git'
 
+  Plug 'ackyshake/VimCompletesMe'
+
   Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-projectionist'
-  Plug 'tpope/vim-abolish'                             " lots of cool pattern stuff
-  " Plug 'yuttie/comfortable-motion.vim'
+  Plug 'terryma/vim-smooth-scroll'
+    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+  Plug 'michaeljsmith/vim-indent-object'
+  Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+  Plug 'rhysd/clever-f.vim'
+    let g:clever_f_mark_direct = 1
+  Plug 'chaoren/vim-wordmotion'
+  " Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
+  Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeRefresh' }
+    nnoremap <c-n> :NvimTreeRefresh<CR> :NvimTreeToggle<CR>
+  " Plug 'mbbill/undotree'
+  Plug 'ThePrimeagen/vim-be-good'
 
 " language specific
 
   Plug 'mtdl9/vim-log-highlighting'
-                                                       " Plug 'sheerun/vim-polyglot'
   Plug 'othree/csscomplete.vim'
   Plug 'ap/vim-css-color'                              " color css color codes
   Plug 'alvan/vim-closetag'
@@ -53,22 +59,64 @@ call plug#begin('~/.local/share/nvim/plugged')          " install with :PlugInst
 
   Plug 'vim-ruby/vim-ruby'
   Plug 'elixir-editors/vim-elixir'
-  " Plug 'xolox/vim-lua-ftplugin'
-  " Plug 'xolox/vim-misc'
+  Plug 'xolox/vim-misc'
+  Plug 'xolox/vim-lua-ftplugin'
   Plug 'cespare/vim-toml'
   Plug 'fatih/vim-go'
   Plug 'mrk21/yaml-vim'
   Plug 'rhysd/vim-crystal'
-  " Plug 'rust-lang/rust.vim'
-  " Plug 'racer-rust/vim-racer'
-  Plug 'junegunn/goyo.vim'                             " distraction free vim
-  Plug 'junegunn/limelight.vim'
+  Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }           " distraction free vim
+  Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'sainnhe/sonokai'
+  Plug 'sainnhe/edge'
+  Plug 'sainnhe/gruvbox-material'
   Plug 'crusoexia/vim-monokai'
-  Plug 'bluz71/vim-moonfly-colors'
-  Plug 'bluz71/vim-moonfly-statusline'
+  Plug 'hoob3rt/lualine.nvim'
 
 call plug#end()
+
+lua << EOF
+
+function lualine_config()
+  require('lualine').setup({
+    options = {
+    icons_enabled = true,
+    theme = 'codedark',
+    theme = 'gruvbox_material',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
+    }
+  })
+end
+
+lualine_config()
+
+local function gitsigns_config()
+    require('gitsigns').setup({
+    signs = {
+      add          = {hl = 'GitGutterAdd'   , text = '+'},
+      change       = {hl = 'GitGutterChange', text = '~'},
+      delete       = {hl = 'GitGutterDelete', text = '_'},
+      topdelete    = {hl = 'GitGutterDelete', text = '‾'},
+      changedelete = {hl = 'GitGutterChange', text = '~'},
+      add          = {hl = 'GitGutterAdd'   },
+      change       = {hl = 'GitGutterChange'},
+      delete       = {hl = 'GitGutterDelete'},
+      topdelete    = {hl = 'GitGutterDelete'},
+      changedelete = {hl = 'GitGutterChange'},
+    }
+  })
+end
+
+gitsigns_config()
+
+function _G.dump(...)
+  local objects = vim.tbl_map(vim.inspect, {...})
+  print(unpack(objects))
+end
+EOF
 
 " vim-cool settings:
 let g:CoolTotalMatches = 1
@@ -80,16 +128,8 @@ nnoremap <leader>gg :Gstatus<CR>
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_guifg = 'DarkGray'
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-"rust/racer settings:
-let g:rustfmt_autosave = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
+autocmd! user goyoenter Limelight
+autocmd! user goyoleave limelight!
 
 " vimwiki
 nmap <Leader>x <Plug>VimwikiToggleListItem
@@ -124,8 +164,8 @@ let g:user_emmet_settings = {
 \}
 
 " qf
-nmap <C-k> <Plug>(qf_qf_previous)
-nmap <C-j> <Plug>(qf_qf_next)
+nmap <C-k>> <Plug>(qf_qf_previous)
+nmap <C-j>> <Plug>(qf_qf_next)
 nmap <leader>k <Plug>(qf_loc_previous)
 nmap <leader>j <Plug>(qf_loc_next)
 nmap \|\| <Plug>(qf_loc_toggle)
@@ -133,11 +173,11 @@ nmap \\ <Plug>(qf_qf_toggle)
 
 " FZF settings:
 nnoremap <leader>t :Files<CR>
-vnoremap <leader>t "fy:Files<CR><C-\><C-n>"fpA
+vnoremap <leader>t "fy:Files<CR><C-\>><C-n>>"fpA
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Commits<CR>
 nnoremap <leader>f :Rg!<CR>
-vnoremap <leader>f "fy:Rg<CR>'<C-\><C-n>"fpA
+vnoremap <leader>f "fy:Rg<CR>'<C-\>><C-n>>"fpA
 nnoremap <leader>m :RG<CR>
 
   " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
@@ -155,27 +195,17 @@ nnoremap <leader>m :RG<CR>
   command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
   function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
     call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   endfunction
 
-  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-
 " Replace the default dictionary completion with fzf-based fuzzy completion
 " inoremap <expr> <c-x><c-k> fzf#vim#complete('cat /usr/share/dict/words')
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
-
-" vim-waikiki
-" let g:waikiki_root = ['~/vimwki_md/']
-
-" nnoremap <leader><return> <Plug>(waikikiFollowLink)
-" nnoremap <leader>- <Plug>(waikikiGoUp)
-" nnoremap <leader><leader>n <Plug>(waikikiNextLink)
-" nnoremap <leader><leader>p <Plug>(waikikiPrevLink)
-" nnoremap <leader>x <Plug>(waikikiToggleListItem)
-" nnoremap <leader><leader>T <Plug>(waikikiTags)
