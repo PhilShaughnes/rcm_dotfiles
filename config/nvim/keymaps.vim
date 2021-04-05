@@ -1,6 +1,9 @@
 "************"
 "** KEYMAP **"
 "************"
+" <C-b> and <C-f> are page up and page down, but I usually use <C-u> and <C-d>
+" So those two should be available for mappings
+
 " Select your Leader key
 let mapleader = "\<Space>"
 " better completion menu
@@ -25,8 +28,20 @@ noremap ' `
 " <C-e/E> work like E but in insert mode
 inoremap <C-e> <esc>ea
 " add to end of line
-inoremap <C-t> <C-o>mm<C-o>A
+" inoremap <C-t> <C-o>mm<C-o>A
+" move outside next closing thing
+inoremap <C-t> <esc>/[)}"'\]>]<CR>:nohlsearch<CR>a
 
+" this is a (test line to) see how stuff goes
+" really want to get simple slurp and barf...
+" not so simple - need to distinguish opening closing - if delimiter belongs
+" at beggining or end of words
+nnoremap ) /[)(}{"'\]\[><]<CR>:nohl<CR>
+nnoremap ( ?[(){}"'\[\]<>]<CR>:nohl<CR>
+nnoremap <leader>0 "pdiwwe"pp
+nnoremap <leader>9 "pdiwbi<c-r>p<esc>
+" nnoremap <C-)>
+" nnoremap <C-(>
 " inoremap <C-t> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 " inoremap <C-b> <Esc>?[({"'\[<]<CR>:nohl<CR>i
 inoremap <C-h> <left>
@@ -38,7 +53,9 @@ nnoremap <C-L> 5zl
 " Y goes to end of line
 nnoremap Y y$
 " leader space cancels search highlighting
-nnoremap <silent> <Leader><Space> :nohlsearch<CR>
+" nnoremap <silent> <Leader><Space> :nohlsearch<CR>
+" jk toggles cursorcolumn and cursorline
+nnoremap <silent> <leader><space> :set cursorcolumn! <bar> set cursorline!<bar> set relativenumber!<CR>
 
 " replace all occurences of word under cursor. $= in paragraph
 nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
@@ -55,6 +72,7 @@ nnoremap <Leader>Z ?\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgN
 
 " buffer switch
 nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <leader>bl :ls<CR>:b<space>
 nnoremap <leader>p :bp<CR>
 nnoremap <bs> :b#<CR>
 nnoremap <leader>n :bn<CR>
@@ -73,7 +91,6 @@ nnoremap < <<
 vnoremap > >gv
 vnoremap < <gv
 
-
 " highlight last inserted text
 nnoremap gV `[v`]
 
@@ -91,8 +108,14 @@ vnoremap K :m '<-2<CR>gv=gv
 "cycle splits
 nnoremap <C-q> <C-w>w
 
+"open current buffer in new tab (preserves existing pane configuration
+nnoremap <c-w>m :tab split<CR>
+
 " terminal - go to normal mode
 tnoremap <C-\> <C-\><C-n>
+tnoremap <C-q> <C-\><C-n><C-w>w
+
+" navigate to nearest character in list
 
 " create multi-line enclosed thing with terminating character
 inoremap (; (<CR>);<C-c>O
@@ -119,9 +142,34 @@ vnoremap  ,<Tab> <Esc>/<++><Enter>"_c4l
 map  ,<Tab> <Esc>/<++><Enter>"_c4l
 
 "markdown
-autocmd FileType markdown inoremap ,[ [](<++>)<C-o>F]
+autocmd FileType markdown inoremap ]] [](<++>)<C-o>F]
+autocmd FileType markdown inoremap [[ [[]]<++><C-o>2F]
 
+" want to toggle list/todo - ideally it goes:
+" empty -> [ ] -> [x] -> empty
+" also ideally can use <leader>ml to surround word with [[]]
+" but maybe <CR> would work...
+" also also, not sure why the gv is not doing anything here...
+nnoremap <leader>mt :.s/^\s\+\*\zs\ \ze\a/ [ ]<space><CR>
+vnoremap <leader>mt :s/^\s\+\*\zs\ \ze\a/ [ ]<space><CR>
+nnoremap <leader>mx :.s/^\s\+\* \[\zs\ \ze\]/x<CR>
+vnoremap <leader>mx :s/^\s\+\* \[\zs\ \ze\]/x<CR>
+nnoremap <leader>ml :.s/^\s\+\* \[\zsx\ze\]/<space><CR>
+vnoremap <leader>ml :s/^\s\+\* \[\zsx\ze\]/<space><CR>
+nnoremap <leader>md :.s/^\s\+\* \zs\[.\] \ze//<CR>
+vnoremap <leader>md :s/^\s\+\* \zs\[.\] \ze//<CR>
 
+nnoremap <leader>m= :.s/^\s*#*\zs\ *\ze\a/#<space><CR>
+vnoremap <leader>m= :s/^\s*#*\zs\ *\ze\a/#<space><CR>
+nnoremap <leader>m- :.s/^\s*\zs#\ *\ze#*\ *\a//<CR>
+vnoremap <leader>m- :s/^\s*\zs#\ *\ze#*\ *\a//<CR>
 
+" # heading
+" ## heading
 
+"   * [x] thing
+"   * [ ] another
+"     * [x] moar
+"     * [ ] again
+"   * ok
 

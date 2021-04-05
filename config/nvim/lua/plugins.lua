@@ -20,7 +20,7 @@ local function load_paq()
 
   paq {'junegunn/fzf', hook = fn['fzf#install']}
   paq {'junegunn/fzf.vim'}
-  paq {'rstacruz/vim-closer'}
+  -- paq {'rstacruz/vim-closer'}
   paq {'tpope/vim-commentary'}
   paq {'tpope/vim-fugitive'}
   paq {'romainl/vim-qf'}
@@ -28,28 +28,31 @@ local function load_paq()
   paq {'junegunn/vim-peekaboo'}
   paq {'markonm/traces.vim'}
   paq {'machakann/vim-sandwich'}
-  paq {'tpope/vim-endwise'}
+  -- paq {'tpope/vim-endwise'}
   paq {'kana/vim-niceblock'}
+  paq {'cohama/lexima.vim'}
 
-  paq {'dhruvasagar/vim-zoom'}
   paq {'rbgrouleff/bclose.vim'}                         -- close buffer without closing windows
   paq {'tommcdo/vim-lion'}                              -- gl and gL align around a character (so glip=)
   paq {'justinmk/vim-gtfo'}                             -- got and gof open current file in terminal/file manager
+  paq {'justinmk/vim-sneak'}
   -- paq {'jeetsukumaran/vim-indentwise'}
   -- paq {'michaeljsmith/vim-indent-object'}               -- use indent level like ii or ai
 
   paq {'ervandew/supertab'}
 
   paq { 'kyazdani42/nvim-tree.lua'}
-  paq {'glepnir/indent-guides.nvim'}
+  -- paq {'glepnir/indent-guides.nvim'}
   paq {'nvim-treesitter/nvim-treesitter'}
   paq {'p00f/nvim-ts-rainbow'}
   paq {'nvim-lua/plenary.nvim'}
   paq {'lewis6991/gitsigns.nvim'}
 
   paq {'justinmk/vim-dirvish', opt=true}
+  paq {'kristijanhusak/vim-dirvish-git', opt=true}
   paq {'tpope/vim-projectionist', opt=true}
-  -- paq {'vimwiki/vimwiki'}
+  paq {'vimwiki/vimwiki'}
+  paq {'liuchengxu/vim-which-key'}
 
   paq {'mtdl9/vim-log-highlighting', opt=true}
   paq {'othree/csscomplete.vim'}
@@ -72,8 +75,9 @@ local function load_paq()
   paq {'kyazdani42/nvim-web-devicons'}
   paq {'sainnhe/sonokai'}
   paq {'sainnhe/edge'}
-  paq {'Th3Whit3Wolf/space-nvim'}
   paq {'crusoexia/vim-monokai'}
+  paq {'sainnhe/gruvbox-material'}
+  paq {'gruvbox-community/gruvbox'}
   paq {'hoob3rt/lualine.nvim'}
 end
 
@@ -85,7 +89,37 @@ end
 local function gen_config()
   map('n', '<c-n>', ':NvimTreeToggle<CR>')
   map('n', '<leader>gg', ':Gstatus<CR>')
-  require('indent_guides').setup()
+  -- require('indent_guides').setup()
+end
+
+local function sneak_config()
+  map('n', 'z', '<Plug>Sneak_s', {noremap = false})
+  map('n', 'Z', '<Plug>Sneak_S', {noremap = false})
+  map('x', 'z', '<Plug>Sneak_s', {noremap = false})
+  map('x', 'Z', '<Plug>Sneak_S', {noremap = false})
+  map('o', 'z', '<Plug>Sneak_s', {noremap = false})
+  map('o', 'Z', '<Plug>Sneak_S', {noremap = false})
+end
+
+local function vimwiki_config()
+  -- local nested = {
+  --   python = 'python',
+  --   elixir = 'elixir',
+  --   js = 'javascript',
+  -- }
+    
+  g.vimwiki_list = {
+    {
+      path = '~/vimwiki',
+      syntax = 'default',
+      ext = '.wiki'
+    },
+    -- {
+    --   path = '~/vimwiki_md',
+    --   syntax = 'markdown',
+    --   ext = '.md'
+    -- }
+  }
 end
 
 local function fzf_config()
@@ -132,19 +166,36 @@ local function treesitter_config()
       enable = true,              -- false will disable the whole extension
       disable = { "c", "rust" },  -- list of language that will be disabled
     },
-    rainbow = { enable = true }
+    -- incremental_selection = {
+    --   enable = true,
+    --   keymaps = {
+    --     init_selection = "gnn",
+    --     node_incremental = "grn",
+    --     scope_incremental = "grc",
+    --     node_decremental = "grm",
+    --   },
+    -- },
+    -- rainbow = { enable = true },
+    -- indent = { enable = true },
   }
+
+  -- cmd 'set foldmethod=expr'
+  -- cmd 'set foldexpr=nvim_treesitter#foldexpr()'
+  -- vim.wo.foldmethod = expr
+  -- vim.wo.foldexpr = 
 end
 
 function _G.lualine_config()
-  local l = require('lualine')
-  l.options = {
+  local l = require('lualine').setup({
+    options = {
     icons_enabled = true,
     theme = 'codedark',
+    -- theme = 'gruvbox_material',
     component_separators = {'', ''},
-    -- section_separators = {'', ''},
-  }
-  l.status()
+    section_separators = {'', ''},
+    }
+  })
+
 end
 
 load_paq()
@@ -154,9 +205,11 @@ qf_config()
 lualine_config()
 gitsigns_config()
 treesitter_config()
-print("loaded stuff")
+vimwiki_config()
+-- print("loaded stuff")
 
-local function do_thing()
+local function do_thing(plugin, command)
+    -- cmd 'command! ' .. command .. ' packadd ' .. plugin .. ' | :' .. command
 end
 
 function _G.dump(...)

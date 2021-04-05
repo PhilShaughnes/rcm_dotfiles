@@ -12,11 +12,11 @@ let g:vimsyn_embed = 'lr'
 
 source $DOTFILES/config/nvim/augroups.vim
 source $DOTFILES/config/nvim/keymaps.vim
-" source $DOTFILES/config/nvim/plugs.vim
+source $DOTFILES/config/nvim/plugs.vim
 " source $DOTFILES/config/nvim/mod_plugs.vim
 " source $DOTFILES/config/nvim/dev_plugs.vim
 " lua require 'bootstrap'
-lua require 'plugins'
+" lua require 'plugins'
 " source $DOTFILES/config/nvim/myplugins.vim
 
 " source $DOTFILES/config/nvim/theme.vim
