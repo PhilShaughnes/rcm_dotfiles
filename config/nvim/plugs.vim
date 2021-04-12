@@ -9,6 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
   Plug 'tpope/vim-fugitive'
   Plug 'cohama/lexima.vim'
+  " Plug 'Raimondi/delimitMate'
   Plug 'romainl/vim-cool'
   Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>>
   Plug 'markonm/traces.vim'
@@ -28,7 +29,7 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'justinmk/vim-dirvish'
   Plug 'kristijanhusak/vim-dirvish-git'
 
-  Plug 'ackyshake/VimCompletesMe'
+  Plug 'ervandew/supertab'
 
   Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-projectionist'
@@ -43,7 +44,8 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'chaoren/vim-wordmotion'
   " Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
   Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeRefresh' }
-    nnoremap <c-n> :NvimTreeRefresh<CR> :NvimTreeToggle<CR>
+    " nnoremap <c-n> :NvimTreeToggle<CR>:NvimTreeRefresh<CR>
+    nnoremap <c-n> :NvimTreeRefresh<CR>:NvimTreeToggle<CR>
   " Plug 'mbbill/undotree'
   Plug 'ThePrimeagen/vim-be-good'
 
@@ -51,7 +53,7 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
 
   Plug 'mtdl9/vim-log-highlighting'
   Plug 'othree/csscomplete.vim'
-  Plug 'ap/vim-css-color'                              " color css color codes
+  Plug 'norcalli/nvim-colorizer.lua'
   Plug 'alvan/vim-closetag'
   Plug 'mattn/emmet-vim'
   Plug 'moll/vim-node'
@@ -78,13 +80,14 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
 call plug#end()
 
 lua << EOF
+require'colorizer'.setup()
 
 function lualine_config()
   require('lualine').setup({
     options = {
     icons_enabled = true,
     theme = 'codedark',
-    theme = 'gruvbox_material',
+    -- theme = 'gruvbox_material',
     component_separators = {'', ''},
     section_separators = {'', ''},
     }
@@ -96,11 +99,11 @@ lualine_config()
 local function gitsigns_config()
     require('gitsigns').setup({
     signs = {
-      add          = {hl = 'GitGutterAdd'   , text = '+'},
-      change       = {hl = 'GitGutterChange', text = '~'},
-      delete       = {hl = 'GitGutterDelete', text = '_'},
-      topdelete    = {hl = 'GitGutterDelete', text = '‾'},
-      changedelete = {hl = 'GitGutterChange', text = '~'},
+      -- add          = {hl = 'GitGutterAdd'   , text = '+'},
+      -- change       = {hl = 'GitGutterChange', text = '~'},
+      -- delete       = {hl = 'GitGutterDelete', text = '_'},
+      -- topdelete    = {hl = 'GitGutterDelete', text = '‾'},
+      -- changedelete = {hl = 'GitGutterChange', text = '~'},
       add          = {hl = 'GitGutterAdd'   },
       change       = {hl = 'GitGutterChange'},
       delete       = {hl = 'GitGutterDelete'},

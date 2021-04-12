@@ -114,7 +114,8 @@ nnoremap <c-w>m :tab split<CR>
 
 " terminal - go to normal mode
 tnoremap <C-\> <C-\><C-n>
-tnoremap <C-q> <C-\><C-n><C-w>w
+" tnoremap <C-q> <C-\><C-n><C-w>w
+tnoremap <C-q> <C-\><C-n>
 
 " navigate to nearest character in list
 

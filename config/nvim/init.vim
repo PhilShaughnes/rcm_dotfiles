@@ -23,8 +23,8 @@ source $DOTFILES/config/nvim/plugs.vim
 set background=dark
 " source $DOTFILES/vetc/airline_config.vim
 
-" colorscheme sonokai
+colorscheme sonokai
 " colorscheme edge
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
 " colorscheme monokai
 
