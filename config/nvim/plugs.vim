@@ -8,8 +8,10 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
   Plug 'tpope/vim-fugitive'
-  Plug 'cohama/lexima.vim'
-  " Plug 'Raimondi/delimitMate'
+  " Plug 'cohama/lexima.vim'
+  Plug 'jiangmiao/auto-pairs'
+  " Plug 'rstacruz/vim-closer'
+  Plug 'tpope/vim-endwise'
   Plug 'romainl/vim-cool'
   Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>>
   Plug 'markonm/traces.vim'
@@ -41,7 +43,6 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
 
   Plug 'rhysd/clever-f.vim'
     let g:clever_f_mark_direct = 1
-  Plug 'chaoren/vim-wordmotion'
   " Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
   Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeRefresh' }
     " nnoremap <c-n> :NvimTreeToggle<CR>:NvimTreeRefresh<CR>

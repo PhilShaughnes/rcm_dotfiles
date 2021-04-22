@@ -33,6 +33,13 @@ inoremap <C-e> <esc>ea
 " move outside next closing thing
 inoremap <C-t> <esc>/[)}"'\]>]<CR>:nohlsearch<CR>a
 
+" inoremap { {}<Esc>ha
+" inoremap ( ()<Esc>ha
+" inoremap [ []<Esc>ha
+" inoremap " ""<Esc>ha
+" inoremap ' ''<Esc>ha
+" inoremap ` ``<Esc>ha
+
 " this is a (test line to) see how stuff goes
 " really want to get simple slurp and barf...
 " not so simple - need to distinguish opening closing - if delimiter belongs
@@ -120,12 +127,12 @@ tnoremap <C-q> <C-\><C-n>
 " navigate to nearest character in list
 
 " create multi-line enclosed thing with terminating character
-inoremap (; (<CR>);<C-c>O
-inoremap (, (<CR>),<C-c>O
-inoremap {; {<CR>};<C-c>O
-inoremap {, {<CR>},<C-c>O
-inoremap [; [<CR>];<C-c>O
-inoremap [, [<CR>],<C-c>O
+" inoremap (; (<CR>);<C-c>O
+" inoremap (, (<CR>),<C-c>O
+" inoremap {; {<CR>};<C-c>O
+" inoremap {, {<CR>},<C-c>O
+" inoremap [; [<CR>];<C-c>O
+" inoremap [, [<CR>],<C-c>O
 
 " add to end of line
 inoremap ,; <Esc>m`A;<Esc>``a
