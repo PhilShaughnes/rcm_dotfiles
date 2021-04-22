@@ -168,8 +168,8 @@ let g:user_emmet_settings = {
 \}
 
 " qf
-nmap <C-k>> <Plug>(qf_qf_previous)
-nmap <C-j>> <Plug>(qf_qf_next)
+nmap <C-k> <Plug>(qf_qf_previous)
+nmap <C-j> <Plug>(qf_qf_next)
 nmap <leader>k <Plug>(qf_loc_previous)
 nmap <leader>j <Plug>(qf_loc_next)
 nmap \|\| <Plug>(qf_loc_toggle)
