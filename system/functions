@@ -1,5 +1,20 @@
 #!/usr/bin/env sh
 
+n () {
+  # Block nesting of nnn in subshells
+  if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+      echo "nnn is already running"
+      return
+  fi
+
+  NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  nnn -e "$@"
+
+  if [ -f "$NNN_TMPFILE" ]; then
+    . "$NNN_TMPFILE"
+    rm -f "$NNN_TMPFILE" > /dev/null
+  fi
+}
 
 unwip() {
   if [[ "$(git log -1 --pretty=%B)" = "wip" ]]; then

@@ -30,6 +30,17 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
   Plug 'justinmk/vim-dirvish'
   Plug 'kristijanhusak/vim-dirvish-git'
+  Plug 'mcchrish/nnn.vim'
+    let g:nnn#set_default_mappings = 0
+    let g:nnn#layout = { 'window': { 'width': 0.5, 'height': 0.7, 'highlight': 'Debug' } }
+    let g:nnn#command = 'nnn -e'
+    " let g:nnn#replace_netrw = 1
+    let g:nnn#session = 'local'
+    nnoremap <leader>n- :call nnn#pick(expand('%:p:h'), { 'layout': 'enew' })<CR>
+    nnoremap <leader>nr :call nnn#pick(getcwd(), { 'layout': {'left': '~20%'} })<CR>
+    nnoremap <leader>nl :call nnn#pick(expand('%:p:h'), { 'layout': {'left': '~20%'} })<CR>
+    nnoremap <leader>nw :call nnn#pick(expand('%:p:h'))<CR>
+    nnoremap <leader>nn :call nnn#pick(getcwd())<CR>
 
   Plug 'ervandew/supertab'
 
@@ -44,11 +55,9 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'rhysd/clever-f.vim'
     let g:clever_f_mark_direct = 1
   " Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
-  Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeRefresh' }
-    " nnoremap <c-n> :NvimTreeToggle<CR>:NvimTreeRefresh<CR>
-    nnoremap <c-n> :NvimTreeRefresh<CR>:NvimTreeToggle<CR>
   " Plug 'mbbill/undotree'
   Plug 'ThePrimeagen/vim-be-good'
+  Plug 'nvim-treesitter/nvim-treesitter'
 
 " language specific
 
@@ -116,6 +125,36 @@ end
 
 gitsigns_config()
 
+local function treesitter_config()
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    highlight = {
+      enable = true,              -- false will disable the whole extension
+      disable = { "c", "rust" },  -- list of language that will be disabled
+    },
+    -- rainbow = { enable = true }
+    rainbow = { enable = false }
+    -- incremental_selection = {
+    --   enable = true,
+    --   keymaps = {
+    --     init_selection = "gnn",
+    --     node_incremental = "grn",
+    --     scope_incremental = "grc",
+    --     node_decremental = "grm",
+    --   },
+    -- },
+    -- rainbow = { enable = true },
+    -- indent = { enable = true },
+  }
+
+  -- cmd 'set foldmethod=expr'
+  -- cmd 'set foldexpr=nvim_treesitter#foldexpr()'
+  -- vim.wo.foldmethod = expr
+  -- vim.wo.foldexpr = 
+end
+
+treesitter_config()
+
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, {...})
   print(unpack(objects))
@@ -182,7 +221,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>c :Commits<CR>
 nnoremap <leader>f :Rg!<CR>
 vnoremap <leader>f "fy:Rg<CR>'<C-\>><C-n>>"fpA
-nnoremap <leader>m :RG<CR>
+" nnoremap <leader>m :RG<CR>
 
   " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
   command! -bang -nargs=* Rg

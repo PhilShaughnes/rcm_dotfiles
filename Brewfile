@@ -10,9 +10,10 @@ cask "vanilla"
 cask "ngrok"
 cask "dropbox"
 cask "karabiner-elements"
-cask "qlstephen"
-cask "qlcolorcode"
-cask "qlmarkdown"
+cask "qlstephen" #quicklook for text files (without dedicated plugin)
+cask "qlcolorcode" # quicklook for code with synta highlighting
+cask "qlmarkdown" # quicklook markdown
+cask "kitty" # fast terminal emulator
 # cask "postman"
 # cask "visual-studio-code"
 # cask "nvalt"
@@ -61,14 +62,15 @@ brew "gotop"
 brew "jq"  # json format (json | jq .)
 brew "wget"
 brew "youtube-dl"
+brew 'hyperfine' # rust benchmark tool
 brew "tokei" # statitics on codebase
 brew "noti"  # push cli results to notification
 brew "entr"  # autorun stuff on changes
 brew "devd"  # local webserver with live reload (devd -ol .)
 brew "wrk"   # http benchmarking and load tool
+brew "moreutils"
 # brew "just"
 # brew "pgcli"
-
 
 
 # asdf dependencies - todo: do I need these?
@@ -89,11 +91,12 @@ brew "mas" # Apple App Store integration
 mas "amphetamine", id: 937984704
 mas "Be Focused", id: 973134470
 mas "LastPass", id: 926036361
-mas "VOX", id: 461369673
+# mas "VOX", id: 461369673
 # slack,
 # chrome,
 # vs code/atom,
 # vlc,
+# iina
 # postico,
 # skype,
 #
