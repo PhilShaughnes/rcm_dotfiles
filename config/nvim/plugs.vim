@@ -9,8 +9,9 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
   Plug 'tpope/vim-fugitive'
   " Plug 'cohama/lexima.vim'
-  Plug 'jiangmiao/auto-pairs'
-  " Plug 'rstacruz/vim-closer'
+  " Plug 'jiangmiao/auto-pairs'
+  " Plug 'windwp/nvim-autopairs'
+  Plug 'rstacruz/vim-closer'
   Plug 'tpope/vim-endwise'
   Plug 'romainl/vim-cool'
   Plug 'junegunn/vim-peekaboo'                         " peak at registers with \" and @ and <C-R>>
@@ -24,22 +25,28 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'romainl/vim-qlist'
   Plug 'romainl/vim-qf'
 
+  Plug 'numtostr/FTerm.nvim'
+    nnoremap <C-t>t <cmd>lua require('FTerm').toggle()<CR>
+    tnoremap <C-t>t <cmd>lua require('FTerm').toggle()<CR>
+    nnoremap <C-t>s <cmd>vsp term://bash<CR>
+    tnoremap <C-t>s <cmd>q<CR>
 
   Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
   Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
   Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
-  Plug 'justinmk/vim-dirvish'
-  Plug 'kristijanhusak/vim-dirvish-git'
+  " Plug 'justinmk/vim-dirvish'
+  " Plug 'kristijanhusak/vim-dirvish-git'
   Plug 'mcchrish/nnn.vim'
     let g:nnn#set_default_mappings = 0
     let g:nnn#layout = { 'window': { 'width': 0.5, 'height': 0.7, 'highlight': 'Debug' } }
     let g:nnn#command = 'nnn -e'
-    " let g:nnn#replace_netrw = 1
+    let g:nnn#replace_netrw = 1
     let g:nnn#session = 'local'
-    nnoremap <leader>n- :call nnn#pick(expand('%:p:h'), { 'layout': 'enew' })<CR>
+    nnoremap - :call nnn#pick(expand('%:p:h'), { 'layout': 'enew' })<CR>
+    nnoremap <leader>nw :call nnn#pick(getcwd(), { 'layout': 'enew' })<CR>
     nnoremap <leader>nr :call nnn#pick(getcwd(), { 'layout': {'left': '~20%'} })<CR>
     nnoremap <leader>nl :call nnn#pick(expand('%:p:h'), { 'layout': {'left': '~20%'} })<CR>
-    nnoremap <leader>nw :call nnn#pick(expand('%:p:h'))<CR>
+    nnoremap <leader>nm :call nnn#pick(expand('%:p:h'))<CR>
     nnoremap <leader>nn :call nnn#pick(getcwd())<CR>
 
   Plug 'ervandew/supertab'
@@ -52,12 +59,17 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
-  Plug 'rhysd/clever-f.vim'
-    let g:clever_f_mark_direct = 1
+  " Plug 'rhysd/clever-f.vim'
+  "   let g:clever_f_mark_direct = 1
   " Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
   " Plug 'mbbill/undotree'
+  Plug 'ojroques/vim-oscyank'
+    vnoremap <leader>c :OSCYank<CR>
   Plug 'ThePrimeagen/vim-be-good'
   Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'ggandor/lightspeed.nvim'
+    map f <Plug>Lightspeed_s
+    map F <Plug>Lightspeed_S
 
 " language specific
 
@@ -81,6 +93,9 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'junegunn/limelight.vim', { 'on': 'Goyo' }
 
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'folke/tokyonight.nvim'
+    let g:tokyonight_style = 'night'
+    " let g:tokyonight_style = 'storm'
   Plug 'sainnhe/sonokai'
   Plug 'sainnhe/edge'
   Plug 'sainnhe/gruvbox-material'
@@ -91,13 +106,25 @@ call plug#end()
 
 lua << EOF
 require'colorizer'.setup()
+-- require('nvim-autopairs').setup()
+
+require('FTerm').setup()
+local term = require('FTerm.terminal')
+local nnn = term:new():setup({
+  cmd = "nnn"
+})
+
+-- this isn't working ¯\_(ツ)_/¯
+function _G.__fterm_nnn()
+  nnn:toggle()
+end
+
 
 function lualine_config()
   require('lualine').setup({
     options = {
     icons_enabled = true,
-    theme = 'codedark',
-    -- theme = 'gruvbox_material',
+    theme = 'auto',
     component_separators = {'', ''},
     section_separators = {'', ''},
     }
@@ -109,11 +136,6 @@ lualine_config()
 local function gitsigns_config()
     require('gitsigns').setup({
     signs = {
-      -- add          = {hl = 'GitGutterAdd'   , text = '+'},
-      -- change       = {hl = 'GitGutterChange', text = '~'},
-      -- delete       = {hl = 'GitGutterDelete', text = '_'},
-      -- topdelete    = {hl = 'GitGutterDelete', text = '‾'},
-      -- changedelete = {hl = 'GitGutterChange', text = '~'},
       add          = {hl = 'GitGutterAdd'   },
       change       = {hl = 'GitGutterChange'},
       delete       = {hl = 'GitGutterDelete'},
@@ -130,10 +152,10 @@ local function treesitter_config()
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     highlight = {
       enable = true,              -- false will disable the whole extension
-      disable = { "c", "rust" },  -- list of language that will be disabled
+      disable = { "c", "fish"},  -- list of language that will be disabled
     },
     -- rainbow = { enable = true }
-    rainbow = { enable = false }
+    rainbow = { enable = false },
     -- incremental_selection = {
     --   enable = true,
     --   keymaps = {
@@ -144,7 +166,7 @@ local function treesitter_config()
     --   },
     -- },
     -- rainbow = { enable = true },
-    -- indent = { enable = true },
+    indent = { enable = true },
   }
 
   -- cmd 'set foldmethod=expr'
@@ -215,12 +237,11 @@ nmap \|\| <Plug>(qf_loc_toggle)
 nmap \\ <Plug>(qf_qf_toggle)
 
 " FZF settings:
-nnoremap <leader>t :Files<CR>
-vnoremap <leader>t "fy:Files<CR><C-\>><C-n>>"fpA
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>c :Commits<CR>
-nnoremap <leader>f :Rg!<CR>
-vnoremap <leader>f "fy:Rg<CR>'<C-\>><C-n>>"fpA
+nnoremap <leader>ff :Files<CR>
+" nnoremap <leader>t :Files<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fc :Commits<CR>
+nnoremap <leader>ft :Rg<CR>
 " nnoremap <leader>m :RG<CR>
 
   " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
