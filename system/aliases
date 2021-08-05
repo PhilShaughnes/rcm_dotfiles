@@ -20,7 +20,7 @@ alias ga='git add -p' # interactive mode
 alias gc='git commit -v'
 
 alias ll='ls -laph'
-[ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
+# [ "$(uname)" != "Darwin" ] && alias ls='ls --color' # conditionally only use this on linux
 # alias fd='rg --files'
 # alias tkl='tmux kill-session -t $(tmux list-sessions -F "#{session_name}" | fzf --height 20% --reverse -m)'
 

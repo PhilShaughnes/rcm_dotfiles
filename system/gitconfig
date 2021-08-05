@@ -43,3 +43,9 @@
     cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "$LOCAL" "$REMOTE"
 [branch]
 	autosetupmerge = true
+
+[github]
+  user = philshaughnes
+
+[init]
+  defaultBranch = main

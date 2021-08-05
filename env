@@ -4,13 +4,14 @@ if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "$HOME/dotfiles" ] ; then
-  export DOTFILES=$HOME/dotfiles
-elif [ -d "$HOME/.dotfiles" ] ; then
-  export DOTFILES=$HOME/.dotfiles
-else
-  echo "UH-OH! No dotfiles directory found!"
-fi
+# if [ -d "$HOME/dotfiles" ] ; then
+#   export DOTFILES=$HOME/dotfiles
+# elif [ -d "$HOME/.dotfiles" ] ; then
+#   export DOTFILES=$HOME/.dotfiles
+# else
+#   echo "UH-OH! No dotfiles directory found!"
+# fi
+export DOTFILES=$HOME/.dotfiles
 
 
 
