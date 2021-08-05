@@ -3,9 +3,6 @@
 "**************"
 source $DOTFILES/config/nvim/base_settings.vim
 
-if has('nvim')
-  let $VISUAL = 'nvr -cc split --remote-wait'
-endif
 set termguicolors
 " syntax highlighting for lua and ruby in vimscript
 let g:vimsyn_embed = 'lr'
@@ -19,9 +16,7 @@ source $DOTFILES/config/nvim/plugs.vim
 " lua require 'plugins'
 " source $DOTFILES/config/nvim/myplugins.vim
 
-" source $DOTFILES/config/nvim/theme.vim
 set background=dark
-" source $DOTFILES/vetc/airline_config.vim
 
 colorscheme sonokai
 " colorscheme edge

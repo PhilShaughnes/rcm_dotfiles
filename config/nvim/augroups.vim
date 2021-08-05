@@ -14,7 +14,7 @@ augroup END
 augroup saving
   autocmd!
   autocmd WinEnter,BufWinEnter,FocusGained * checktime
-  autocmd FocusLost * silent! wa
+  " autocmd FocusLost * silent! wa
 augroup end
 
 augroup quickfix
