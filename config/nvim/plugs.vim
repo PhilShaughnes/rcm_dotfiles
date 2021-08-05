@@ -19,7 +19,6 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'machakann/vim-sandwich'
   Plug 'kana/vim-niceblock'                            " make A and I work for all visual modes
 
-  " Plug 'airblade/vim-gitgutter'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'romainl/vim-qlist'
@@ -34,8 +33,6 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'rbgrouleff/bclose.vim'                         " close buffer without closing windows
   Plug 'tommcdo/vim-lion'                              " gl and gL align around a character (so glip=)
   Plug 'justinmk/vim-gtfo'                             " got and gof open current file in terminal/file manager
-  " Plug 'justinmk/vim-dirvish'
-  " Plug 'kristijanhusak/vim-dirvish-git'
   Plug 'mcchrish/nnn.vim'
     let g:nnn#set_default_mappings = 0
     let g:nnn#layout = { 'window': { 'width': 0.5, 'height': 0.7, 'highlight': 'Debug' } }
