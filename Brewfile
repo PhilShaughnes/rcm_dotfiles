@@ -5,8 +5,8 @@ cask_args appdir: "/Applications"
 tap "homebrew/cask"
 
 # cask apps
-cask "iterm2"
-cask "vanilla"
+# cask "iterm2"
+# cask "vanilla"
 cask "ngrok"
 cask "dropbox"
 cask "karabiner-elements"
@@ -18,7 +18,6 @@ cask "kitty" # fast terminal emulator
 # cask "visual-studio-code"
 # cask "nvalt"
 # cask "vox"
-# cask "karabiner"
 # cask "google-chrome"
 # cask "slack"
 # cask "vlc"
@@ -28,9 +27,8 @@ cask "kitty" # fast terminal emulator
 
 # fonts
 tap "caskroom/fonts"
-cask "font-fira-code"
-cask "font-source-code-pro"
-cask "font-iosevka"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-fira-code-nerd-font"
 
 # for dotfiles
 tap "thoughtbot/formulae"
@@ -73,6 +71,7 @@ brew "moreutils"
 # brew "pgcli"
 
 
+
 # asdf dependencies - todo: do I need these?
 brew "coreutils"
 brew "automake"
@@ -86,12 +85,13 @@ brew "unixodbc"
 brew "unzip"
 brew "curl"
 brew "asdf"
+# additional erlang dependencies
+brew "wxmac"
 
 brew "mas" # Apple App Store integration
 mas "amphetamine", id: 937984704
 mas "Be Focused", id: 973134470
 mas "LastPass", id: 926036361
-# mas "VOX", id: 461369673
 # slack,
 # chrome,
 # vs code/atom,
