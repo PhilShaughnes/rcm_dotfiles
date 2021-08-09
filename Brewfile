@@ -66,7 +66,8 @@ brew "noti"  # push cli results to notification
 brew "entr"  # autorun stuff on changes
 brew "devd"  # local webserver with live reload (devd -ol .)
 brew "wrk"   # http benchmarking and load tool
-brew "moreutils"
+brew "moreutils" # lots of useful utils like vipe and vidir
+brew "tealdeer"
 # brew "just"
 # brew "pgcli"
 
