@@ -8,6 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
   Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
   " Plug 'cohama/lexima.vim'
   " Plug 'jiangmiao/auto-pairs'
   " Plug 'windwp/nvim-autopairs'
