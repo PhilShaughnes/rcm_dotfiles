@@ -7,6 +7,7 @@ augroup end
 augroup interface
   autocmd!
   autocmd BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
+  autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false}
   " autocmd InsertEnter,CmdLineEnter * set norelativenumber | redraw
   " autocmd InsertLeave,CmdlineLeave * set relativenumber
 augroup END

@@ -31,4 +31,6 @@ alias v='nvim'
 alias nv='nvim -u ~/.dotfiles/vetc/dev_vimrc'
 alias k='kak'
 
+alias icat="kitty +kitten icat --align=left"
 alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+alias ip='curl ifconfig.me'
