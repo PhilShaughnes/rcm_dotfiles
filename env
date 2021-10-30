@@ -21,6 +21,7 @@ export VISUAL=nvim
 # export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --glob "!.git/*"'
 # export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_DEFAULT_COMMAND='fd --type f'
+export KITTY_LISTEN_ON=unix:/tmp/kitty
 export NNN_FIFO=/tmp/nnn.fifo
 export NNN_PLUG='o:fzopen;p:preview-tui'
 # export NNN_OPENER='~/.config/nnn/plugins/nuke'

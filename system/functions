@@ -83,4 +83,15 @@ fshow() {
 FZF-EOF"
 }
 
+# relies on genact, which is found at https://github.com/svenstaro/genact
+gen() {
+  if [ $1 ]; then
+    MODULES=$(genact -l | fzf --query $@ | tr -d ' ')
+  else
+    MODULES=$(genact -l | fzf | tr -d ' ')
+  fi
+  echo "running $MODULES"
+  # go a bit faster, using the selected modules
+  genact -s 2 -m "$MODULES"
+}
 
