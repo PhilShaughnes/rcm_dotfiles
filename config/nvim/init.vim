@@ -1,7 +1,8 @@
 "**************"
 "** SETTINGS **"
 "**************"
-source $DOTFILES/config/nvim/base_settings.vim
+" source $DOTFILES/config/nvim/base_settings.vim
+lua require 'config'
 
 set termguicolors
 " syntax highlighting for lua and ruby in vimscript
@@ -9,7 +10,7 @@ let g:vimsyn_embed = 'lr'
 
 source $DOTFILES/config/nvim/augroups.vim
 source $DOTFILES/config/nvim/keymaps.vim
-source $DOTFILES/config/nvim/plugs.vim
+" source $DOTFILES/config/nvim/plugs.vim
 
 " source $DOTFILES/config/nvim/mod_plugs.vim
 " source $DOTFILES/config/nvim/dev_plugs.vim
@@ -24,4 +25,7 @@ colorscheme sonokai
 " colorscheme edge
 " colorscheme gruvbox-material
 " colorscheme monokai
-
+" TODO: add in lsp support
+" TODO: add in nvim.cmp completion support
+" TODO: switch from fzf to snap
+" TODO: snippets?

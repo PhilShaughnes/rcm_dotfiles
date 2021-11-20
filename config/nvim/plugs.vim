@@ -8,9 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')         " install with :PlugInsta
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'                          "comment stuff out with gc (gcc to do a line)
   Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-  " Plug 'cohama/lexima.vim'
-  " Plug 'jiangmiao/auto-pairs'
+  Plug 'junegunn/gv.vim'
   " Plug 'windwp/nvim-autopairs'
   Plug 'rstacruz/vim-closer'
   Plug 'tpope/vim-endwise'
@@ -84,7 +82,7 @@ Plug 'junegunn/gv.vim'
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-lua-ftplugin'
   Plug 'cespare/vim-toml'
-  Plug 'fatih/vim-go'
+  " Plug 'fatih/vim-go'
   Plug 'mrk21/yaml-vim'
   Plug 'rhysd/vim-crystal'
   Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }           " distraction free vim
@@ -106,7 +104,7 @@ lua << EOF
 require'colorizer'.setup()
 -- require('nvim-autopairs').setup()
 
-require('FTerm').setup()
+-- require('FTerm').setup()
 local term = require('FTerm.terminal')
 local nnn = term:new():setup({
   cmd = "nnn"
@@ -185,7 +183,7 @@ EOF
 let g:CoolTotalMatches = 1
 
 " fugitive:
-nnoremap <leader>gg :Gstatus<CR>
+nnoremap <leader>gg :Git<CR>
 
 " Markdown
 let g:limelight_conceal_ctermfg = 'gray'

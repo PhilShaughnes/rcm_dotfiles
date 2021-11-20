@@ -3,83 +3,109 @@ local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local api = vim.api
+local paqpath = vim.fn.expand("$HOME/.local/share/nvim/paq-plugins/")
+
+print "loading plugins..."
+
+vim.opt.packpath:append(paqpath)
+local paq = require "paq"
+paq:setup({paqdir=paqpath})
 
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
+  local options = {noremap = true, silent = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
   api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- add function(s) to lazy load on file/command, etc.
+local function load(name, config)
+	if type(name) == "string" then name = {name} end
+	-- if type(config) == "string" then config end
+
+	paq.paq(name)
+end
 
 local function load_paq()
-  cmd 'packadd paq-nvim'         -- Load package
-  local paq = require'paq-nvim'.paq  -- Import module and bind `paq` function
+  -- cmd 'packadd paq-nvim'         -- Load package
+  paq {
 
-  paq {'savq/paq-nvim', opt=true}     -- Let Paq manage itself
+    {'savq/paq-nvim'};     -- Let Paq manage itself
 
-  paq {'junegunn/fzf', hook = fn['fzf#install']}
-  paq {'junegunn/fzf.vim'}
-  -- paq {'rstacruz/vim-closer'}
-  paq {'tpope/vim-commentary'}
-  paq {'tpope/vim-fugitive'}
-  paq {'romainl/vim-qf'}
-  paq {'romainl/vim-cool'}
-  paq {'junegunn/vim-peekaboo'}
-  paq {'markonm/traces.vim'}
-  paq {'machakann/vim-sandwich'}
-  -- paq {'tpope/vim-endwise'}
-  paq {'kana/vim-niceblock'}
-  paq {'cohama/lexima.vim'}
+    {'junegunn/fzf', run = fn['fzf#install']};
+    {'junegunn/fzf.vim'};
+    {'rstacruz/vim-closer'};
+    {'tpope/vim-endwise'};
+    {'tpope/vim-commentary'};
+    {'tpope/vim-fugitive'};
+    {'junegunn/gv.vim'};
+    {'romainl/vim-qf'};
+    {'romainl/vim-cool'};
+    {'junegunn/vim-peekaboo'};
+    {'markonm/traces.vim'};
+    {'machakann/vim-sandwich'};
+    {'kana/vim-niceblock'};
 
-  paq {'rbgrouleff/bclose.vim'}                         -- close buffer without closing windows
-  paq {'tommcdo/vim-lion'}                              -- gl and gL align around a character (so glip=)
-  paq {'justinmk/vim-gtfo'}                             -- got and gof open current file in terminal/file manager
-  paq {'justinmk/vim-sneak'}
-  -- paq {'jeetsukumaran/vim-indentwise'}
-  -- paq {'michaeljsmith/vim-indent-object'}               -- use indent level like ii or ai
 
-  paq {'ervandew/supertab'}
+    {'rbgrouleff/bclose.vim'};                         -- close buffer without closing windows
+    {'tommcdo/vim-lion'};                              -- gl and gL align around a character (so glip=)
+    {'justinmk/vim-gtfo'};                             -- got and gof open current file in terminal/file manager
+    -- {'jeetsukumaran/vim-indentwise'};
+    {'michaeljsmith/vim-indent-object'};               -- use indent level like ii or ai
+    -- {'tpope/vim-sleuth'};
 
-  paq { 'kyazdani42/nvim-tree.lua'}
-  -- paq {'glepnir/indent-guides.nvim'}
-  paq {'nvim-treesitter/nvim-treesitter'}
-  paq {'p00f/nvim-ts-rainbow'}
-  paq {'nvim-lua/plenary.nvim'}
-  paq {'lewis6991/gitsigns.nvim'}
+    {'numtostr/FTerm.nvim'};
 
-  paq {'justinmk/vim-dirvish', opt=true}
-  paq {'kristijanhusak/vim-dirvish-git', opt=true}
-  paq {'tpope/vim-projectionist', opt=true}
-  paq {'vimwiki/vimwiki'}
-  paq {'liuchengxu/vim-which-key'}
+    {'nathom/filetype.nvim'};
+		{'nvim-treesitter/nvim-treesitter'};
+    {'p00f/nvim-ts-rainbow'};
+    {'nvim-lua/plenary.nvim'};
+    {'lewis6991/gitsigns.nvim'};
+    -- {'luukvbaal/nnn.nvim'};
+    {'mcchrish/nnn.vim'};
 
-  paq {'mtdl9/vim-log-highlighting', opt=true}
-  paq {'othree/csscomplete.vim'}
-  -- paq {'ap/vim-css-color'}                              -- color css color codes
-  paq {'norcalli/nvim-colorizer.lua'}
-  paq {'alvan/vim-closetag'}
-  paq {'mattn/emmet-vim'}
-  paq {'moll/vim-node'}
-  paq {'pangloss/vim-javascript'}
+    {'tpope/vim-projectionist', opt=true};
+    {'vimwiki/vimwiki'};
+    {'folke/which-key.nvim'};
+		{'L3MON4D3/LuaSnip'};
 
-  paq {'vim-ruby/vim-ruby'}
-  paq {'elixir-editors/vim-elixir'}
-  paq {'xolox/vim-lua-ftplugin'}
-  paq {'xolox/vim-misc'}
-  paq {'cespare/vim-toml'}
-  paq {'fatih/vim-go'}
-  paq {'mrk21/yaml-vim'}
-  paq {'junegunn/goyo.vim'}                             -- distraction free vim
-  paq {'junegunn/limelight.vim'}
+		{'neovim/nvim-lspconfig'};
+		{'williamboman/nvim-lsp-installer'};
+		{'ray-x/lsp_signature.nvim'};
+		{'weilbith/nvim-code-action-menu'};
+		{'hrsh7th/nvim-cmp'};
+		{'hrsh7th/cmp-nvim-lsp'};
+		{'hrsh7th/cmp-path'};
+		{'hrsh7th/cmp-buffer'};
+		{'hrsh7th/cmp-nvim-lua'};
+		{'saadparwaiz1/cmp_luasnip'};
 
-  paq {'kyazdani42/nvim-web-devicons'}
-  paq {'sainnhe/sonokai'}
-  paq {'sainnhe/edge'}
-  paq {'crusoexia/vim-monokai'}
-  paq {'sainnhe/gruvbox-material'}
-  paq {'gruvbox-community/gruvbox'}
-  paq {'hoob3rt/lualine.nvim'}
+
+    {'mtdl9/vim-log-highlighting'};
+    {'othree/csscomplete.vim'};
+    {'norcalli/nvim-colorizer.lua'};
+    {'alvan/vim-closetag'};
+    {'mattn/emmet-vim'};
+    {'moll/vim-node'};
+    {'pangloss/vim-javascript'};
+
+    {'vim-ruby/vim-ruby'};
+    {'elixir-editors/vim-elixir'};
+    -- {'xolox/vim-misc'};
+    -- {'xolox/vim-lua-ftplugin'};
+    {'cespare/vim-toml'};
+    -- {'fatih/vim-go'};
+    {'mrk21/yaml-vim'};
+    {'junegunn/goyo.vim'};                             -- distraction free vim
+    {'junegunn/limelight.vim'};
+
+    {'kyazdani42/nvim-web-devicons'};
+    {'sainnhe/sonokai'};
+    {'sainnhe/edge'};
+    {'folke/tokyonight.nvim'};
+		-- { 'mcchrish/zenbones.nvim'};
+		{'wuelnerdotexe/vim-enfocado'};
+    {'nvim-lualine/lualine.nvim'};
+  }
+	-- paq.paq {'numtostr/FTerm.nvim'}
 end
 
 -- maybe do something like this??
@@ -88,19 +114,61 @@ local function def_cmd(name, func)
 end
 
 local function gen_config()
-  map('n', '<c-n>', ':NvimTreeToggle<CR>')
   map('n', '<leader>gg', ':Gstatus<CR>')
   -- require('indent_guides').setup()
   require('colorizer').setup()
+  g['tokyonight_style'] = 'night'
+	-- g['enfocado_style'] = 'nature'
+	g['enfocado_style'] = 'neon'
+
 end
 
-local function sneak_config()
-  map('n', 'z', '<Plug>Sneak_s', {noremap = false})
-  map('n', 'Z', '<Plug>Sneak_S', {noremap = false})
-  map('x', 'z', '<Plug>Sneak_s', {noremap = false})
-  map('x', 'Z', '<Plug>Sneak_S', {noremap = false})
-  map('o', 'z', '<Plug>Sneak_s', {noremap = false})
-  map('o', 'Z', '<Plug>Sneak_S', {noremap = false})
+local function emmet_config()
+  g['user_emmet_leader_key'] = ','
+  g['user_emmet_settings'] = {
+    javascript = { extends = "jsx" }
+  }
+end
+
+local function ftterm_config()
+  map('n', '<C-t>t', '<cmd>lua require("FTerm").toggle()<CR>')
+  map('t', '<C-t>t', '<cmd>lua require("FTerm").toggle()<CR>')
+  map('n', '<C-t>s', '<cmd>vsp term://bash')
+  map('t', '<C-t>s', '<cmd>q<CR>')
+end
+
+-- local function nvim_nnn_config()
+--   require('nnn').setup({
+--     picker = {
+--       style = { border = "rounded" },
+--       session = "shared",
+--     },
+--     replace_netrw = "picker",
+--     window_nav = "<C-l>"
+--   })
+--   map('n', '<leader>nm', '<cmd>NnnExplorer<CR>')
+--   map('t', '<leader>nm', '<cmd>NnnExplorer<CR>')
+--   map('n', '<leader>nn', '<cmd>NnnPicker<CR>')
+--   map('t', '<leader>nn', '<cmd>NnnPicker<CR>')
+-- end
+
+local function vim_nnn_config()
+  require('nnn').setup({
+    set_default_mappings = 0,
+    replace_netrw = 1,
+    command = 'nnn -o',
+    layout = {
+      window = {
+        width = 0.5,
+        height = 0.7,
+        highlight = 'debug'
+      }
+    }
+  })
+  map('n', '<leader>nn', ':call nnn#pick(getcwd())<CR>')
+  map('n', '<leader>nm', ":call nnn#pick(expand('%:p:h'))<CR>")
+  map('n', '<leader>nr', ":call nnn#pick(getcwd(), {'layout':{'left':'~20%'}})<CR>")
+  map('n', '<leader>nl', ":call nnn#pick(expand('%:p:h'), {'layout':{'left':'~20%'}})<CR>")
 end
 
 local function vimwiki_config()
@@ -109,7 +177,7 @@ local function vimwiki_config()
   --   elixir = 'elixir',
   --   js = 'javascript',
   -- }
-    
+
   g.vimwiki_list = {
     {
       path = '~/vimwiki',
@@ -122,17 +190,20 @@ local function vimwiki_config()
     --   ext = '.md'
     -- }
   }
+
+  map('n', '<leader>x', '<Plug>VimwikiToggleListItem', {noremap = false})
+  map('v', '<leader>x', '<Plug>VimwikiToggleListItem', {noremap = false})
+  map('n', '<leader><backspace>', '<Plug>VimwikiGoBackLink', {noremap = false})
+  map('n', '<leader>=', '<Plug>VimwikiAddHeaderLevel', {noremap = false})
+  map('n', '<leader>-', '<Plug>VimwikiRemoveHeaderLevel', {noremap = false})
+
 end
 
 local function fzf_config()
-  map('n', '<leader>t', ':Files<CR>')
-  map('n', '<leader>bb', ':Buffers<CR>')
-  map('n', '<leader>ff', ':Rg<CR>')
-  map('n', '<leader>fw', ':Rg <C-r>=expand("<cword>")<CR><CR>')
-  map('v', '<leader>fw', 'y:Rg <C-r>"<CR>')
-  map('v', '<leader>gf', 'y:Files <C-r>"<CR>')
-  map('n', '<leader>gf', ':Files <C-r>=expand("<cfile>")<CR><CR>')
-  map('i', '<c-x><c-k>', 'fzf#vim#complete#word({\'window\': { \'width\': 0.2, \'height\': 0.9, \'xoffset\': 1 }})', {expr = true})
+  map('n', '<leader>fb', ':Buffers<CR>')
+  map('n', '<leader>ff', ':Files<CR>')
+  map('n', '<leader>fc', ':Commits<CR>')
+  map('n', '<leader>ft', ':Rg<CR>')
 end
 
 local function qf_config()
@@ -147,11 +218,6 @@ end
 local function gitsigns_config()
     require('gitsigns').setup({
     signs = {
-      -- add          = {hl = 'GitGutterAdd'   , text = '+'},
-      -- change       = {hl = 'GitGutterChange', text = '~'},
-      -- delete       = {hl = 'GitGutterDelete', text = '_'},
-      -- topdelete    = {hl = 'GitGutterDelete', text = '‾'},
-      -- changedelete = {hl = 'GitGutterChange', text = '~'},
       add          = {hl = 'GitGutterAdd'   },
       change       = {hl = 'GitGutterChange'},
       delete       = {hl = 'GitGutterDelete'},
@@ -164,6 +230,7 @@ end
 local function treesitter_config()
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    -- ignore_install = {"elixir"},
     highlight = {
       enable = true,              -- false will disable the whole extension
       disable = { "c", "rust" },  -- list of language that will be disabled
@@ -186,17 +253,41 @@ local function treesitter_config()
   -- cmd 'set foldmethod=expr'
   -- cmd 'set foldexpr=nvim_treesitter#foldexpr()'
   -- vim.wo.foldmethod = expr
-  -- vim.wo.foldexpr = 
+  -- vim.wo.foldexpr = some function
+end
+
+local toggle_state = true
+function _G.lsp_toggle()
+	local toggled = not toggle_state
+	toggle_state = toggled
+	-- vim.diagnostic.config({virtual_text = toggled, underline = toggled})
+	vim.diagnostic.config({virtual_text = toggled})
+end
+
+local function lsp_config()
+	map('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+	map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', {silent = false})
+	map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', {silent = false})
+	map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', {silent = false})
+	map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {silent = false})
+	map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', {silent = false})
+	map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+	map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+	map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+	map('n', '<leader>xv', '<cmd>lua lsp_toggle()<CR>')
+end
+
+local function lsp_action_config()
+	map('n', '<leader>xa', ':CodeActionMenu<CR>', {silent = false})
 end
 
 function _G.lualine_config()
-  local l = require('lualine').setup({
+  require('lualine').setup({
     options = {
-    icons_enabled = true,
-    theme = 'codedark',
-    -- theme = 'gruvbox_material',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
+    -- icons_enabled = true,
+    -- theme = 'auto',
+    -- component_separators = {'', ''},
+    -- section_separators = {'', ''},
     }
   })
 
@@ -206,14 +297,20 @@ load_paq()
 gen_config()
 fzf_config()
 qf_config()
+ftterm_config()
+vim_nnn_config()
 lualine_config()
 gitsigns_config()
 treesitter_config()
+lsp_config()
+lsp_action_config()
+require 'config/cmp_config'
 vimwiki_config()
--- print("loaded stuff")
+print("loaded stuff")
 
 local function do_thing(plugin, command)
     -- cmd 'command! ' .. command .. ' packadd ' .. plugin .. ' | :' .. command
+		print("did the thing with" .. plugin .. " and " .. command)
 end
 
 function _G.dump(...)

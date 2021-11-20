@@ -11,7 +11,7 @@ fi
 # else
 #   echo "UH-OH! No dotfiles directory found!"
 # fi
-export XDG_CONFIG_HOME=$HOME/.config
+# export XDG_CONFIG_HOME=$HOME/.config
 export DOTFILES=$HOME/.dotfiles
 
 

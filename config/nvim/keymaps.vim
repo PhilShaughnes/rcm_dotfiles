@@ -63,7 +63,8 @@ nnoremap Y y$
 " leader space cancels search highlighting
 " nnoremap <silent> <Leader><Space> :nohlsearch<CR>
 " jk toggles cursorcolumn and cursorline
-nnoremap <silent> <leader><space> :set cursorcolumn! <bar> set cursorline!<bar> set relativenumber!<CR>
+nnoremap <silent> <leader><space> :set relativenumber!<bar> set list!<CR>
+nnoremap <silent> z/ :set cursorcolumn! <bar> set cursorline!<CR>
 
 " replace all occurences of word under cursor. $= in paragraph
 nnoremap <leader>/ :'{,'}s/\<<C-r>=expand("<cword>")<CR>\>/
