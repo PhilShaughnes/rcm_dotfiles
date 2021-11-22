@@ -96,7 +96,7 @@ local function load_paq()
 end
 
 local function gen_config()
-  map('n', '<leader>gg', ':Gstatus<CR>')
+  map('n', '<leader>gg', ':Git<CR>')
   -- require('indent_guides').setup()
   require('colorizer').setup()
   g['tokyonight_style'] = 'night'
@@ -267,10 +267,10 @@ end
 function _G.lualine_config()
   require('lualine').setup({
     options = {
-    -- icons_enabled = true,
-    -- theme = 'auto',
-    -- component_separators = {'', ''},
-    -- section_separators = {'', ''},
+			icons_enabled = true,
+			theme = 'auto',
+			component_separators = {'', ''},
+			-- section_separators = {'', ''},
     }
   })
 

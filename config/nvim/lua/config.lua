@@ -13,6 +13,5 @@ end
 
 load 'helpers'
 load 'settings'
--- load 'plugins'
-load 'plugtest'
+load 'plugins'
 load 'config/lsp_config'
