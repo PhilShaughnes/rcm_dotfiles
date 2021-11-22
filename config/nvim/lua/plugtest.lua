@@ -1,99 +1,11 @@
-
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local map = require('helpers').map
 local paqpath = vim.fn.expand("$HOME/.local/share/nvim/paq-plugins/")
-local plug = require('my.vplug')
 
 vim.opt.packpath:append(paqpath)
 local paq = require "paq"
 paq:setup({paqdir=paqpath})
-
-
-local function load_paq()
-  -- cmd 'packadd paq-nvim'         -- Load package
-  paq {
-
-    {'savq/paq-nvim'};     -- Let Paq manage itself
-
-    {'junegunn/fzf', run = fn['fzf#install']};
-    {'junegunn/fzf.vim'};
-    {'rstacruz/vim-closer'};
-    {'tpope/vim-endwise'};
-    {'tpope/vim-commentary'};
-    {'tpope/vim-fugitive'};
-    {'junegunn/gv.vim'};
-    {'romainl/vim-qf'};
-    {'romainl/vim-cool'};
-    {'junegunn/vim-peekaboo'};
-    {'markonm/traces.vim'};
-    {'machakann/vim-sandwich'};
-    {'kana/vim-niceblock'};
-
-
-    {'rbgrouleff/bclose.vim'};                         -- close buffer without closing windows
-    {'tommcdo/vim-lion'};                              -- gl and gL align around a character (so glip=)
-    {'justinmk/vim-gtfo'};                             -- got and gof open current file in terminal/file manager
-    -- {'jeetsukumaran/vim-indentwise'};
-    {'michaeljsmith/vim-indent-object'};               -- use indent level like ii or ai
-    -- {'tpope/vim-sleuth'};
-
-    {'numtostr/FTerm.nvim'};
-
-    {'nathom/filetype.nvim'};
-		{'nvim-treesitter/nvim-treesitter'};
-    {'p00f/nvim-ts-rainbow'};
-    {'nvim-lua/plenary.nvim'};
-    {'lewis6991/gitsigns.nvim'};
-    -- {'luukvbaal/nnn.nvim'};
-    {'mcchrish/nnn.vim'};
-
-    {'tpope/vim-projectionist', opt=true};
-    {'vimwiki/vimwiki'};
-    {'folke/which-key.nvim'};
-		{'L3MON4D3/LuaSnip'};
-
-		{'neovim/nvim-lspconfig'};
-		{'williamboman/nvim-lsp-installer'};
-		{'onsails/lspkind-nvim'};
-		{'ray-x/lsp_signature.nvim'};
-		{'weilbith/nvim-code-action-menu'};
-		{'hrsh7th/nvim-cmp'};
-		{'hrsh7th/cmp-nvim-lsp'};
-		{'hrsh7th/cmp-path'};
-		{'hrsh7th/cmp-buffer'};
-		{'hrsh7th/cmp-nvim-lua'};
-		{'saadparwaiz1/cmp_luasnip'};
-
-
-    {'mtdl9/vim-log-highlighting'};
-    {'othree/csscomplete.vim'};
-    {'norcalli/nvim-colorizer.lua'};
-    {'alvan/vim-closetag'};
-    {'mattn/emmet-vim'};
-    {'moll/vim-node'};
-    {'pangloss/vim-javascript'};
-
-    {'vim-ruby/vim-ruby'};
-    {'elixir-editors/vim-elixir'};
-    -- {'xolox/vim-misc'};
-    -- {'xolox/vim-lua-ftplugin'};
-    {'cespare/vim-toml'};
-    -- {'fatih/vim-go'};
-    {'mrk21/yaml-vim'};
-    {'junegunn/goyo.vim'};                             -- distraction free vim
-    {'junegunn/limelight.vim'};
-
-    {'kyazdani42/nvim-web-devicons'};
-    {'sainnhe/sonokai'};
-    {'sainnhe/edge'};
-    {'folke/tokyonight.nvim'};
-		-- { 'mcchrish/zenbones.nvim'};
-		{'wuelnerdotexe/vim-enfocado'};
-    {'nvim-lualine/lualine.nvim'};
-  }
-	-- paq.paq {'numtostr/FTerm.nvim'}
-end
 
 local function gen_config()
   map('n', '<leader>gg', ':Gstatus<CR>')
@@ -247,7 +159,6 @@ function _G.lsp_toggle()
 end
 
 local function lsp_config()
-	-- require 'config/lsp_config'
 	map('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
 	map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', {silent = false})
 	map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', {silent = false})
@@ -258,9 +169,6 @@ local function lsp_config()
 	map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 	map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 	map('n', '<leader>xv', '<cmd>lua lsp_toggle()<CR>')
-end
-
-local function lsp_action_config()
 	map('n', '<leader>xa', ':CodeActionMenu<CR>', {silent = false})
 end
 
@@ -276,16 +184,117 @@ function _G.lualine_config()
 
 end
 
-load_paq()
-gen_config()
-fzf_config()
-qf_config()
-ftterm_config()
-vim_nnn_config()
-lualine_config()
-gitsigns_config()
-treesitter_config()
-lsp_config()
-require 'config/cmp_config'
-vimwiki_config()
-emmet_config()
+local function cmpz_config()
+	require 'config/cmp_config'
+end
+
+local plugins = {}
+local function plug(plugin)
+	plugin[#plugin+1] = plugin
+end
+
+	plug {'savq/paq-nvim'}     -- Let Paq manage itself
+
+	plug {'junegunn/fzf', run = fn['fzf#install']}
+	plug {'junegunn/fzf.vim'}
+	fzf_config()
+
+	plug {'rstacruz/vim-closer'}
+	plug {'tpope/vim-endwise'}
+	plug {'tpope/vim-commentary'}
+	plug {'tpope/vim-fugitive'}
+	gen_config()
+
+	plug {'junegunn/gv.vim'}
+	plug {'romainl/vim-qf'}
+	qf_config()
+
+	plug {'romainl/vim-cool'}
+	plug {'junegunn/vim-peekaboo'}
+	plug {'markonm/traces.vim'}
+	plug {'machakann/vim-sandwich'}
+	plug {'kana/vim-niceblock'}
+
+
+	plug {'rbgrouleff/bclose.vim'}                         -- close buffer without closing windows
+	plug {'tommcdo/vim-lion'}                              -- gl and gL align around a character (so glip=)
+	plug {'justinmk/vim-gtfo'}                             -- got and gof open current file in terminal/file manager
+	-- {'jeetsukumaran/vim-indentwise'})
+	plug {'michaeljsmith/vim-indent-object'}               -- use indent level like ii or ai
+	-- {'tpope/vim-sleuth'})
+
+	plug {'numtostr/FTerm.nvim'}
+	ftterm_config()
+
+
+	plug {'nathom/filetype.nvim'}
+	plug {'nvim-treesitter/nvim-treesitter'}
+	treesitter_config()
+
+	plug {'p00f/nvim-ts-rainbow'}
+	plug {'nvim-lua/plenary.nvim'}
+	plug {'lewis6991/gitsigns.nvim'}
+	gitsigns_config()
+
+	-- {'luukvbaal/nnn.nvim'})
+	plug {'mcchrish/nnn.vim'}
+	vim_nnn_config()
+
+
+	plug {'tpope/vim-projectionist', opt=true}
+	plug {'vimwiki/vimwiki'}
+	vimwiki_config()
+
+	plug {'folke/which-key.nvim'}
+	plug {'L3MON4D3/LuaSnip'}
+
+	plug {'neovim/nvim-lspconfig'}
+	plug {'williamboman/nvim-lsp-installer'}
+	lsp_config()
+
+	plug {'onsails/lspkind-nvim'}
+	plug {'ray-x/lsp_signature.nvim'}
+	plug {'weilbith/nvim-code-action-menu'}
+	plug {'hrsh7th/nvim-cmp'}
+	require 'config/cmp_config'
+
+	plug {'hrsh7th/cmp-nvim-lsp'}
+	plug {'hrsh7th/cmp-path'}
+	plug {'hrsh7th/cmp-buffer'}
+	plug {'hrsh7th/cmp-nvim-lua'}
+	plug {'saadparwaiz1/cmp_luasnip'}
+
+
+	plug {'mtdl9/vim-log-highlighting'}
+	plug {'othree/csscomplete.vim'}
+	plug {'norcalli/nvim-colorizer.lua'}
+	plug {'alvan/vim-closetag'}
+	plug {'mattn/emmet-vim'}
+	emmet_config()
+
+	plug {'moll/vim-node'}
+	plug {'pangloss/vim-javascript'}
+
+	plug {'vim-ruby/vim-ruby'}
+	plug {'elixir-editors/vim-elixir'}
+	-- {'xolox/vim-misc'})
+	-- {'xolox/vim-lua-ftplugin'})
+	plug {'cespare/vim-toml'}
+	-- {'fatih/vim-go'})
+	plug {'mrk21/yaml-vim'}
+	plug {'junegunn/goyo.vim'}                             -- distraction free vim
+	plug {'junegunn/limelight.vim'}
+
+	plug {'kyazdani42/nvim-web-devicons'}
+	plug {'sainnhe/sonokai'}
+	plug {'sainnhe/edge'}
+	plug {'folke/tokyonight.nvim'}
+	-- { 'mcchrish/zenbones.nvim'})
+	plug {'wuelnerdotexe/vim-enfocado'}
+	plug {'nvim-lualine/lualine.nvim'}
+	lualine_config()
+
+
+paq(plugins)
+
+

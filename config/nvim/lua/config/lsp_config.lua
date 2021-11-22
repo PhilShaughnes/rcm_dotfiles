@@ -17,7 +17,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 lsp_installer.on_server_ready(function(server)
     local opts = {
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
+				on_attach = function(_, _) -- client, bufnr
 						require "lsp_signature".on_attach()
 					end,
 		}
@@ -25,7 +25,7 @@ lsp_installer.on_server_ready(function(server)
 		if server.name == "sumneko_lua" then
 			opts = {
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
+				on_attach = function(_, _) -- client, bufnr
 						require "lsp_signature".on_attach()
 					end,
 				settings = {

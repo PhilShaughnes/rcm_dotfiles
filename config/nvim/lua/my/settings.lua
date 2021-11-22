@@ -61,3 +61,4 @@ set.omnifunc = 'syntaxcomplete#Complete'
 
 set.termguicolors = true
 set.background = 'dark'
+

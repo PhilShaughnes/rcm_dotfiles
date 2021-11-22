@@ -5,6 +5,7 @@
 filetype plugin indent on
 syntax enable
 set backspace=indent,eol,start
+set nocompatible
 set autoread
 set autoindent
 set autowrite
@@ -74,6 +75,7 @@ augroup END
 "*************"
 "*** PLUGS ***"
 "*************"
+" assumes git, nnn, ripgrep, and fzf
 " to install run:
 " git clone https://github.com/kristijanhusak/vim-packager ~/.vim/pack/packager/opt/vim-packager
 
@@ -327,6 +329,3 @@ set statusline=%6*(%n)%{v:register}\ %f%m\ %8*%{FugitiveHead()}%=
 set statusline+=%y\ %p%%\ %6*<>\ %8*%c:%l/%L\ 
 
 " new
-if &compatible
-  set nocompatible
-endif
