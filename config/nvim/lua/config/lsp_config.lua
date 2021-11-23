@@ -1,6 +1,7 @@
 -- local lsp = require("lspconfig")
 -- lsp.tsserver.setup({})
 
+local USER = vim.fn.expand("$HOME")
 local lsp_installer = require("nvim-lsp-installer")
 
 function _G.dump(...)
@@ -31,7 +32,7 @@ lsp_installer.on_server_ready(function(server)
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = {'vim'}
+							globals = {'vim', 'hs'}
 						},
 						runtime = {
 							version = "LuaJIT",
@@ -40,7 +41,9 @@ lsp_installer.on_server_ready(function(server)
 						workspace = {
 							library = {
 								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+								[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+								['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/'] = true,
+								[USER .. '/.Hammerspoon/Spoons/EmmyLua.spoon/annotations'] = true,
 							}
 						}
 					}
